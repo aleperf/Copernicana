@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Copernicana</string>
+    <!--APOD detail strings -->
+    <string name="apod_title_tools_text">Dusty With a Chance of Dust</string>
+    <string name="apod_explanation_tools_text">It\'s storm season on Mars. Dusty with a chance of dust is the weather
+        report for Gale crater as a recent planet-scale dust storm rages.
+        On June 10 looking toward the east-northeast crater rim, the Curiosity rover\'s Mastcam captured this image
+        of its local conditions so far. Meanwhile over 2,000 kilometers away, the Opportunity rover
+        ceased science operations as the storm grew thicker at its location on the west rim of Endeavour crater,
+        and has stopped communicating, waiting out the storm for now. Curiosity is powered by a radioisotope
+        thermoelectric generator, but the smaller Opportunity rover uses solar panels to charge its batteries.
+        For Opportunity, the increasingly severe lack of sunlight has caused its batteries to run low.</string>
+    <string name="apod_date_tools_text">2018-06-16</string>
+    <string name="apod_copyright_tools_text">El Cielo de Canarias</string>
+    <string name="apod_no_copyright">public domain</string>
+    <string name="apod_copyright_label_image">Image Author: %s</string>
+    <string name="apod_copyright_label_video">Video Author: %s</string>
 </resources>

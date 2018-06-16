@@ -26,12 +26,13 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    buildToolsVersion = '27.1.1'
+    buildToolsVersion = '27.1.0'
     espressoVersion = '3.0.2'
-    supportLibraryVersion = '27.1.1'
+    supportLibraryVersion = '27.1.0'
     retrofit = '2.4.0'
     junitVersion = '4.12'
-    design = '27.1.1'
+    design = '27.1.0'
     lifecycleVersion = '1.1.1'
     roomVersion = '1.1.0'
+    picassoVersion = '2.71828'
 }

@@ -32,6 +32,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.ext.roomVersion"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit"
+    implementation "com.squareup.picasso:picasso:$rootProject.ext.picassoVersion"
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     androidTestImplementation "com.android.support.test:runner:1.0.2"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
