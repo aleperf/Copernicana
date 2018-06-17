@@ -34,7 +34,7 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     private void loadApod() {
-        Call<Apod> apodCall = apisService.getApod(apiKey, null);
+        Call<Apod> apodCall = apisService.getApod(apiKey, "2018-06-15");
 
         apodCall.enqueue(new Callback<Apod>() {
             @Override

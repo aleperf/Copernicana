@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApisServiceGenerator {
 
-    private static final String BASE_NASA_API_URL = "https://api.nasa.gov";
+    private static final String NASA_API_BASE_URL = "https://api.nasa.gov";
 
     private static OkHttpClient httpClient =
             new OkHttpClient.Builder().build();
@@ -17,7 +17,7 @@ public class ApisServiceGenerator {
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .client(httpClient)
-                    .baseUrl(BASE_NASA_API_URL)
+                    .baseUrl(NASA_API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().create()));
 
     private static Retrofit retrofit = builder.build();
