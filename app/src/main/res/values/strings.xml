@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Copernicana</string>
-    <!--APOD detail strings -->
+
+    <!-- SUMMARY INTRO STRINGS -->
+    <string name="apod_card_rv_title">Astronomic Picture of the Day</string>
+
+    <!--APOD DETAIL STRINGS -->
     <string name="apod_title_tools_text">Dusty With a Chance of Dust</string>
     <string name="apod_explanation_tools_text">It\'s storm season on Mars. Dusty with a chance of dust is the weather
         report for Gale crater as a recent planet-scale dust storm rages.

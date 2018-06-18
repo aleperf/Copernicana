@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/apod_image"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:layout_marginTop="16dp"
@@ -31,7 +31,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/apod_image"
             tools:text="@string/apod_date_tools_text" />
 
         <TextView
@@ -60,7 +60,7 @@
             tools:text="@string/apod_title_tools_text" />
 
         <TextView
-            android:id="@+id/copyright"
+            android:id="@+id/apod_copyright"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -71,6 +71,20 @@
             app:layout_constraintStart_toStartOf="parent"
             android:paddingEnd="8dp"
             app:layout_constraintTop_toBottomOf="@+id/apod_explanation" />
+
+        <ImageView
+            android:id="@+id/video_button"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/apod_image"
+            app:layout_constraintEnd_toEndOf="@+id/apod_image"
+            app:layout_constraintStart_toStartOf="@+id/apod_image"
+            app:layout_constraintTop_toBottomOf="@+id/apod_title"
+            app:srcCompat="@drawable/youtube_white" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

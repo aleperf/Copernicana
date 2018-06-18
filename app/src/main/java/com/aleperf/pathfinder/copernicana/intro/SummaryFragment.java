@@ -1,4 +1,4 @@
-package com.aleperf.pathfinder.copernicana.ui;
+package com.aleperf.pathfinder.copernicana.intro;
 
 
 import android.support.v4.app.Fragment;

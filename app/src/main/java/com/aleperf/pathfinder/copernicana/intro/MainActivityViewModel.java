@@ -1,4 +1,4 @@
-package com.aleperf.pathfinder.copernicana.ui;
+package com.aleperf.pathfinder.copernicana.intro;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
