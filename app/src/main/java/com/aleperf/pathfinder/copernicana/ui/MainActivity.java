@@ -11,10 +11,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.ui.MainActivityViewModel;
 
-import model.Apod;
 
 public class MainActivity extends AppCompatActivity {
 
