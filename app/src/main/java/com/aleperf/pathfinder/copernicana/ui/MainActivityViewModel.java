@@ -1,15 +1,14 @@
-package ui;
+package com.aleperf.pathfinder.copernicana.ui;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
 import com.aleperf.pathfinder.copernicana.BuildConfig;
 
-import model.Apod;
-import network.ApisService;
-import network.ApisServiceGenerator;
+import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.network.ApisService;
+import com.aleperf.pathfinder.copernicana.network.ApisServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +33,7 @@ public class MainActivityViewModel extends ViewModel {
     }
 
     private void loadApod() {
-        Call<Apod> apodCall = apisService.getApod(apiKey, "2018-06-15");
+        Call<Apod> apodCall = apisService.getApod(apiKey, null);
 
         apodCall.enqueue(new Callback<Apod>() {
             @Override

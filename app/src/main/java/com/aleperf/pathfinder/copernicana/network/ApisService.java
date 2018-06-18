@@ -1,12 +1,10 @@
-package network;
+package com.aleperf.pathfinder.copernicana.network;
 
 import android.support.annotation.NonNull;
 
-import model.Apod;
-import okhttp3.OkHttpClient;
+import com.aleperf.pathfinder.copernicana.model.Apod;
+
 import retrofit2.Call;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

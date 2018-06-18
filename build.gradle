@@ -35,5 +35,4 @@ ext {
     lifecycleVersion = '1.1.1'
     roomVersion = '1.1.0'
     picassoVersion = '2.71828'
-    butterKnifeVersion = '8.8.1'
 }
