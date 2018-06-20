@@ -2,7 +2,12 @@
     <string name="app_name">Copernicana</string>
 
     <!-- SUMMARY INTRO STRINGS -->
-    <string name="apod_card_rv_title">Astronomic Picture of the Day</string>
+    <string name="apod_card_rv_title">Astronomy Picture of the Day</string>
+    <string name="media_type_content_desc_image">Media type: image</string>
+    <string name="media_type_content_desc_video">Media type: video</string>
+
+    <!-- Content Description No description -->
+    <string name="no_description_decorative_image">@null</string>
 
     <!--APOD DETAIL STRINGS -->
     <string name="apod_title_tools_text">Dusty With a Chance of Dust</string>

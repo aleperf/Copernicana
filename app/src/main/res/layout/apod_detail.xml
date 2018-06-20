@@ -84,7 +84,8 @@
             app:layout_constraintEnd_toEndOf="@+id/apod_image"
             app:layout_constraintStart_toStartOf="@+id/apod_image"
             app:layout_constraintTop_toBottomOf="@+id/apod_title"
-            app:srcCompat="@drawable/youtube_white" />
+            android:visibility="gone"
+            app:srcCompat="@drawable/play_button_round_swirl" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

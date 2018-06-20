@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <!--Summary RV colors -->
-    <color name="apod_text_bg_transp">#961e88e5</color>
+    <color name="apod_text_bg_transp">#961565C0</color>
     <color name="intro_rv_font_color">#FFFFFF</color>
+    <color name="apod_intro_text_shadow_color">#000000</color>
 </resources>
