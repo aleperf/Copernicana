@@ -14,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  * Side note: the picture of day is visible at this website:
  * https://apod.nasa.gov/apod/astropix.html
  */
-@Entity
+@Entity(tableName = "apod")
 public class Apod {
     @Nullable
     String copyright;
@@ -28,6 +28,7 @@ public class Apod {
     String hdUrl;
     String title;
     String url;
+    int isFavorite = 0;
 
     public Apod(@Nullable String copyright, String date, String explanation,String mediaType, String hdUrl, String title, String url){
         this.copyright = copyright;

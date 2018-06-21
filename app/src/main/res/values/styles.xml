@@ -8,8 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ApodIntroCardTextTitle" parent ="AppTheme">
-        <item name="android:textSize">@dimen/apod_card_title_text</item>
+    <style name="IntroCardTextTitle" parent ="AppTheme">
+        <item name="android:textSize">@dimen/intro_card_title_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/intro_rv_font_color</item>
         <item name="android:shadowColor">@color/apod_intro_text_shadow_color</item>
@@ -18,9 +18,11 @@
         <item name="android:shadowRadius">1.6</item>
     </style>
 
-    <style name="ApodIntroCardTextSubtitle" parent ="ApodIntroCardTextTitle">
-        <item name="android:textSize">@dimen/apod_card_subtitle_text</item>
+    <style name="IntroCardTextSubtitle" parent ="IntroCardTextTitle">
+        <item name="android:textSize">@dimen/intro_card_subtitle_text</item>
         <item name="android:textStyle">bold|italic</item>
     </style>
+
+
 
 </resources>
