@@ -7,4 +7,6 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 
 @Database(entities = {Apod.class}, version = 1)
 public abstract class AstroDatabase extends RoomDatabase {
+
+    public abstract ApodDao apodDao();
 }

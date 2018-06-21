@@ -23,7 +23,7 @@ public interface ApodDao {
     @Query("SELECT * FROM apod WHERE :date < date ORDER BY date DESC LIMIT 1")
     LiveData<Apod> getPreviousApod(String date);
 
-    @Query("SELECT * FROM apod WHERE :date > date ORDER BY date DESC LIMIT 1")
+    @Query("SELECT * FROM apod WHERE :date > date ORDER BY date LIMIT 1")
     LiveData<Apod> getNextApod(String date);
 
     @Query("SELECT COUNT(*) FROM apod")
