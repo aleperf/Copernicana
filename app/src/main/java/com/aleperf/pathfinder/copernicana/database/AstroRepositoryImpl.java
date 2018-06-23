@@ -9,6 +9,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
+import io.reactivex.schedulers.Schedulers;
+
 public class AstroRepositoryImpl implements AstroRepository {
 
     ApodDao apodDao;
@@ -52,16 +55,19 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     @Override
     public void insertApod(Apod apod) {
-
+        if(apod == null){
+            return;
+        }
+        Completable.fromAction(() -> apodDao.insertApod(apod)).subscribeOn(Schedulers.io());
     }
 
     @Override
     public void deleteApodWithDate(String date) {
-
+        Completable.fromAction(() -> apodDao.deleteApodWithDate(date)).subscribeOn(Schedulers.io());
     }
 
     @Override
-    public void updateApodIsFavorite(boolean isFavorite, Apod apod) {
-
+    public void updateApodIsFavorite(boolean isFavorite, String date) {
+        Completable.fromAction(() -> apodDao.updateApodIsFavorite(isFavorite, date)).subscribeOn(Schedulers.io());
     }
 }

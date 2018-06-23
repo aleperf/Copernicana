@@ -17,5 +17,5 @@ public interface AstroRepository {
     LiveData<Integer> getApodCount();
     void insertApod(Apod apod);
     void deleteApodWithDate(String date);
-    void updateApodIsFavorite(boolean isFavorite, Apod apod);
+    void updateApodIsFavorite(boolean isFavorite, String date);
 }
