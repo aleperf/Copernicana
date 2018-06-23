@@ -3,11 +3,12 @@ package com.aleperf.pathfinder.copernicana.injection;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.google.gson.GsonBuilder;
 
+import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
+@Module
 public class ApisServiceModule {
 
     private static final String BASE_URL = "https://api.nasa.gov";
