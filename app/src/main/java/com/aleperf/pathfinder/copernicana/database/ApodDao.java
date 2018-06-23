@@ -18,10 +18,10 @@ public interface ApodDao {
     LiveData<Apod> getLastApod();
 
     @Query("SELECT * FROM apod WHERE date = :date LIMIT 1")
-    LiveData<Apod> getApodForDate(String date);
+    LiveData<Apod> getApodWithDate(String date);
 
     @Query("SELECT * FROM apod ORDER BY DATE DESC")
-    LiveData<List<Apod>> getAllApodStartFromLast();
+    LiveData<List<Apod>> getAllApodOrderDesc();
 
     @Query("SELECT * FROM apod WHERE date < :date ORDER BY date DESC LIMIT 1")
     LiveData<Apod> getPreviousApod(String date);
@@ -39,7 +39,7 @@ public interface ApodDao {
     void deleteApodWithDate(String date);
 
     @Query("UPDATE apod SET  isFavorite = :isFavorite WHERE date = :date")
-    void updateUpod(boolean isFavorite, String date);
+    void updateApodIsFavorite(boolean isFavorite, String date);
 
 
 
