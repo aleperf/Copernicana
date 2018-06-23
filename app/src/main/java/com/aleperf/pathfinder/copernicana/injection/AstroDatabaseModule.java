@@ -4,6 +4,7 @@ import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.persistence.room.Room;
 
+import com.aleperf.pathfinder.copernicana.CopernicanaViewModelProviderFactory;
 import com.aleperf.pathfinder.copernicana.database.ApodDao;
 import com.aleperf.pathfinder.copernicana.database.AstroDatabase;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
@@ -45,8 +46,8 @@ public class AstroDatabaseModule {
 
     @Provides
     @CopernicanaApplicationScope
-    ViewModelProvider.Factory  getViewModelFactory(AstroRepository repository){
-        return null;
+    ViewModelProvider.Factory  getViewModelFactory(AstroRepository astroRepository){
+        return new CopernicanaViewModelProviderFactory(astroRepository);
 
     }
 
