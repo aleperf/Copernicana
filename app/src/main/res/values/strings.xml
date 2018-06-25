@@ -8,8 +8,8 @@
        <!--epic -->
     <string name="epic_title">The Blue Marble</string>
     <string name="epic_subtitle">Earth Images by the EPIC Camera</string>
-    <string name="mars_title">Latest From Mars</string>
-    <string name="mars_subtitle">Images by Curiosity, Opportunity and Spirit</string>
+    <string name="mars_title">Mars Explorer</string>
+    <string name="mars_subtitle">Images by the Rovers on Mars</string>
     <string name="iss_title">Where is the ISS?</string>
     <string name="iss_subtitle">ISS position and astronauts in space now</string>
 
