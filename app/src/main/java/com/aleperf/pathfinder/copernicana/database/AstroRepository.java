@@ -1,12 +1,15 @@
 package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.lifecycle.LiveData;
+import android.support.annotation.Nullable;
 
 import com.aleperf.pathfinder.copernicana.model.Apod;
 
 import java.util.List;
 
 public interface AstroRepository {
+
+    void initializeRepository();
 
     //APOD (a.k.a Astronomic Picture of the Day) CRUD
     LiveData<List<Apod>> getAllApodOrderDesc();
@@ -18,4 +21,6 @@ public interface AstroRepository {
     void insertApod(Apod apod);
     void deleteApodWithDate(String date);
     void updateApodIsFavorite(boolean isFavorite, String date);
+    void loadApod(@Nullable String date);
+
 }

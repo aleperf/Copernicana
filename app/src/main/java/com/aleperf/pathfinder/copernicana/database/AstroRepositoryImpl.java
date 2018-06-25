@@ -78,7 +78,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     public void updateApodIsFavorite(boolean isFavorite, String date) {
         Completable.fromAction(() -> apodDao.updateApodIsFavorite(isFavorite, date)).subscribeOn(Schedulers.io());
     }
-
+    @Override
     public void loadApod(@Nullable String date) {
 
         Call<Apod> apodCall = apisService.getApod(BuildConfig.MY_API_KEY, date);
@@ -96,5 +96,11 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
             }
         });
+    }
+
+    public void initializeRepository(){
+
+        //temporary solution
+        loadApod(null);
     }
 }
