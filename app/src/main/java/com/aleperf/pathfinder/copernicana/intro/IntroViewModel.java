@@ -19,12 +19,17 @@ public class IntroViewModel extends ViewModel {
     public IntroViewModel(AstroRepository astroRepository) {
         this.astroRepository = astroRepository;
         astroRepository.initializeRepository();
-        apod = astroRepository.getLastApod();
+
     }
 
 
     public LiveData<Apod> getApod() {
-        return apod;
+       if(apod == null){
+           apod = astroRepository.getLastApod();
+           return apod;
+       }
+
+       return apod;
     }
 
 

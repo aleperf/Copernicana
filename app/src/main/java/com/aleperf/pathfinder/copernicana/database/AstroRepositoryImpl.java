@@ -1,6 +1,7 @@
 package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.lifecycle.LiveData;
+import android.os.CpuUsageInfo;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -13,6 +14,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
+import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -66,17 +68,21 @@ public class AstroRepositoryImpl implements AstroRepository {
         if (apod == null) {
             return;
         }
-        Completable.fromAction(() -> apodDao.insertApod(apod)).subscribeOn(Schedulers.io());
+        Completable.fromAction(() -> apodDao.insertApod(apod)).subscribeOn(Schedulers.io()).subscribe();
+
     }
 
     @Override
     public void deleteApodWithDate(String date) {
-        Completable.fromAction(() -> apodDao.deleteApodWithDate(date)).subscribeOn(Schedulers.io());
+        Completable.fromAction(() -> apodDao.deleteApodWithDate(date))
+                .subscribeOn(Schedulers.io()).subscribe();
+
     }
 
     @Override
     public void updateApodIsFavorite(boolean isFavorite, String date) {
-        Completable.fromAction(() -> apodDao.updateApodIsFavorite(isFavorite, date)).subscribeOn(Schedulers.io());
+        Completable.fromAction(() -> apodDao.updateApodIsFavorite(isFavorite, date))
+                .subscribeOn(Schedulers.io()).subscribe();
     }
     @Override
     public void loadApod(@Nullable String date) {
@@ -88,7 +94,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Apod apod = response.body();
                 if (apod != null) {
                     insertApod(apod);
-                }
+                    }
             }
 
             @Override
@@ -102,4 +108,5 @@ public class AstroRepositoryImpl implements AstroRepository {
         //temporary solution
         loadApod(null);
     }
+
 }

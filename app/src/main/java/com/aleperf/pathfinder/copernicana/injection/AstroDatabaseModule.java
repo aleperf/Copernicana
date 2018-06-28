@@ -24,29 +24,30 @@ public class AstroDatabaseModule {
 
     @Inject
     public AstroDatabaseModule(Application application) {
-        this.astroDatabase = Room.databaseBuilder(application, AstroDatabase.class, "AstroDatabase.db").build();
+        this.astroDatabase = Room.databaseBuilder(application, AstroDatabase.class, "AstroDatabase.db")
+                .build();
     }
 
     @Provides
     @CopernicanaApplicationScope
-    public AstroRepository provideAstroRepository(ApodDao apodDao, ApisService apisService){
+    public AstroRepository provideAstroRepository(ApodDao apodDao, ApisService apisService) {
         return new AstroRepositoryImpl(apodDao, apisService);
     }
 
     @Provides
     @CopernicanaApplicationScope
-    public ApodDao provideApodDao(){
+    public ApodDao provideApodDao() {
         return astroDatabase.apodDao();
     }
 
     @Provides
-    public AstroDatabase provideAstroDatabase(){
+    public AstroDatabase provideAstroDatabase() {
         return astroDatabase;
     }
 
     @Provides
     @CopernicanaApplicationScope
-    ViewModelProvider.Factory  getViewModelFactory(AstroRepository astroRepository){
+    ViewModelProvider.Factory getViewModelFactory(AstroRepository astroRepository) {
         return new CopernicanaViewModelProviderFactory(astroRepository);
 
     }

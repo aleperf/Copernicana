@@ -78,6 +78,13 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         notifyDataSetChanged();
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if(position == 0){
+            return APOD_VIEW_TYPE;
+        }
+        return GENERIC_CARD_TYPE;
+    }
 
     public class ApodViewHolder extends ViewHolder {
 
@@ -105,17 +112,17 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         public void bindApod() {
             if(apod != null) {
-                Picasso.get().load(apod.getUrl())
-                        .placeholder(APOD_PLACEHOLDER)
-                        .error(APOD_ERROR)
-                        .into(apodBackground);
-            apodSubtitle.setText(apod.getTitle());
+                apodSubtitle.setText(apod.getTitle());
             apodDate.setText(apod.getDate());
             String mediaType = apod.getMediaType();
             if(mediaType == VIDEO_MEDIA_TYPE){
                 imageIcon.setVisibility(View.GONE);
                 videoIcon.setVisibility(View.VISIBLE);
             } else {
+                Picasso.get().load(apod.getUrl())
+                        .placeholder(APOD_PLACEHOLDER)
+                        .error(APOD_ERROR)
+                        .into(apodBackground);
                 imageIcon.setVisibility(View.VISIBLE);
                 videoIcon.setVisibility(View.GONE);
             }

@@ -16,6 +16,8 @@ public interface ApodDao {
 
     @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 1" )
     LiveData<Apod> getLastApod();
+    @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 1" )
+    Apod getLatesApod();
 
     @Query("SELECT * FROM apod WHERE date = :date LIMIT 1")
     LiveData<Apod> getApodWithDate(String date);
@@ -33,7 +35,7 @@ public interface ApodDao {
     LiveData<Integer> getApodCount();
 
     @Insert(onConflict = REPLACE)
-    void insertApod(Apod apod);
+    long insertApod(Apod apod);
 
     @Query("DELETE FROM apod WHERE date = :date")
     void deleteApodWithDate(String date);
