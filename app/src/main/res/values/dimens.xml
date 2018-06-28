@@ -5,7 +5,7 @@
 
     <!-- apod intro card dimensions -->
     <dimen name="apod_card_width">300dp</dimen>
-    <dimen name="apod_card_height">280dp</dimen>
+    <dimen name="apod_card_height">300dp</dimen>
     <dimen name="media_type_icon_side">25dp</dimen>
     <dimen name="media_type_icon_margin_end">24dp</dimen>
     <dimen name="apod_card_sub_padding_side">8dp</dimen>
@@ -22,7 +22,8 @@
     <dimen name="intro_card_height">250dp</dimen>
     <dimen name="intro_card_title_text">21sp</dimen>
     <dimen name="intro_card_subtitle_text">14sp</dimen>
-
+    <dimen name="generic_card_margin_top">4dp</dimen>
+    <dimen name="generic_card_margin_bottom">4dp</dimen>
 
 
 

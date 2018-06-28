@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/intro_card_width"
+    android:layout_height="@dimen/intro_card_height"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="@dimen/generic_card_margin_bottom"
+    android:layout_marginTop="@dimen/generic_card_margin_top"
+    app:cardCornerRadius="@dimen/intro_card_corner_radius">
+
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal"
-    android:layout_width="@dimen/intro_card_width"
-    android:layout_height="@dimen/intro_card_height">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -55,3 +65,5 @@
         app:layout_constraintTop_toBottomOf="@+id/generic_intro_card_title" />
 
 </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

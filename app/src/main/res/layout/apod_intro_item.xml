@@ -35,7 +35,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/apod_card_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@color/apod_text_bg_transp" />
+            app:srcCompat="@color/epic_text_bg_transp" />
 
         <TextView
             android:id="@+id/apod_card_intro_title"
