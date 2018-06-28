@@ -83,6 +83,8 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         private final int APOD_PLACEHOLDER = R.drawable.nasa_43566_unsplash;
         private final int APOD_ERROR = R.drawable.nasa_43566_unsplash;
+        private final String IMAGE_MEDIA_TYPE = "image";
+        private final String VIDEO_MEDIA_TYPE = "video";
 
         @BindView(R.id.apod_card_background)
         private ImageView apodBackground;
@@ -102,10 +104,25 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
 
         public void bindApod() {
-            Picasso.get().load(apod.getUrl())
-                    .placeholder(APOD_PLACEHOLDER)
-                    .error(APOD_ERROR)
-                    .into(apodBackground);
+            if(apod != null) {
+                Picasso.get().load(apod.getUrl())
+                        .placeholder(APOD_PLACEHOLDER)
+                        .error(APOD_ERROR)
+                        .into(apodBackground);
+            apodSubtitle.setText(apod.getTitle());
+            apodDate.setText(apod.getDate());
+            String mediaType = apod.getMediaType();
+            if(mediaType == VIDEO_MEDIA_TYPE){
+                imageIcon.setVisibility(View.GONE);
+                videoIcon.setVisibility(View.VISIBLE);
+            } else {
+                imageIcon.setVisibility(View.VISIBLE);
+                videoIcon.setVisibility(View.GONE);
+            }
+
+            }
+
+
         }
 
     }

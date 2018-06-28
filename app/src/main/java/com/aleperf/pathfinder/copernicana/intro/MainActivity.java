@@ -1,5 +1,6 @@
 package ui;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -20,7 +21,7 @@ import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity {
-    MutableLiveData<Apod> apodLiveData;
+    LiveData<Apod> apodLiveData;
     @BindView(R.id.apod_image)
     ImageView apodImage;
     @BindView(R.id.apod_date)
