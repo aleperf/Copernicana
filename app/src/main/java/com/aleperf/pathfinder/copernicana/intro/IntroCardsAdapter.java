@@ -73,8 +73,8 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         return NUMBER_OF_CARDS;
     }
 
-    private void setApod(Apod newApod){
-        this.apod = apod;
+    public void setApod(Apod newApod){
+        this.apod = newApod;
         notifyDataSetChanged();
     }
 
@@ -87,15 +87,15 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         private final String VIDEO_MEDIA_TYPE = "video";
 
         @BindView(R.id.apod_card_background)
-        private ImageView apodBackground;
+        ImageView apodBackground;
         @BindView(R.id.apod_card_rv_sub)
-        private TextView apodSubtitle;
+        TextView apodSubtitle;
         @BindView(R.id.apod_card_rv_date)
-        private TextView apodDate;
+        TextView apodDate;
         @BindView(R.id.media_type_image_icon)
-        private ImageView imageIcon;
+        ImageView imageIcon;
         @BindView(R.id.media_type_video_icon)
-        private ImageView videoIcon;
+        ImageView videoIcon;
 
 
         public ApodViewHolder(View view) {
@@ -140,11 +140,11 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         private final int ISS_CARD_POS = 3;
 
         @BindView(R.id.generic_intro_card_title)
-        private TextView introCardTitle;
+        TextView introCardTitle;
         @BindView(R.id.generic_intro_card_subtitle)
-        private TextView introCardSubtitle;
+        TextView introCardSubtitle;
         @BindView(R.id.generic_intro_card_image)
-        private ImageView genericIntroImage;
+        ImageView genericIntroImage;
 
 
         public GenericCardViewHolder(View view) {

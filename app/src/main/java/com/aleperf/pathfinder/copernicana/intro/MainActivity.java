@@ -1,4 +1,4 @@
-package ui;
+package com.aleperf.pathfinder.copernicana.intro;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

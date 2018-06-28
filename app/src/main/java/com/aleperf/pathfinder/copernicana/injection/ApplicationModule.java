@@ -18,7 +18,7 @@ public class ApplicationModule {
 
     @Provides
     @CopernicanaApplicationScope
-    CopernicanaApplication provideBakingApplication(){
+    CopernicanaApplication provideCopernicanaApplication(){
         return application;
     }
 

@@ -99,7 +99,6 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     public void initializeRepository(){
-
         //temporary solution
         loadApod(null);
     }

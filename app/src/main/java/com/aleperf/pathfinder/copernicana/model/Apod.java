@@ -2,6 +2,7 @@ package com.aleperf.pathfinder.copernicana.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.google.gson.annotations.SerializedName;
@@ -18,7 +19,7 @@ import com.google.gson.annotations.SerializedName;
 public class Apod {
     @Nullable
     String copyright;
-    @PrimaryKey
+    @PrimaryKey @NonNull
     String date;
     String explanation;
     @SerializedName("media_Type")
@@ -66,5 +67,13 @@ public class Apod {
 
     public String getUrl() {
         return url;
+    }
+
+    public int getIsFavorite() {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(int isFavorite){
+        this.isFavorite = isFavorite;
     }
 }
