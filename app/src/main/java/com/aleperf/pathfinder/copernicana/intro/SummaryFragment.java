@@ -5,6 +5,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,10 +16,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
+import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+
+import java.net.InetSocketAddress;
 
 import javax.inject.Inject;
 
@@ -49,8 +58,7 @@ public class SummaryFragment extends Fragment {
         ((CopernicanaApplication) getActivity().getApplication()).getCopernicanaApplicationComponent().inject(this);
         setRetainInstance(true);
 
-
-    }
+        }
 
     @Nullable
     @Override

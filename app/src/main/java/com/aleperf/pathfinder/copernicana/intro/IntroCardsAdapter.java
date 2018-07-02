@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -119,10 +122,14 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
                 imageIcon.setVisibility(View.GONE);
                 videoIcon.setVisibility(View.VISIBLE);
             } else {
-                Picasso.get().load(apod.getUrl())
+                GlideApp.with(context)
+                        .load(apod.getUrl())
                         .placeholder(APOD_PLACEHOLDER)
                         .error(APOD_ERROR)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .priority(Priority.HIGH)
                         .into(apodBackground);
+
                 imageIcon.setVisibility(View.VISIBLE);
                 videoIcon.setVisibility(View.GONE);
             }
