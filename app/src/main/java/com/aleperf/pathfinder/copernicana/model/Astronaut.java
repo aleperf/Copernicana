@@ -21,8 +21,13 @@ public class Astronaut {
 
 
     public Astronaut(int id, String name, String craft){
+        this.id = id;
         this.name = name;
         this.craft = craft;
+    }
+
+    public int getId(){
+        return id;
     }
 
     public String getName() {
