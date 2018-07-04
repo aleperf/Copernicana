@@ -20,6 +20,7 @@ android {
 
     android.buildTypes.each {
         it.buildConfigField 'String', 'MY_API_KEY', NASA_API_KEY
+        it.buildConfigField 'String', 'APP_STORAGE', COPERNICANA_STORAGE
     }
 
     compileOptions {

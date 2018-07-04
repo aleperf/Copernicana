@@ -5,32 +5,19 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
-import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-
-import java.net.InetSocketAddress;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -51,14 +38,14 @@ public class SummaryFragment extends Fragment {
     private IntroCardsAdapter adapter;
     private LinearLayoutManager layoutManager;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) getActivity().getApplication()).getCopernicanaApplicationComponent().inject(this);
         setRetainInstance(true);
 
-        }
+
+    }
 
     @Nullable
     @Override
@@ -70,7 +57,7 @@ public class SummaryFragment extends Fragment {
         summaryRecyclerView.setAdapter(adapter);
         summaryRecyclerView.setLayoutManager(layoutManager);
         return root;
-        }
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -88,7 +75,7 @@ public class SummaryFragment extends Fragment {
         Observer<Apod> apodObserver = new Observer<Apod>() {
             @Override
             public void onChanged(@Nullable Apod apodResult) {
-                if(apodResult != null){
+                if (apodResult != null) {
                     adapter.setApod(apodResult);
                 }
             }
