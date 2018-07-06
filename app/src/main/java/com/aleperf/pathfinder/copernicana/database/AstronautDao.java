@@ -16,7 +16,7 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 public interface AstronautDao {
 
     @Query("SELECT * FROM astronaut")
-    LiveData<Astronaut> getAllAstronauts();
+    LiveData<List<Astronaut>> getAllAstronauts();
 
     @Query("SELECT * FROM astronaut WHERE :id = id")
     LiveData<Astronaut> getAstronautWithId(int id);
