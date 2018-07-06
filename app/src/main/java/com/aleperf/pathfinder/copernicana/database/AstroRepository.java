@@ -23,4 +23,6 @@ public interface AstroRepository {
     void updateApodIsFavorite(boolean isFavorite, String date);
     void loadApod(@Nullable String date);
 
+    //Astronaut
+
 }

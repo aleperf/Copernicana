@@ -9,6 +9,7 @@ import com.aleperf.pathfinder.copernicana.database.ApodDao;
 import com.aleperf.pathfinder.copernicana.database.AstroDatabase;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.database.AstroRepositoryImpl;
+import com.aleperf.pathfinder.copernicana.database.AstronautDao;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 
@@ -38,6 +39,12 @@ public class AstroDatabaseModule {
     @CopernicanaApplicationScope
     public ApodDao provideApodDao() {
         return astroDatabase.apodDao();
+    }
+
+    @Provides
+    @CopernicanaApplicationScope
+    public AstronautDao provideAstronautDao(){
+        return astroDatabase.astronautDao();
     }
 
     @Provides
