@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.support.annotation.Nullable;
 
 import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.model.Astronaut;
 
 import java.util.List;
 
@@ -21,9 +22,13 @@ public interface AstroRepository {
     void insertApod(Apod apod);
     void deleteApodWithDate(String date);
     void updateApodIsFavorite(boolean isFavorite, String date);
-    void loadApod(@Nullable String date);
+
 
     //Astronaut
+    LiveData<List<Astronaut>> getAllAstronauts();
+    LiveData<Astronaut> getAstronautWithId(int id);
+    void insertAllAstronauts(List<Astronaut> astronauts);
+    void deleteAllAstronauts();
 
 
 }

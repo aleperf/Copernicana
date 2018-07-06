@@ -11,12 +11,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.model.Astronaut;
+
+import java.util.List;
+
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -66,9 +71,7 @@ public class SummaryFragment extends Fragment {
         model = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
         apodLiveData = model.getApod();
         subscribeApod();
-
-
-    }
+        }
 
     private void subscribeApod() {
 

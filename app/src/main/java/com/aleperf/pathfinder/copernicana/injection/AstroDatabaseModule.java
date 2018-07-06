@@ -31,8 +31,8 @@ public class AstroDatabaseModule {
 
     @Provides
     @CopernicanaApplicationScope
-    public AstroRepository provideAstroRepository(ApodDao apodDao, ApisService apisService) {
-        return new AstroRepositoryImpl(apodDao, apisService);
+    public AstroRepository provideAstroRepository(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService) {
+        return new AstroRepositoryImpl(apodDao,astronautDao, apisService);
     }
 
     @Provides

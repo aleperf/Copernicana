@@ -22,7 +22,7 @@ public interface AstronautDao {
     LiveData<Astronaut> getAstronautWithId(int id);
 
     @Insert(onConflict = REPLACE)
-    long insertAllAstronauts(List<Astronaut> astronauts);
+    void insertAllAstronauts(List<Astronaut> astronauts);
 
     @Query("DELETE FROM astronaut")
     void deleteAllAstronauts();

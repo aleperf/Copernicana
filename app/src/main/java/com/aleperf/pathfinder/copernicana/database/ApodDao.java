@@ -16,8 +16,6 @@ public interface ApodDao {
 
     @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 1" )
     LiveData<Apod> getLastApod();
-    @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 1" )
-    Apod getLatesApod();
 
     @Query("SELECT * FROM apod WHERE date = :date LIMIT 1")
     LiveData<Apod> getApodWithDate(String date);

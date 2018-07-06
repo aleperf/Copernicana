@@ -49,6 +49,7 @@ public class Astronaut {
         this.photo = photo;
         this.evaHours = evaHours;
         this.evaMinutes = evaMinutes;
+        this.twitter = twitter;
         this.notes = notes;
     }
 
