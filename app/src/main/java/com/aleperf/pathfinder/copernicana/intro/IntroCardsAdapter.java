@@ -4,154 +4,68 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Apod;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.aleperf.pathfinder.copernicana.intro.SummaryFragment.SectionSelector;
+public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.IntroCardViewHolder> {
 
-public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private final int APOD_VIEW_TYPE = 0;
-    private final int GENERIC_CARD_TYPE = 1;
     private final int NUMBER_OF_CARDS = 4;
 
 
-    private Apod apod;
+
     private Context context;
 
 
     public IntroCardsAdapter(Context context) {
         this.context = context;
-        this.apod = apod;
-    }
+        }
 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public IntroCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view;
-        switch (viewType) {
-            case APOD_VIEW_TYPE:
-               view = inflater.inflate(R.layout.apod_intro_item, parent, false);
-               return new ApodViewHolder(view);
+        View view = inflater.inflate(R.layout.generic_intro_item, parent, false);
+        return new IntroCardViewHolder(view);
 
-            default:
-                view = inflater.inflate(R.layout.generic_intro_item, parent, false);
-                return new GenericCardViewHolder(view);
 
-        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        switch (holder.getItemViewType()) {
-            case APOD_VIEW_TYPE:
-                ApodViewHolder apodViewHolder = (ApodViewHolder) holder;
-                apodViewHolder.bindApod();
-                break;
-            default:
-                GenericCardViewHolder genericCardViewHolder = (GenericCardViewHolder) holder;
-                genericCardViewHolder.bindGenericCard(position);
-        }
+    public void onBindViewHolder(@NonNull IntroCardViewHolder holder, int position) {
+        holder.bindGenericCard(position);
 
     }
 
     @Override
     public int getItemCount() {
-        if(apod == null){
-            return 0;
-        }
         return NUMBER_OF_CARDS;
     }
 
-    public void setApod(Apod newApod){
-        this.apod = newApod;
-        notifyDataSetChanged();
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        if(position == 0){
-            return APOD_VIEW_TYPE;
-        }
-        return GENERIC_CARD_TYPE;
-    }
-
-    public class ApodViewHolder extends ViewHolder {
-
-        private final int APOD_PLACEHOLDER = R.drawable.nasa_43566_unsplash;
-        private final int APOD_ERROR = R.drawable.nasa_43566_unsplash;
-        private final String IMAGE_MEDIA_TYPE = "image";
-        private final String VIDEO_MEDIA_TYPE = "video";
-
-        @BindView(R.id.apod_card_background)
-        ImageView apodBackground;
-        @BindView(R.id.apod_card_rv_sub)
-        TextView apodSubtitle;
-        @BindView(R.id.apod_card_rv_date)
-        TextView apodDate;
-        @BindView(R.id.media_type_image_icon)
-        ImageView imageIcon;
-        @BindView(R.id.media_type_video_icon)
-        ImageView videoIcon;
 
 
-        public ApodViewHolder(View view) {
-            super(view);
-            ButterKnife.bind(this, view);
-        }
-
-        public void bindApod() {
-            if(apod != null) {
-                apodSubtitle.setText(apod.getTitle());
-            apodDate.setText(apod.getDate());
-            String mediaType = apod.getMediaType();
-            if(mediaType == VIDEO_MEDIA_TYPE){
-                imageIcon.setVisibility(View.GONE);
-                videoIcon.setVisibility(View.VISIBLE);
-            } else {
-                GlideApp.with(context)
-                        .load(apod.getUrl())
-                        .placeholder(APOD_PLACEHOLDER)
-                        .error(APOD_ERROR)
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .priority(Priority.HIGH)
-                        .into(apodBackground);
-
-                imageIcon.setVisibility(View.VISIBLE);
-                videoIcon.setVisibility(View.GONE);
-            }
-
-            }
 
 
-        }
+    public class IntroCardViewHolder extends ViewHolder implements View.OnClickListener {
 
-    }
-
-
-    public class GenericCardViewHolder extends ViewHolder {
-
-        private final int[] CARD_BACKGROUNDS = {R.drawable.blue_marble_card,
+        private final int[] CARD_BACKGROUNDS = {R.drawable.nasa_43566_unsplash,R.drawable.blue_marble_card,
                 R.drawable.mars_revived_crop, R.drawable.iss_over_earth};
-        private final int BLUE_MARBLE_INDEX = 0;
-        private final int MARS_INDEX = 1;
-        private final int ISS_INDEX = 2;
-        private final int BLUE_MARBLE_CARD_POS = 1;
-        private final int MARS_CARD_POS = 2;
-        private final int ISS_CARD_POS = 3;
+        private final int APOD_INDEX = 0;
+        private final int BLUE_MARBLE_INDEX = 1;
+        private final int MARS_INDEX = 2;
+        private final int ISS_INDEX = 3;
+
 
         @BindView(R.id.generic_intro_card_title)
         TextView introCardTitle;
@@ -161,21 +75,27 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
         ImageView genericIntroImage;
 
 
-        public GenericCardViewHolder(View view) {
+        public IntroCardViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
 
         }
 
         public void bindGenericCard(int position) {
-
+            Log.d("uffa", "position è: " + position + " APOD_CARD_POS = " + APOD_INDEX);
             switch (position) {
-                case BLUE_MARBLE_CARD_POS:
+                case APOD_INDEX:
+                    introCardTitle.setText(context.getString(R.string.apod_card_rv_title));
+                    introCardSubtitle.setText(context.getString(R.string.apod_subtitle));
+                    genericIntroImage.setImageResource(CARD_BACKGROUNDS[APOD_INDEX]);
+                    break;
+                case BLUE_MARBLE_INDEX:
                     introCardTitle.setText(context.getString(R.string.epic_title));
                     introCardSubtitle.setText(context.getString(R.string.epic_subtitle));
                     genericIntroImage.setImageResource(CARD_BACKGROUNDS[BLUE_MARBLE_INDEX]);
                     break;
-                case MARS_CARD_POS:
+                case MARS_INDEX:
                     introCardTitle.setText(context.getString(R.string.mars_title));
                     introCardSubtitle.setText(context.getString(R.string.mars_subtitle));
                     genericIntroImage.setImageResource(CARD_BACKGROUNDS[MARS_INDEX]);
@@ -188,5 +108,12 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         }
 
+        @Override
+        public void onClick(View v) {
+            if(context instanceof SectionSelector){
+                SectionSelector sectionSelector = (SectionSelector) context;
+                sectionSelector.selectSection(getAdapterPosition());
+            }
+        }
     }
 }

@@ -1,16 +1,23 @@
 package com.aleperf.pathfinder.copernicana.intro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SummaryFragment.SectionSelector {
+
+    private final static String IS_VIDEO_APOD = "is video apod";
+    private final static String APOD_DATE = "apod date";
 
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
@@ -27,4 +34,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public void selectSection(int position) {
+        Toast.makeText(this, "clicked section at position " + position, Toast.LENGTH_SHORT).show();
+    }
 }

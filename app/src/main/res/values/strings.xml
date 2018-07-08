@@ -3,9 +3,10 @@
 
     <!-- SUMMARY INTRO STRINGS -->
     <string name="apod_card_rv_title">Astronomy Picture of the Day</string>
+    <string name="apod_subtitle">Fascinating pictures of our universe</string>
     <string name="media_type_content_desc_image">Media type: image</string>
     <string name="media_type_content_desc_video">Media type: video</string>
-       <!--epic -->
+    <!--epic -->
     <string name="epic_title">The Blue Marble</string>
     <string name="epic_subtitle">Earth Images by the EPIC Camera</string>
     <string name="mars_title">Mars Explorer</string>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimaryDark">#0d47a1 </color>
     <color name="colorAccent">#FF4081</color>
 
     <!--Summary RV colors -->
-    <color name="apod_text_bg_transp">#961565c0</color>
+    <color name="apod_text_bg_transp">#961e88e5</color>
     <color name="intro_rv_font_color">#FFFFFF</color>
     <color name="apod_intro_text_shadow_color">#000000</color>
     <color name="epic_text_bg_transp">#800D47A1</color>
