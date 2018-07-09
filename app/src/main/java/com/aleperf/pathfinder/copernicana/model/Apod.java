@@ -17,6 +17,9 @@ import com.google.gson.annotations.SerializedName;
  */
 @Entity(tableName = "apod")
 public class Apod {
+    private static final String MEDIA_TYPE_VIDEO = "video";
+    private static final String MEDIA_TYPE_IMAGE = "image";
+
     @Nullable
     String copyright;
     @PrimaryKey @NonNull

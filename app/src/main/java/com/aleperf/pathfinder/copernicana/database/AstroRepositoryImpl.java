@@ -8,7 +8,7 @@ import com.aleperf.pathfinder.copernicana.BuildConfig;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
-import com.aleperf.pathfinder.copernicana.utilities.JsonConverter;
+import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -163,7 +163,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                         if (jsonObject != null) {
                             //dump old data before inserting new ones.
                             deleteAllAstronauts();
-                            List<Astronaut> astronauts = JsonConverter.getAstronautsFromJson(jsonObject);
+                            List<Astronaut> astronauts = Utils.getAstronautsFromJson(jsonObject);
                             if (astronauts != null) {
                                 insertAllAstronauts(astronauts);
                             }

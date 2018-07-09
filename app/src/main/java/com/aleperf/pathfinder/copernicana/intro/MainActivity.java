@@ -16,8 +16,6 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements SummaryFragment.SectionSelector {
 
-    private final static String IS_VIDEO_APOD = "is video apod";
-    private final static String APOD_DATE = "apod date";
 
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
@@ -32,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements SummaryFragment.S
         setSupportActionBar(toolbar);
 
     }
-
 
 
     @Override

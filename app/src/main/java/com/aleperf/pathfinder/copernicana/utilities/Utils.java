@@ -12,14 +12,28 @@ import org.json.JSONArray;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class JsonConverter {
+public class Utils {
 
     public static List<Astronaut> getAstronautsFromJson(JsonObject jsonObject){
         JsonArray jsonArray = jsonObject.getAsJsonArray("people");
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         Type astronautListType = new TypeToken<ArrayList<Astronaut>>(){}.getType();
-        List<Astronaut> astronauts = gson.fromJson(jsonArray, astronautListType);
-        return astronauts;
+        return gson.fromJson(jsonArray, astronautListType);
+        }
+
+    public static String getYoutubeIdFromUrl(String youtubeUrl){
+        String youtubeId = "";
+        String youtubeRegex = "^https?://.*(?:youtu.be/|v/|u/\\w/|embed/|watch?v=)([^#&?]*).*$";
+        Pattern pattern = Pattern.compile(youtubeRegex, Pattern.CASE_INSENSITIVE);
+        Matcher matcher =pattern.matcher(youtubeUrl);
+        if(matcher.find()){
+            youtubeId = matcher.group(1);
+        }
+        return youtubeId;
     }
+
+
 }

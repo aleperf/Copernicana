@@ -2,5 +2,5 @@ package com.aleperf.pathfinder.copernicana.apod;
 
 import android.support.v4.app.Fragment;
 
-public class ApodPhotoFragment extends Fragment {
+public class ApodSummaryFragment extends Fragment {
 }
