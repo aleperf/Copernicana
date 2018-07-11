@@ -31,6 +31,6 @@
     <string name="apod_date_tools_text">2018-06-16</string>
     <string name="apod_copyright_tools_text">El Cielo de Canarias</string>
     <string name="apod_no_copyright">public domain</string>
-    <string name="apod_copyright_label_image">Image Author: %s</string>
-    <string name="apod_copyright_label_video">Video Author: %s</string>
+    <string name="apod_copyright_label">Copyright: %s</string>
+
 </resources>

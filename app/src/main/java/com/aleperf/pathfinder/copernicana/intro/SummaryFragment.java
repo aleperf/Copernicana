@@ -46,6 +46,9 @@ public class SummaryFragment extends Fragment {
         void selectSection(int position);
     }
 
+    //empty constructor
+    public SummaryFragment(){}
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

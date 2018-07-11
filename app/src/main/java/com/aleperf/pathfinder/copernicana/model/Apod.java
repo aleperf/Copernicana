@@ -17,15 +17,15 @@ import com.google.gson.annotations.SerializedName;
  */
 @Entity(tableName = "apod")
 public class Apod {
-    private static final String MEDIA_TYPE_VIDEO = "video";
-    private static final String MEDIA_TYPE_IMAGE = "image";
+    public static final String MEDIA_TYPE_VIDEO = "video";
+    public static final String MEDIA_TYPE_IMAGE = "image";
 
     @Nullable
     String copyright;
     @PrimaryKey @NonNull
     String date;
     String explanation;
-    @SerializedName("media_Type")
+    @SerializedName("media_type")
     String mediaType;
     @Nullable
     @SerializedName("hdurl")
