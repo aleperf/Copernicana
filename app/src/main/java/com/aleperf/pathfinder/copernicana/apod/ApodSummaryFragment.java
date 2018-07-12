@@ -13,12 +13,15 @@ import com.aleperf.pathfinder.copernicana.R;
 public class ApodSummaryFragment extends Fragment {
 
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View rootView = inflater.inflate(R.layout.placeholder_layout, container, false);
+       View rootView = inflater.inflate(R.layout.fragment_summary_apod, container, false);
        return rootView;
     }
 }

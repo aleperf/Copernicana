@@ -32,5 +32,10 @@
     <string name="apod_copyright_tools_text">El Cielo de Canarias</string>
     <string name="apod_no_copyright">public domain</string>
     <string name="apod_copyright_label">Copyright: %s</string>
+    <string name="apod_detail_card_title">Pic of the day</string>
+
+    <string name="section_search">Search</string>
+    <string name="section_fav">Favorites Pictures</string>
+    <string name="section_all_pics">All Pictures</string>
 
 </resources>

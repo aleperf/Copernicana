@@ -35,5 +35,12 @@ public class Utils {
         return youtubeId;
     }
 
+    public static String buildVideoThumbnail(String youtubeUrl){
+        String youtubeId = getYoutubeIdFromUrl(youtubeUrl);
+        String formatString = "https://img.youtube.com/vi/%s/0.jpg";
+        return String.format(formatString, youtubeId);
+
+    }
+
 
 }

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.Group;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,6 +40,9 @@ public class ApodDetailFragment extends Fragment {
     public final static String APOD_DATE = "apod date";
     public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
     private final static String PLAYER_POSITION = "player position";
+    private final static String IS_VIDEO = "is video apod";
+    private final static String YOUTUBE_TAG = "youtube tag";
+    private final static String IS_PLAYING = "is video playing";
 
     private Unbinder unbinder;
     @BindView(R.id.apod_image)
@@ -62,15 +66,18 @@ public class ApodDetailFragment extends Fragment {
     private LiveData<Apod> apod;
     private YouTubePlayer youTubePlayer;
     private int playerposition;
+    private boolean isVideo;
+    private int duration;
+    private boolean isPlaying = false;
 
     @Inject
     ViewModelProvider.Factory factory;
 
-    public ApodDetailFragment(){
+    public ApodDetailFragment() {
         //default empty constructor
     }
 
-    public static ApodDetailFragment getInstance(String date){
+    public static ApodDetailFragment getInstance(String date) {
         Bundle bundle = new Bundle();
         bundle.putString(APOD_DATE, date);
         ApodDetailFragment fragment = new ApodDetailFragment();
@@ -82,6 +89,8 @@ public class ApodDetailFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) getActivity().getApplication()).getCopernicanaApplicationComponent().inject(this);
+        setRetainInstance(true);
+
     }
 
     @Nullable
@@ -97,51 +106,56 @@ public class ApodDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
         apod = apodViewModel.getLastApod();
+
         subscribeApod();
     }
 
-    private void subscribeApod(){
+    private void subscribeApod() {
         Observer<Apod> apodObserver = new Observer<Apod>() {
             @Override
             public void onChanged(@Nullable Apod apod) {
-                  if(apod != null){
-                      String mediaType = apod.getMediaType();
-                      if(mediaType.equals(Apod.MEDIA_TYPE_IMAGE)){
-                          Log.d("uffa", "type is image");
-                          imageGroup.setVisibility(View.VISIBLE);
-                          videoGroup.setVisibility(View.GONE);
-                          GlideApp.with(getActivity())
-                                  .load(apod.getUrl())
-                                  .placeholder(R.drawable.nasa_43566_unsplash)
-                                  .error(R.drawable.nasa_43566_unsplash)
-                                  .into(apodImage);
+                if (apod != null) {
+                    String mediaType = apod.getMediaType();
+                    if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
+                        isVideo = false;
+                        Log.d("uffa", "type is image");
+                        imageGroup.setVisibility(View.VISIBLE);
+                        videoGroup.setVisibility(View.GONE);
+                        GlideApp.with(getActivity())
+                                .load(apod.getUrl())
+                                .placeholder(R.drawable.nasa_43566_unsplash)
+                                .error(R.drawable.nasa_43566_unsplash)
+                                .into(apodImage);
 
-                      } else if(mediaType.equals(Apod.MEDIA_TYPE_VIDEO)){
-                          imageGroup.setVisibility(View.GONE);
-                          videoGroup.setVisibility(View.VISIBLE);
-                          String videoUrl = apod.getUrl();
-                          String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-                          initializeYoutubePlayer(videoId);
-                      }
-                      apodTitle.setText(apod.getTitle());
-                      apodExplanation.setText(apod.getExplanation());
-                      apodDate.setText(apod.getDate());
-                      if(apod.getCopyright() != null){
-                          String copyright = String.format(getString(R.string.apod_copyright_label),
-                                  apod.getCopyright());
-                          apodCopyright.setVisibility(View.VISIBLE);
-                          apodCopyright.setText(copyright);
-                      } else {
-                          apodCopyright.setVisibility(View.INVISIBLE);
-                      }
-                  }
+                    } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
+                        isVideo = true;
+                        imageGroup.setVisibility(View.GONE);
+                        videoGroup.setVisibility(View.VISIBLE);
+                        String videoUrl = apod.getUrl();
+                        String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
+                        initializeYoutubePlayer(videoId);
+                    }
+                    apodTitle.setText(apod.getTitle());
+                    apodExplanation.setText(apod.getExplanation());
+                    apodDate.setText(apod.getDate());
+                    if (apod.getCopyright() != null) {
+                        String copyright = String.format(getString(R.string.apod_copyright_label),
+                                apod.getCopyright());
+                        apodCopyright.setVisibility(View.VISIBLE);
+                        apodCopyright.setText(copyright);
+                    } else {
+                        apodCopyright.setVisibility(View.INVISIBLE);
+                    }
+                }
             }
         };
         apod.observe(this, apodObserver);
     }
 
-    private void initializeYoutubePlayer(String videoId){
+    private void initializeYoutubePlayer(String videoId) {
+
         youTubePlayerFragment = new YouTubePlayerSupportFragment();
+
         youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
 
             @Override
@@ -163,7 +177,16 @@ public class ApodDetailFragment extends Fragment {
         });
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.youtube_player_container, youTubePlayerFragment).commit();
+                .replace(R.id.youtube_player_container, youTubePlayerFragment, YOUTUBE_TAG).commit();
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if(youTubePlayer != null){
+            youTubePlayer.pause();
+        }
     }
 
     @Override
@@ -172,16 +195,25 @@ public class ApodDetailFragment extends Fragment {
         unbinder.unbind();
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if(youTubePlayer != null){
-            playerposition = youTubePlayer.getCurrentTimeMillis();
-        }
-    }
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        playerposition = youTubePlayer.getCurrentTimeMillis();
+        outState.putInt(PLAYER_POSITION, playerposition);
+        outState.putBoolean(IS_VIDEO, isVideo);
+        outState.putBoolean(IS_PLAYING, isPlaying);
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (savedInstanceState != null) {
+            playerposition = savedInstanceState.getInt(PLAYER_POSITION);
+            Log.d("uffa", "sono in ViewStateRestored e player position è: " + playerposition);
+            isVideo = savedInstanceState.getBoolean(IS_VIDEO);
+            isPlaying = savedInstanceState.getBoolean(IS_PLAYING);
+            Log.d("uffa", "sono in ViewStateRestored e isplaying è: " + String.valueOf(isPlaying));
+        }
     }
 }

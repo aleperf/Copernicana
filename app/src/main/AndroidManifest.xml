@@ -22,7 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".apod.ApodActivity"></activity>
+        <activity
+            android:name=".apod.ApodActivity"
+            android:parentActivityName=".intro.MainActivity" />
+        <activity android:name=".apod.ApodDetailActivity"
+            android:parentActivityName=".apod.ApodDetailActivity"/>
     </application>
 
 </manifest>

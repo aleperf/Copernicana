@@ -1,6 +1,7 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,68 +10,47 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.ViewGroup;
+import android.widget.Toast;
+
 
 import com.aleperf.pathfinder.copernicana.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ApodActivity extends AppCompatActivity {
+public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapter.ApodSectionSelector{
 
-    @BindView(R.id.apod_view_pager)
-    ViewPager apodViewPager;
-    @BindView(R.id.apod_tabs)
-    TabLayout apodTabLayout;
+   @BindView(R.id.toolbar_apod)
+   Toolbar toolbar;
+   private boolean isDualPane;
+   private static final String APOD_EXTRA = "apod extra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apod);
         ButterKnife.bind(this);
-        ApodPagerAdapter apodPagerAdapter = new ApodPagerAdapter(getSupportFragmentManager(),this);
-        apodViewPager.setAdapter(apodPagerAdapter);
-        apodTabLayout.setupWithViewPager(apodViewPager);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
+        }
+
+
+    @Override
+    public void selectSection(int position) {
+        Toast.makeText(this,"clicked section: " + position, Toast.LENGTH_SHORT).show();
     }
 
-    public static class ApodPagerAdapter extends FragmentPagerAdapter{
+    @Override
+    public void selectApodSection(String date) {
+        if(!isDualPane){
 
-        private static int NUM_OF_PAGES = 4;
-        private Context context;
-
-        public ApodPagerAdapter(FragmentManager fragmentManager, Context context){
-            super(fragmentManager);
-            this.context = context;
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            if(position == 0){
-                return ApodDetailFragment.getInstance(ApodDetailFragment.APOD_DEFAULT_DATE);
-            } else {
-                return new ApodSummaryFragment();
+                Intent intent = new Intent(this, ApodDetailActivity.class);
+                intent.putExtra(APOD_EXTRA, date);
+                startActivity(intent);
             }
-        }
 
-        @Override
-        public int getCount() {
-            return NUM_OF_PAGES;
-        }
-
-        @Nullable
-        @Override
-        public CharSequence getPageTitle(int position) {
-            switch(position){
-                case 0:
-                    return "Daily Pic";
-                case 1:
-                    return "Search";
-                case 2:
-                    return "Favorites";
-                case 3: return "All Pics";
-
-                default:
-                    return "Ciao";
             }
-        }
-    }
 }
