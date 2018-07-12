@@ -9,4 +9,6 @@
     <color name="intro_rv_font_color">#FFFFFF</color>
     <color name="apod_intro_text_shadow_color">#000000</color>
     <color name="epic_text_bg_transp">#800D47A1</color>
+    <color name="up_arrow_color">#FFFFFF</color>
+    <color name="toolbar_text_color">#FFFFFF</color>
 </resources>

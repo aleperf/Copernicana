@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
     <style name="IntroCardTextTitle" parent ="AppTheme">
@@ -21,6 +22,10 @@
     <style name="IntroCardTextSubtitle" parent ="IntroCardTextTitle">
         <item name="android:textSize">@dimen/intro_card_subtitle_text</item>
         <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="ToolbarStyle" parent= "@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@color/up_arrow_color</item>
     </style>
 
 
