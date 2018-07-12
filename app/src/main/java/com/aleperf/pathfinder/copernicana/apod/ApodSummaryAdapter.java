@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
@@ -37,9 +38,10 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private Apod apod;
 
-    public interface ApodSectionSelector{
+    public interface ApodSectionSelector {
 
         void selectSection(int position);
+
         void selectApodSection(String date);
     }
 
@@ -67,7 +69,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(position == 0){
+        if (position == 0) {
             ApodCardHolder apodCardHolder = (ApodCardHolder) holder;
             apodCardHolder.bindApod();
         } else {
@@ -91,12 +93,12 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         }
     }
 
-    public void setApod(Apod Apod) {
+    public void setApod(Apod apod) {
         this.apod = apod;
         notifyDataSetChanged();
     }
 
-    public class ApodCardHolder extends RecyclerView.ViewHolder {
+    public class ApodCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.apod_detail_card_image)
         ImageView apodImage;
@@ -138,12 +140,22 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             }
         }
 
+        @Override
+        public void onClick(View v) {
+            if (context instanceof ApodSectionSelector) {
+                ApodSectionSelector apodSectionSelector = (ApodSectionSelector) context;
+                if (apod != null) {
+                    apodSectionSelector.selectApodSection(apod.getDate());
+                }
+            }
+        }
     }
 
 
-    public class SectionHolder extends RecyclerView.ViewHolder {
+    public class SectionHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         @BindView(R.id.apod_section_image)
         ImageView sectionImage;
+        @BindView(R.id.apod_section_title)
         TextView sectionTitle;
 
 
@@ -152,19 +164,27 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             ButterKnife.bind(this, view);
         }
 
-        public void bindSection(int position){
-            switch(position){
-                case 0:
+        public void bindSection(int position) {
+            switch (position) {
+                case 1:
                     sectionImage.setImageResource(sectionImages[searchIndex]);
                     sectionTitle.setText(context.getString(R.string.section_search));
                     break;
-                case 1:
+                case 2:
                     sectionImage.setImageResource(sectionImages[favoriteIndex]);
                     sectionTitle.setText(context.getString(R.string.section_fav));
                     break;
                 default:
                     sectionImage.setImageResource(sectionImages[photoIndex]);
                     sectionTitle.setText(context.getString(R.string.section_all_pics));
+            }
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(context instanceof ApodSectionSelector){
+                ApodSectionSelector apodSectionSelector = (ApodSectionSelector)context;
+                apodSectionSelector.selectSection(getAdapterPosition());
             }
         }
     }

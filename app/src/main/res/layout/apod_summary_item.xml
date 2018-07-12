@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimaryDark"
-    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="300dp"
     android:layout_height="80dp">
 
 
     <ImageView
         android:id="@+id/apod_section_image"
-        android:layout_width="29dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/apod_section_title"
