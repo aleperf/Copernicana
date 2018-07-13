@@ -1,0 +1,114 @@
+package com.aleperf.pathfinder.copernicana.model;
+
+import com.google.gson.annotations.SerializedName;
+
+/**
+ * Epic represents a picture by the DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument
+ * More info about the API at https://epic.gsfc.nasa.gov/about/api
+ */
+public class Epic {
+
+    long identifier;
+    String caption;
+    String image;
+    @SerializedName("centroid_coordinates")
+    Coord2D centroid;
+    @SerializedName("dscovr_j2000_position")
+    Coord3D epicPosition;
+    @SerializedName("lunar_j2000_position")
+    Coord3D moonPosition;
+    @SerializedName("sun_j2000_position")
+    Coord3D sunPosition;
+    String date;
+
+
+
+
+    /**
+     * Coord2D represents a Earth Coordinate as latitude and longitude
+     */
+    public static class Coord2D{
+        double lat;
+        Double lon;
+
+        public Coord2D(double lat, double lon){
+            this.lat = lat;
+            this.lon = lon;
+        }
+
+        public double getLat() {
+            return lat;
+        }
+
+        public Double getLon() {
+            return lon;
+        }
+    }
+
+    /**
+     * Coord3D represents a Coordinate in Space relative to Earth.
+     * Earth is at x = 0, y = 0, z = 0
+     */
+
+    public static class Coord3D{
+        Double x;
+        Double y;
+        Double z;
+
+        public Coord3D(double x, double y, double z){
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        public Double getX() {
+            return x;
+        }
+
+        public Double getY() {
+            return y;
+        }
+
+        public Double getZ() {
+            return z;
+        }
+    }
+
+    /**
+     * Orientation of the DSCVR expressed as quaternions
+     * https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation
+     */
+
+    public static class AttitudeQuaternions{
+        double q0;
+        double q1;
+        double q2;
+        double q3;
+
+        public AttitudeQuaternions(double q0, double q1, double q2, double q3){
+            this.q0 = q0;
+            this.q1 = q1;
+            this.q2 = q2;
+            this.q3 = q3;
+        }
+
+
+        public double getQ0() {
+            return q0;
+        }
+
+        public double getQ1() {
+            return q1;
+        }
+
+        public double getQ2() {
+            return q2;
+        }
+
+        public double getQ3() {
+            return q3;
+        }
+    }
+
+
+}
