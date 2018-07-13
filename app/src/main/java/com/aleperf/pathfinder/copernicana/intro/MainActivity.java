@@ -1,5 +1,6 @@
 package com.aleperf.pathfinder.copernicana.intro;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
+import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 
 import javax.inject.Inject;
 
@@ -47,7 +49,11 @@ public class MainActivity extends AppCompatActivity implements SummaryFragment.S
         if (position == 0) {
             Intent intent = new Intent(this, ApodActivity.class);
             startActivity(intent);
-        } else {
+        } else if(position == 1){
+            Intent intent = new Intent(this, EpicActivity.class);
+            startActivity(intent);
+        }
+        else {
             Toast.makeText(this, "clicked section at position " + position, Toast.LENGTH_SHORT).show();
         }
     }

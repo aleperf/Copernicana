@@ -1,13 +1,19 @@
 package com.aleperf.pathfinder.copernicana.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Epic represents a picture by the DSCOVR's Earth Polychromatic Imaging Camera (EPIC) instrument
+ * as provided by the EPIC API.
  * More info about the API at https://epic.gsfc.nasa.gov/about/api
  */
+@Entity(tableName = "epic")
 public class Epic {
 
+    @PrimaryKey
     long identifier;
     String caption;
     String image;
@@ -19,10 +25,80 @@ public class Epic {
     Coord3D moonPosition;
     @SerializedName("sun_j2000_position")
     Coord3D sunPosition;
+    @SerializedName("attitude_quaternions")
+    AttitudeQuaternions attitudeQuaternions;
     String date;
+    boolean isNatural;
+    boolean isFavorite;
+
+    public Epic(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
+                Coord3D moonPosition, Coord3D sunPosition, String date, boolean isNatural, boolean isFavorite){
+
+        this.identifier = identifier;
+        this.caption = caption;
+        this.image = image;
+        this.centroid = centroid;
+        this.epicPosition = epicPosition;
+        this.moonPosition = moonPosition;
+        this.sunPosition = sunPosition;
+        this.date = date;
+        this.isNatural = isNatural;
+        this.isFavorite = isFavorite;
+
+    }
+
+    public long getIdentifier() {
+        return identifier;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public Coord2D getCentroid() {
+        return centroid;
+    }
+
+    public Coord3D getEpicPosition() {
+        return epicPosition;
+    }
+
+    public Coord3D getMoonPosition() {
+        return moonPosition;
+    }
+
+    public Coord3D getSunPosition() {
+        return sunPosition;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public AttitudeQuaternions getAttitudeQuaternions() {
+        return attitudeQuaternions;
+    }
+
+    public boolean isNatural() {
+        return isNatural;
+    }
 
 
+    public void setNatural(boolean natural) {
+        isNatural = natural;
+    }
 
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
 
     /**
      * Coord2D represents a Earth Coordinate as latitude and longitude

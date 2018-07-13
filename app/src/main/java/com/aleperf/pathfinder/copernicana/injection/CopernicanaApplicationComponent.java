@@ -2,8 +2,10 @@ package com.aleperf.pathfinder.copernicana.injection;
 
 import android.app.Application;
 
+import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment;
+import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.intro.MainActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
 
@@ -17,6 +19,7 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodSummaryFragment apodSummaryFragment);
     void inject(ApodDetailFragment apodDetailFragment);
     void inject(MainActivity mainActivity);
+    void inject(EpicActivity epicActivity);
 
     Application application();
 }

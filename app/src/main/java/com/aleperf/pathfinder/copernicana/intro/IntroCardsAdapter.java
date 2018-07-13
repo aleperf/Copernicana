@@ -83,7 +83,7 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.In
         }
 
         public void bindGenericCard(int position) {
-            Log.d("uffa", "position è: " + position + " APOD_CARD_POS = " + APOD_INDEX);
+
             switch (position) {
                 case APOD_INDEX:
                     introCardTitle.setText(context.getString(R.string.apod_card_rv_title));

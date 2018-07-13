@@ -3,10 +3,15 @@ package com.aleperf.pathfinder.copernicana.network;
 import android.support.annotation.NonNull;
 
 import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.model.Epic;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public interface ApisService {
 
@@ -19,6 +24,18 @@ public interface ApisService {
      */
     @GET("planetary/apod")
     Call<Apod> getApod(@NonNull @Query("api_key") String apiKey, @Query("date") String date);
+
+    @GET("EPIC/api/natural/images")
+    Call<List<Epic>> getEpicNatural(@Query("api_key") String apiKey);
+
+    @GET("EPIC/api/natural/date/{date}")
+    Call<List<Epic>> getEpicNaturalForDate(@Path("date") String date, @Query("api_key") String apiKey);
+
+    @GET("EPIC/api/enhanced/images")
+    Call<List<Epic>> getEpicEnhanced(@Query("api_key") String apiKey);
+
+    @GET("EPIC/api/enhanced/date/{date}")
+    Call<List<Epic>> getEpicEnhancedForDate(@Path("date") String date, @Query("api_key") String apiKey);
 
 
 
