@@ -28,12 +28,12 @@ public class Epic {
     @SerializedName("attitude_quaternions")
     AttitudeQuaternions attitudeQuaternions;
     String date;
-    private boolean isNatural;
-    private boolean isFavorite;
+    private int isNatural;
+    private int isFavorite;
     private static final Coord3D earthPosition = new Coord3D(0, 0, 0);
 
     public Epic(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
-                Coord3D moonPosition, Coord3D sunPosition, String date, boolean isNatural, boolean isFavorite) {
+                Coord3D moonPosition, Coord3D sunPosition, String date, int isNatural, int isFavorite) {
 
         this.identifier = identifier;
         this.caption = caption;
@@ -84,20 +84,20 @@ public class Epic {
         return attitudeQuaternions;
     }
 
-    public boolean isNatural() {
+    public int isNatural() {
         return isNatural;
     }
 
 
-    public void setNatural(boolean natural) {
+    public void setNatural(int natural) {
         isNatural = natural;
     }
 
-    public boolean isFavorite() {
+    public int isFavorite() {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setFavorite(int favorite) {
         isFavorite = favorite;
     }
 
