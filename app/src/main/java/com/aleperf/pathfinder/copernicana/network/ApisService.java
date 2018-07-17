@@ -15,6 +15,7 @@ import retrofit2.http.Url;
 
 public interface ApisService {
 
+    //APOD
     /**
      * Query the NASA APOD API for the image of the day
      * @param apiKey necessary String parameter to query the APOD API, can't be null
@@ -24,6 +25,8 @@ public interface ApisService {
      */
     @GET("planetary/apod")
     Call<Apod> getApod(@NonNull @Query("api_key") String apiKey, @Query("date") String date);
+
+    //EPIC
 
     @GET("EPIC/api/natural/images")
     Call<List<Epic>> getEpicNatural(@Query("api_key") String apiKey);
@@ -36,6 +39,16 @@ public interface ApisService {
 
     @GET("EPIC/api/enhanced/date/{date}")
     Call<List<Epic>> getEpicEnhancedForDate(@Path("date") String date, @Query("api_key") String apiKey);
+
+    //MARS
+    @GET("mars-photos/api/v1/rovers/curiosity/latest_photos")
+Call<MarsQuery> getCuriosityLatestPhotos(@Query("page") int page, @Query("api_key") String apiKey);
+
+    @GET("mars-photos/api/v1/rovers/opportunity/latest_photos")
+    Call<MarsQuery> getOpportunityLatestPhotos(@Query("page") int page,@Query("api_key") String apiKey);
+
+    @GET("mars-photos/api/v1/rovers/spirit/latest_photos")
+    Call<MarsQuery> getSpiritLatestPhotos(@Query("page") int page,@Query("api_key") String apiKey);
 
 
 

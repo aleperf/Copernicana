@@ -9,6 +9,7 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 
 import java.util.List;
 
+import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
@@ -32,7 +33,7 @@ public interface ApodDao {
     @Query("SELECT COUNT(*) FROM apod")
     LiveData<Integer> getApodCount();
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = IGNORE)
     long insertApod(Apod apod);
 
     @Query("DELETE FROM apod WHERE date = :date")

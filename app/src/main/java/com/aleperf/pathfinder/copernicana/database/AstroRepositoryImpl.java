@@ -126,6 +126,8 @@ public class AstroRepositoryImpl implements AstroRepository {
         loadAllAstronauts();
     }
 
+
+
     //Astronaut section
     @Override
     public LiveData<List<Astronaut>> getAllAstronauts() {
@@ -180,4 +182,5 @@ public class AstroRepositoryImpl implements AstroRepository {
         }
 
     }
+
 }

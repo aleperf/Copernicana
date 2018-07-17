@@ -28,7 +28,8 @@
         <activity
             android:name=".apod.ApodDetailActivity"
             android:parentActivityName=".apod.ApodDetailActivity" />
-        <activity android:name=".epic.EpicActivity"></activity>
+        <activity android:name=".epic.EpicActivity" />
+        <activity android:name=".mars.MarsActivity"></activity>
     </application>
 
 </manifest>

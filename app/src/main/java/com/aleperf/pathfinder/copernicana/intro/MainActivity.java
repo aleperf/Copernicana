@@ -15,6 +15,7 @@ import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
+import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
 
 import javax.inject.Inject;
 
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity implements SummaryFragment.S
             startActivity(intent);
         } else if(position == 1){
             Intent intent = new Intent(this, EpicActivity.class);
+            startActivity(intent);
+        } else if(position == 2){
+            Intent intent = new Intent(this, MarsActivity.class);
             startActivity(intent);
         }
         else {

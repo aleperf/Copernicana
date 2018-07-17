@@ -28,11 +28,12 @@ public class Epic {
     @SerializedName("attitude_quaternions")
     AttitudeQuaternions attitudeQuaternions;
     String date;
-    boolean isNatural;
-    boolean isFavorite;
+    private boolean isNatural;
+    private boolean isFavorite;
+    private static final Coord3D earthPosition = new Coord3D(0, 0, 0);
 
     public Epic(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
-                Coord3D moonPosition, Coord3D sunPosition, String date, boolean isNatural, boolean isFavorite){
+                Coord3D moonPosition, Coord3D sunPosition, String date, boolean isNatural, boolean isFavorite) {
 
         this.identifier = identifier;
         this.caption = caption;
@@ -103,11 +104,11 @@ public class Epic {
     /**
      * Coord2D represents a Earth Coordinate as latitude and longitude
      */
-    public static class Coord2D{
+    public static class Coord2D {
         double lat;
         Double lon;
 
-        public Coord2D(double lat, double lon){
+        public Coord2D(double lat, double lon) {
             this.lat = lat;
             this.lon = lon;
         }
@@ -126,12 +127,12 @@ public class Epic {
      * Earth is at x = 0, y = 0, z = 0
      */
 
-    public static class Coord3D{
+    public static class Coord3D {
         Double x;
         Double y;
         Double z;
 
-        public Coord3D(double x, double y, double z){
+        public Coord3D(double x, double y, double z) {
             this.x = x;
             this.y = y;
             this.z = z;
@@ -155,13 +156,13 @@ public class Epic {
      * https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation
      */
 
-    public static class AttitudeQuaternions{
+    public static class AttitudeQuaternions {
         double q0;
         double q1;
         double q2;
         double q3;
 
-        public AttitudeQuaternions(double q0, double q1, double q2, double q3){
+        public AttitudeQuaternions(double q0, double q1, double q2, double q3) {
             this.q0 = q0;
             this.q1 = q1;
             this.q2 = q2;
@@ -184,6 +185,26 @@ public class Epic {
         public double getQ3() {
             return q3;
         }
+    }
+
+    private double getDistance(Coord3D point1, Coord3D point2) {
+
+        double xDiff = point1.getX() - point2.getX();
+        double yDiff = point1.getY() - point2.getY();
+        double zDiff = point1.getZ() - point2.getZ();
+         return Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
+    }
+
+    private long getDistanceEpicToEarth(){
+        return Math.round(getDistance(epicPosition, earthPosition));
+    }
+
+    private long getDistanceEpicToSun(){
+        return Math.round(getDistance(epicPosition, sunPosition));
+    }
+
+    private long getDistanceSunToEarth(){
+        return Math.round(getDistance(sunPosition, earthPosition));
     }
 
 

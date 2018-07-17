@@ -8,6 +8,7 @@ import com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.intro.MainActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
+import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
 
 import dagger.Component;
 
@@ -20,6 +21,7 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodDetailFragment apodDetailFragment);
     void inject(MainActivity mainActivity);
     void inject(EpicActivity epicActivity);
+    void inject(MarsActivity marsActivity);
 
     Application application();
 }
