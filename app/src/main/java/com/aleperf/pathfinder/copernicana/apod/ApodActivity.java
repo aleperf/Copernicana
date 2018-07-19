@@ -35,6 +35,7 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.apod_card_rv_title));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
         }
 
