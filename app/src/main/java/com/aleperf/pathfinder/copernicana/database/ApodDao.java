@@ -43,6 +43,4 @@ public interface ApodDao {
     void updateApodIsFavorite(boolean isFavorite, String date);
 
 
-
-
 }

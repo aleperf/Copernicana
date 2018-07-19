@@ -5,6 +5,7 @@ import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public ApodCardHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
         }
 
         public void bindApod() {
@@ -124,8 +126,8 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     apodImageIco.setVisibility(View.VISIBLE);
                     apodVideoIco.setVisibility(View.GONE);
                 } else {
-                    apodImageIco.setVisibility(View.VISIBLE);
-                    apodVideoIco.setVisibility(View.GONE);
+                    apodImageIco.setVisibility(View.GONE);
+                    apodVideoIco.setVisibility(View.VISIBLE);
                     photoUrl = Utils.buildVideoThumbnail(apod.getUrl());
                 }
                 GlideApp.with(context)

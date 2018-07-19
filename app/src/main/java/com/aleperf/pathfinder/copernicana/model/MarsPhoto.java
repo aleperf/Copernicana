@@ -12,7 +12,7 @@ import java.util.List;
  * A sol is the duration of a solar day on Mars, the max sol for a Rover is the last
  * martian day on Mars since landing, the landing day is sol 0.
  */
-@Entity(tableName = "mars_photos", primaryKeys = {"id", "rover_name"})
+@Entity(tableName = "mars_photos", primaryKeys = {"id", "rover_name", "camera_name"})
 public class MarsPhoto {
 
 
@@ -31,7 +31,7 @@ public class MarsPhoto {
 
     @Embedded(prefix="rover_")
     private Rover rover;
-    private boolean isFavorite;
+    private int isFavorite;
 
     public MarsPhoto(){}
 
@@ -59,11 +59,11 @@ public class MarsPhoto {
         return rover;
     }
 
-    public boolean isFavorite() {
+    public int isFavorite() {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setFavorite(int favorite) {
         isFavorite = favorite;
     }
 

@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -46,7 +47,6 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
     @Override
     public void selectApodSection(String date) {
         if(!isDualPane){
-
                 Intent intent = new Intent(this, ApodDetailActivity.class);
                 intent.putExtra(APOD_EXTRA, date);
                 startActivity(intent);
