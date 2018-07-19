@@ -1,9 +1,7 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -107,10 +102,8 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         TextView apodTitle;
         @BindView(R.id.apod_detail_card_date)
         TextView apodDate;
-        @BindView(R.id.apod_detail_card_img_ico)
-        ImageView apodImageIco;
-        @BindView(R.id.apod_detail_card_video_ico)
-        ImageView apodVideoIco;
+        @BindView(R.id.media_type_icon)
+        ImageView mediaTypeIcon;
 
         public ApodCardHolder(View view) {
             super(view);
@@ -123,11 +116,11 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 String photoUrl;
                 if (apod.getMediaType().equals(Apod.MEDIA_TYPE_IMAGE)) {
                     photoUrl = apod.getUrl();
-                    apodImageIco.setVisibility(View.VISIBLE);
-                    apodVideoIco.setVisibility(View.GONE);
+                    mediaTypeIcon.setImageResource(R.drawable.picture_card_ico);
+
                 } else {
-                    apodImageIco.setVisibility(View.GONE);
-                    apodVideoIco.setVisibility(View.VISIBLE);
+                    mediaTypeIcon.setImageResource(R.drawable.youtube_blue);
+
                     photoUrl = Utils.buildVideoThumbnail(apod.getUrl());
                 }
                 GlideApp.with(context)
@@ -135,8 +128,6 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         .placeholder(sectionImages[placeholderIndex])
                         .error(sectionImages[errorIndex])
                         .into(apodImage);
-                apodImageIco.setVisibility(View.VISIBLE);
-                apodVideoIco.setVisibility(View.GONE);
                 apodTitle.setText(apod.getTitle());
                 apodDate.setText(apod.getDate());
             }
