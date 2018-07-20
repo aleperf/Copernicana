@@ -2,6 +2,7 @@ package com.aleperf.pathfinder.copernicana.apod;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     private Context context;
     private final int[] sectionImages = {R.drawable.nasa_43566_unsplash,
-            R.drawable.search_ico, R.drawable.fav_ico, R.drawable.camera_ico};
+            R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico};
     private final int placeholderIndex = 0;
     private final int errorIndex = 0;
     private final int searchIndex = 1;
@@ -38,7 +39,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         void selectSection(int position);
 
-        void selectApodSection(String date);
+        void selectApodSection(String date, String title);
     }
 
 
@@ -130,6 +131,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                         .into(apodImage);
                 apodTitle.setText(apod.getTitle());
                 apodDate.setText(apod.getDate());
+                if(apod.getCopyright() != null){}
             }
         }
 
@@ -138,7 +140,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if (context instanceof ApodSectionSelector) {
                 ApodSectionSelector apodSectionSelector = (ApodSectionSelector) context;
                 if (apod != null) {
-                    apodSectionSelector.selectApodSection(apod.getDate());
+                    apodSectionSelector.selectApodSection(apod.getDate(), apod.getTitle());
                 }
             }
         }

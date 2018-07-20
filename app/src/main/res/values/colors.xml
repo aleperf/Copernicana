@@ -11,4 +11,9 @@
     <color name="epic_text_bg_transp">#800D47A1</color>
     <color name="up_arrow_color">#FFFFFF</color>
     <color name="toolbar_text_color">#FFFFFF</color>
+
+    <!--icons colors -->
+    <color name="icon_default">#424242</color>
+    <color name="favorite_color">#ff1744</color>
+    <color name="button_ico_color">#FFFFFF</color>
 </resources>

@@ -38,21 +38,13 @@ public class ApodDetailFragment extends Fragment {
 
     private final static String TAG = ApodDetailFragment.class.getSimpleName();
     public final static String APOD_DATE = "apod date";
+    private static final String APOD_TITLE = "apod title";
     public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
-    private final static String PLAYER_POSITION = "player position";
-    private final static String IS_VIDEO = "is video apod";
-    private final static String YOUTUBE_TAG = "youtube tag";
-    private final static String IS_PLAYING = "is video playing";
+
 
     private Unbinder unbinder;
     @BindView(R.id.apod_image)
     ImageView apodImage;
-    private YouTubePlayerSupportFragment youTubePlayerFragment;
-    @BindView(R.id.image_group)
-    Group imageGroup;
-    @BindView(R.id.video_group)
-    Group videoGroup;
-    @BindView(R.id.apod_title)
     TextView apodTitle;
     @BindView(R.id.apod_explanation)
     TextView apodExplanation;
@@ -60,15 +52,12 @@ public class ApodDetailFragment extends Fragment {
     TextView apodDate;
     @BindView(R.id.apod_copyright)
     TextView apodCopyright;
-    @BindView(R.id.youtube_player_container)
-    FrameLayout youtubePlayerContainer;
+
     private ApodViewModel apodViewModel;
     private LiveData<Apod> apod;
-    private YouTubePlayer youTubePlayer;
     private int playerposition;
-    private boolean isVideo;
-    private int duration;
-    private boolean isPlaying = false;
+    private String date;
+
 
     @Inject
     ViewModelProvider.Factory factory;
@@ -80,6 +69,7 @@ public class ApodDetailFragment extends Fragment {
     public static ApodDetailFragment getInstance(String date) {
         Bundle bundle = new Bundle();
         bundle.putString(APOD_DATE, date);
+
         ApodDetailFragment fragment = new ApodDetailFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -90,8 +80,10 @@ public class ApodDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) getActivity().getApplication()).getCopernicanaApplicationComponent().inject(this);
         setRetainInstance(true);
+        Bundle bundle = getArguments();
+        date = bundle.getString(APOD_DATE);
 
-    }
+        }
 
     @Nullable
     @Override
@@ -105,7 +97,7 @@ public class ApodDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
-        apod = apodViewModel.getLastApod();
+        apod = apodViewModel.getApodWithDate(date);
 
         subscribeApod();
     }
@@ -117,10 +109,9 @@ public class ApodDetailFragment extends Fragment {
                 if (apod != null) {
                     String mediaType = apod.getMediaType();
                     if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
-                        isVideo = false;
+
                         Log.d("uffa", "type is image");
-                        imageGroup.setVisibility(View.VISIBLE);
-                        videoGroup.setVisibility(View.GONE);
+
                         GlideApp.with(getActivity())
                                 .load(apod.getUrl())
                                 .placeholder(R.drawable.nasa_43566_unsplash)
@@ -128,12 +119,10 @@ public class ApodDetailFragment extends Fragment {
                                 .into(apodImage);
 
                     } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
-                        isVideo = true;
-                        imageGroup.setVisibility(View.GONE);
-                        videoGroup.setVisibility(View.VISIBLE);
+
                         String videoUrl = apod.getUrl();
                         String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-                        initializeYoutubePlayer(videoId);
+
                     }
                     apodTitle.setText(apod.getTitle());
                     apodExplanation.setText(apod.getExplanation());
@@ -152,41 +141,11 @@ public class ApodDetailFragment extends Fragment {
         apod.observe(this, apodObserver);
     }
 
-    private void initializeYoutubePlayer(String videoId) {
-
-        youTubePlayerFragment = new YouTubePlayerSupportFragment();
-
-        youTubePlayerFragment.initialize(BuildConfig.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
-
-            @Override
-            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player,
-                                                boolean wasRestored) {
-                if (!wasRestored) {
-                    youTubePlayer = player;
-                    youTubePlayer.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
-                    youTubePlayer.cueVideo(videoId);
-                }
-            }
-
-            @Override
-            public void onInitializationFailure(YouTubePlayer.Provider arg0, YouTubeInitializationResult arg1) {
-
-                //print or show error if initialization failed
-                Log.e(TAG, "Youtube Player View initialization failed");
-            }
-        });
-
-        getFragmentManager().beginTransaction()
-                .replace(R.id.youtube_player_container, youTubePlayerFragment, YOUTUBE_TAG).commit();
-
-    }
 
     @Override
     public void onPause() {
         super.onPause();
-        if(youTubePlayer != null){
-            youTubePlayer.pause();
-        }
+
     }
 
     @Override
@@ -199,21 +158,8 @@ public class ApodDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        playerposition = youTubePlayer.getCurrentTimeMillis();
-        outState.putInt(PLAYER_POSITION, playerposition);
-        outState.putBoolean(IS_VIDEO, isVideo);
-        outState.putBoolean(IS_PLAYING, isPlaying);
+
     }
 
-    @Override
-    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        super.onViewStateRestored(savedInstanceState);
-        if (savedInstanceState != null) {
-            playerposition = savedInstanceState.getInt(PLAYER_POSITION);
-            Log.d("uffa", "sono in ViewStateRestored e player position è: " + playerposition);
-            isVideo = savedInstanceState.getBoolean(IS_VIDEO);
-            isPlaying = savedInstanceState.getBoolean(IS_PLAYING);
-            Log.d("uffa", "sono in ViewStateRestored e isplaying è: " + String.valueOf(isPlaying));
-        }
-    }
+
 }

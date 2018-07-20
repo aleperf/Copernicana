@@ -20,9 +20,8 @@
             />
     </android.support.design.widget.AppBarLayout>
 
-    <fragment
-        android:id="@+id/apod_summary_fragment"
-        android:name="com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment"
+    <FrameLayout
+        android:id="@+id/apod_detail_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>

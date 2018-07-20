@@ -26,7 +26,8 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
    @BindView(R.id.toolbar_apod)
    Toolbar toolbar;
    private boolean isDualPane;
-   private static final String APOD_EXTRA = "apod extra";
+   private static final String APOD_EXTRA_DATE = "apod extra";
+   private static final String APOD_EXTRA_TITLE = "apod extra title";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,11 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
     }
 
     @Override
-    public void selectApodSection(String date) {
+    public void selectApodSection(String date, String title) {
         if(!isDualPane){
                 Intent intent = new Intent(this, ApodDetailActivity.class);
-                intent.putExtra(APOD_EXTRA, date);
+                intent.putExtra(APOD_EXTRA_DATE, date);
+                intent.putExtra(APOD_EXTRA_TITLE,title );
                 startActivity(intent);
             }
 
