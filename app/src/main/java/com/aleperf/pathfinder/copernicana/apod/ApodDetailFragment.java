@@ -101,6 +101,7 @@ public class ApodDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.apod_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         setFavoriteOnClickListener();
+        setSharingOnClickListener();
         return rootView;
     }
 
@@ -197,6 +198,20 @@ public class ApodDetailFragment extends Fragment {
 
                     Snackbar.make(apodDetailView, message, Snackbar.LENGTH_SHORT).show();
                 }
+            }
+        });
+    }
+
+    private void setSharingOnClickListener(){
+        apodShareIcon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.apod_share_apod));
+                String message = String.format(getString(R.string.apod_share_message), apod.getTitle(), apod.getUrl());
+                intent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(intent, getString(R.string.apod_share_copernicana)));
             }
         });
     }
