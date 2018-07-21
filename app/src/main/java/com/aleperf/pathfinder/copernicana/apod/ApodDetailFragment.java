@@ -4,17 +4,16 @@ import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.Group;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,9 +23,10 @@ import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.android.youtube.player.YouTubeStandalonePlayer;
+
+
+import java.text.ParseException;
 
 import javax.inject.Inject;
 
@@ -37,25 +37,33 @@ import butterknife.Unbinder;
 public class ApodDetailFragment extends Fragment {
 
     private final static String TAG = ApodDetailFragment.class.getSimpleName();
-    public final static String APOD_DATE = "apod date";
-    private static final String APOD_TITLE = "apod title";
+    public final static String APOD_DATE = "apod extra date";
+    private static final String APOD_TITLE = "apod extra title";
     public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
 
 
     private Unbinder unbinder;
-    @BindView(R.id.apod_image)
+    @BindView(R.id.apod_detail_image)
     ImageView apodImage;
+    @BindView(R.id.apod_detail_title)
     TextView apodTitle;
-    @BindView(R.id.apod_explanation)
+    @BindView(R.id.apod_detail_explanation)
     TextView apodExplanation;
-    @BindView(R.id.apod_date)
+    @BindView(R.id.apod_detail_date)
     TextView apodDate;
-    @BindView(R.id.apod_copyright)
+    @BindView(R.id.apod_detail_copyright)
     TextView apodCopyright;
+    @BindView(R.id.apod_detail_video_player_ico)
+    ImageView videoPlayerSymbol;
+    @BindView(R.id.apod_detail_fav_icon)
+    ImageView apodFavIcon;
+    @BindView(R.id.apod_detail_share_icon)
+    ImageView apodShareIcon;
+    @BindView(R.id.video_player_group)
+    Group videoPlayerGroup;
 
     private ApodViewModel apodViewModel;
     private LiveData<Apod> apod;
-    private int playerposition;
     private String date;
 
 
@@ -69,7 +77,6 @@ public class ApodDetailFragment extends Fragment {
     public static ApodDetailFragment getInstance(String date) {
         Bundle bundle = new Bundle();
         bundle.putString(APOD_DATE, date);
-
         ApodDetailFragment fragment = new ApodDetailFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -80,10 +87,15 @@ public class ApodDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) getActivity().getApplication()).getCopernicanaApplicationComponent().inject(this);
         setRetainInstance(true);
-        Bundle bundle = getArguments();
-        date = bundle.getString(APOD_DATE);
-
+        if (savedInstanceState == null) {
+            Bundle bundle = getArguments();
+            date = bundle.getString(APOD_DATE, APOD_DEFAULT_DATE);
+        } else {
+            date = savedInstanceState.getString(APOD_DATE, APOD_DEFAULT_DATE);
         }
+
+
+    }
 
     @Nullable
     @Override
@@ -98,7 +110,6 @@ public class ApodDetailFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
         apod = apodViewModel.getApodWithDate(date);
-
         subscribeApod();
     }
 
@@ -107,26 +118,29 @@ public class ApodDetailFragment extends Fragment {
             @Override
             public void onChanged(@Nullable Apod apod) {
                 if (apod != null) {
+                    String imageUrl = null;
                     String mediaType = apod.getMediaType();
                     if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
-
-                        Log.d("uffa", "type is image");
-
-                        GlideApp.with(getActivity())
-                                .load(apod.getUrl())
-                                .placeholder(R.drawable.nasa_43566_unsplash)
-                                .error(R.drawable.nasa_43566_unsplash)
-                                .into(apodImage);
+                        imageUrl = apod.getUrl();
+                        videoPlayerSymbol.setVisibility(View.INVISIBLE);
 
                     } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
-
+                        videoPlayerSymbol.setVisibility(View.VISIBLE);
                         String videoUrl = apod.getUrl();
                         String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-
+                        setVideoPlayerOnClickListener(videoId);
+                        imageUrl = Utils.buildVideoThumbnailFromId(videoId);
                     }
+                    GlideApp.with(getActivity())
+                            .load(imageUrl)
+                            .placeholder(R.drawable.nasa_43566_unsplash)
+                            .error(R.drawable.nasa_43566_unsplash)
+                            .into(apodImage);
                     apodTitle.setText(apod.getTitle());
                     apodExplanation.setText(apod.getExplanation());
-                    apodDate.setText(apod.getDate());
+                    String formattedDate = Utils.getFormattedDate(apod.getDate(), getActivity());
+                    String dateString = String.format(getString(R.string.apod_detail_date), formattedDate);
+                    apodDate.setText(dateString);
                     if (apod.getCopyright() != null) {
                         String copyright = String.format(getString(R.string.apod_copyright_label),
                                 apod.getCopyright());
@@ -139,6 +153,20 @@ public class ApodDetailFragment extends Fragment {
             }
         };
         apod.observe(this, apodObserver);
+    }
+
+    private void setVideoPlayerOnClickListener(String videoId) {
+        View[] views = {videoPlayerSymbol, apodImage};
+        for (View view : views) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent launchVideoPlayerIntent = YouTubeStandalonePlayer.createVideoIntent(getActivity(),
+                            BuildConfig.YOUTUBE_API_KEY, videoId);
+                    startActivity(launchVideoPlayerIntent);
+                }
+            });
+        }
     }
 
 
@@ -158,6 +186,7 @@ public class ApodDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putString(APOD_DATE, date);
 
     }
 

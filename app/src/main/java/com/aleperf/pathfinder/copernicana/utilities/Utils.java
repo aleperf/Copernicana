@@ -1,5 +1,8 @@
 package com.aleperf.pathfinder.copernicana.utilities;
 
+import android.content.Context;
+
+import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,19 +45,29 @@ public class Utils {
         return youtubeId;
     }
 
-    public static String buildVideoThumbnail(String youtubeUrl) {
+    public static String buildVideoThumbnailFromUrl(String youtubeUrl) {
         String youtubeId = getYoutubeIdFromUrl(youtubeUrl);
         String formatString = "https://img.youtube.com/vi/%s/0.jpg";
         return String.format(formatString, youtubeId);
 
     }
 
-    public static String getFormattedDate(String dateString) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = dateFormat.parse(dateString);
-        SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
-        String result = finalFormat.format(date);
-        return result;
+    public static String buildVideoThumbnailFromId(String youtubeId) {
+        String formatString = "https://img.youtube.com/vi/%s/0.jpg";
+        return String.format(formatString, youtubeId);
+    }
+
+    public static String getFormattedDate(String dateString, Context context) {
+        String noDate = context.getString(R.string.apod_no_date);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(dateString);
+            SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+            String result = finalFormat.format(date);
+            return result;
+        } catch (ParseException e) {
+            return noDate;
+        }
     }
 
 

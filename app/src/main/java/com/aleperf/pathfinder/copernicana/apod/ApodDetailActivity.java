@@ -16,7 +16,7 @@ public class ApodDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar_apod_detail)
     Toolbar toolbar;
-    private static final String APOD_EXTRA_DATE = "apod extra";
+    private static final String APOD_EXTRA_DATE = "apod extra date";
     private static final String APOD_EXTRA_TITLE = "apod extra title";
     private String date;
     private String title;
@@ -32,7 +32,7 @@ public class ApodDetailActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
             date = getIntent().getStringExtra(APOD_EXTRA_DATE);
-            title = getIntent().getStringExtra(APOD_EXTRA_DATE);
+            title = getIntent().getStringExtra(APOD_EXTRA_TITLE);
         } else {
             date = savedInstanceState.getString(APOD_EXTRA_DATE);
             title = savedInstanceState.getString(APOD_EXTRA_TITLE);

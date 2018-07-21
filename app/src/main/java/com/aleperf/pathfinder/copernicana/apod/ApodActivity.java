@@ -26,7 +26,7 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
    @BindView(R.id.toolbar_apod)
    Toolbar toolbar;
    private boolean isDualPane;
-   private static final String APOD_EXTRA_DATE = "apod extra";
+   private static final String APOD_EXTRA_DATE = "apod extra date";
    private static final String APOD_EXTRA_TITLE = "apod extra title";
 
     @Override

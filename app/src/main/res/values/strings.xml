@@ -34,9 +34,10 @@
     <string name="apod_copyright_label">Copyright: %s</string>
     <string name="apod_detail_card_title">Pic of the day</string>
     <string name="apod_explanation_label">Explanation</string>
-
+    <string name="apod_detail_date">Astronomy Picture of %s</string>
     <string name="section_search">Search</string>
     <string name="section_fav">Favorites Pictures</string>
     <string name="section_all_pics">All Pictures</string>
+    <string name ="apod_no_date">unknown date</string>
 
 </resources>

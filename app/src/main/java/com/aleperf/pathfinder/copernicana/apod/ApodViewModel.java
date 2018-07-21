@@ -30,12 +30,14 @@ public class ApodViewModel extends ViewModel {
     }
 
     public LiveData<Apod> getApodWithDate(String date) {
-        if (this.date.equals(date)) {
+
+        if (this.date != null && this.date.equals(date)) {
             if (apodWithDate != null) {
                 return apodWithDate;
             }
         }
         this.date = date;
-        return astroRepository.getApodWithDate(date);
+        apodWithDate = astroRepository.getApodWithDate(date);
+        return apodWithDate;
         }
 }

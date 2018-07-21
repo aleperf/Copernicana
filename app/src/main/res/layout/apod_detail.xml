@@ -15,7 +15,7 @@
         android:paddingBottom="100dp" >
 
         <ImageView
-            android:id="@+id/apod_image"
+            android:id="@+id/apod_detail_image"
             android:layout_width="0dp"
             android:layout_height="250dp"
             android:scaleType="centerCrop"
@@ -26,7 +26,7 @@
 
 
         <TextView
-            android:id="@+id/apod_explanation"
+            android:id="@+id/apod_detail_explanation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="32dp"
@@ -40,7 +40,7 @@
             tools:text="@string/apod_explanation_tools_text" />
 
         <TextView
-            android:id="@+id/apod_copyright"
+            android:id="@+id/apod_detail_copyright"
             android:layout_width="0dp"
             android:layout_height="17dp"
             android:layout_marginEnd="8dp"
@@ -48,8 +48,8 @@
             android:paddingEnd="8dp"
             android:text="@string/apod_copyright_label"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/apod_date"
-            app:layout_constraintTop_toBottomOf="@+id/apod_date" />
+            app:layout_constraintStart_toStartOf="@+id/apod_detail_date"
+            app:layout_constraintTop_toBottomOf="@+id/apod_detail_date" />
 
 
         <TextView
@@ -61,10 +61,10 @@
             android:text="@string/apod_explanation_label"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/apod_image" />
+            app:layout_constraintTop_toBottomOf="@+id/apod_detail_title" />
 
         <ImageView
-            android:id="@+id/video_player_symbol"
+            android:id="@+id/apod_detail_video_player_ico"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="8dp"
@@ -73,40 +73,58 @@
             android:layout_marginTop="8dp"
             android:visibility="gone"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/apod_image"
-            app:layout_constraintEnd_toEndOf="@+id/apod_image"
-            app:layout_constraintStart_toStartOf="@+id/apod_image"
-            app:layout_constraintTop_toTopOf="@+id/apod_image"
+            app:layout_constraintBottom_toBottomOf="@+id/apod_detail_image"
+            app:layout_constraintEnd_toEndOf="@+id/apod_detail_image"
+            app:layout_constraintStart_toStartOf="@+id/apod_detail_image"
+            app:layout_constraintTop_toTopOf="@+id/apod_detail_image"
             app:srcCompat="@drawable/play_button_round_swirl" />
 
         <TextView
-            android:id="@+id/apod_date"
+            android:id="@+id/apod_detail_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/apod_explanation"
+            app:layout_constraintTop_toBottomOf="@+id/apod_detail_explanation"
             tools:text="Astronomy Picture of June 3, 2018" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/apod_detail_share_icon"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginEnd="32dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/apod_copyright"
+            app:layout_constraintTop_toBottomOf="@+id/apod_detail_copyright"
             app:srcCompat="@drawable/share_icon" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/apod_detail_fav_icon"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintBottom_toBottomOf="@+id/apod_detail_share_icon"
+            app:layout_constraintEnd_toStartOf="@+id/apod_detail_share_icon"
             app:srcCompat="@drawable/star_icon_default" />
+
+        <TextView
+            android:id="@+id/apod_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/apod_detail_image"
+            tools:text="@string/apod_title_tools_text" />
+
+        <android.support.constraint.Group
+            android:id="@+id/video_player_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="apod_detail_image, apod_detail_video_player_ico" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>
