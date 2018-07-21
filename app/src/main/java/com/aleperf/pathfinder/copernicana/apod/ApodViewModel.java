@@ -17,6 +17,7 @@ public class ApodViewModel extends ViewModel {
     private String date;
 
 
+
     @Inject
     public ApodViewModel(AstroRepository astroRepository) {
         this.astroRepository = astroRepository;
@@ -41,7 +42,7 @@ public class ApodViewModel extends ViewModel {
         return apodWithDate;
         }
 
-    public void updateApod(boolean isFavorite, String date) {
+    public void updateApod(int isFavorite, String date) {
         astroRepository.updateApodIsFavorite(isFavorite, date);
     }
 }

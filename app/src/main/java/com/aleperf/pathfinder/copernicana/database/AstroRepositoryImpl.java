@@ -95,7 +95,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
-    public void updateApodIsFavorite(boolean isFavorite, String date) {
+    public void updateApodIsFavorite(int isFavorite, String date) {
         Completable.fromAction(() -> apodDao.updateApodIsFavorite(isFavorite, date))
                 .subscribeOn(Schedulers.io()).subscribe();
     }

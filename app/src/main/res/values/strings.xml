@@ -39,5 +39,7 @@
     <string name="section_fav">Favorites Pictures</string>
     <string name="section_all_pics">All Pictures</string>
     <string name ="apod_no_date">unknown date</string>
+    <string name="apod_add_to_favorite">Image added to Favorites</string>
+    <string name="apod_remove_from_favorite">Image removed from Favorites</string>
 
 </resources>

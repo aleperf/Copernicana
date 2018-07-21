@@ -40,7 +40,7 @@ public interface ApodDao {
     void deleteApodWithDate(String date);
 
     @Query("UPDATE apod SET  isFavorite = :isFavorite WHERE date = :date")
-    void updateApodIsFavorite(boolean isFavorite, String date);
+    void updateApodIsFavorite(int isFavorite, String date);
 
 
 }

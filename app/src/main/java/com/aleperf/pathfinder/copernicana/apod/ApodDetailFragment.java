@@ -8,9 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.Group;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,9 +32,11 @@ import butterknife.Unbinder;
 public class ApodDetailFragment extends Fragment {
 
     private final static String TAG = ApodDetailFragment.class.getSimpleName();
-    public final static String APOD_DATE = "apod extra date";
-    private static final String APOD_TITLE = "apod extra title";
+    public final static String APOD_DATE = "apodLiveData extra date";
+    private static final String APOD_TITLE = "apodLiveData extra title";
     public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
+    public static int IS_FAVORITE = 1;
+    public static int NOT_FAVORITE = 0;
 
 
     private Unbinder unbinder;
@@ -54,10 +56,12 @@ public class ApodDetailFragment extends Fragment {
     ImageView apodFavIcon;
     @BindView(R.id.apod_detail_share_icon)
     ImageView apodShareIcon;
-
+    @BindView(R.id.apod_detail_view)
+    ConstraintLayout apodDetailView;
 
     private ApodViewModel apodViewModel;
-    private LiveData<Apod> apod;
+    private LiveData<Apod> apodLiveData;
+    private Apod apod;
     private String date;
 
 
@@ -96,6 +100,7 @@ public class ApodDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.apod_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
+        setFavoriteOnClickListener();
         return rootView;
     }
 
@@ -103,7 +108,7 @@ public class ApodDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
-        apod = apodViewModel.getApodWithDate(date);
+        apodLiveData = apodViewModel.getApodWithDate(date);
         subscribeApod();
     }
 
@@ -112,6 +117,7 @@ public class ApodDetailFragment extends Fragment {
             @Override
             public void onChanged(@Nullable Apod apod) {
                 if (apod != null) {
+                    ApodDetailFragment.this.apod = apod;
                     String imageUrl = null;
                     String mediaType = apod.getMediaType();
                     if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
@@ -144,9 +150,15 @@ public class ApodDetailFragment extends Fragment {
                         apodCopyright.setVisibility(View.INVISIBLE);
                     }
                 }
+
+                if(apod.getIsFavorite() == IS_FAVORITE){
+                    apodFavIcon.setImageResource(R.drawable.star_icon);
+                } else {
+                    apodFavIcon.setImageResource(R.drawable.star_icon_default);
+                }
             }
         };
-        apod.observe(this, apodObserver);
+        apodLiveData.observe(this, apodObserver);
     }
 
     private void setVideoPlayerOnClickListener(String videoId) {
@@ -161,6 +173,32 @@ public class ApodDetailFragment extends Fragment {
                 }
             });
         }
+    }
+
+    private void setFavoriteOnClickListener(){
+
+        apodFavIcon.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                String message;
+                if(apod != null){
+                    if(apod.getIsFavorite() == NOT_FAVORITE){
+                        apodViewModel.updateApod(IS_FAVORITE, apod.getDate());
+                        apodFavIcon.setImageResource(R.drawable.star_icon);
+                        message = getString(R.string.apod_add_to_favorite);
+
+
+                    } else {
+                        apodViewModel.updateApod(NOT_FAVORITE, apod.getDate());
+                        apodFavIcon.setImageResource(R.drawable.star_icon_default);
+                        message = getString(R.string.apod_remove_from_favorite);
+                    }
+
+                    Snackbar.make(apodDetailView, message, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
 

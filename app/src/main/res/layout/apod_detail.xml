@@ -12,7 +12,8 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="24dp" >
+        android:paddingBottom="24dp"
+        android:id="@+id/apod_detail_view">
 
         <ImageView
             android:id="@+id/apod_detail_image"
@@ -33,11 +34,11 @@
             android:id="@+id/apod_detail_explanation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
+            android:layout_marginEnd="@dimen/apod_detail_explanation_padding_side"
+            android:layout_marginStart="@dimen/apod_detail_explanation_margin_start"
+            android:layout_marginTop="@dimen/apod_detail_explanation_margin_top"
+            android:paddingEnd="@dimen/apod_detail_explanation_padding_side"
+            android:paddingStart="@dimen/apod_detail_explanation_padding_end"
             android:textColor="@color/apod_explanation_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +48,7 @@
         <TextView
             android:id="@+id/apod_detail_copyright"
             android:layout_width="0dp"
-            android:layout_height="17dp"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="16dp"
             android:paddingEnd="8dp"
@@ -102,7 +103,7 @@
             android:layout_width="@dimen/apod_detail_icon"
             android:layout_height="@dimen/apod_detail_icon"
             android:layout_marginEnd="@dimen/apod_detail_icons_margin_end"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/apod_detail_copyright"
             app:srcCompat="@drawable/share_icon" />

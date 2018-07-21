@@ -33,7 +33,7 @@
     <!-- APOD DETAIL DIMENSIONS -->
     <dimen name="apod_detail_text_size">18sp</dimen>
     <dimen name="apod_detail_margin_end">8dp</dimen>
-    <dimen name="apod_detail_margin_start">8dp</dimen>
+    <dimen name="apod_detail_margin_start">16dp</dimen>
     <dimen name="apod_detail_title_padding_start">8dp</dimen>
     <dimen name="apod_detial_title_padding_end">8dp</dimen>
     <dimen name="apod_detail_title_margin_top">16dp</dimen>
@@ -41,5 +41,9 @@
     <dimen name="apod_detail_icon">36dp</dimen>
     <dimen name="apod_detail_icons_spacing">24dp</dimen>
     <dimen name="apod_detail_icons_margin_end">36dp</dimen>
+    <dimen name="apod_detail_explanation_margin_start">24dp</dimen>
+    <dimen name="apod_detail_explanation_margin_top">8dp</dimen>
+    <dimen name="apod_detail_explanation_padding_side">16dp</dimen>
+    <dimen name="apod_detail_explanation_padding_end">16dp</dimen>
 
 </resources>

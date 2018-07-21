@@ -14,8 +14,8 @@
             android:id="@+id/toolbar_apod_detail"
             android:layout_width="match_parent"
             android:layout_height="120dp"
-            app:titleTextColor="#FFFFFF"
-            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways"
             />
     </android.support.design.widget.AppBarLayout>
