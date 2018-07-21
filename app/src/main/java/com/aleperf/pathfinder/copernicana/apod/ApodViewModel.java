@@ -40,4 +40,8 @@ public class ApodViewModel extends ViewModel {
         apodWithDate = astroRepository.getApodWithDate(date);
         return apodWithDate;
         }
+
+    public void updateApod(boolean isFavorite, String date) {
+        astroRepository.updateApodIsFavorite(isFavorite, date);
+    }
 }

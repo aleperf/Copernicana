@@ -9,7 +9,7 @@
 
     </style>
 
-    <style name="IntroCardTextTitle" parent ="AppTheme">
+    <style name="IntroCardTextTitle" parent="AppTheme">
         <item name="android:textSize">@dimen/intro_card_title_text</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/intro_rv_font_color</item>
@@ -19,15 +19,26 @@
         <item name="android:shadowRadius">1.6</item>
     </style>
 
-    <style name="IntroCardTextSubtitle" parent ="IntroCardTextTitle">
+    <style name="IntroCardTextSubtitle" parent="IntroCardTextTitle">
         <item name="android:textSize">@dimen/intro_card_subtitle_text</item>
         <item name="android:textStyle">bold|italic</item>
     </style>
 
-    <style name="ToolbarStyle" parent= "@style/ThemeOverlay.AppCompat.ActionBar">
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">@color/up_arrow_color</item>
     </style>
 
+    <!-- APOD DETAIL STYLES -->
+
+    <style name="ApodDetailTitle" parent="AppTheme">
+        <item name="android:textColor">@color/apod_title</item>
+        <item name="android:layout_marginEnd">@dimen/apod_detail_margin_end</item>
+        <item name="android:layout_marginStart">@dimen/apod_detail_title_padding_start</item>
+        <item name="android:paddingStart">@dimen/apod_detail_title_padding_start</item>
+        <item name="android:textSize">@dimen/apod_detail_text_size</item>
+        <item name="android:textStyle">bold</item>
+        android:paddingEnd="8dp"
+    </style>
 
 
 </resources>

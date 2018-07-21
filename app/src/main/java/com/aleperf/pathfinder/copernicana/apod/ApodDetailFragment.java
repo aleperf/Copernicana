@@ -24,12 +24,7 @@ import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
-
-
-import java.text.ParseException;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -59,8 +54,7 @@ public class ApodDetailFragment extends Fragment {
     ImageView apodFavIcon;
     @BindView(R.id.apod_detail_share_icon)
     ImageView apodShareIcon;
-    @BindView(R.id.video_player_group)
-    Group videoPlayerGroup;
+
 
     private ApodViewModel apodViewModel;
     private LiveData<Apod> apod;

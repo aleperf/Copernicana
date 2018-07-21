@@ -13,7 +13,13 @@
     <color name="toolbar_text_color">#FFFFFF</color>
 
     <!--icons colors -->
-    <color name="icon_default">#424242</color>
+    <color name="icon_default">#E6303F9F</color>
     <color name="favorite_color">#ff1744</color>
     <color name="button_ico_color">#FFFFFF</color>
+
+    <!-- apod and card colors -->
+    <color name="apod_title">#303F9F</color>
+    <color name="apod_explanation_text">#000000</color>
+    <color name="apod_explanation_label">#F2303F9F</color>
+    <color name="apod_date_color">#E6303F9F</color>
 </resources>

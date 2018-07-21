@@ -122,7 +122,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     public void initializeRepository() {
         //temporary solution
-        loadApod("2018-06-12");
+        loadApod(null);
         loadAllAstronauts();
     }
 
