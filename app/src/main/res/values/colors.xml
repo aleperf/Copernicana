@@ -16,11 +16,18 @@
     <color name="favorite_color">#ff1744</color>
     <color name="button_ico_color">#FFFFFF</color>
 
-
+    <color name="default_colored_text">#303F9F</color>
 
     <!-- apod and card colors -->
     <color name="apod_title">#303F9F</color>
     <color name="apod_explanation_text">#000000</color>
     <color name="apod_explanation_label">#F2303F9F</color>
     <color name="apod_date_color">#E6303F9F</color>
+
+    <!-- search -->
+    <color name="search_button_color">#448AFF</color>
+    <color name="search_button_text_color">#FFFFFF</color>
+    <color name="search_date_color">#000000</color>
+
+
 </resources>

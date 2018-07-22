@@ -49,5 +49,12 @@
     <!--APOD SEARCH STRINGS -->
 
     <string name="apod_search_toolbar_title">Search Picture of the Day</string>
+    <string name="apod_search_select_button">SELECT DATE</string>
+    <string name="apod_search_selected_date_label">Date Selected:</string>
+    <string name="apod_search_no_date_text_view">No Date Selected</string>
+    <string name="search_no_result">No result found for the date selected</string>
+    <string name="search_result_found">Found 1 result for the date selected</string>
+    <string name="search_result_closest">Found 1 result for the closest date to the one selected: %s</string>
+    <string name="search_no_connection">No connection found. Check for a better connection and try to search again.</string>
 
 </resources>

@@ -37,5 +37,24 @@
         android:paddingEnd="8dp"
     </style>
 
+    <style name="ButtonSearchStyle" parent ="AppTheme">
+        <item name="android:background">@color/search_button_color</item>
+        <item name="android:textColor">@color/search_button_text_color</item>
+        <item name="android:textSize">@dimen/search_button_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SearchSelectedDateLabel">
+        <item name="android:textColor">@color/default_colored_text</item>
+        <item name="android:textSize">@dimen/search_selected_date_label</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SearchSelectedDateText">
+        <item name="android:textColor">@color/search_date_color</item>
+        <item name="android:textSize">@dimen/search_selected_date_label</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 
 </resources>

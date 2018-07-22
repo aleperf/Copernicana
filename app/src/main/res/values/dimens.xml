@@ -46,4 +46,9 @@
     <dimen name="apod_detail_explanation_padding_side">16dp</dimen>
     <dimen name="apod_detail_explanation_padding_end">16dp</dimen>
 
+    <!--SEARCH -->
+    <dimen name="search_button_text_size">16sp</dimen>
+    <dimen name="search_selected_date_label">16sp</dimen>
+    <dimen name="search_selected_date_text">16sp</dimen>
+
 </resources>

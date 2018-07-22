@@ -56,7 +56,7 @@ public class ApodDetailFragment extends Fragment {
     ImageView apodFavIcon;
     @BindView(R.id.apod_detail_share_icon)
     ImageView apodShareIcon;
-    @BindView(R.id.apod_detail_view)
+    @BindView(R.id.apod_detail_content)
     ConstraintLayout apodDetailView;
 
     private ApodViewModel apodViewModel;

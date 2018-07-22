@@ -26,6 +26,8 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
+
+
     public static List<Astronaut> getAstronautsFromJson(JsonObject jsonObject) {
         JsonArray jsonArray = jsonObject.getAsJsonArray("people");
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -69,6 +71,25 @@ public class Utils {
             return noDate;
         }
     }
+
+    public static String getDateSearchString(int year, int month, int day){
+        String dateformat = ("%d-%s-%s");
+        int correctMonth = month + 1;
+        String monthString = getNormalizedDateField(correctMonth);
+        String dayString = getNormalizedDateField(day);
+        return String.format(dateformat, year, monthString, dayString);
+        }
+
+    private static String getNormalizedDateField(int dateField){
+        String normalizedField;
+        String formatString ="0%d";
+        if(dateField < 10){
+            normalizedField = String.format(formatString, dateField);
+        } else {
+            normalizedField = String.valueOf(dateField);
+        }
+        return normalizedField;
+        }
 
 
 }

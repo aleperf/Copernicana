@@ -1,6 +1,7 @@
 package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -35,6 +36,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     private final String TAG = AstroRepositoryImpl.class.getSimpleName();
     private final String FIREBASE_STORAGE = BuildConfig.APP_STORAGE;
     private final String ASTRONAUTS_IN_SPACE = "astronauts/inspace.json";
+    public final String FAILED_CONNECTION = "failed connection in AstroRepository";
 
     private ApodDao apodDao;
     private AstronautDao astronautDao;
@@ -120,12 +122,35 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
+    @Override
+    public void searchApodForDate(String date, MutableLiveData<Apod> searchedApod) {
+        Call<Apod> apodCall = apisService.getApod(BuildConfig.MY_API_KEY, date);
+        apodCall.enqueue(new Callback<Apod>() {
+            @Override
+            public void onResponse(Call<Apod> call, Response<Apod> response) {
+                Apod apod = response.body();
+                if (apod != null) {
+                    searchedApod.setValue(apod);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Apod> call, Throwable t) {
+                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Apod apod = new Apod(null, date,
+                        t.getMessage(), null, null, FAILED_CONNECTION,
+                        null);
+                searchedApod.setValue(apod);
+            }
+        });
+
+    }
+
     public void initializeRepository() {
         //temporary solution
         loadApod(null);
         loadAllAstronauts();
     }
-
 
 
     //Astronaut section

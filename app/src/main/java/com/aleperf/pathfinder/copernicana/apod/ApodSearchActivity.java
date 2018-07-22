@@ -1,15 +1,17 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.widget.DatePicker;
 
 import com.aleperf.pathfinder.copernicana.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ApodSearchActivity extends AppCompatActivity {
+public class ApodSearchActivity extends AppCompatActivity  {
 
     @BindView(R.id.toolbar_apod_search)
     Toolbar toolbar;
@@ -25,5 +27,6 @@ public class ApodSearchActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.apod_search_toolbar_title));
 
     }
+
 
 }
