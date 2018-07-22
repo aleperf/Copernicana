@@ -21,13 +21,13 @@ import com.aleperf.pathfinder.copernicana.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapter.ApodSectionSelector{
+public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapter.ApodSectionSelector {
 
-   @BindView(R.id.toolbar_apod)
-   Toolbar toolbar;
-   private boolean isDualPane;
-   private static final String APOD_EXTRA_DATE = "apod extra date";
-   private static final String APOD_EXTRA_TITLE = "apod extra title";
+    @BindView(R.id.toolbar_apod)
+    Toolbar toolbar;
+    private boolean isDualPane;
+    private static final String APOD_EXTRA_DATE = "apod extra date";
+    private static final String APOD_EXTRA_TITLE = "apod extra title";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,22 +38,32 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.apod_card_rv_title));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
-        }
+    }
 
 
     @Override
     public void selectSection(int position) {
-        Toast.makeText(this,"clicked section: " + position, Toast.LENGTH_SHORT).show();
+        if (!isDualPane) {
+            switch (position) {
+                case 1:
+                    Intent searchIntent = new Intent(this, ApodSearchActivity.class);
+                    startActivity(searchIntent);
+                    break;
+                default:
+                    Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
+            }
+        }
+
     }
 
     @Override
     public void selectApodSection(String date, String title) {
-        if(!isDualPane){
-                Intent intent = new Intent(this, ApodDetailActivity.class);
-                intent.putExtra(APOD_EXTRA_DATE, date);
-                intent.putExtra(APOD_EXTRA_TITLE,title );
-                startActivity(intent);
-            }
+        if (!isDualPane) {
+            Intent intent = new Intent(this, ApodDetailActivity.class);
+            intent.putExtra(APOD_EXTRA_DATE, date);
+            intent.putExtra(APOD_EXTRA_TITLE, title);
+            startActivity(intent);
+        }
 
-            }
+    }
 }

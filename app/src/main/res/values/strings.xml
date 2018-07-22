@@ -38,12 +38,16 @@
     <string name="section_search">Search</string>
     <string name="section_fav">Favorites Pictures</string>
     <string name="section_all_pics">All Pictures</string>
-    <string name ="apod_no_date">unknown date</string>
+    <string name="apod_no_date">unknown date</string>
     <string name="apod_add_to_favorite">Image added to Favorites</string>
     <string name="apod_remove_from_favorite">Image removed from Favorites</string>
     <string name="apod_share_apod">The Astronomy Picture Of The Day on the Copernicana App</string>
     <string name="apod_share_message">%s is the Astronomy Picture of the Day, watch it on the Copernicana App or
     at this url: %s</string>
     <string name="apod_share_copernicana">Share a Copernicana Article</string>
+
+    <!--APOD SEARCH STRINGS -->
+
+    <string name="apod_search_toolbar_title">Search Picture of the Day</string>
 
 </resources>

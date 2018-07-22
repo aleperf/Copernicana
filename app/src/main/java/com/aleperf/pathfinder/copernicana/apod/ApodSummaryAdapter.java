@@ -155,6 +155,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         public SectionHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
         }
 
         public void bindSection(int position) {

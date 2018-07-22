@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="24dp"
+    android:id="@+id/apod_detail_view">
+
+    <ImageView
+        android:id="@+id/apod_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nasa_43566_unsplash" />
+
+
+    <TextView
+        android:id="@+id/apod_detail_explanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/apod_detail_explanation_padding_side"
+        android:layout_marginStart="@dimen/apod_detail_explanation_margin_start"
+        android:layout_marginTop="@dimen/apod_detail_explanation_margin_top"
+        android:paddingEnd="@dimen/apod_detail_explanation_padding_side"
+        android:paddingStart="@dimen/apod_detail_explanation_padding_end"
+        android:textColor="@color/apod_explanation_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apod_explanation_label"
+        tools:text="@string/apod_explanation_tools_text" />
+
+    <TextView
+        android:id="@+id/apod_detail_copyright"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingEnd="8dp"
+        android:text="@string/apod_copyright_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/apod_detail_date"
+        app:layout_constraintTop_toBottomOf="@+id/apod_detail_date" />
+
+
+    <TextView
+        android:id="@+id/apod_explanation_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/apod_explanation_label"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:textColor="@color/apod_explanation_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apod_detail_title" />
+
+    <ImageView
+        android:id="@+id/apod_detail_video_player_ico"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/apod_detail_image"
+        app:layout_constraintEnd_toEndOf="@+id/apod_detail_image"
+        app:layout_constraintStart_toStartOf="@+id/apod_detail_image"
+        app:layout_constraintTop_toTopOf="@+id/apod_detail_image"
+        app:srcCompat="@drawable/play_button_round_swirl" />
+
+    <TextView
+        android:id="@+id/apod_detail_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="italic"
+        android:textColor="@color/apod_date_color"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apod_detail_explanation"
+        tools:text="Astronomy Picture of June 3, 2018" />
+
+    <ImageView
+        android:id="@+id/apod_detail_share_icon"
+        android:layout_width="@dimen/apod_detail_icon"
+        android:layout_height="@dimen/apod_detail_icon"
+        android:layout_marginEnd="@dimen/apod_detail_icons_margin_end"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apod_detail_copyright"
+        app:srcCompat="@drawable/share_icon" />
+
+    <ImageView
+        android:id="@+id/apod_detail_fav_icon"
+        android:layout_width="@dimen/apod_detail_icon"
+        android:layout_height="@dimen/apod_detail_icon"
+        android:layout_marginEnd="@dimen/apod_detail_margin_end"
+        app:layout_constraintBottom_toBottomOf="@+id/apod_detail_share_icon"
+        app:layout_constraintEnd_toStartOf="@+id/apod_detail_share_icon"
+        app:srcCompat="@drawable/star_icon_default" />
+
+    <TextView
+        android:id="@+id/apod_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/apod_detail_title_margin_top"
+        style="@style/ApodDetailTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/apod_detail_image"
+        tools:text="@string/apod_title_tools_text" />
+
+
+
+</android.support.constraint.ConstraintLayout>
