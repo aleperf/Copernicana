@@ -37,7 +37,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
         void selectSection(int position);
 
-        void selectApodSection(String date, String title);
+        void selectApodSection(Apod apod);
     }
 
 
@@ -138,7 +138,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             if (context instanceof ApodSectionSelector) {
                 ApodSectionSelector apodSectionSelector = (ApodSectionSelector) context;
                 if (apod != null) {
-                    apodSectionSelector.selectApodSection(apod.getDate(), apod.getTitle());
+                    apodSectionSelector.selectApodSection(apod);
                 }
             }
         }

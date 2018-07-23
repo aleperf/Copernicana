@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.model.Apod;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,8 +19,8 @@ public class ApodDetailActivity extends AppCompatActivity {
     Toolbar toolbar;
     private static final String APOD_EXTRA_DATE = "apod extra date";
     private static final String APOD_EXTRA_TITLE = "apod extra title";
-    private String date;
-    private String title;
+    private static final String APOD_EXTRA = "apod extra";
+    private Apod apod;
 
 
     @Override
@@ -31,14 +32,12 @@ public class ApodDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         FragmentManager fragmentManager = getSupportFragmentManager();
         if (savedInstanceState == null) {
-            date = getIntent().getStringExtra(APOD_EXTRA_DATE);
-            title = getIntent().getStringExtra(APOD_EXTRA_TITLE);
+           apod = getIntent().getExtras().getParcelable(APOD_EXTRA);
         } else {
-            date = savedInstanceState.getString(APOD_EXTRA_DATE);
-            title = savedInstanceState.getString(APOD_EXTRA_TITLE);
+            apod = savedInstanceState.getParcelable(APOD_EXTRA);
         }
-        getSupportActionBar().setTitle(title);
-        ApodDetailFragment apodDetailFragment = ApodDetailFragment.getInstance(date);
+        getSupportActionBar().setTitle(apod.getTitle());
+        ApodDetailFragment apodDetailFragment = ApodDetailFragment.getInstance(apod);
         fragmentManager.beginTransaction().
                 replace(R.id.apod_detail_fragment_container, apodDetailFragment).commit();
     }
@@ -46,7 +45,6 @@ public class ApodDetailActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(APOD_EXTRA_TITLE, title);
-        outState.putString(APOD_EXTRA_DATE, date);
+        outState.putParcelable(APOD_EXTRA, apod);
     }
 }

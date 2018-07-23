@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.model.Apod;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +29,7 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
     private boolean isDualPane;
     private static final String APOD_EXTRA_DATE = "apod extra date";
     private static final String APOD_EXTRA_TITLE = "apod extra title";
+    private static final String APOD_EXTRA = "apod extra";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +59,10 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
     }
 
     @Override
-    public void selectApodSection(String date, String title) {
+    public void selectApodSection(Apod apod) {
         if (!isDualPane) {
             Intent intent = new Intent(this, ApodDetailActivity.class);
-            intent.putExtra(APOD_EXTRA_DATE, date);
-            intent.putExtra(APOD_EXTRA_TITLE, title);
+            intent.putExtra(APOD_EXTRA, apod);
             startActivity(intent);
         }
 

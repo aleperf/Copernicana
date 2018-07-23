@@ -24,7 +24,9 @@ import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
+
 import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -35,6 +37,7 @@ public class ApodDetailFragment extends Fragment {
     public final static String APOD_DATE = "apodLiveData extra date";
     private static final String APOD_TITLE = "apodLiveData extra title";
     public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
+    private static final String APOD_EXTRA = "apod extra";
     public static int IS_FAVORITE = 1;
     public static int NOT_FAVORITE = 0;
 
@@ -60,9 +63,8 @@ public class ApodDetailFragment extends Fragment {
     ConstraintLayout apodDetailView;
 
     private ApodViewModel apodViewModel;
-    private LiveData<Apod> apodLiveData;
     private Apod apod;
-    private String date;
+
 
 
     @Inject
@@ -72,9 +74,9 @@ public class ApodDetailFragment extends Fragment {
         //default empty constructor
     }
 
-    public static ApodDetailFragment getInstance(String date) {
+    public static ApodDetailFragment getInstance(Apod apod) {
         Bundle bundle = new Bundle();
-        bundle.putString(APOD_DATE, date);
+        bundle.putParcelable(APOD_EXTRA, apod);
         ApodDetailFragment fragment = new ApodDetailFragment();
         fragment.setArguments(bundle);
         return fragment;
@@ -87,9 +89,9 @@ public class ApodDetailFragment extends Fragment {
         setRetainInstance(true);
         if (savedInstanceState == null) {
             Bundle bundle = getArguments();
-            date = bundle.getString(APOD_DATE, APOD_DEFAULT_DATE);
+            apod = bundle.getParcelable(APOD_EXTRA);
         } else {
-            date = savedInstanceState.getString(APOD_DATE, APOD_DEFAULT_DATE);
+            apod = savedInstanceState.getParcelable(APOD_EXTRA);
         }
 
 
@@ -100,6 +102,7 @@ public class ApodDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.apod_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
+        fillApodFields(apod);
         setFavoriteOnClickListener();
         setSharingOnClickListener();
         return rootView;
@@ -109,58 +112,64 @@ public class ApodDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
-        apodLiveData = apodViewModel.getApodWithDate(date);
-        subscribeApod();
+        }
+
+    private void fillApodFields(Apod apod) {
+        setCorrectMediaTypeImage(apod);
+        apodTitle.setText(apod.getTitle());
+        apodExplanation.setText(apod.getExplanation());
+        setFormattedDate(apod);
+        setCopyrightField(apod);
+        setIsFavoriteIcon(apod);
+
     }
 
-    private void subscribeApod() {
-        Observer<Apod> apodObserver = new Observer<Apod>() {
-            @Override
-            public void onChanged(@Nullable Apod apod) {
-                if (apod != null) {
-                    ApodDetailFragment.this.apod = apod;
-                    String imageUrl = null;
-                    String mediaType = apod.getMediaType();
-                    if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
-                        imageUrl = apod.getUrl();
-                        videoPlayerSymbol.setVisibility(View.INVISIBLE);
+    private void setCorrectMediaTypeImage(Apod apod) {
+        String imageUrl = null;
+        String mediaType = apod.getMediaType();
+        if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
+            imageUrl = apod.getUrl();
+            videoPlayerSymbol.setVisibility(View.INVISIBLE);
 
-                    } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
-                        videoPlayerSymbol.setVisibility(View.VISIBLE);
-                        String videoUrl = apod.getUrl();
-                        String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-                        setVideoPlayerOnClickListener(videoId);
-                        imageUrl = Utils.buildVideoThumbnailFromId(videoId);
-                    }
-                    GlideApp.with(getActivity())
-                            .load(imageUrl)
-                            .placeholder(R.drawable.nasa_43566_unsplash)
-                            .error(R.drawable.nasa_43566_unsplash)
-                            .into(apodImage);
-                    apodTitle.setText(apod.getTitle());
-                    apodExplanation.setText(apod.getExplanation());
-                    String formattedDate = Utils.getFormattedDate(apod.getDate(), getActivity());
-                    String dateString = String.format(getString(R.string.apod_detail_date), formattedDate);
-                    apodDate.setText(dateString);
-                    if (apod.getCopyright() != null) {
-                        String copyright = String.format(getString(R.string.apod_copyright_label),
-                                apod.getCopyright());
-                        apodCopyright.setVisibility(View.VISIBLE);
-                        apodCopyright.setText(copyright);
-                    } else {
-                        apodCopyright.setVisibility(View.INVISIBLE);
-                    }
-                }
-
-                if(apod.getIsFavorite() == IS_FAVORITE){
-                    apodFavIcon.setImageResource(R.drawable.star_icon);
-                } else {
-                    apodFavIcon.setImageResource(R.drawable.star_icon_default);
-                }
-            }
-        };
-        apodLiveData.observe(this, apodObserver);
+        } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
+            videoPlayerSymbol.setVisibility(View.VISIBLE);
+            String videoUrl = apod.getUrl();
+            String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
+            setVideoPlayerOnClickListener(videoId);
+            imageUrl = Utils.buildVideoThumbnailFromId(videoId);
+        }
+        GlideApp.with(getActivity())
+                .load(imageUrl)
+                .placeholder(R.drawable.nasa_43566_unsplash)
+                .error(R.drawable.nasa_43566_unsplash)
+                .into(apodImage);
     }
+
+    private void setFormattedDate(Apod apod) {
+        String formattedDate = Utils.getFormattedDate(apod.getDate(), getActivity());
+        String dateString = String.format(getString(R.string.apod_detail_date), formattedDate);
+        apodDate.setText(dateString);
+    }
+
+    private void setCopyrightField(Apod apod) {
+        if (apod.getCopyright() != null) {
+            String copyright = String.format(getString(R.string.apod_copyright_label),
+                    apod.getCopyright());
+            apodCopyright.setVisibility(View.VISIBLE);
+            apodCopyright.setText(copyright);
+        } else {
+            apodCopyright.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private void setIsFavoriteIcon(Apod apod) {
+        if (apod.getIsFavorite() == IS_FAVORITE) {
+            apodFavIcon.setImageResource(R.drawable.star_icon);
+        } else {
+            apodFavIcon.setImageResource(R.drawable.star_icon_default);
+        }
+    }
+
 
     private void setVideoPlayerOnClickListener(String videoId) {
         View[] views = {videoPlayerSymbol, apodImage};
@@ -176,34 +185,33 @@ public class ApodDetailFragment extends Fragment {
         }
     }
 
-    private void setFavoriteOnClickListener(){
+    private void setFavoriteOnClickListener() {
 
-        apodFavIcon.setOnClickListener(new View.OnClickListener(){
+        apodFavIcon.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 String message;
-                if(apod != null){
-                    if(apod.getIsFavorite() == NOT_FAVORITE){
+                if (apod != null) {
+                    if (apod.getIsFavorite() == NOT_FAVORITE) {
+                        apod.setIsFavorite(IS_FAVORITE);
                         apodViewModel.updateApod(IS_FAVORITE, apod.getDate());
                         apodFavIcon.setImageResource(R.drawable.star_icon);
                         message = getString(R.string.apod_add_to_favorite);
-
-
                     } else {
+                        apod.setIsFavorite(NOT_FAVORITE);
                         apodViewModel.updateApod(NOT_FAVORITE, apod.getDate());
                         apodFavIcon.setImageResource(R.drawable.star_icon_default);
                         message = getString(R.string.apod_remove_from_favorite);
                     }
-
                     Snackbar.make(apodDetailView, message, Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void setSharingOnClickListener(){
-        apodShareIcon.setOnClickListener(new View.OnClickListener(){
+    private void setSharingOnClickListener() {
+        apodShareIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -233,7 +241,7 @@ public class ApodDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(APOD_DATE, date);
+        outState.putParcelable(APOD_EXTRA, apod);
 
     }
 
