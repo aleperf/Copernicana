@@ -85,8 +85,18 @@ public class AstroRepositoryImpl implements AstroRepository {
         if (apod == null) {
             return;
         }
-        Completable.fromAction(() -> apodDao.insertApod(apod)).subscribeOn(Schedulers.io()).subscribe();
+        Completable.fromAction(() -> apodDao.insertApod(apod))
+                .subscribeOn(Schedulers.io()).subscribe();
 
+    }
+
+    @Override
+    public void insertApodFromSearch(Apod apod) {
+        if (apod == null) {
+            return;
+        }
+        Completable.fromAction(() -> apodDao.insertApodFromSearch(apod))
+                .subscribeOn(Schedulers.io()).subscribe();
     }
 
     @Override

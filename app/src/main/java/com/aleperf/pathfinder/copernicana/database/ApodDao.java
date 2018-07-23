@@ -34,7 +34,10 @@ public interface ApodDao {
     LiveData<Integer> getApodCount();
 
     @Insert(onConflict = IGNORE)
-    long insertApod(Apod apod);
+    void insertApod(Apod apod);
+
+    @Insert(onConflict = REPLACE)
+    void insertApodFromSearch(Apod apod);
 
     @Query("DELETE FROM apod WHERE date = :date")
     void deleteApodWithDate(String date);

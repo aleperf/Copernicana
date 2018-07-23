@@ -95,6 +95,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     public class ApodCardHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+
         @BindView(R.id.apod_detail_card_image)
         ImageView apodImage;
         @BindView(R.id.apod_detail_card_title)
@@ -116,20 +117,30 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 if (apod.getMediaType().equals(Apod.MEDIA_TYPE_IMAGE)) {
                     photoUrl = apod.getUrl();
                     mediaTypeIcon.setImageResource(R.drawable.picture_card_ico);
-
+                    GlideApp.with(context)
+                            .load(photoUrl)
+                            .placeholder(sectionImages[placeholderIndex])
+                            .error(sectionImages[errorIndex])
+                            .into(apodImage);
                 } else {
                     mediaTypeIcon.setImageResource(R.drawable.youtube_blue);
-
+                    //if this is a valid youtube video show a thumbnail
+                    if(apod.getUrl().contains("youtube")){
                     photoUrl = Utils.buildVideoThumbnailFromUrl(apod.getUrl());
+                        GlideApp.with(context)
+                                .load(photoUrl)
+                                .placeholder(sectionImages[placeholderIndex])
+                                .error(sectionImages[errorIndex])
+                                .into(apodImage);
+                    } else {
+                        //this is an invalid youtube video show a placeholder
+                        apodImage.setImageResource(sectionImages[placeholderIndex]);
+                    }
                 }
-                GlideApp.with(context)
-                        .load(photoUrl)
-                        .placeholder(sectionImages[placeholderIndex])
-                        .error(sectionImages[errorIndex])
-                        .into(apodImage);
+
                 apodTitle.setText(apod.getTitle());
-                apodDate.setText(apod.getDate());
-                if(apod.getCopyright() != null){}
+                apodDate.setText(Utils.getFormattedDate(apod.getDate(), context));
+
             }
         }
 

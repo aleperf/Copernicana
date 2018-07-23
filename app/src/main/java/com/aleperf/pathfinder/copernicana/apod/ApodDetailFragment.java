@@ -66,7 +66,6 @@ public class ApodDetailFragment extends Fragment {
     private Apod apod;
 
 
-
     @Inject
     ViewModelProvider.Factory factory;
 
@@ -112,7 +111,7 @@ public class ApodDetailFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         apodViewModel = ViewModelProviders.of(this, factory).get(ApodViewModel.class);
-        }
+    }
 
     private void fillApodFields(Apod apod) {
         setCorrectMediaTypeImage(apod);
@@ -130,14 +129,21 @@ public class ApodDetailFragment extends Fragment {
         if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
             imageUrl = apod.getUrl();
             videoPlayerSymbol.setVisibility(View.INVISIBLE);
+            loadImageWithGlide(imageUrl);
 
         } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
-            videoPlayerSymbol.setVisibility(View.VISIBLE);
-            String videoUrl = apod.getUrl();
-            String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-            setVideoPlayerOnClickListener(videoId);
-            imageUrl = Utils.buildVideoThumbnailFromId(videoId);
+            if (apod.getUrl().contains("youtube")) {
+                videoPlayerSymbol.setVisibility(View.VISIBLE);
+                String videoUrl = apod.getUrl();
+                String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
+                setVideoPlayerOnClickListener(videoId);
+                imageUrl = Utils.buildVideoThumbnailFromId(videoId);
+                loadImageWithGlide(imageUrl);
+            }
         }
+    }
+
+    private void loadImageWithGlide(String imageUrl){
         GlideApp.with(getActivity())
                 .load(imageUrl)
                 .placeholder(R.drawable.nasa_43566_unsplash)

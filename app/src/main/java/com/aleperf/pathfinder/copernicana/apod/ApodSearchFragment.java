@@ -6,6 +6,7 @@ import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -90,7 +91,6 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     private ApodSearchViewModel apodSearchViewModel;
 
 
-
     private Unbinder unbinder;
 
     @Override
@@ -98,7 +98,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) this.getActivity().getApplication())
                 .getCopernicanaApplicationComponent().inject(this);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             lastApodSearched = savedInstanceState.getParcelable(LAST_APOD_SEARCHED);
             resultMessage = savedInstanceState.getString(SEARCH_RESULT_MESSAGE);
             searchDate = savedInstanceState.getString(SEARCH_DATE);
@@ -112,20 +112,21 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_apod_search, container, false);
-        unbinder =  ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         setSearchButtonOnClickListener();
-        if(apodFound){
-            if(lastApodSearched != null){
+        if (apodFound) {
+            if (lastApodSearched != null) {
                 apodDetailContent.setVisibility(View.VISIBLE);
                 fillApodFields(lastApodSearched);
             }
         }
-        if(resultMessage != null){
+        if (resultMessage != null) {
             searchResultTextView.setText(resultMessage);
         }
-        if(formattedDate != null){
+        if (formattedDate != null) {
             dateSelected.setText(formattedDate);
         }
+        setSharingOnClickListener();
         return rootView;
     }
 
@@ -154,7 +155,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         outState.putBoolean(APOD_FOUND, apodFound);
     }
 
-    public void setSearchButtonOnClickListener(){
+    public void setSearchButtonOnClickListener() {
         View.OnClickListener buttonListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,47 +185,48 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         formattedDate = Utils.getFormattedDate(searchDate, getActivity());
         dateSelected.setText(formattedDate);
         apodSearchViewModel.searchApodForDate(searchDate);
-        }
+    }
 
-    private void subscribeSearchApod(){
+    private void subscribeSearchApod() {
         Observer<Apod> searchApodObserver = new Observer<Apod>() {
             @Override
             public void onChanged(@Nullable Apod apod) {
-                if(apod != null){
-                    if(setCorrectResultTextView(apod)){
-                      apodFound = true;
-                      lastApodSearched = apod;
-                      apodDetailContent.setVisibility(View.VISIBLE);
-                      fillApodFields(apod);
-                  } else {
-                      apodDetailContent.setVisibility(View.GONE);
-                      apodFound = false;
-                  }
+                if (apod != null) {
+                    if (setCorrectResultTextView(apod)) {
+                        apodFound = true;
+                        lastApodSearched = apod;
+                        apodDetailContent.setVisibility(View.VISIBLE);
+                        fillApodFields(apod);
+                    } else {
+                        apodDetailContent.setVisibility(View.GONE);
+                        apodFound = false;
+                    }
                 }
 
             }
         };
 
-       searchApodMutableLiveData.observe(this, searchApodObserver);
+        searchApodMutableLiveData.observe(this, searchApodObserver);
 
     }
 
     /**
      * Set the correct  text for the searchResultTextView and return a boolean representing if
      * an Apod was found
+     *
      * @param apod the result of the search
      * @return true if an Apod was found, false otherwise.
      */
 
-    private boolean setCorrectResultTextView(Apod apod){
+    private boolean setCorrectResultTextView(Apod apod) {
         searchResultTextView.setVisibility(View.VISIBLE);
         //failed data retrieval
-        if(apod.getTitle().equals(AstroRepository.FAILED_CONNECTION)){
+        if (apod.getTitle().equals(AstroRepository.FAILED_CONNECTION)) {
             searchResultTextView.setText(getString(R.string.search_failed_connection));
             return false;
         }
         //result found for the correct date
-        if(apod.getDate().equals(searchDate)){
+        if (apod.getDate().equals(searchDate)) {
             searchResultTextView.setText(getString(R.string.search_result_found));
             return true;
         }
@@ -232,15 +234,15 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         String closest = String.format(getString(R.string.search_result_closest), formattedDate);
         searchResultTextView.setText(closest);
         return true;
-        }
+    }
 
-        private void fillApodFields(Apod apod){
-          setCorrectMediaTypeImage(apod);
-            apodTitle.setText(apod.getTitle());
-            apodExplanation.setText(apod.getExplanation());
-            setFormattedDate(apod);
-            setCopyrightField(apod);
-            }
+    private void fillApodFields(Apod apod) {
+        setCorrectMediaTypeImage(apod);
+        apodTitle.setText(apod.getTitle());
+        apodExplanation.setText(apod.getExplanation());
+        setFormattedDate(apod);
+        setCopyrightField(apod);
+    }
 
     private void setCorrectMediaTypeImage(Apod apod) {
         String imageUrl = null;
@@ -248,20 +250,33 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
             imageUrl = apod.getUrl();
             videoPlayerSymbol.setVisibility(View.INVISIBLE);
+            loadImageWithGlide(imageUrl);
 
         } else if (mediaType.equals(Apod.MEDIA_TYPE_VIDEO)) {
-            videoPlayerSymbol.setVisibility(View.VISIBLE);
             String videoUrl = apod.getUrl();
-            String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
-            setVideoPlayerOnClickListener(videoId);
-            imageUrl = Utils.buildVideoThumbnailFromId(videoId);
+            if (videoUrl.contains("youtube")) {
+                videoPlayerSymbol.setVisibility(View.VISIBLE);
+                String videoId = Utils.getYoutubeIdFromUrl(videoUrl);
+                setVideoPlayerOnClickListener(videoId);
+                imageUrl = Utils.buildVideoThumbnailFromId(videoId);
+                loadImageWithGlide(imageUrl);
+            } else {
+                videoPlayerSymbol.setVisibility(View.INVISIBLE);
+                //TODO create an image for not playable video
+                apodImage.setImageResource(R.drawable.nasa_43566_unsplash);
+            }
         }
+
+    }
+    private void loadImageWithGlide(String imageUrl) {
         GlideApp.with(getActivity())
                 .load(imageUrl)
                 .placeholder(R.drawable.nasa_43566_unsplash)
                 .error(R.drawable.nasa_43566_unsplash)
                 .into(apodImage);
     }
+
+
 
     private void setFormattedDate(Apod apod) {
         String formattedDate = Utils.getFormattedDate(apod.getDate(), getActivity());
@@ -303,7 +318,20 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         }
     }
 
-
+    private void setSharingOnClickListener() {
+        apodShareIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.apod_share_apod));
+                String message = String.format(getString(R.string.apod_share_message),
+                        lastApodSearched.getTitle(), lastApodSearched.getUrl());
+                intent.putExtra(Intent.EXTRA_TEXT, message);
+                startActivity(Intent.createChooser(intent, getString(R.string.apod_share_copernicana)));
+            }
+        });
+    }
 
 
 }
