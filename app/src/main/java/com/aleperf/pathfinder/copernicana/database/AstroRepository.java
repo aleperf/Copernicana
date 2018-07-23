@@ -11,6 +11,8 @@ import java.util.List;
 
 public interface AstroRepository {
 
+    final String FAILED_CONNECTION = "failed connection in AstroRepository 123";
+
     void initializeRepository();
 
     //APOD (a.k.a Astronomic Picture of the Day) CRUD

@@ -36,7 +36,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     private final String TAG = AstroRepositoryImpl.class.getSimpleName();
     private final String FIREBASE_STORAGE = BuildConfig.APP_STORAGE;
     private final String ASTRONAUTS_IN_SPACE = "astronauts/inspace.json";
-    public final String FAILED_CONNECTION = "failed connection in AstroRepository";
+
 
     private ApodDao apodDao;
     private AstronautDao astronautDao;

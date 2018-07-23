@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <include layout="@layout/apod_search_field"/>
-        <include layout="@layout/apod_detail_content"/>
+        <include layout="@layout/apod_detail_content"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

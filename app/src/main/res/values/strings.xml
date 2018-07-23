@@ -56,5 +56,6 @@
     <string name="search_result_found">Found 1 result for the date selected</string>
     <string name="search_result_closest">Found 1 result for the closest date to the one selected: %s</string>
     <string name="search_no_connection">No connection found. Check for a better connection and try to search again.</string>
+    <string name="search_failed_connection">Connection to Servers Failed.Check for a better connection and try to search again. </string>
 
 </resources>

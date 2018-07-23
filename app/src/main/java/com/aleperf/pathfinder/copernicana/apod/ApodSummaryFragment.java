@@ -37,7 +37,7 @@ public class ApodSummaryFragment extends Fragment {
     private ApodViewModel apodViewModel;
     private LiveData<Apod> apodLiveData;
     private Apod apod;
-    private   ApodSummaryAdapter adapter;
+    private ApodSummaryAdapter adapter;
 
 
     @Override

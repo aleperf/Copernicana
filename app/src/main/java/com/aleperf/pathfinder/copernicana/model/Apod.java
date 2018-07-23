@@ -2,6 +2,9 @@ package com.aleperf.pathfinder.copernicana.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.graphics.Movie;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
@@ -16,7 +19,7 @@ import com.google.gson.annotations.SerializedName;
  * https://apod.nasa.gov/apod/astropix.html
  */
 @Entity(tableName = "apod")
-public class Apod {
+public class Apod implements Parcelable{
     public static final String MEDIA_TYPE_VIDEO = "video";
     public static final String MEDIA_TYPE_IMAGE = "image";
 
@@ -79,4 +82,48 @@ public class Apod {
     public void setIsFavorite(int isFavorite){
         this.isFavorite = isFavorite;
     }
+
+    //Constructor used by Parcelable to deserialize data
+    private Apod(Parcel in){
+        copyright = in.readString();
+        date = in.readString();
+        explanation = in.readString();
+        mediaType = in.readString();
+        hdUrl = in.readString();
+        title = in.readString();
+        url = in.readString();
+        isFavorite = in.readInt();
+
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+
+        parcel.writeString(copyright);
+        parcel.writeString(date);
+        parcel.writeString(explanation);
+        parcel.writeString(mediaType);
+        parcel.writeString(hdUrl);
+        parcel.writeString(title);
+        parcel.writeString(url);
+        parcel.writeInt(isFavorite);
+
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator CREATOR
+            = new Parcelable.Creator() {
+        public Apod createFromParcel(Parcel in) {
+            return new Apod(in);
+        }
+
+        public Apod[] newArray(int size) {
+            return new Apod[size];
+        }
+    };
 }
