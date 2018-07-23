@@ -48,6 +48,7 @@ public class AstroDatabaseModule {
     }
 
     @Provides
+    @CopernicanaApplicationScope
     public AstroDatabase provideAstroDatabase() {
         return astroDatabase;
     }

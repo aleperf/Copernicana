@@ -30,7 +30,8 @@
             android:parentActivityName=".apod.ApodDetailActivity" />
         <activity android:name=".epic.EpicActivity" />
         <activity android:name=".mars.MarsActivity" />
-        <activity android:name=".apod.ApodSearchActivity"></activity>
+        <activity android:name=".apod.ApodSearchActivity"
+            android:parentActivityName=".apod.ApodDetailActivity"/>
     </application>
 
 </manifest>
