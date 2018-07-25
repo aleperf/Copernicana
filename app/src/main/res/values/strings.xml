@@ -57,5 +57,10 @@
     <string name="search_result_closest">Found 1 result for the closest date to the one selected: %s</string>
     <string name="search_no_connection">No connection found. Check for a better connection and try to search again.</string>
     <string name="search_failed_connection">Connection to Servers Failed.Check for a better connection and try to search again. </string>
-
+    <string name="search_snack_bar_add_apod_to_fav">Image added to your Favorites</string>
+    <string name="search_snack_bar_remove_apod">Image removed from Favorites</string>
+    <string name="search_snack_bar_unfavorite">The Image has been removed from Favorites.
+        It is still in the list of all Images</string>
+    <string name="search_snack_bar_image_added">The image has been added to the database</string>
+    <string name="search_snack_bar_remove">The image has been removed from the database</string>
 </resources>

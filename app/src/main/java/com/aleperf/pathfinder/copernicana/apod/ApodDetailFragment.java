@@ -139,6 +139,10 @@ public class ApodDetailFragment extends Fragment {
                 setVideoPlayerOnClickListener(videoId);
                 imageUrl = Utils.buildVideoThumbnailFromId(videoId);
                 loadImageWithGlide(imageUrl);
+            }else {
+                videoPlayerSymbol.setVisibility(View.INVISIBLE);
+                //TODO create an image for not playable video
+                apodImage.setImageResource(R.drawable.nasa_43566_unsplash);
             }
         }
     }

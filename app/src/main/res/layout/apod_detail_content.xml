@@ -121,6 +121,15 @@
         app:layout_constraintTop_toBottomOf="@+id/apod_detail_image"
         tools:text="@string/apod_title_tools_text" />
 
+    <ImageView
+        android:id="@+id/apod_detail_add_remove_icon"
+        android:layout_width="@dimen/apod_detail_icon"
+        android:layout_height="@dimen/apod_detail_icon"
+        android:visibility="gone"
+        android:layout_marginEnd="@dimen/apod_detail_margin_end"
+        app:layout_constraintBottom_toBottomOf="@+id/apod_detail_fav_icon"
+        app:layout_constraintEnd_toStartOf="@+id/apod_detail_fav_icon"
+        app:srcCompat="@drawable/add_photo" />
 
 
 </android.support.constraint.ConstraintLayout>

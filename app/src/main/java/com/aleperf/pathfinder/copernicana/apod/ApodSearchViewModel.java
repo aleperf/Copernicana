@@ -12,10 +12,8 @@ import javax.inject.Inject;
 
 public class ApodSearchViewModel extends ViewModel {
 
-   private AstroRepository astroRepository;
-   private MutableLiveData<Apod> apodSearched;
-
-
+    private AstroRepository astroRepository;
+    private MutableLiveData<Apod> apodSearched;
 
 
     @Inject
@@ -28,8 +26,26 @@ public class ApodSearchViewModel extends ViewModel {
         return apodSearched;
     }
 
-    public void searchApodForDate(String date){
+    public void searchApodForDate(String date) {
         astroRepository.searchApodForDate(date, apodSearched);
+    }
+
+    public void updateApodInDatabase(int isFavorite, String date){
+        astroRepository.updateApodIsFavorite(isFavorite, date);
+    }
+
+    /**
+     * Add an apod to the database, if there is a conflict (the Apod is alredady in the
+     * database) the row is replaced.
+     * @param apod, the Apod to insert.
+     */
+
+    public void addApodToTheDatabase(Apod apod) {
+        astroRepository.insertApodFromSearch(apod);
+    }
+
+    public void removeApodFromDatabase(String date) {
+        astroRepository.deleteApodWithDate(date);
     }
 
 
