@@ -5,8 +5,11 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -91,6 +94,8 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     private MutableLiveData<Apod> searchApodMutableLiveData;
     @Inject
     ViewModelProvider.Factory factory;
+    @Inject
+    Context copernicanaApplicationContext;
     private ApodSearchViewModel apodSearchViewModel;
 
 
@@ -119,12 +124,12 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
             formattedDate = savedInstanceState.getString(FORMATTED_SEARCH_DATE);
             apodFound = savedInstanceState.getBoolean(APOD_FOUND);
             isAdded = savedInstanceState.getBoolean(IS_ADDED_APOD_TO_DATABASE);
-            }
+        }
         if (apodFound) {
             if (lastApodSearched != null) {
                 apodDetailContent.setVisibility(View.VISIBLE);
                 fillApodFields(lastApodSearched);
-                }
+            }
         } else {
             apodDetailContent.setVisibility(View.GONE);
         }
@@ -189,15 +194,13 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Toast.makeText(getActivity(), "selected year " + year + " month " + month + " day: " + dayOfMonth,
-                Toast.LENGTH_SHORT).show();
         searchDate = Utils.getDateSearchString(year, month, dayOfMonth);
         formattedDate = Utils.getFormattedDate(searchDate, getActivity());
         dateSelected.setText(formattedDate);
         isAdded = false;
         lastApodSearched = null;
         apodSearchViewModel.searchApodForDate(searchDate);
-        }
+    }
 
     private void subscribeSearchApod() {
         Observer<Apod> searchApodObserver = new Observer<Apod>() {
@@ -253,11 +256,17 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         setCorrectMediaTypeImage(apod);
         apodTitle.setText(apod.getTitle());
         apodExplanation.setText(apod.getExplanation());
-        apodAddRemoveIcon.setVisibility(View.VISIBLE);
-        if(isAdded){
-            apodAddRemoveIcon.setImageResource(R.drawable.trash_delete);
+        //it this isn't the latest Apod in the database allow to add remove the Apod
+        if (!isLatestApodDate(apod.getDate())) {
+            apodAddRemoveIcon.setVisibility(View.VISIBLE);
+            if (isAdded) {
+                apodAddRemoveIcon.setImageResource(R.drawable.trash_delete);
+            } else {
+                apodAddRemoveIcon.setImageResource(R.drawable.add_photo);
+            }
         } else {
-            apodAddRemoveIcon.setImageResource(R.drawable.add_photo);
+            //if this is the Apod of the Day, it can't be removed from the database
+            apodAddRemoveIcon.setVisibility(View.INVISIBLE);
         }
         setFormattedDate(apod);
         setCopyrightField(apod);
@@ -332,9 +341,8 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     }
 
 
-
     private void setAddToFavoritesOnClickListener() {
-        apodFavIcon.setOnClickListener(new View.OnClickListener(){
+        apodFavIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message;
@@ -356,8 +364,6 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         });
 
     }
-
-
 
 
     private void setVideoPlayerOnClickListener(String videoId) {
@@ -389,12 +395,12 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         });
     }
 
-    private void setAddRemoveOnClickListener(){
+    private void setAddRemoveOnClickListener() {
         apodAddRemoveIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message;
-                if(!isAdded){
+                if (!isAdded) {
                     isAdded = true;
                     apodSearchViewModel.removeApodFromDatabase(lastApodSearched.getDate());
                     apodAddRemoveIcon.setImageResource(R.drawable.trash_delete);
@@ -403,18 +409,37 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
 
                 } else {
                     isAdded = false;
-                    if(lastApodSearched.getIsFavorite() == IS_FAVORITE){
+                    if (lastApodSearched.getIsFavorite() == IS_FAVORITE) {
                         lastApodSearched.setIsFavorite(NOT_FAVORITE);
                         apodFavIcon.setImageResource(R.drawable.star_icon_default);
                     }
                     apodAddRemoveIcon.setImageResource(R.drawable.add_photo);
                     apodSearchViewModel.removeApodFromDatabase(lastApodSearched.getDate());
 
-                    message =getString(R.string.search_snack_bar_remove);
+                    message = getString(R.string.search_snack_bar_remove);
                 }
                 Snackbar.make(apodDetailContent, message, Snackbar.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * Check if the current Apod is the latest Apod
+     * @param date the date of the current Apod
+     * @return true if it is the latest Apod in database, false otherwise
+     */
+    private boolean isLatestApodDate(String date) {
+        SharedPreferences sharedPref = copernicanaApplicationContext.getSharedPreferences(getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+        String defaultValue = getString(R.string.preference_latest_apod_default_value);
+        String key = getString(R.string.preference_latest_apod_date_key);
+        String latestApod = sharedPref.getString(key, defaultValue);
+        Log.d("uffa", "latest apod è: " + latestApod);
+        if(date.equals(latestApod)){
+            return true;
+        }
+        return false;
+
     }
 
 

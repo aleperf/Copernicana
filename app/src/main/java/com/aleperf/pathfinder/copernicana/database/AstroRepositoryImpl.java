@@ -2,10 +2,15 @@ package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.aleperf.pathfinder.copernicana.BuildConfig;
+import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
@@ -41,12 +46,14 @@ public class AstroRepositoryImpl implements AstroRepository {
     private ApodDao apodDao;
     private AstronautDao astronautDao;
     private ApisService apisService;
+    private Context context;
 
     @Inject
-    public AstroRepositoryImpl(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService) {
+    public AstroRepositoryImpl(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService, Context context) {
         this.apodDao = apodDao;
         this.astronautDao = astronautDao;
         this.apisService = apisService;
+        this.context = context;
     }
 
     //Apod section
@@ -122,6 +129,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Apod apod = response.body();
                 if (apod != null) {
                     insertApod(apod);
+                    updateSharedPreferences(apod.getDate());
                 }
             }
 
@@ -130,6 +138,15 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
             }
         });
+    }
+
+    private void updateSharedPreferences(String date){
+        Resources res = context.getResources();
+        SharedPreferences sharedPref = context.getSharedPreferences(res.getString(R.string.preference_file_key),
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(res.getString(R.string.preference_latest_apod_date_key), date);
+        editor.apply();
     }
 
     @Override

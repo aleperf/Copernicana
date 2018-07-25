@@ -1,6 +1,7 @@
 package com.aleperf.pathfinder.copernicana.injection;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 
@@ -26,5 +27,11 @@ public class ApplicationModule {
     @CopernicanaApplicationScope
     Application provideApplication(){
         return application;
+    }
+
+    @Provides
+    @CopernicanaApplicationScope
+    Context provideCopernicanaApplicationContext(){
+        return application.getApplicationContext();
     }
 }

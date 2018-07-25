@@ -3,6 +3,7 @@ package com.aleperf.pathfinder.copernicana.injection;
 import android.app.Application;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaViewModelProviderFactory;
 import com.aleperf.pathfinder.copernicana.database.ApodDao;
@@ -31,8 +32,8 @@ public class AstroDatabaseModule {
 
     @Provides
     @CopernicanaApplicationScope
-    public AstroRepository provideAstroRepository(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService) {
-        return new AstroRepositoryImpl(apodDao,astronautDao, apisService);
+    public AstroRepository provideAstroRepository(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService, Context context) {
+        return new AstroRepositoryImpl(apodDao,astronautDao, apisService, context);
     }
 
     @Provides
