@@ -69,4 +69,7 @@
     <string name="search_snack_bar_image_added">The image has been added to the database</string>
     <string name="search_snack_bar_remove">The image has been removed from the database</string>
 
+    <!--APOD FAVORITES STRINGS -->
+    <string name="apod_favorites_toolbar_title">Favorites Astronomic Pictures</string>
+
 </resources>

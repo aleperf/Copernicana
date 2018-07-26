@@ -27,12 +27,12 @@
             android:parentActivityName=".intro.MainActivity" />
         <activity
             android:name=".apod.ApodDetailActivity"
-            android:parentActivityName=".apod.ApodDetailActivity" />
+            android:parentActivityName=".apod.ApodActivity" />
         <activity android:name=".epic.EpicActivity" />
         <activity android:name=".mars.MarsActivity" />
         <activity
             android:name=".apod.ApodSearchActivity"
-            android:parentActivityName=".apod.ApodDetailActivity" />
+            android:parentActivityName=".apod.ApodActivity" />
         <activity android:name=".apod.ApodFavoritesActivity"></activity>
     </application>
 

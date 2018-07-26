@@ -173,6 +173,21 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     }
 
+    @Override
+    public LiveData<List<Apod>> getAllFavApodOrderDesc() {
+        return apodDao.getAllFavApodOrderDesc();
+    }
+
+    @Override
+    public LiveData<List<Apod>> getAllFavApodOrderDescLessThanDate(String date) {
+        return apodDao.getAllFavApodOrderDescLessThanDate(date);
+    }
+
+
+
+
+
+
     public void initializeRepository() {
         //temporary solution
         loadApod(null);

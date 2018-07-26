@@ -51,6 +51,10 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
                     Intent searchIntent = new Intent(this, ApodSearchActivity.class);
                     startActivity(searchIntent);
                     break;
+                case 2:
+                    Intent favoritesIntent = new Intent(this, ApodFavoritesActivity.class);
+                    startActivity(favoritesIntent);
+                    break;
                 default:
                     Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
             }
