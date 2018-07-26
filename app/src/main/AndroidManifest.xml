@@ -33,8 +33,10 @@
         <activity
             android:name=".apod.ApodSearchActivity"
             android:parentActivityName=".apod.ApodActivity" />
-        <activity android:name=".apod.ApodFavoritesActivity"
-            android:parentActivityName=".apod.ApodActivity"/>
+        <activity
+            android:name=".apod.ApodFavoritesActivity"
+            android:parentActivityName=".apod.ApodActivity" />
+        <activity android:name=".apod.ApodDisplayAllActivity"></activity>
     </application>
 
 </manifest>
