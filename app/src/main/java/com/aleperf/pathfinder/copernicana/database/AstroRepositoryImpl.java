@@ -174,6 +174,17 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
+    public List<Apod> getFavoritesApodLessThanDate(String date) {
+        if(date != null){
+       return apodDao.getFavoritesApodLessThanDate(date);} else{
+            return apodDao.getFavoritesApod();
+        }
+    }
+
+
+
+
+    @Override
     public LiveData<List<Apod>> getAllFavApodOrderDesc() {
         return apodDao.getAllFavApodOrderDesc();
     }

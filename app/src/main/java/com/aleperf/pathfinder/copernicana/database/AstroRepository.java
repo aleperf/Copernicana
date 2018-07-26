@@ -24,6 +24,7 @@ public interface AstroRepository {
     LiveData<Integer> getApodCount();
     LiveData<List<Apod>> getAllFavApodOrderDesc();
     LiveData<List<Apod>> getAllFavApodOrderDescLessThanDate(String date);
+    List<Apod> getFavoritesApodLessThanDate(String date);
     void insertApod(Apod apod);
     void insertApodFromSearch(Apod apod);
     void deleteApodWithDate(String date);

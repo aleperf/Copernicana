@@ -54,7 +54,6 @@ public class ApodSummaryFragment extends Fragment {
        unbinder =  ButterKnife.bind(this, rootView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         apodSummaryRecyclerView.setLayoutManager(layoutManager);
-        addItemDecorator(apodSummaryRecyclerView);
         adapter = new ApodSummaryAdapter(getActivity());
         apodSummaryRecyclerView.setAdapter(adapter);
 
@@ -91,9 +90,5 @@ public class ApodSummaryFragment extends Fragment {
         unbinder.unbind();
     }
 
-    private void addItemDecorator(RecyclerView recyclerView) {
-        DividerItemDecoration itemDecorator = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
-        itemDecorator.setDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.recyclerview_div));
-        recyclerView.addItemDecoration(itemDecorator);
-    }
+
 }
