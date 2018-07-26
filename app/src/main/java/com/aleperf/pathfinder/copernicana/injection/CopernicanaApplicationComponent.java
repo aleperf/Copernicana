@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment;
+import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesActivity;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSearchFragment;
@@ -24,6 +25,7 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodDetailFragment apodDetailFragment);
     void inject(ApodSearchFragment apodSearchFragment);
     void inject(ApodFavoritesFragment apodFavoritesFragment);
+    void inject(ApodDisplayAllViewModel apodDisplayAllViewModel);
     void inject(MainActivity mainActivity);
     void inject(EpicActivity epicActivity);
     void inject(MarsActivity marsActivity);

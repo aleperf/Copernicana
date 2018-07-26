@@ -33,6 +33,11 @@ public interface ApodDao {
     @Query("SELECT * FROM apod WHERE isFavorite = 1 ORDER BY DATE DESC LIMIT 30")
     List<Apod> getFavoritesApod();
 
+    @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 30")
+    List<Apod>getAllApods();
+    @Query("SELECT * FROM apod WHERE date < :date ORDER BY date DESC LIMIT 30")
+    List<Apod> getAllApodsLessThanDate(String date);
+
 
     @Query("SELECT * FROM apod WHERE isFavorite = 1 ORDER BY DATE DESC LIMIT 30")
     LiveData<List<Apod>> getAllFavApodOrderDesc();

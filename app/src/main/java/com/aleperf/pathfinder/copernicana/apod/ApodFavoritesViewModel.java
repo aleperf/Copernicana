@@ -30,7 +30,6 @@ public class ApodFavoritesViewModel extends ViewModel {
     }
 
 
-
     public void loadFavoritesApod() {
         new FavoritesLoaderAsyncTask().execute(apodHelper);
     }
@@ -41,16 +40,16 @@ public class ApodFavoritesViewModel extends ViewModel {
         ApodHelper helper;
 
         @Override
-        protected List<Apod> doInBackground(ApodHelper... apodHelpers) { this.helper = apodHelpers[0];
-           String asyncDate = helper.getDate();
-           return helper.getAstroRepository().getFavoritesApodLessThanDate(asyncDate);
+        protected List<Apod> doInBackground(ApodHelper... apodHelpers) {
+            this.helper = apodHelpers[0];
+            return helper.getAstroRepository().getFavoritesApodLessThanDate(helper.getDate());
 
         }
 
         @Override
         protected void onPostExecute(List<Apod> apodList) {
             if (apodList != null && apodList.size() > 0) {
-               helper.updateApodHelper(apodList);
+                helper.updateApodHelper(apodList);
             }
         }
 
@@ -60,10 +59,11 @@ public class ApodFavoritesViewModel extends ViewModel {
      * Check if the apodList isn't a multiple of the maximum number of apod loaded per time.
      * If it isn't at max size there are certainly no more favorites apod to load (otherwise the size of
      * favoriteApodlist would be a multiple of the max size).
-     *@return true if it the size isn't a multiple of the max size, false otherwise.
+     *
+     * @return true if it the size isn't a multiple of the max size, false otherwise.
      */
 
-    public boolean isMultipleOfMaxApodLoadedPerTime(){
+    public boolean isMultipleOfMaxApodLoadedPerTime() {
 
         return ((apodHelper.getApodListSize() % MAX_APOD_LOADED_PER_TIME) == 0);
     }

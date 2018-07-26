@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
+import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodSearchViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodViewModel;
@@ -32,6 +33,8 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new ApodSearchViewModel(astroRepository);
         } else if(modelClass.isAssignableFrom(ApodFavoritesViewModel.class)){
             return (T) new ApodFavoritesViewModel(astroRepository);
+        } else if(modelClass.isAssignableFrom(ApodDisplayAllViewModel.class)){
+            return (T) new ApodDisplayAllViewModel(astroRepository);
         }
         else {
             throw new IllegalArgumentException("ViewModel Not Found");

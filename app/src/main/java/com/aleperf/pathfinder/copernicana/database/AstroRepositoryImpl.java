@@ -140,7 +140,7 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
-    private void updateSharedPreferences(String date){
+    private void updateSharedPreferences(String date) {
         Resources res = context.getResources();
         SharedPreferences sharedPref = context.getSharedPreferences(res.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
@@ -175,13 +175,20 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     @Override
     public List<Apod> getFavoritesApodLessThanDate(String date) {
-        if(date != null){
-       return apodDao.getFavoritesApodLessThanDate(date);} else{
-            return apodDao.getFavoritesApod();
+        if (date != null) {
+            return apodDao.getFavoritesApodLessThanDate(date);
         }
+        return apodDao.getFavoritesApod();
+
     }
 
-
+    @Override
+    public List<Apod> getAllApodLessThanDate(String date) {
+        if (date != null){
+            return apodDao.getAllApodsLessThanDate(date);
+        }
+        return apodDao.getAllApods();
+    }
 
 
     @Override
@@ -193,10 +200,6 @@ public class AstroRepositoryImpl implements AstroRepository {
     public LiveData<List<Apod>> getAllFavApodOrderDescLessThanDate(String date) {
         return apodDao.getAllFavApodOrderDescLessThanDate(date);
     }
-
-
-
-
 
 
     public void initializeRepository() {
