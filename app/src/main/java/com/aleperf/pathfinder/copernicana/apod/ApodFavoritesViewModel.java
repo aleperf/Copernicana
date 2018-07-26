@@ -1,12 +1,8 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
-import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.model.Apod;
@@ -19,48 +15,42 @@ import javax.inject.Inject;
 public class ApodFavoritesViewModel extends ViewModel {
 
     private final static int MAX_APOD_LOADED_PER_TIME = 30;
-    private AstroRepository astroRepository;
-    private MutableLiveData<List<Apod>> favoritesApod;
-    private String lastDate;
-    private List<Apod> favoriteApodList;
+    private ApodHelper apodHelper;
 
 
     @Inject
     public ApodFavoritesViewModel(AstroRepository astroRepository) {
-        this.astroRepository = astroRepository;
-        favoritesApod = new MutableLiveData<>();
-        favoriteApodList = new ArrayList<>();
+        apodHelper = new ApodHelper(new MutableLiveData<List<Apod>>(), new ArrayList<Apod>(), astroRepository);
         loadFavoritesApod();
     }
 
 
     public MutableLiveData<List<Apod>> getFavoritesApod() {
-        return favoritesApod;
+        return apodHelper.getApodLoaded();
     }
 
 
 
     public void loadFavoritesApod() {
-        new FavoritesLoaderAsyncTask().execute(lastDate);
+        new FavoritesLoaderAsyncTask().execute(apodHelper);
     }
 
 
-    private class FavoritesLoaderAsyncTask extends AsyncTask<String, Void, List<Apod>> {
-        private String asyncDate;
+    private static class FavoritesLoaderAsyncTask extends AsyncTask<ApodHelper, Void, List<Apod>> {
+
+        ApodHelper helper;
 
         @Override
-        protected List<Apod> doInBackground(String... strings) {
-            asyncDate = strings[0];
-            return astroRepository.getFavoritesApodLessThanDate(asyncDate);
+        protected List<Apod> doInBackground(ApodHelper... apodHelpers) { this.helper = apodHelpers[0];
+           String asyncDate = helper.getDate();
+           return helper.getAstroRepository().getFavoritesApodLessThanDate(asyncDate);
+
         }
 
         @Override
         protected void onPostExecute(List<Apod> apodList) {
             if (apodList != null && apodList.size() > 0) {
-                String date = apodList.get(apodList.size() - 1).getDate();
-                lastDate = date;
-                favoriteApodList.addAll(apodList);
-                favoritesApod.setValue(favoriteApodList);
+               helper.updateApodHelper(apodList);
             }
         }
 
@@ -75,7 +65,7 @@ public class ApodFavoritesViewModel extends ViewModel {
 
     public boolean isMultipleOfMaxApodLoadedPerTime(){
 
-        return ((favoriteApodList.size() % MAX_APOD_LOADED_PER_TIME) == 0);
+        return ((apodHelper.getApodListSize() % MAX_APOD_LOADED_PER_TIME) == 0);
     }
 
 

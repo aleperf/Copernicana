@@ -1,4 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
-public class ApodDisplayAllFragment {
+import android.support.v4.app.Fragment;
+
+public class ApodDisplayAllFragment extends Fragment {
 }
