@@ -35,6 +35,7 @@ public interface ApodDao {
 
     @Query("SELECT * FROM apod ORDER BY date DESC LIMIT 30")
     List<Apod>getAllApods();
+
     @Query("SELECT * FROM apod WHERE date < :date ORDER BY date DESC LIMIT 30")
     List<Apod> getAllApodsLessThanDate(String date);
 

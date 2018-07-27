@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
@@ -23,6 +24,7 @@ import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import java.util.List;
 
 import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -41,13 +43,15 @@ public class SummaryFragment extends Fragment {
     private LinearLayoutManager layoutManager;
 
 
-    interface SectionSelector{
+    interface SectionSelector {
 
         void selectSection(int position);
     }
 
-    //empty constructor
-    public SummaryFragment(){}
+    //default empty constructor
+    public SummaryFragment() {
+
+    }
 
 
     @Override

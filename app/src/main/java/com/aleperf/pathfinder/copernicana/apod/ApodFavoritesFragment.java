@@ -40,6 +40,9 @@ public class ApodFavoritesFragment extends Fragment {
     MutableLiveData<List<Apod>> allFavoritesApods;
 
 
+    public ApodFavoritesFragment(){
+        //default empty constructor
+    }
 
 
     @Override

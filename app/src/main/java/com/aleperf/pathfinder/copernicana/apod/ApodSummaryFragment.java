@@ -40,6 +40,11 @@ public class ApodSummaryFragment extends Fragment {
     private ApodSummaryAdapter adapter;
 
 
+    public ApodSummaryFragment(){
+        //default empty constructor
+    }
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

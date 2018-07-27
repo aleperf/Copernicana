@@ -101,6 +101,10 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
 
     private Unbinder unbinder;
 
+    public ApodSearchFragment(){
+        //default empty constructor
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -402,7 +406,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
                 String message;
                 if (!isAdded) {
                     isAdded = true;
-                    apodSearchViewModel.removeApodFromDatabase(lastApodSearched.getDate());
+                    apodSearchViewModel.addApodToTheDatabase(lastApodSearched);
                     apodAddRemoveIcon.setImageResource(R.drawable.trash_delete);
                     message = getString(R.string.search_snack_bar_image_added);
 
