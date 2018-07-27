@@ -72,4 +72,7 @@
     <!--APOD FAVORITES STRINGS -->
     <string name="apod_favorites_toolbar_title">Favorites Astronomic Pictures</string>
 
+    <!-- APOD DISPLAY ALL STRINGS -->
+    <string name="apod_display_all_title">All Astronomic Pictures</string>
+
 </resources>

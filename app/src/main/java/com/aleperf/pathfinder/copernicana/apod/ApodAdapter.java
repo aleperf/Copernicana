@@ -1,6 +1,8 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,12 +24,18 @@ import butterknife.ButterKnife;
 
 public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder> {
 
+
     Context context;
     List<Apod> apods;
+    String caller;
 
+    public interface ApodDetailLauncher{
+        void showApodDetail(Apod apod);
+    }
 
     public ApodAdapter(Context context){
         this.context = context;
+
         }
 
 
@@ -128,8 +136,13 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(context, "clicked position " + getAdapterPosition(),
-                    Toast.LENGTH_SHORT).show();
+            if(context instanceof ApodDetailLauncher) {
+                ApodDetailLauncher launcher =  (ApodDetailLauncher) context;
+                Apod apod = apods.get(getAdapterPosition());
+                launcher.showApodDetail(apod);
+            }
+
+
         }
     }
 }

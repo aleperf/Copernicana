@@ -24,10 +24,12 @@
         </activity>
         <activity
             android:name=".apod.ApodActivity"
-            android:parentActivityName=".intro.MainActivity" />
+            android:parentActivityName=".intro.MainActivity"
+            android:launchMode="singleTop"/>
         <activity
             android:name=".apod.ApodDetailActivity"
-            android:parentActivityName=".apod.ApodActivity" />
+            android:parentActivityName=".apod.ApodActivity"
+            android:launchMode="singleTop"/>
         <activity android:name=".epic.EpicActivity" />
         <activity android:name=".mars.MarsActivity" />
         <activity
@@ -35,8 +37,13 @@
             android:parentActivityName=".apod.ApodActivity" />
         <activity
             android:name=".apod.ApodFavoritesActivity"
-            android:parentActivityName=".apod.ApodActivity" />
-        <activity android:name=".apod.ApodDisplayAllActivity"></activity>
+            android:parentActivityName=".apod.ApodActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".apod.ApodDisplayAllActivity"
+            android:parentActivityName=".apod.ApodActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".apod.ApodDetailFavActivity"
+            android:parentActivityName=".apod.ApodFavoritesActivity"/>
     </application>
 
 </manifest>

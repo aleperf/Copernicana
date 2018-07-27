@@ -21,6 +21,6 @@ public class ApodDisplayAllActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(getString(R.string.apod_favorites_toolbar_title));
+        getSupportActionBar().setTitle(getString(R.string.apod_display_all_title));
     }
 }
