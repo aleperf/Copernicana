@@ -88,12 +88,18 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
+    public Integer countApodEntries(){
+        return apodDao.countApodEntries();
+    }
+
+    @Override
     public Apod getSingleApodWithDate(String date){
         return apodDao.getSingleApodWithDate(date);
     }
 
     @Override
     public void insertApod(Apod apod) {
+        Log.d("uffa", "sono in insert Apod");
         if (apod == null) {
             return;
         }
@@ -133,6 +139,7 @@ public class AstroRepositoryImpl implements AstroRepository {
             public void onResponse(Call<Apod> call, Response<Apod> response) {
                 Apod apod = response.body();
                 if (apod != null) {
+                    Log.d("uffa", "apod non è null e il titolo è " + apod.getTitle()) ;
                     insertApod(apod);
                     updateSharedPreferences(apod.getDate());
                 }
@@ -141,6 +148,7 @@ public class AstroRepositoryImpl implements AstroRepository {
             @Override
             public void onFailure(Call<Apod> call, Throwable t) {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Log.d("uffa", "Failure on in loading data " + t.getMessage());
             }
         });
     }

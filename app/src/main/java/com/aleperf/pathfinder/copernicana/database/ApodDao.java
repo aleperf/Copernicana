@@ -58,6 +58,10 @@ public interface ApodDao {
     @Query("SELECT COUNT(*) FROM apod")
     LiveData<Integer> getApodCount();
 
+    @Query("SELECT COUNT(*) FROM apod")
+    Integer  countApodEntries();
+
+
     @Insert(onConflict = IGNORE)
     void insertApod(Apod apod);
 

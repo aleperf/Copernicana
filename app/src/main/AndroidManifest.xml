@@ -15,17 +15,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".intro.MainActivity">
+        <activity android:name=".intro.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".intro.IntroActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity
             android:name=".apod.ApodActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".intro.MainActivity" />
+            android:parentActivityName=".intro.IntroActivity" />
         <activity
             android:name=".apod.ApodDetailActivity"
             android:launchMode="singleTop"
@@ -49,6 +53,7 @@
         <activity
             android:name=".apod.ApodDetailAllActivity"
             android:parentActivityName=".apod.ApodDisplayAllActivity" />
+
     </application>
 
 </manifest>
