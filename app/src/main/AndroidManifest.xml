@@ -24,12 +24,12 @@
         </activity>
         <activity
             android:name=".apod.ApodActivity"
-            android:parentActivityName=".intro.MainActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop"
+            android:parentActivityName=".intro.MainActivity" />
         <activity
             android:name=".apod.ApodDetailActivity"
-            android:parentActivityName=".apod.ApodActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop"
+            android:parentActivityName=".apod.ApodActivity" />
         <activity android:name=".epic.EpicActivity" />
         <activity android:name=".mars.MarsActivity" />
         <activity
@@ -37,13 +37,18 @@
             android:parentActivityName=".apod.ApodActivity" />
         <activity
             android:name=".apod.ApodFavoritesActivity"
-            android:parentActivityName=".apod.ApodActivity"
-            android:launchMode="singleTop"/>
-        <activity android:name=".apod.ApodDisplayAllActivity"
-            android:parentActivityName=".apod.ApodActivity"
-            android:launchMode="singleTop"/>
-        <activity android:name=".apod.ApodDetailFavActivity"
-            android:parentActivityName=".apod.ApodFavoritesActivity"/>
+            android:launchMode="singleTop"
+            android:parentActivityName=".apod.ApodActivity" />
+        <activity
+            android:name=".apod.ApodDisplayAllActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".apod.ApodActivity" />
+        <activity
+            android:name=".apod.ApodDetailFavActivity"
+            android:parentActivityName=".apod.ApodFavoritesActivity" />
+        <activity
+            android:name=".apod.ApodDetailAllActivity"
+            android:parentActivityName=".apod.ApodDisplayAllActivity" />
     </application>
 
 </manifest>

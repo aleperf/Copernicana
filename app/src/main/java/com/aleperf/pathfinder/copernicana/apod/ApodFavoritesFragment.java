@@ -1,7 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
@@ -37,7 +36,7 @@ public class ApodFavoritesFragment extends Fragment {
     @Inject
     ViewModelProvider.Factory factory;
     ApodFavoritesViewModel favoritesViewModel;
-    MutableLiveData<List<Apod>> allFavoritesApods;
+    LiveData<List<Apod>> apodFavorites;
 
 
     public ApodFavoritesFragment(){
@@ -62,20 +61,6 @@ public class ApodFavoritesFragment extends Fragment {
         GridLayoutManager layoutManager =  new GridLayoutManager(getActivity(), columnCount);
         favoritesRecyclerView.setAdapter(apodAdapter);
         favoritesRecyclerView.setLayoutManager(layoutManager);
-
-        favoritesRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (!ApodFavoritesFragment.this.favoritesRecyclerView.canScrollVertically(1)) {
-                    if(favoritesViewModel != null && favoritesViewModel.isMultipleOfMaxApodLoadedPerTime()){
-                        //lazy loading of favorites
-                       favoritesViewModel.loadFavoritesApod();
-                    }
-                }
-            }
-        });
-
         return rootView;
     }
 
@@ -83,7 +68,7 @@ public class ApodFavoritesFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         favoritesViewModel = ViewModelProviders.of(this, factory).get(ApodFavoritesViewModel.class);
-        allFavoritesApods = favoritesViewModel.getFavoritesApod();
+        apodFavorites = favoritesViewModel.getFavoritesApod();
         subscribeAllFavorites();
 
 
@@ -101,7 +86,7 @@ public class ApodFavoritesFragment extends Fragment {
 
             }
         };
-        allFavoritesApods.observe(this, allFavoritesObserver);
+        apodFavorites.observe(this, allFavoritesObserver);
     }
 
     @Override
