@@ -1,5 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProvider;
@@ -35,7 +36,7 @@ public class ApodDisplayAllFragment extends Fragment {
     @Inject
     ViewModelProvider.Factory factory;
     ApodDisplayAllViewModel displayAllViewModel;
-    MutableLiveData<List<Apod>> allApods;
+    LiveData<List<Apod>> allApods;
 
 
 
@@ -63,18 +64,7 @@ public class ApodDisplayAllFragment extends Fragment {
         GridLayoutManager layoutManager =  new GridLayoutManager(getActivity(), columnCount);
         displayAllRecyclerView.setAdapter(apodAdapter);
         displayAllRecyclerView.setLayoutManager(layoutManager);
-        displayAllRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (!ApodDisplayAllFragment.this.displayAllRecyclerView.canScrollVertically(1)) {
-                    if(displayAllViewModel != null && displayAllViewModel.isMultipleOfMaxApodLoadedPerTime()){
-                        //lazy loading of favorites
-                        displayAllViewModel.loadAllApods();
-                    }
-                }
-            }
-        });
+
         return rootView;
     }
 

@@ -34,9 +34,6 @@ import butterknife.Unbinder;
 public class ApodDetailFragment extends Fragment {
 
     private final static String TAG = ApodDetailFragment.class.getSimpleName();
-    public final static String APOD_DATE = "apodLiveData extra date";
-    private static final String APOD_TITLE = "apodLiveData extra title";
-    public final static String APOD_DEFAULT_DATE = "DEFAULT_DATE";
     private static final String APOD_EXTRA = "apod extra";
     public static int IS_FAVORITE = 1;
     public static int NOT_FAVORITE = 0;

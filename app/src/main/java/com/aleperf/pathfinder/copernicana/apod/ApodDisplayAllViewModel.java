@@ -1,5 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.os.AsyncTask;
@@ -14,47 +15,23 @@ import javax.inject.Inject;
 
 public class ApodDisplayAllViewModel extends ViewModel {
 
-    private final static int MAX_APOD_LOADED_PER_TIME = 30;
-    private ApodHelper apodHelper;
+    private AstroRepository astroRepository;
+    private LiveData<List<Apod>> latestApods;
 
 
     @Inject
     public ApodDisplayAllViewModel(AstroRepository astroRepository) {
-        apodHelper = new ApodHelper(new MutableLiveData<List<Apod>>(), new ArrayList<Apod>(), astroRepository);
+        this.astroRepository = astroRepository;
         loadAllApods();
     }
 
 
-    public MutableLiveData<List<Apod>> getAllApods(){
-        return apodHelper.getApodLoaded();
+    public LiveData<List<Apod>> getAllApods() {
+
+        return latestApods;
     }
 
-    public void loadAllApods(){
-        new AllApodsLoaderAsyncTask().execute(apodHelper);
+    public void loadAllApods() {
+        latestApods = astroRepository.getAllApodOrderDesc();
     }
-
-    public boolean isMultipleOfMaxApodLoadedPerTime() {
-
-        return ((apodHelper.getApodListSize() % MAX_APOD_LOADED_PER_TIME) == 0);
-    }
-
-    private static class AllApodsLoaderAsyncTask extends AsyncTask<ApodHelper, Void, List<Apod>>{
-
-        ApodHelper helper;
-
-        @Override
-        protected List<Apod> doInBackground(ApodHelper... apodHelpers) {
-            helper = apodHelpers[0];
-            return helper.getAstroRepository().getAllApodLessThanDate(helper.getDate());
-        }
-
-        @Override
-        protected void onPostExecute(List<Apod> apodList) {
-            if(apodList != null && apodList.size() > 0){
-                helper.updateApodHelper(apodList);
-            }
-        }
-    }
-
-
 }
