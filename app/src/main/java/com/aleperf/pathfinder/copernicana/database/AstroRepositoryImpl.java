@@ -88,6 +88,11 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
+    public Apod getSingleApodWithDate(String date){
+        return apodDao.getSingleApodWithDate(date);
+    }
+
+    @Override
     public void insertApod(Apod apod) {
         if (apod == null) {
             return;

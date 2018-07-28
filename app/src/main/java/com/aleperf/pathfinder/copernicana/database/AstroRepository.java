@@ -19,6 +19,7 @@ public interface AstroRepository {
     LiveData<List<Apod>> getAllApodOrderDesc();
     LiveData<Apod> getLastApod();
     LiveData<Apod> getApodWithDate(String date);
+    Apod getSingleApodWithDate(String date);
     LiveData<Apod> getPreviousApod(String date);
     LiveData<Apod> getNextApod(String date);
     LiveData<Integer> getApodCount();

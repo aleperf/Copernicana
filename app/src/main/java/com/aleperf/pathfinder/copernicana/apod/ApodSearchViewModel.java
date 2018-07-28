@@ -3,6 +3,8 @@ package com.aleperf.pathfinder.copernicana.apod;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.model.Apod;
@@ -14,6 +16,7 @@ public class ApodSearchViewModel extends ViewModel {
 
     private AstroRepository astroRepository;
     private MutableLiveData<Apod> apodSearched;
+    private boolean isInDatabase;
 
 
     @Inject
@@ -27,7 +30,7 @@ public class ApodSearchViewModel extends ViewModel {
     }
 
     public void searchApodForDate(String date) {
-        astroRepository.searchApodForDate(date, apodSearched);
+       new DatabaseSearcherAsyncTask().execute(date);
     }
 
     public void updateApodInDatabase(int isFavorite, String date){
@@ -48,5 +51,28 @@ public class ApodSearchViewModel extends ViewModel {
         astroRepository.deleteApodWithDate(date);
     }
 
+    private class DatabaseSearcherAsyncTask extends AsyncTask<String, Void, Apod>{
 
+        private String date;
+
+        @Override
+        protected Apod doInBackground(String... strings) {
+            date = strings[0];
+            return astroRepository.getSingleApodWithDate(date);
+        }
+        @Override
+        protected void onPostExecute(Apod apod) {
+           if(apod != null){
+               isInDatabase = true;
+               apodSearched.setValue(apod);
+           } else {
+               isInDatabase = false;
+               astroRepository.searchApodForDate(date, apodSearched);
+           }
+        }
+    }
+
+    public boolean isInDatabase() {
+        return isInDatabase;
+    }
 }

@@ -92,6 +92,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     private boolean apodFound = false;
     private boolean isAdded = false;
     private MutableLiveData<Apod> searchApodMutableLiveData;
+
     @Inject
     ViewModelProvider.Factory factory;
     @Inject
@@ -216,6 +217,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
                         apodFound = true;
                         lastApodSearched = apod;
                         apodDetailContent.setVisibility(View.VISIBLE);
+                        isAdded = apodSearchViewModel.isInDatabase();
                         fillApodFields(apod);
                     } else {
                         apodDetailContent.setVisibility(View.GONE);
