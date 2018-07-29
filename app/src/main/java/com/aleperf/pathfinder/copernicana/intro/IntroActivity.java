@@ -17,6 +17,7 @@ import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
+import com.aleperf.pathfinder.copernicana.iss.IssActivity;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,8 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
             Intent intent = new Intent(this, MarsActivity.class);
             startActivity(intent);
         } else {
-            Toast.makeText(this, "clicked section at position " + position, Toast.LENGTH_SHORT).show();
+           Intent intent = new Intent(this, IssActivity.class);
+           startActivity(intent);
         }
     }
 

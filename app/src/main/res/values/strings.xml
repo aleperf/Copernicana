@@ -46,7 +46,7 @@
     <string name="apod_detail_date">Astronomy Picture of %s</string>
     <string name="section_search">Search</string>
     <string name="section_fav">Favorites Pictures</string>
-    <string name="section_all_pics">Last Pictures</string>
+    <string name="section_all_pics">Latest Pictures</string>
     <string name="apod_no_date">unknown date</string>
     <string name="apod_add_to_favorite">Image added to Favorites</string>
     <string name="apod_remove_from_favorite">Image removed from Favorites</string>
@@ -78,5 +78,17 @@
 
     <!-- APOD DISPLAY ALL STRINGS -->
     <string name="apod_display_all_title">Last Astronomic Pictures</string>
+
+    <!-- EPIC SUMMARY -->
+    <string name="epic_natural_label">Natural Images</string>
+    <string name="epic_enhanced_images">Enhanced Images</string>
+    <string name="epic_search_label">Search</string>
+
+    <!-- ISS SUMMARY  -->
+    <string name="iss_position_label">ISS Position</string>
+    <string name="iss_passage_label">Next ISS Passages</string>
+    <string name="iss_astronauts_label">Astronauts In Space</string>
+
+
 
 </resources>

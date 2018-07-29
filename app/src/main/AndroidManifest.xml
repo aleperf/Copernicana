@@ -52,7 +52,9 @@
         <activity
             android:name=".apod.ApodDetailAllActivity"
             android:parentActivityName=".apod.ApodDisplayAllActivity" />
-        <activity android:name=".iss.IssActivity"></activity>
+        <activity android:name=".iss.IssActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".intro.IntroActivity"/>
     </application>
 
 </manifest>

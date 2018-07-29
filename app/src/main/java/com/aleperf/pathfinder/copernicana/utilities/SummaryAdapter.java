@@ -25,11 +25,16 @@ public class SummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private final static int HEADER_VIEW_TYPE = 0;
     private final static  int SECTION_VIEW_TYPE = 1;
 
+    public interface SectionSelector{
+        void selectSection(int position);
+    }
+
 
     public SummaryAdapter(Context context, int[] images, String[] titles, int sections){
         this.context = context;
         this.images = images;
         this.sections = sections;
+        this.titles = titles;
     }
 
     @NonNull

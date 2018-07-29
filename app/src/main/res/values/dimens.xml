@@ -53,7 +53,7 @@
 
 
     <!-- SUMMARY DIMENSIONS -->
-    <dimen name="sumary_header_margin_top">32dp</dimen>
+    <dimen name="sumary_header_margin_top">24dp</dimen>
     <dimen name="summary_header_width">250dp</dimen>
     <dimen name="summary_header_height">293dp</dimen>
 

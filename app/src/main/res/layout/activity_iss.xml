@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/iss_summary_fragment"
         android:name="com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
