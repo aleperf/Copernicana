@@ -12,16 +12,16 @@
 
 
     <ImageView
-        android:id="@+id/apod_section_image"
+        android:id="@+id/section_image"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/apod_section_title"
-        app:layout_constraintEnd_toStartOf="@+id/apod_section_title"
+        app:layout_constraintBottom_toBottomOf="@+id/section_title"
+        app:layout_constraintEnd_toStartOf="@+id/section_title"
         app:srcCompat="@drawable/picture_card_ico" />
 
     <TextView
-        android:id="@+id/apod_section_title"
+        android:id="@+id/section_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

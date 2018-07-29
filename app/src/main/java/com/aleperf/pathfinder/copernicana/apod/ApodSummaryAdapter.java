@@ -55,7 +55,7 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 view = inflater.inflate(R.layout.apod_detail_card, parent, false);
                 return new ApodCardHolder(view);
             default:
-                view = inflater.inflate(R.layout.apod_summary_item, parent, false);
+                view = inflater.inflate(R.layout.summary_item, parent, false);
                 return new SectionHolder(view);
 
 
@@ -157,9 +157,9 @@ public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 
     public class SectionHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        @BindView(R.id.apod_section_image)
+        @BindView(R.id.section_image)
         ImageView sectionImage;
-        @BindView(R.id.apod_section_title)
+        @BindView(R.id.section_title)
         TextView sectionTitle;
 
 

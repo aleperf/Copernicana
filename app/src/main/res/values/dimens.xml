@@ -51,4 +51,10 @@
     <dimen name="search_selected_date_label">16sp</dimen>
     <dimen name="search_selected_date_text">16sp</dimen>
 
+
+    <!-- SUMMARY DIMENSIONS -->
+    <dimen name="sumary_header_margin_top">32dp</dimen>
+    <dimen name="summary_header_width">250dp</dimen>
+    <dimen name="summary_header_height">293dp</dimen>
+
 </resources>
