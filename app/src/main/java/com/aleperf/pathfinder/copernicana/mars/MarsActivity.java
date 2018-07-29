@@ -28,8 +28,7 @@ public class MarsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mars);
-        ((CopernicanaApplication) this.getApplication())
-                .getCopernicanaApplicationComponent().inject(this);
+
 
         loadMarsPhotos();
     }

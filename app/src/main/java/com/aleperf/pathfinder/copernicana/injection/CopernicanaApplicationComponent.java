@@ -26,7 +26,6 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodFavoritesFragment apodFavoritesFragment);
     void inject(ApodDisplayAllFragment apodDisplayAllFragment);
     void inject(IntroActivity mainActivity);
-    void inject(EpicActivity epicActivity);
     void inject(MarsActivity marsActivity);
 
 

@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".intro.IntroActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop"/>
         <activity
             android:name=".apod.ApodActivity"
             android:launchMode="singleTop"
@@ -32,8 +32,10 @@
         <activity
             android:name=".apod.ApodDetailActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".apod.ApodActivity" />
-        <activity android:name=".epic.EpicActivity" />
+            android:parentActivityName=".intro.IntroActivity" />
+        <activity android:name=".epic.EpicActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".apod.ApodActivity"/>
         <activity android:name=".mars.MarsActivity" />
         <activity
             android:name=".apod.ApodSearchActivity"
