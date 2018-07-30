@@ -34,8 +34,12 @@ public class IssActivity extends AppCompatActivity implements SummaryAdapter.Sec
         if (!isDualPane) {
             switch (position) {
                 case 1:
-                    Intent intent = new Intent(this, IssPositionActivity.class);
-                    startActivity(intent);
+                    Intent issPositionIntent = new Intent(this, IssPositionActivity.class);
+                    startActivity(issPositionIntent);
+                    break;
+                case 3:
+                    Intent astronautsIntent = new Intent(this, AstronautsActivity.class);
+                    startActivity(astronautsIntent);
                     break;
 
                 default:
