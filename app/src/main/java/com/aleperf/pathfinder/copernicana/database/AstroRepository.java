@@ -40,6 +40,7 @@ public interface AstroRepository {
     LiveData<Astronaut> getAstronautWithId(int id);
     void insertAllAstronauts(List<Astronaut> astronauts);
     void deleteAllAstronauts();
+    void checkIssPositionNow(MutableLiveData issPosition);
 
 
 }

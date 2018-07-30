@@ -18,9 +18,11 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,5 +93,15 @@ public class Utils {
         return normalizedField;
         }
 
+
+    public static String getLocalTimeFromUnixTimestamp(long timestamp){
+        Calendar calendar = Calendar.getInstance();
+        TimeZone timeZone = calendar.getTimeZone();
+        SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy  HH:mm:ss", Locale.ENGLISH);
+        finalFormat.setTimeZone(timeZone);
+        Date date = new Date(timestamp * 1000L);
+        return finalFormat.format(date);
+
+    }
 
 }

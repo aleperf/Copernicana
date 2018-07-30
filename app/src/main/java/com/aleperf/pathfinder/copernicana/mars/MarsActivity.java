@@ -2,7 +2,9 @@ package com.aleperf.pathfinder.copernicana.mars;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.BuildConfig;
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
@@ -10,59 +12,39 @@ import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.MarsPhoto;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.network.MarsQuery;
+import com.aleperf.pathfinder.copernicana.utilities.SummaryAdapter;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MarsActivity extends AppCompatActivity {
+public class MarsActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector{
 
-    @Inject
-    ApisService apisService;
+    @BindView(R.id.toolbar_mars)
+    Toolbar toolbar;
+    private boolean isDualPane;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mars);
-
-
-        loadMarsPhotos();
+        ButterKnife.bind(this);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(getString(R.string.mars_title));
+        isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
     }
 
-    private void loadMarsPhotos(){
-     Call<MarsQuery> marsQueryCall = apisService.getOpportunityLatestPhotos(1, BuildConfig.MY_API_KEY);
-
-     marsQueryCall.enqueue(new Callback<MarsQuery>() {
-         @Override
-         public void onResponse(Call<MarsQuery> call, Response<MarsQuery> response) {
-             List<MarsPhoto> marsPhotos = response.body().getPhotos();
-             if(marsPhotos != null){
-                 int size = marsPhotos.size();
-                 MarsPhoto firstPhoto = marsPhotos.get(0);
-                 String photoUrl = firstPhoto.getImageUrl();
-                 String date = firstPhoto.getEarthDate();
-                 int id = firstPhoto.getId();
-                 int sol = firstPhoto.getSol();
-                 String roverName = firstPhoto.getRover().getName();
-                 String roverCameraName = firstPhoto.getRoverCamera().getName();
-                 String roverCameraFullName = firstPhoto.getRoverCamera().getFullName();
-                 Log.d("uffa", "data size: "+ size + " photoUrl: " + photoUrl + " date: " + date +
-                 " id " + id + " sol: " + sol + " rover name = " + roverName +
-                 " camera name = " + roverCameraName + " rover camera full name = " + roverCameraFullName);
-
-             } else {
-                 Log.d("uffa", "mars photos is null");
-             }
-         }
-
-         @Override
-         public void onFailure(Call<MarsQuery> call, Throwable t) {
-                 Log.d("uffa", "failure in loading " + t.getMessage());
-         }
-     });
+    @Override
+    public void selectSection(int position) {
+        if(!isDualPane){
+            Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
+        }
     }
 }

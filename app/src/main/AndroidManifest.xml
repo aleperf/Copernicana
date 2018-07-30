@@ -24,7 +24,7 @@
         </activity>
         <activity
             android:name=".intro.IntroActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
         <activity
             android:name=".apod.ApodActivity"
             android:launchMode="singleTop"
@@ -33,10 +33,14 @@
             android:name=".apod.ApodDetailActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".intro.IntroActivity" />
-        <activity android:name=".epic.EpicActivity"
+        <activity
+            android:name=".epic.EpicActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".apod.ApodActivity"/>
-        <activity android:name=".mars.MarsActivity" />
+            android:parentActivityName=".apod.ApodActivity" />
+        <activity
+            android:name=".mars.MarsActivity"
+            android:launchMode="singleTop"
+            android:parentActivityName=".intro.IntroActivity" />
         <activity
             android:name=".apod.ApodSearchActivity"
             android:parentActivityName=".apod.ApodActivity" />
@@ -54,9 +58,11 @@
         <activity
             android:name=".apod.ApodDetailAllActivity"
             android:parentActivityName=".apod.ApodDisplayAllActivity" />
-        <activity android:name=".iss.IssActivity"
+        <activity
+            android:name=".iss.IssActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".intro.IntroActivity"/>
+            android:parentActivityName=".intro.IntroActivity" />
+        <activity android:name=".iss.IssPositionActivity"></activity>
     </application>
 
 </manifest>

@@ -13,7 +13,7 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_apod_detail"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="@dimen/toolbar_standard_size"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways"

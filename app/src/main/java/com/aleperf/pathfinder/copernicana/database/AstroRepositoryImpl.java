@@ -13,6 +13,7 @@ import com.aleperf.pathfinder.copernicana.BuildConfig;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
+import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -275,6 +276,24 @@ public class AstroRepositoryImpl implements AstroRepository {
             e.printStackTrace();
         }
 
+    }
+    @Override
+    public void checkIssPositionNow(MutableLiveData issPosition){
+        Call<IssPosition> issPositionCall = apisService.getLatestIssPosition();
+        issPositionCall.enqueue(new Callback<IssPosition>() {
+            @Override
+            public void onResponse(Call<IssPosition> call, Response<IssPosition> response) {
+                IssPosition position = response.body();
+                issPosition.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<IssPosition> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+                IssPosition noPosition = new IssPosition(0, null, IssPosition.NO_CONNECTION);
+                issPosition.setValue(noPosition);
+            }
+        });
     }
 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--intro dimensions -->
-    <dimen name="toolbar_intro">120dp</dimen>
+    <dimen name="toolbar_standard_size">120dp</dimen>
 
     <!-- apod intro card dimensions -->
     <dimen name="apod_card_width">300dp</dimen>

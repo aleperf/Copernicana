@@ -84,11 +84,15 @@
     <string name="epic_enhanced_images">Enhanced Images</string>
     <string name="epic_search_label">Search</string>
 
+    <!-- MARS SUMMARY -->
+    <string name="curiosity_label">Curiosity</string>
+    <string name="opportunity_label">Opportunity</string>
+    <string name="mars_search_label">Search</string>
+
     <!-- ISS SUMMARY  -->
     <string name="iss_position_label">ISS Position</string>
     <string name="iss_passage_label">Next ISS Passages</string>
     <string name="iss_astronauts_label">Astronauts In Space</string>
-
 
 
 </resources>
