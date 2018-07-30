@@ -77,7 +77,7 @@
     <string name="apod_favorites_toolbar_title">Favorites Astronomic Pictures</string>
 
     <!-- APOD DISPLAY ALL STRINGS -->
-    <string name="apod_display_all_title">Last Astronomic Pictures</string>
+    <string name="apod_display_all_title">Latest Pictures</string>
 
     <!-- EPIC SUMMARY -->
     <string name="epic_natural_label">Natural Images</string>
@@ -93,6 +93,20 @@
     <string name="iss_position_label">ISS Position</string>
     <string name="iss_passage_label">Next ISS Passages</string>
     <string name="iss_astronauts_label">Astronauts In Space</string>
+    <string name="iss_pos_image_cd">International Space Stations over Earth</string>
+
+    <!-- ISS POSITION -->
+
+    <string name="iss_position_velocity">The ISS position changes very fast in time, its velocity is close to 28,000 km/h.</string>
+    <string name="iss_position_date_check">On %s the ISS position was:</string>
+    <string name="iss_position_error">No data available. Check for a better connection and check the ISS position again</string>
+    <string name="iss_position_latitude">Latitude:</string>
+    <string name="iss_position_longitude">Longitude:</string>
+    <string name="iss_pos_no_value">No Value</string>
+    <string name="iss_position_check_button">Check ISS position Again</string>
+    <string name="iss_pos_date_tools_text">On Jun 23, 11:45:34 the ISS position was:</string>
+    <string name="iss_pos_long_tools_text">-88.2772</string>
+    <string name="iss_pos_lat_tools_text">13.2669</string>
 
 
 </resources>

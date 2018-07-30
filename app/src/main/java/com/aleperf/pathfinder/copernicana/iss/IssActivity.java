@@ -1,5 +1,6 @@
 package com.aleperf.pathfinder.copernicana.iss;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +12,7 @@ import com.aleperf.pathfinder.copernicana.utilities.SummaryAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class IssActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector{
+public class IssActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector {
 
     @BindView(R.id.toolbar_iss)
     Toolbar toolbar;
@@ -30,8 +31,16 @@ public class IssActivity extends AppCompatActivity implements SummaryAdapter.Sec
 
     @Override
     public void selectSection(int position) {
-        if(!isDualPane){
-            Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
+        if (!isDualPane) {
+            switch (position) {
+                case 1:
+                    Intent intent = new Intent(this, IssPositionActivity.class);
+                    startActivity(intent);
+                    break;
+
+                default:
+                    Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

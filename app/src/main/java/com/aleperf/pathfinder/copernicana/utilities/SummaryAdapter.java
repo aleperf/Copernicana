@@ -78,7 +78,7 @@ public class SummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return SECTION_VIEW_TYPE;
     }
 
-    public class SectionHolder extends RecyclerView.ViewHolder{
+    public class SectionHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
 
          @BindView(R.id.section_image)
          ImageView sectionImage;
@@ -88,11 +88,20 @@ public class SummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public SectionHolder(View view){
             super(view);
             ButterKnife.bind(this, view);
+            view.setOnClickListener(this);
         }
 
         public void bindSectionHolder(int imageRes, String title){
             sectionImage.setImageResource(imageRes);
             sectionTitle.setText(title);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(context instanceof SectionSelector){
+                SectionSelector sectionSelector = (SectionSelector) context;
+                sectionSelector.selectSection(getAdapterPosition());
+            }
         }
     }
 

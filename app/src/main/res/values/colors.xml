@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+
     <!--Summary RV colors -->
     <color name="apod_text_bg_transp">#961e88e5</color>
     <color name="intro_rv_font_color">#FFFFFF</color>
@@ -31,7 +32,11 @@
     <color name="search_date_color">#000000</color>
 
     <!--apod fav -->
-    <color name="apod_grid_background">#EEEEEE</color>
+    <color name="gray_background">#EEEEEE</color>
+
+    <!-- iss colors -->
+    <color name="iss_title_color">#303F9F</color>
+    <color name="iss_text_color">#000000</color>
 
 
 </resources>

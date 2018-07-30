@@ -25,6 +25,7 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
 
     @NonNull
     @Override
+    @SuppressWarnings("unchecked")
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         if (modelClass.isAssignableFrom(ApodViewModel.class)) {
             return (T) new ApodViewModel(astroRepository);
@@ -32,14 +33,13 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new IntroViewModel(astroRepository);
         } else if (modelClass.isAssignableFrom(ApodSearchViewModel.class)) {
             return (T) new ApodSearchViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(ApodFavoritesViewModel.class)){
+        } else if (modelClass.isAssignableFrom(ApodFavoritesViewModel.class)) {
             return (T) new ApodFavoritesViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(ApodDisplayAllViewModel.class)){
+        } else if (modelClass.isAssignableFrom(ApodDisplayAllViewModel.class)) {
             return (T) new ApodDisplayAllViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(IssPositionViewModel.class)){
+        } else if (modelClass.isAssignableFrom(IssPositionViewModel.class)) {
             return (T) new IssPositionViewModel(astroRepository);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }
     }

@@ -57,4 +57,18 @@
     <dimen name="summary_header_width">250dp</dimen>
     <dimen name="summary_header_height">293dp</dimen>
 
+    <!-- ISS POSITION DIMENSIONS -->
+    <dimen name="iss_pos_image_width">300dp</dimen>
+    <dimen name="iss_pos_image_height">250dp</dimen>
+    <dimen name="iss_pos_intro_text">16sp</dimen>
+    <dimen name="iss_pos_padding_side">16dp</dimen>
+    <dimen name="iss_pos_image_margin_top">8dp</dimen>
+    <dimen name="iss_pos_margin_top">16dp</dimen>
+    <dimen name="iss_pos_layout_marging_side">8dp</dimen>
+    <dimen name="iss_pos_lat_long_marg_start">24dp</dimen>
+    <dimen name="iss_pos_coord_text_size">20sp</dimen>
+    <dimen name="iss_text_margin_top">8dp</dimen>
+    <dimen name="iss_button_margin_top">32dp</dimen>
+    <dimen name="iss_pos_button_padding">24dp</dimen>
+    <dimen name="iss_pos_padding_bottom">24dp</dimen>
 </resources>

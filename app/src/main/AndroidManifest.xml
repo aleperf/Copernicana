@@ -62,7 +62,8 @@
             android:name=".iss.IssActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".intro.IntroActivity" />
-        <activity android:name=".iss.IssPositionActivity"></activity>
+        <activity android:name=".iss.IssPositionActivity"
+            android:parentActivityName=".iss.IssActivity"/>
     </application>
 
 </manifest>

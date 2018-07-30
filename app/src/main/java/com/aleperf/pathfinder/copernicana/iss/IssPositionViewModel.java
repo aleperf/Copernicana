@@ -11,14 +11,19 @@ import javax.inject.Inject;
 public class IssPositionViewModel extends ViewModel {
 
     AstroRepository astroRepository;
-    MutableLiveData<IssPosition> issPosition;
+    MutableLiveData<IssPosition> issPositionMLD;
 
     @Inject
     public IssPositionViewModel(AstroRepository astroRepository){
         this.astroRepository = astroRepository;
+        issPositionMLD = new MutableLiveData<>();
+    }
+
+    public MutableLiveData<IssPosition> getIssPositionMLD() {
+        return issPositionMLD;
     }
 
     public void checkIssPositionNow(){
-
-    }
+        astroRepository.checkIssPositionNow(issPositionMLD);
+        }
 }

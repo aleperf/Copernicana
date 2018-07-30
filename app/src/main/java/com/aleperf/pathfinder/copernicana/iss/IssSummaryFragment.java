@@ -29,6 +29,10 @@ public class IssSummaryFragment extends Fragment {
     private String[] titles;
     private final int sections = 4;
 
+    //default empty constructor
+    public IssSummaryFragment(){
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

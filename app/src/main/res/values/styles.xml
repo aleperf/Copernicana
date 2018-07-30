@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
     </style>
 
     <style name="IntroCardTextTitle" parent="AppTheme">
@@ -54,6 +53,13 @@
         <item name="android:textColor">@color/search_date_color</item>
         <item name="android:textSize">@dimen/search_selected_date_label</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ButtonCheckIss" parent="ButtonSearchStyle">
+        <item name="android:layout_marginEnd">@dimen/iss_pos_layout_marging_side</item>
+        <item name="android:layout_marginStart">@dimen/iss_pos_layout_marging_side</item>
+        <item name="android:layout_marginTop">@dimen/iss_button_margin_top</item>
+       <item name="android:padding">@dimen/iss_pos_button_padding</item>
     </style>
 
 
