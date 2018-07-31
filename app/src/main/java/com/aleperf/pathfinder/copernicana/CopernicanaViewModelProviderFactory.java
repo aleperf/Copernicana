@@ -10,6 +10,7 @@ import com.aleperf.pathfinder.copernicana.apod.ApodSearchViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodViewModel;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.intro.IntroViewModel;
+import com.aleperf.pathfinder.copernicana.iss.AstronautsViewModel;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionViewModel;
 
 import javax.inject.Inject;
@@ -39,7 +40,10 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new ApodDisplayAllViewModel(astroRepository);
         } else if (modelClass.isAssignableFrom(IssPositionViewModel.class)) {
             return (T) new IssPositionViewModel(astroRepository);
-        } else {
+        } else if(modelClass.isAssignableFrom(AstronautsViewModel.class)){
+            return (T) new AstronautsViewModel(astroRepository);
+        }
+        else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }
     }

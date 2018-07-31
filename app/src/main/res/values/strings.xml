@@ -108,5 +108,11 @@
     <string name="iss_pos_long_tools_text">-88.2772</string>
     <string name="iss_pos_lat_tools_text">13.2669</string>
 
+    <!-- ASTRONAUTS IN SPACE -->
+    <string name="astronauts_name_label">Name:</string>
+    <string name="astronauts_craft_label">Craft:</string>
+    <string name="astronauts_tool_name">Serena Auñón-Chancellor</string>
+    <string name="astronauts_tool_craft">ISS</string>
+
 
 </resources>

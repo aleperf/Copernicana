@@ -16,9 +16,17 @@ import android.widget.Toast;
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
+import com.aleperf.pathfinder.copernicana.database.UpdateService;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.iss.IssActivity;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
+import com.firebase.jobdispatcher.Constraint;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,6 +46,11 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
     Toolbar toolbar;
     @Inject
     ViewModelProvider.Factory factory;
+    private final static String UPDATE_SERVICE_JOB_TAG = "com.aleperf.pathfinder.copernicana.UPDATE_SERVICE";
+    private final static int TWELVE_HOURS = 43200;
+    private final static int TWELVE_HOURS_AND_A_MINUTE = 43260;
+    private final static int ONE_MINUTE = 60;
+    private final static int ONE_MINUTE_AND_HALF = 90;
 
 
 
@@ -48,10 +61,26 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
         ((CopernicanaApplication) this.getApplication()).getCopernicanaApplicationComponent().inject(this);
-        ViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
+        IntroViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
+        viewModel.initializeRepository();
+        scheduleUpdateJob();
 
     }
 
+    private void scheduleUpdateJob(){
+        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this.getApplicationContext()));
+        Job updateJob = dispatcher.newJobBuilder()
+                .setService(UpdateService.class)
+                .setTag(UPDATE_SERVICE_JOB_TAG)
+                .setRecurring(true)
+                .setLifetime(Lifetime.FOREVER)
+                .setTrigger(Trigger.executionWindow(TWELVE_HOURS, TWELVE_HOURS_AND_A_MINUTE))
+                .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
+                .setReplaceCurrent(false)
+                .setConstraints( Constraint.ON_UNMETERED_NETWORK)
+                .build();
+        dispatcher.mustSchedule(updateJob);
+    }
 
     @Override
     public void selectSection(int position) {

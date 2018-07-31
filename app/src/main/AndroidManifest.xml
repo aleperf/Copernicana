@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
         android:name=".CopernicanaApplication"
@@ -62,8 +63,20 @@
             android:name=".iss.IssActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".intro.IntroActivity" />
-        <activity android:name=".iss.IssPositionActivity"
-            android:parentActivityName=".iss.IssActivity"/>
+        <activity
+            android:name=".iss.IssPositionActivity"
+            android:parentActivityName=".iss.IssActivity" />
+        <activity
+            android:name=".iss.AstronautsActivity"
+            android:parentActivityName=".iss.IssActivity" />
+        <activity android:name=".iss.AstronautDetailActivity"/>
+        <service
+            android:exported="false"
+            android:name=".database.UpdateService">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

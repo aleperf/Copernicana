@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
+import com.aleperf.pathfinder.copernicana.model.IssPosition;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface AstroRepository {
 
     final String FAILED_CONNECTION = "failed connection in AstroRepository 123";
 
-    void initializeRepository();
+    void updateRepository();
 
     //APOD (a.k.a Astronomic Picture of the Day) CRUD
     LiveData<List<Apod>> getAllApodOrderDesc();
@@ -40,7 +41,7 @@ public interface AstroRepository {
     LiveData<Astronaut> getAstronautWithId(int id);
     void insertAllAstronauts(List<Astronaut> astronauts);
     void deleteAllAstronauts();
-    void checkIssPositionNow(MutableLiveData issPosition);
+    void checkIssPositionNow(MutableLiveData<IssPosition> issPosition);
 
 
 }

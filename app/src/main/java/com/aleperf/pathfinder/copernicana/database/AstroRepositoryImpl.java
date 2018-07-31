@@ -140,7 +140,6 @@ public class AstroRepositoryImpl implements AstroRepository {
             public void onResponse(Call<Apod> call, Response<Apod> response) {
                 Apod apod = response.body();
                 if (apod != null) {
-                    Log.d("uffa", "apod non è null e il titolo è " + apod.getTitle()) ;
                     insertApod(apod);
                     updateSharedPreferences(apod.getDate());
                 }
@@ -149,7 +148,7 @@ public class AstroRepositoryImpl implements AstroRepository {
             @Override
             public void onFailure(Call<Apod> call, Throwable t) {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
-                Log.d("uffa", "Failure on in loading data " + t.getMessage());
+
             }
         });
     }
@@ -216,7 +215,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
 
-    public void initializeRepository() {
+    public void updateRepository() {
         //temporary solution
         loadApod(null);
         loadAllAstronauts();
@@ -278,12 +277,13 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     }
     @Override
-    public void checkIssPositionNow(MutableLiveData issPosition){
+    public void checkIssPositionNow(MutableLiveData<IssPosition> issPosition){
         Call<IssPosition> issPositionCall = apisService.getLatestIssPosition();
         issPositionCall.enqueue(new Callback<IssPosition>() {
             @Override
             public void onResponse(Call<IssPosition> call, Response<IssPosition> response) {
                 IssPosition position = response.body();
+
                 issPosition.setValue(response.body());
             }
 
