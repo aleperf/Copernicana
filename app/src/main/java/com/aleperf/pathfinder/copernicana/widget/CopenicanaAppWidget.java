@@ -1,21 +1,30 @@
 package com.aleperf.pathfinder.copernicana.widget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.text.Layout;
 import android.widget.RemoteViews;
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
+import com.aleperf.pathfinder.copernicana.apod.ApodDetailActivity;
+import com.aleperf.pathfinder.copernicana.apod.ApodDetailAllActivity;
+import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
+import com.aleperf.pathfinder.copernicana.intro.SignInActivity;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.AppWidgetTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.google.android.gms.flags.Flag;
 
 /**
  * Implementation of App Widget functionality.
@@ -56,7 +65,10 @@ public class CopenicanaAppWidget extends AppWidgetProvider {
             views.setImageViewResource(R.id.apod_image_widget, R.drawable.nasa_43566_unsplash);
         }
 
-
+        Intent intent = new Intent(context, ApodActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        views.setOnClickPendingIntent(R.id.copernicana_widget_ll, pendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

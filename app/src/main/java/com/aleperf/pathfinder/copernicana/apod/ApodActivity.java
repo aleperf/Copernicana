@@ -7,16 +7,19 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 
 import butterknife.BindView;
@@ -27,8 +30,6 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
     @BindView(R.id.toolbar_apod)
     Toolbar toolbar;
     private boolean isDualPane;
-    private static final String APOD_EXTRA_DATE = "apod extra date";
-    private static final String APOD_EXTRA_TITLE = "apod extra title";
     private static final String APOD_EXTRA = "apod extra";
 
     @Override
@@ -40,7 +41,8 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.apod_card_rv_title));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
-    }
+
+        }
 
 
     @Override
@@ -71,5 +73,34 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
             startActivity(intent);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+       navigateToParent();
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            navigateToParent();
+        }
+        return true;
+    }
+
+
+
+
+    private void navigateToParent() {
+        Intent navigateUpToParentIntent = new Intent(this, IntroActivity.class);
+        navigateUpToParentIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        if (getParent() != null) {
+            NavUtils.navigateUpTo(this, navigateUpToParentIntent);
+        } else {
+            startActivity(navigateUpToParentIntent);
+        }
+        finish();
     }
 }

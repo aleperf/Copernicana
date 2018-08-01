@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
@@ -41,7 +42,6 @@ import butterknife.ButterKnife;
 
 public class IntroActivity extends AppCompatActivity implements SummaryFragment.SectionSelector {
 
-
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
     @Inject
@@ -63,6 +63,8 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         IntroViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
         viewModel.initializeRepository();
         scheduleUpdateJob();
+
+
 
     }
 
