@@ -440,7 +440,6 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
         String defaultValue = getString(R.string.preference_latest_apod_default_value);
         String key = getString(R.string.preference_latest_apod_date_key);
         String latestApod = sharedPref.getString(key, defaultValue);
-        Log.d("uffa", "latest apod è: " + latestApod);
         if(date.equals(latestApod)){
             return true;
         }

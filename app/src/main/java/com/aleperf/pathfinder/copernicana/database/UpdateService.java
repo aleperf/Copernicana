@@ -25,6 +25,7 @@ public class UpdateService extends JobService {
     @Override
     public boolean onStartJob(com.firebase.jobdispatcher.JobParameters job) {
         astroRepository.updateRepository();
+        Log.d("uffa", "sto facendo partire il service di update");
         return false;
     }
 

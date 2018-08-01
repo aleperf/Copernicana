@@ -10,6 +10,7 @@ import com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
+import com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment;
@@ -32,6 +33,7 @@ public interface CopernicanaApplicationComponent {
     void inject(MarsActivity marsActivity);
     void inject(IssPositionFragment issPositionFragment);
     void inject(AstronautsFragment astronautsFragment);
+    void inject(AstronautDetailFragment astronautDetailFragment);
     void inject (UpdateService updateService);
 
     Application application();

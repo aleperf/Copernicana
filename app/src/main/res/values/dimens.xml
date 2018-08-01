@@ -26,7 +26,6 @@
     <dimen name="generic_card_margin_bottom">4dp</dimen>
 
 
-
     <!-- generic intro card dimension -->
     <dimen name="intro_card_corner_radius">4dp</dimen>
 
@@ -71,4 +70,10 @@
     <dimen name="iss_button_margin_top">32dp</dimen>
     <dimen name="iss_pos_button_padding">24dp</dimen>
     <dimen name="iss_pos_padding_bottom">24dp</dimen>
+
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+    <dimen name="widget_margin">8dp</dimen>
 </resources>

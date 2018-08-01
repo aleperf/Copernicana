@@ -9,6 +9,12 @@
     <string name="preference_file_key">com.aleperf.pathfinder.copernicana.PREFERENCE_FILE_KEY</string>
     <string name="preference_latest_apod_date_key">latest apod date</string>
     <string name="preference_latest_apod_default_value">default date</string>
+    <string name="preference_latest_apod_title_key">latest apod title</string>
+    <string name="preference_latest_apod_image_key">latest apod image</string>
+    <string name="preference_latest_apod_title_default">No data available</string>
+    <string name="preference_latest_apod_image_default">image default value</string>
+    <string name="preference_lastest_apod_media_type_key">latest apod format</string>
+    <string name="preference_latest_apod_format_default">no format</string>
 
     <!-- SUMMARY INTRO STRINGS -->
     <string name="apod_card_rv_title">Astronomy Picture of the Day</string>
@@ -113,6 +119,11 @@
     <string name="astronauts_craft_label">Craft:</string>
     <string name="astronauts_tool_name">Serena Auñón-Chancellor</string>
     <string name="astronauts_tool_craft">ISS</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!--WIDGET -->
+    <string name="widget_content_description">astronomy picture of the day</string>
 
 
 </resources>

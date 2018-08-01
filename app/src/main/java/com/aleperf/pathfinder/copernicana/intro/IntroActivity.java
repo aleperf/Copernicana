@@ -68,6 +68,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
     }
 
     private void scheduleUpdateJob(){
+        Log.d("uffa", "sto schedulando il job");
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this.getApplicationContext()));
         Job updateJob = dispatcher.newJobBuilder()
                 .setService(UpdateService.class)

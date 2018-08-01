@@ -29,6 +29,6 @@ public class AstronautsActivity extends AppCompatActivity implements AstronautsA
 
     @Override
     public void selectAstronaut(int id) {
-        Toast.makeText(this, "clicked id " + id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "clicked name " + id, Toast.LENGTH_SHORT).show();
     }
 }

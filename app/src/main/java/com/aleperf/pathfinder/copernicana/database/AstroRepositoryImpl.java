@@ -5,7 +5,6 @@ import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -141,7 +140,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Apod apod = response.body();
                 if (apod != null) {
                     insertApod(apod);
-                    updateSharedPreferences(apod.getDate());
+                    updateSharedPreferences(apod);
                 }
             }
 
@@ -153,12 +152,15 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
-    private void updateSharedPreferences(String date) {
+    private void updateSharedPreferences(Apod apod) {
         Resources res = context.getResources();
         SharedPreferences sharedPref = context.getSharedPreferences(res.getString(R.string.preference_file_key),
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(res.getString(R.string.preference_latest_apod_date_key), date);
+        editor.putString(res.getString(R.string.preference_latest_apod_date_key), apod.getDate());
+        editor.putString(res.getString(R.string.preference_latest_apod_title_key), apod.getTitle());
+        editor.putString(res.getString(R.string.preference_lastest_apod_media_type_key), apod.getMediaType());
+        editor.putString(res.getString(R.string.preference_latest_apod_image_key), apod.getUrl());
         editor.apply();
     }
 
@@ -219,7 +221,7 @@ public class AstroRepositoryImpl implements AstroRepository {
         //temporary solution
         loadApod(null);
         loadAllAstronauts();
-    }
+        }
 
 
     //Astronaut section
@@ -257,8 +259,6 @@ public class AstroRepositoryImpl implements AstroRepository {
                         JsonParser parser = new JsonParser();
                         JsonObject jsonObject = (JsonObject) parser.parse(new FileReader(jsonFile));
                         if (jsonObject != null) {
-                            //dump old data before inserting new ones.
-                            deleteAllAstronauts();
                             List<Astronaut> astronauts = Utils.getAstronautsFromJson(jsonObject);
                             if (astronauts != null) {
                                 insertAllAstronauts(astronauts);
