@@ -49,8 +49,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
     private final static String UPDATE_SERVICE_JOB_TAG = "com.aleperf.pathfinder.copernicana.UPDATE_SERVICE";
     private final static int TWELVE_HOURS = 43200;
     private final static int TWELVE_HOURS_AND_A_MINUTE = 43260;
-    private final static int ONE_MINUTE = 60;
-    private final static int ONE_MINUTE_AND_HALF = 90;
+
 
 
 
@@ -68,7 +67,6 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
     }
 
     private void scheduleUpdateJob(){
-        Log.d("uffa", "sto schedulando il job");
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this.getApplicationContext()));
         Job updateJob = dispatcher.newJobBuilder()
                 .setService(UpdateService.class)

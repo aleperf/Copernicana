@@ -99,7 +99,6 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     @Override
     public void insertApod(Apod apod) {
-        Log.d("uffa", "sono in insert Apod");
         if (apod == null) {
             return;
         }
