@@ -15,20 +15,17 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 @Dao
 public interface EpicDao {
 
-    @Query("SELECT * FROM epic WHERE isNatural = 1")
+    @Query("SELECT * FROM epic")
     LiveData<List<Epic>> getAllNaturalEpic();
 
-    @Query("SELECT * FROM epic WHERE isNatural = 0")
-    LiveData<List<Epic>>getAllEnhancedEpic();
-
     @Query("SELECT * FROM epic WHERE isFavorite = 1")
-    LiveData<List<Epic>> getAllFavorites();
+    LiveData<List<Epic>> getAllEpicFavorites();
 
     @Query("SELECT * FROM epic WHERE identifier = :identifier LIMIT 1")
     LiveData<Epic> getEpicWithIdentifier(long identifier);
 
     @Insert(onConflict = IGNORE)
-    long insertAllEpic(List<Epic>epic);
+    void insertAllEpic(List<Epic>epic);
 
     @Query("DELETE FROM epic WHERE isFavorite = 0")
     void deleteAllNonFavoritesEpic();

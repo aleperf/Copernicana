@@ -11,7 +11,10 @@ import com.aleperf.pathfinder.copernicana.database.AstroDatabase;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.database.AstroRepositoryImpl;
 import com.aleperf.pathfinder.copernicana.database.AstronautDao;
+import com.aleperf.pathfinder.copernicana.database.EpicDao;
+import com.aleperf.pathfinder.copernicana.database.EpicEnhancedDao;
 import com.aleperf.pathfinder.copernicana.model.Apod;
+import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 
 import javax.inject.Inject;
@@ -32,8 +35,9 @@ public class AstroDatabaseModule {
 
     @Provides
     @CopernicanaApplicationScope
-    public AstroRepository provideAstroRepository(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService, Context context) {
-        return new AstroRepositoryImpl(apodDao,astronautDao, apisService, context);
+    public AstroRepository provideAstroRepository(ApodDao apodDao, EpicDao epicDao, EpicEnhancedDao epicEnhancedDao,
+                                                  AstronautDao astronautDao, ApisService apisService, Context context) {
+        return new AstroRepositoryImpl(apodDao, epicDao, epicEnhancedDao,astronautDao, apisService, context);
     }
 
     @Provides
@@ -41,6 +45,14 @@ public class AstroDatabaseModule {
     public ApodDao provideApodDao() {
         return astroDatabase.apodDao();
     }
+
+    @Provides
+    @CopernicanaApplicationScope
+    public EpicDao provideEpicDao(){return astroDatabase.epicDao();}
+
+    @Provides
+    @CopernicanaApplicationScope
+    public EpicEnhancedDao provideEpicEnhancedDao(){return astroDatabase.epicEnhancedDao();}
 
     @Provides
     @CopernicanaApplicationScope

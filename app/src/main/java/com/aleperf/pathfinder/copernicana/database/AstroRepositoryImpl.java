@@ -15,6 +15,8 @@ import com.aleperf.pathfinder.copernicana.BuildConfig;
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
+import com.aleperf.pathfinder.copernicana.model.Epic;
+import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
@@ -48,19 +50,24 @@ public class AstroRepositoryImpl implements AstroRepository {
 
 
     private ApodDao apodDao;
+    private EpicDao epicDao;
+    private EpicEnhancedDao epicEnhancedDao;
     private AstronautDao astronautDao;
     private ApisService apisService;
     private Context context;
 
     @Inject
-    public AstroRepositoryImpl(ApodDao apodDao, AstronautDao astronautDao, ApisService apisService, Context context) {
+    public AstroRepositoryImpl(ApodDao apodDao, EpicDao epicDao, EpicEnhancedDao epicEnhancedDao,
+                               AstronautDao astronautDao, ApisService apisService, Context context) {
         this.apodDao = apodDao;
+        this.epicDao = epicDao;
+        this.epicEnhancedDao = epicEnhancedDao;
         this.astronautDao = astronautDao;
         this.apisService = apisService;
         this.context = context;
     }
 
-    //Apod section
+    //------------------------------- APOD SECTION ---------------------------------
     @Override
     public LiveData<List<Apod>> getAllApodOrderDesc() {
         return apodDao.getAllApodOrderDesc();
@@ -76,20 +83,7 @@ public class AstroRepositoryImpl implements AstroRepository {
         return apodDao.getApodWithDate(date);
     }
 
-    @Override
-    public LiveData<Apod> getPreviousApod(String date) {
-        return apodDao.getPreviousApod(date);
-    }
 
-    @Override
-    public LiveData<Apod> getNextApod(String date) {
-        return apodDao.getNextApod(date);
-    }
-
-    @Override
-    public LiveData<Integer> getApodCount() {
-        return apodDao.getApodCount();
-    }
 
     @Override
     public Integer countApodEntries(){
@@ -194,33 +188,13 @@ public class AstroRepositoryImpl implements AstroRepository {
 
     }
 
-    @Override
-    public List<Apod> getFavoritesApodLessThanDate(String date) {
-        if (date != null) {
-            return apodDao.getFavoritesApodLessThanDate(date);
-        }
-        return apodDao.getFavoritesApod();
-
-    }
-
-    @Override
-    public List<Apod> getAllApodLessThanDate(String date) {
-        if (date != null){
-            return apodDao.getAllApodsLessThanDate(date);
-        }
-        return apodDao.getAllApods();
-    }
-
 
     @Override
     public LiveData<List<Apod>> getAllFavApodOrderDesc() {
         return apodDao.getAllFavApodOrderDesc();
     }
 
-    @Override
-    public LiveData<List<Apod>> getAllFavApodOrderDescLessThanDate(String date) {
-        return apodDao.getAllFavApodOrderDescLessThanDate(date);
-    }
+
 
 
     public void updateRepository() {
@@ -230,7 +204,84 @@ public class AstroRepositoryImpl implements AstroRepository {
         }
 
 
-    //Astronaut section
+        //-------------------------EPIC NATURAL SECTION -----------------------------------
+
+
+    @Override
+    public LiveData<List<Epic>> getAllNaturalEpic() {
+        return epicDao.getAllNaturalEpic();
+    }
+
+    @Override
+    public LiveData<List<Epic>> getAllEpicFavorites() {
+        return epicDao.getAllEpicFavorites();
+    }
+
+    @Override
+    public LiveData<Epic> getEpicWithIdentifier(long identifier) {
+        return epicDao.getEpicWithIdentifier(identifier);
+    }
+
+    @Override
+    public void insertAllEpic(List<Epic> epic) {
+        if (epic == null) {
+            return;
+        }
+        Completable.fromAction(() -> epicDao.insertAllEpic(epic))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    @Override
+    public void deleteAllNonFavoritesEpic() {
+        Completable.fromAction(() -> epicDao.deleteAllNonFavoritesEpic())
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    @Override
+    public void updateEpicFavWithIdentifier(int isFavorite, long identifier) {
+        Completable.fromAction(() -> epicDao.updateEpicFavWithIdentifier(isFavorite, identifier))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    //------------------- EPIC ENHANCED SECTION -------------------------------------------
+
+    @Override
+    public LiveData<List<EpicEnhanced>> getAllEnhancedlEpic() {
+        return epicEnhancedDao.getAllEnhancedlEpic();
+    }
+
+    @Override
+    public LiveData<List<EpicEnhanced>> getAllEnhancedFavorites() {
+        return epicEnhancedDao.getAllEnhancedFavorites();
+    }
+
+    @Override
+    public LiveData<EpicEnhanced> getEpicEnhancedWithIdentifier(long identifier) {
+        return epicEnhancedDao.getEpicEnhancedWithIdentifier(identifier);
+    }
+
+    @Override
+    public void insertAllEpicEnhanced(List<EpicEnhanced> epicEnhanced) {
+        if (epicEnhanced == null) {
+            return;
+        }
+        Completable.fromAction(() -> epicEnhancedDao.insertAllEpicEnhanced(epicEnhanced))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    @Override
+    public void deleteAllNonFavoritesEpicEnhanced() {
+        Completable.fromAction(() -> epicEnhancedDao.deleteAllNonFavoritesEpicEnhanced())
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    @Override
+    public void updateEnhancedFavWithIdentifier(int isFavorite, long identifier) {
+        Completable.fromAction(() -> epicEnhancedDao.updateEnhancedFavWithIdentifier(isFavorite, identifier))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    //--------------------- ASTRONAUTS SECTION -----------------------------------------------
     @Override
     public LiveData<List<Astronaut>> getAllAstronauts() {
         return astronautDao.getAllAstronauts();

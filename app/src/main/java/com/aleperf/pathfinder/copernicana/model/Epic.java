@@ -28,12 +28,12 @@ public class Epic {
     @SerializedName("attitude_quaternions")
     AttitudeQuaternions attitudeQuaternions;
     String date;
-    private int isNatural;
+
     private int isFavorite;
     private static final Coord3D earthPosition = new Coord3D(0, 0, 0);
 
     public Epic(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
-                Coord3D moonPosition, Coord3D sunPosition, String date, int isNatural, int isFavorite) {
+                Coord3D moonPosition, Coord3D sunPosition, AttitudeQuaternions attitudeQuaternions, String date, int isFavorite) {
 
         this.identifier = identifier;
         this.caption = caption;
@@ -42,8 +42,8 @@ public class Epic {
         this.epicPosition = epicPosition;
         this.moonPosition = moonPosition;
         this.sunPosition = sunPosition;
+        this.attitudeQuaternions = attitudeQuaternions;
         this.date = date;
-        this.isNatural = isNatural;
         this.isFavorite = isFavorite;
 
     }
@@ -84,14 +84,7 @@ public class Epic {
         return attitudeQuaternions;
     }
 
-    public int isNatural() {
-        return isNatural;
-    }
 
-
-    public void setNatural(int natural) {
-        isNatural = natural;
-    }
 
     public int isFavorite() {
         return isFavorite;
@@ -106,7 +99,7 @@ public class Epic {
      */
     public static class Coord2D {
         double lat;
-        Double lon;
+        double lon;
 
         public Coord2D(double lat, double lon) {
             this.lat = lat;
@@ -117,7 +110,7 @@ public class Epic {
             return lat;
         }
 
-        public Double getLon() {
+        public double getLon() {
             return lon;
         }
     }

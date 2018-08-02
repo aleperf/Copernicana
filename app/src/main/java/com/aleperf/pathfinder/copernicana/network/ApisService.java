@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Epic;
+import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 
 import java.util.List;
@@ -16,7 +17,6 @@ import retrofit2.http.Url;
 
 public interface ApisService {
 
-    //APOD
 
     /**
      * Query the NASA APOD API for the image of the day
@@ -38,10 +38,10 @@ public interface ApisService {
     Call<List<Epic>> getEpicNaturalForDate(@Path("date") String date, @Query("api_key") String apiKey);
 
     @GET("EPIC/api/enhanced/images")
-    Call<List<Epic>> getEpicEnhanced(@Query("api_key") String apiKey);
+    Call<List<EpicEnhanced>> getEpicEnhanced(@Query("api_key") String apiKey);
 
     @GET("EPIC/api/enhanced/date/{date}")
-    Call<List<Epic>> getEpicEnhancedForDate(@Path("date") String date, @Query("api_key") String apiKey);
+    Call<List<EpicEnhanced>> getEpicEnhancedForDate(@Path("date") String date, @Query("api_key") String apiKey);
 
     //MARS
     @GET("mars-photos/api/v1/rovers/curiosity/latest_photos")
