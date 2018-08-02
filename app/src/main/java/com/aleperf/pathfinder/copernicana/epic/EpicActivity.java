@@ -27,7 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
-        EpicAdapter.EpicElementSelector {
+        EpicElementSelector {
 
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
@@ -54,10 +54,10 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
                     Intent naturalIntent = new Intent(this, EpicNaturalActivity.class);
                     startActivity(naturalIntent);
                     break;
-                case 2:
-                    Intent enhancedIntent = new Intent(this, EpicEnhancedActivity.class);
-                    startActivity(enhancedIntent);
-                    break;
+               // case 2:
+                   // Intent enhancedIntent = new Intent(this, EpicEnhancedActivity.class);
+                    //startActivity(enhancedIntent);
+                    //break;
                 default:
                     Toast.makeText(this, "clicked element " + position, Toast.LENGTH_SHORT).show();
             }

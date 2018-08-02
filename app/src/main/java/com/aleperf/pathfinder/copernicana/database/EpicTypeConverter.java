@@ -42,7 +42,7 @@ public class EpicTypeConverter {
             return null;
         }
 
-        Type coord3DType = new TypeToken<Coord2D>() {
+        Type coord3DType = new TypeToken<Coord3D>() {
         }.getType();
 
         return gson.fromJson(jsonString, coord3DType);

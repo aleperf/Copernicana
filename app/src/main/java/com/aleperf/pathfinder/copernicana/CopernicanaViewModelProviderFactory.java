@@ -9,6 +9,8 @@ import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodSearchViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodViewModel;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
+import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedViewModel;
+import com.aleperf.pathfinder.copernicana.epic.EpicNaturalViewModel;
 import com.aleperf.pathfinder.copernicana.intro.IntroViewModel;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsViewModel;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionViewModel;
@@ -42,6 +44,10 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new IssPositionViewModel(astroRepository);
         } else if(modelClass.isAssignableFrom(AstronautsViewModel.class)){
             return (T) new AstronautsViewModel(astroRepository);
+        } else if(modelClass.isAssignableFrom(EpicNaturalViewModel.class)){
+            return (T) new EpicNaturalViewModel(astroRepository);
+        } else if(modelClass.isAssignableFrom(EpicEnhancedViewModel.class)){
+            return (T) new EpicEnhancedViewModel(astroRepository);
         }
         else {
             throw new IllegalArgumentException("ViewModel Not Found");

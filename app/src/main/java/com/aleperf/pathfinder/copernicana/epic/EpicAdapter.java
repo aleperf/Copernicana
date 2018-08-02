@@ -3,6 +3,7 @@ package com.aleperf.pathfinder.copernicana.epic;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,7 @@ import android.widget.ImageView;
 
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.EpicElement;
+import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 
 import java.util.List;
@@ -21,11 +22,8 @@ import butterknife.ButterKnife;
 public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
     private Context context;
-    private List<EpicElement> epicElements;
+    private List<Epic> naturalEpic;
 
-    public interface EpicElementSelector {
-        void selectEpic(long identifier);
-    }
 
     public EpicAdapter(Context context){
         this.context = context;
@@ -48,14 +46,14 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
     @Override
     public int getItemCount() {
-        if (epicElements != null) {
-            return epicElements.size();
+        if (naturalEpic != null) {
+            return naturalEpic.size();
         }
         return 0;
     }
 
-    public void setEpic(List<EpicElement> epics) {
-        epicElements = epics;
+    public void setEpic(List<Epic> epics) {
+        naturalEpic = epics;
         notifyDataSetChanged();
     }
 
@@ -70,11 +68,13 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
         }
 
         public void bindNaturalEpic(int position) {
-            EpicElement epic = epicElements.get(position);
+            Epic epic = naturalEpic.get(position);
             String imageUrl = Utils.buildEpicNaturalImageUrl(epic.getDate(), epic.getImage());
+            Log.d("uffa", "imageUrl: " + imageUrl);
             GlideApp.with(context).load(imageUrl)
                     .error(R.drawable.blue_marble_card)
                     .placeholder(R.drawable.blue_marble_card)
+                    .thumbnail(0.3f)
                     .into(epicImage);
         }
 
@@ -82,7 +82,7 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
         public void onClick(View v) {
             if (context instanceof EpicElementSelector) {
                 EpicElementSelector epicElementSelector = (EpicElementSelector) context;
-                epicElementSelector.selectEpic(epicElements.get(getAdapterPosition()).getIdentifier());
+                epicElementSelector.selectEpic(naturalEpic.get(getAdapterPosition()).getIdentifier());
             }
         }
     }

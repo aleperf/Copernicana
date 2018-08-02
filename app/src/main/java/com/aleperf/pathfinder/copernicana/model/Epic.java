@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  * More info about the API at https://epic.gsfc.nasa.gov/about/api
  */
 @Entity(tableName = "epic")
-public class Epic implements EpicElement {
+public class Epic {
 
     @PrimaryKey
     long identifier;

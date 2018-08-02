@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 
+import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 
 public class EpicEnhancedFragment extends Fragment {
@@ -18,6 +19,8 @@ public class EpicEnhancedFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ((CopernicanaApplication) this.getActivity().getApplication())
+                .getCopernicanaApplicationComponent().inject(this);
     }
 
     @Override
