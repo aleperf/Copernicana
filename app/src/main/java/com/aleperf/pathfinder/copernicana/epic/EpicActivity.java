@@ -24,7 +24,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector{
+public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
+        EpicAdapter.EpicElementSelector{
 
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
@@ -48,5 +49,11 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
         if(!isDualPane){
             Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
         }
+    }
+
+
+    @Override
+    public void selectEpic(long identifier) {
+        Toast.makeText(this, "clicked identifier: " + identifier, Toast.LENGTH_SHORT).show();
     }
 }

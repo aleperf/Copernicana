@@ -133,6 +133,6 @@
     <string name="empty_view_message">No favorites to display yet.</string>
     <string name="empty_view_button_text">Reload Data</string>
     <string name="empty_view_latest">No data available. Check for a better connection to display data</string>
-    <string name="astronauts_empty_message">No data to display. Check for a better connection and press the button to reload data</string>
+    <string name="reload_empty_message">No data to display. Check for a better connection and press the button to reload data</string>
 
 </resources>

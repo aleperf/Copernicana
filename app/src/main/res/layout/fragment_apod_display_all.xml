@@ -25,8 +25,6 @@
         android:src="@drawable/planet_empty"/>
 
     <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/apod_display_all_recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

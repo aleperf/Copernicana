@@ -11,7 +11,7 @@ import com.google.gson.annotations.SerializedName;
  * More info about the API at https://epic.gsfc.nasa.gov/about/api
  */
 @Entity(tableName = "epic")
-public class Epic {
+public class Epic implements EpicElement {
 
     @PrimaryKey
     long identifier;
@@ -83,8 +83,6 @@ public class Epic {
     public AttitudeQuaternions getAttitudeQuaternions() {
         return attitudeQuaternions;
     }
-
-
 
     public int isFavorite() {
         return isFavorite;
@@ -180,7 +178,7 @@ public class Epic {
         }
     }
 
-    private double getDistance(Coord3D point1, Coord3D point2) {
+    public double getDistance(Coord3D point1, Coord3D point2) {
 
         double xDiff = point1.getX() - point2.getX();
         double yDiff = point1.getY() - point2.getY();
@@ -188,15 +186,15 @@ public class Epic {
          return Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
     }
 
-    private long getDistanceEpicToEarth(){
+    public long getDistanceEpicToEarth(){
         return Math.round(getDistance(epicPosition, earthPosition));
     }
 
-    private long getDistanceEpicToSun(){
+    public long getDistanceEpicToSun(){
         return Math.round(getDistance(epicPosition, sunPosition));
     }
 
-    private long getDistanceSunToEarth(){
+    public long getDistanceSunToEarth(){
         return Math.round(getDistance(sunPosition, earthPosition));
     }
 

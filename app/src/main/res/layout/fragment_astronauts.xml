@@ -11,7 +11,7 @@
         android:visibility="gone"
         style="@style/EmptyViewTextStyle"
         android:layout_marginTop="8dp"
-        android:text="@string/astronauts_empty_message"
+        android:text="@string/reload_empty_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
@@ -26,8 +26,6 @@
         android:textColor="@color/button_text_color"
         android:layout_marginTop="@dimen/empty_button_margin_top"/>
     <android.support.v7.widget.RecyclerView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/astronauts_recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

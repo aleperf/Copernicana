@@ -7,25 +7,28 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/apod_favorites_empty_text_view"
+        android:id="@+id/astronaut_empty_text_view"
         style="@style/EmptyViewTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/empty_view_message"
+        android:layout_marginTop="8dp"
+        android:text="@string/reload_empty_message"
         android:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/apod_favorites_empty_image"
-        android:layout_width="@dimen/empty_view_image_side"
-        android:layout_height="@dimen/empty_view_image_side"
+    <Button
+        android:id="@+id/epic_enhanced_empty_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/empty_view_image_margin_top"
-        android:contentDescription="@string/no_description_decorative_image"
-        android:src="@drawable/planet_empty"
+        android:layout_marginTop="@dimen/empty_button_margin_top"
+        android:background="@color/button_color"
+        android:padding="@dimen/empty_button_padding"
+        android:text="@string/empty_view_button_text"
+        android:textColor="@color/button_text_color"
         android:visibility="gone" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/apod_favorites_recycler_view"
+        android:id="@+id/epic_enhanced_recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"

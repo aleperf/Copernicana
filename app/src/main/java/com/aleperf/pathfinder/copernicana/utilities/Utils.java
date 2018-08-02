@@ -104,4 +104,11 @@ public class Utils {
 
     }
 
+    public static String buildEpicNaturalImageUrl(String date, String image){
+        String formaString = "https://epic.gsfc.nasa.gov/archive/natural/%s/%s/%s/png/%s";
+        String startDate = date.substring(0, 10);
+        String[] dateElements = startDate.split("-");
+        return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
+    }
+
 }

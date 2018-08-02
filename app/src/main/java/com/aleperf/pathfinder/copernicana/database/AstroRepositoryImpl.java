@@ -201,6 +201,8 @@ public class AstroRepositoryImpl implements AstroRepository {
         //temporary solution
         loadApod(null);
         loadAllAstronauts();
+        loadEpicNatural();
+        loadEpicEnhanced();
         }
 
 
@@ -243,6 +245,25 @@ public class AstroRepositoryImpl implements AstroRepository {
                 .subscribeOn(Schedulers.io()).subscribe();
     }
 
+    public void loadEpicNatural(){
+        Call<List<Epic>> epicCall = apisService.getEpicNatural(BuildConfig.MY_API_KEY);
+        epicCall.enqueue(new Callback<List<Epic>>() {
+            @Override
+            public void onResponse(Call<List<Epic>> call, Response<List<Epic>> response) {
+                 List<Epic> naturalEpic = response.body();
+                 if(naturalEpic != null){
+                     Log.d("uffa", "natural epic size = " + naturalEpic.size());
+                    insertAllEpic(naturalEpic);
+                 }
+            }
+
+            @Override
+            public void onFailure(Call<List<Epic>> call, Throwable t) {
+                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+            }
+        });
+    }
+
     //------------------- EPIC ENHANCED SECTION -------------------------------------------
 
     @Override
@@ -279,6 +300,25 @@ public class AstroRepositoryImpl implements AstroRepository {
     public void updateEnhancedFavWithIdentifier(int isFavorite, long identifier) {
         Completable.fromAction(() -> epicEnhancedDao.updateEnhancedFavWithIdentifier(isFavorite, identifier))
                 .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    public void loadEpicEnhanced(){
+        Call<List<EpicEnhanced>> epicEnhancedCall = apisService.getEpicEnhanced(BuildConfig.MY_API_KEY);
+        epicEnhancedCall.enqueue(new Callback<List<EpicEnhanced>>() {
+            @Override
+            public void onResponse(Call<List<EpicEnhanced>> call, Response<List<EpicEnhanced>> response) {
+                List<EpicEnhanced> epics = response.body();
+                if(epics != null){
+                    Log.d("uffa", "enhanced epic size = " + epics.size());
+                    insertAllEpicEnhanced(epics);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<EpicEnhanced>> call, Throwable t) {
+                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+            }
+        });
     }
 
     //--------------------- ASTRONAUTS SECTION -----------------------------------------------
