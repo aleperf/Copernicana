@@ -14,7 +14,7 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 @Dao
 public interface EpicEnhancedDao {
     @Query("SELECT * FROM epic_enhanced")
-    LiveData<List<EpicEnhanced>> getAllEnhancedlEpic();
+    LiveData<List<EpicEnhanced>> getAllEnhancedEpic();
 
     @Query("SELECT * FROM epic_enhanced WHERE isFavorite = 1")
     LiveData<List<EpicEnhanced>> getAllEnhancedFavorites();

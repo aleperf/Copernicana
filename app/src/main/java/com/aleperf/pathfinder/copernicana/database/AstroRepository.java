@@ -40,7 +40,7 @@ public interface AstroRepository {
     void updateEpicFavWithIdentifier(int isFavorite, long identifier);
 
     //EpicEnhanced
-    LiveData<List<EpicEnhanced>> getAllEnhancedlEpic();
+    LiveData<List<EpicEnhanced>> getAllEnhancedEpic();
     LiveData<List<EpicEnhanced>> getAllEnhancedFavorites();
     LiveData<EpicEnhanced> getEpicEnhancedWithIdentifier(long identifier);
     void insertAllEpicEnhanced(List<EpicEnhanced> epicEnhanced);

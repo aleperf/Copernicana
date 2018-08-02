@@ -1,11 +1,8 @@
 package com.aleperf.pathfinder.copernicana.database;
 
-import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -20,7 +17,6 @@ import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
-import com.aleperf.pathfinder.copernicana.widget.CopernicanaAppWidgetProvider;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -267,8 +263,8 @@ public class AstroRepositoryImpl implements AstroRepository {
     //------------------- EPIC ENHANCED SECTION -------------------------------------------
 
     @Override
-    public LiveData<List<EpicEnhanced>> getAllEnhancedlEpic() {
-        return epicEnhancedDao.getAllEnhancedlEpic();
+    public LiveData<List<EpicEnhanced>> getAllEnhancedEpic() {
+        return epicEnhancedDao.getAllEnhancedEpic();
     }
 
     @Override
