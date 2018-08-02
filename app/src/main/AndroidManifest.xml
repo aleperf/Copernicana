@@ -79,7 +79,7 @@
             </intent-filter>
         </service>
 
-        <receiver android:name=".widget.CopenicanaAppWidget">
+        <receiver android:name=".widget.CopernicanaAppWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

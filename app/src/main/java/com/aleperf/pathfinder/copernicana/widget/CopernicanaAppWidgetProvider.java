@@ -29,7 +29,7 @@ import com.google.android.gms.flags.Flag;
 /**
  * Implementation of App Widget functionality.
  */
-public class CopenicanaAppWidget extends AppWidgetProvider {
+public class CopernicanaAppWidgetProvider extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
