@@ -125,5 +125,7 @@
     <!--WIDGET -->
     <string name="widget_content_description">astronomy picture of the day</string>
 
+    <string name="sign_out">sign out</string>
+
 
 </resources>
