@@ -1,8 +1,10 @@
 package com.aleperf.pathfinder.copernicana.intro;
 
+import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +26,7 @@ import com.aleperf.pathfinder.copernicana.database.UpdateService;
 import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.iss.IssActivity;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
+import com.aleperf.pathfinder.copernicana.widget.CopernicanaAppWidgetProvider;
 import com.firebase.jobdispatcher.Constraint;
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
 import com.firebase.jobdispatcher.GooglePlayDriver;
@@ -47,6 +50,8 @@ import butterknife.ButterKnife;
 
 public class IntroActivity extends AppCompatActivity implements SummaryFragment.SectionSelector {
 
+    private final static String WIDGET_UPDATED = "widget updated";
+
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
     @Inject
@@ -54,6 +59,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
     private final static String UPDATE_SERVICE_JOB_TAG = "com.aleperf.pathfinder.copernicana.UPDATE_SERVICE";
     private final static int TWELVE_HOURS = 43200;
     private final static int TWELVE_HOURS_AND_A_MINUTE = 43260;
+    private boolean widgetUpdated;
 
 
 
@@ -68,10 +74,15 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         IntroViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
         viewModel.initializeRepository();
         scheduleUpdateJob();
+        if(savedInstanceState != null){
+            widgetUpdated = savedInstanceState.getBoolean(WIDGET_UPDATED, false);
+        }
+         if(!widgetUpdated){
+             widgetUpdated = true;
+             updateWidget();
+         }
 
-
-
-    }
+        }
 
 
 
@@ -85,9 +96,17 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
                 .setTrigger(Trigger.executionWindow(TWELVE_HOURS, TWELVE_HOURS_AND_A_MINUTE))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(false)
-                .setConstraints( Constraint.ON_UNMETERED_NETWORK)
+                .setConstraints(Constraint.ON_UNMETERED_NETWORK)
                 .build();
         dispatcher.mustSchedule(updateJob);
+    }
+
+    private void updateWidget(){
+        Intent intent = new Intent(this, CopernicanaAppWidgetProvider.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), CopernicanaAppWidgetProvider.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
     }
 
     @Override
@@ -144,5 +163,9 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         }
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putBoolean(WIDGET_UPDATED, widgetUpdated);
+    }
 }

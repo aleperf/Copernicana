@@ -62,11 +62,13 @@ public class CopernicanaAppWidgetProvider extends AppWidgetProvider {
         } else {
             views.setImageViewResource(R.id.apod_image_widget, R.drawable.nasa_43566_unsplash);
         }
-
-        Intent intent = new Intent(context, ApodActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context,
-                0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        views.setOnClickPendingIntent(R.id.copernicana_widget_ll, pendingIntent);
+        //if there is data available set an onClick Intent (it opens up the apod section)
+        if (!apodTitle.equals(apodDefaultTitle)) {
+            Intent intent = new Intent(context, ApodActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context,
+                    0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            views.setOnClickPendingIntent(R.id.copernicana_widget_ll, pendingIntent);
+        }
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);

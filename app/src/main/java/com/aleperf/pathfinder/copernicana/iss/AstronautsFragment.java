@@ -12,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
@@ -31,6 +33,10 @@ public class AstronautsFragment extends Fragment {
     @BindView(R.id.astronauts_recycler_view)
     RecyclerView astronautsRV;
     private Unbinder unbinder;
+    @BindView(R.id.astronaut_empty_text_view)
+    TextView emptyMessage;
+    @BindView(R.id.astronaut_empty_button)
+    Button emptyButton;
     @Inject
     ViewModelProvider.Factory factory;
     private AstronautsViewModel astronautsViewModel;
@@ -62,6 +68,15 @@ public class AstronautsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_astronauts, container, false);
         unbinder =  ButterKnife.bind(this, rootView);
+        emptyButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                if(astronautsViewModel != null){
+                    astronautsViewModel.reloadAstronauts();
+                }
+            }
+        });
+
         return rootView;
     }
 
@@ -84,7 +99,12 @@ public class AstronautsFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Astronaut> astronautsInSpace) {
                 if(astronauts != null){
+                    emptyMessage.setVisibility(View.GONE);
+                    emptyButton.setVisibility(View.GONE);
                     adapter.setAstronauts(astronautsInSpace);
+                } else {
+                    emptyMessage.setVisibility(View.VISIBLE);
+                    emptyButton.setVisibility(View.VISIBLE);
                 }
             }
         };

@@ -2,6 +2,7 @@
 <resources>
     <!--intro dimensions -->
     <dimen name="toolbar_standard_size">120dp</dimen>
+    <dimen name="recycler_view_padding_bottom">16dp</dimen>
 
     <!-- apod intro card dimensions -->
     <dimen name="apod_card_width">300dp</dimen>
@@ -71,9 +72,12 @@
     <dimen name="iss_pos_button_padding">24dp</dimen>
     <dimen name="iss_pos_padding_bottom">24dp</dimen>
 
-    <!--
-Refer to App Widget Documentation for margin information
-http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
-    -->
+   <!-- EMPTY VIEW DIMENS -->
+    <dimen name="empty_view_text_size">18sp</dimen>
+    <dimen name="empty_view_image_side">100dp</dimen>
     <dimen name="widget_margin">8dp</dimen>
+    <dimen name="empty_view_image_margin_top">16dp</dimen>
+    <dimen name="empty_button_padding">8dp</dimen>
+    <dimen name="empty_button_margin_top">16dp</dimen>
+
 </resources>

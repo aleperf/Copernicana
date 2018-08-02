@@ -27,8 +27,8 @@
     <color name="apod_date_color">#E6303F9F</color>
 
     <!-- search -->
-    <color name="search_button_color">#448AFF</color>
-    <color name="search_button_text_color">#FFFFFF</color>
+    <color name="button_color">#448AFF</color>
+    <color name="button_text_color">#FFFFFF</color>
     <color name="search_date_color">#000000</color>
 
     <!--apod fav -->

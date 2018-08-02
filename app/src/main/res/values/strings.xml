@@ -84,6 +84,7 @@
 
     <!-- APOD DISPLAY ALL STRINGS -->
     <string name="apod_display_all_title">Latest Pictures</string>
+    <string name="apod_display_all_empty_view">No data display yet.</string>
 
     <!-- EPIC SUMMARY -->
     <string name="epic_natural_label">Natural Images</string>
@@ -125,7 +126,13 @@
     <!--WIDGET -->
     <string name="widget_content_description">astronomy picture of the day</string>
 
+    <!-- menu -->
     <string name="sign_out">sign out</string>
 
+    <!-- EMPTY VIEWS -->
+    <string name="empty_view_message">No favorites to display yet.</string>
+    <string name="empty_view_button_text">Reload Data</string>
+    <string name="empty_view_latest">No data available. Check for a better connection to display data</string>
+    <string name="astronauts_empty_message">No data to display. Check for a better connection and press the button to reload data</string>
 
 </resources>

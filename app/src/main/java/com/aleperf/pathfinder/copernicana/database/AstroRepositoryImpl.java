@@ -1,8 +1,11 @@
 package com.aleperf.pathfinder.copernicana.database;
 
+import android.appwidget.AppWidgetManager;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.support.annotation.Nullable;
@@ -15,6 +18,7 @@ import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
+import com.aleperf.pathfinder.copernicana.widget.CopernicanaAppWidgetProvider;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
@@ -150,6 +154,9 @@ public class AstroRepositoryImpl implements AstroRepository {
             }
         });
     }
+
+
+
 
     private void updateSharedPreferences(Apod apod) {
         Resources res = context.getResources();

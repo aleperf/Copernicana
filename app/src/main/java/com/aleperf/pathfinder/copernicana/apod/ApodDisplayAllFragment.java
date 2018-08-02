@@ -14,6 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
@@ -32,6 +34,10 @@ public class ApodDisplayAllFragment extends Fragment {
     private Unbinder unbinder;
     @BindView(R.id.apod_display_all_recycler_view)
     RecyclerView displayAllRecyclerView;
+    @BindView(R.id.apod_latest_empty_text_view)
+    TextView emptyTextView;
+    @BindView(R.id.apod_latest_empty_image)
+    ImageView emptyImage;
     private ApodAdapter apodAdapter;
     @Inject
     ViewModelProvider.Factory factory;
@@ -83,6 +89,12 @@ public class ApodDisplayAllFragment extends Fragment {
             public void onChanged(@Nullable List<Apod> apodList) {
                 if(apodList != null && apodList.size() > 0){
                     apodAdapter.setApod(apodList);
+                    emptyTextView.setVisibility(View.GONE);
+                    emptyImage.setVisibility(View.GONE);
+                } else {
+                    apodAdapter.setApod(apodList);
+                    emptyTextView.setVisibility(View.GONE);
+                    emptyImage.setVisibility(View.GONE);
                 }
 
             }

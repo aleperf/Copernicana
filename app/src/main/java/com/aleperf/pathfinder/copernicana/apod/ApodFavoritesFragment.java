@@ -13,6 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
@@ -33,6 +35,10 @@ public class ApodFavoritesFragment extends Fragment {
     @BindView(R.id.apod_favorites_recycler_view)
     RecyclerView favoritesRecyclerView;
     private ApodAdapter apodAdapter;
+    @BindView(R.id.apod_favorites_empty_image)
+    ImageView emptyViewImage;
+    @BindView(R.id.apod_favorites_empty_text_view)
+    TextView emptyTextView;
     @Inject
     ViewModelProvider.Factory factory;
     ApodFavoritesViewModel favoritesViewModel;
@@ -81,7 +87,12 @@ public class ApodFavoritesFragment extends Fragment {
             @Override
             public void onChanged(@Nullable List<Apod> apodList) {
                 if(apodList != null && apodList.size() > 0){
+                    emptyViewImage.setVisibility(View.GONE);
+                    emptyTextView.setVisibility(View.GONE);
                     apodAdapter.setApod(apodList);
+                } else{
+                    emptyViewImage.setVisibility(View.VISIBLE);
+                    emptyTextView.setVisibility(View.VISIBLE);
                 }
 
             }

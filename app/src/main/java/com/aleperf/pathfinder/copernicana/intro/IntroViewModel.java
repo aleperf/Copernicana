@@ -22,6 +22,7 @@ public class IntroViewModel extends ViewModel {
 
 
 
+
     @Inject
     public IntroViewModel(AstroRepository astroRepository) {
         this.astroRepository = astroRepository;

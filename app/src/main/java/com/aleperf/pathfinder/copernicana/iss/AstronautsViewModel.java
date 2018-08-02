@@ -40,4 +40,8 @@ public class AstronautsViewModel extends ViewModel {
         }
 
     }
+
+    public void reloadAstronauts(){
+        astroRepository.updateRepository();
+    }
 }

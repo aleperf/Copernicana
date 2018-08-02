@@ -14,6 +14,6 @@ android:id="@+id/apod_summary_rv"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal"
-    android:paddingBottom="16dp"
+    android:paddingBottom="@dimen/recycler_view_padding_bottom"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </LinearLayout>

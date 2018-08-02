@@ -6,6 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray_background">
+    <TextView
+        android:id="@+id/apod_latest_empty_text_view"
+        android:visibility="gone"
+        style="@style/EmptyViewTextStyle"
+        android:layout_marginTop="8dp"
+        android:text="@string/empty_view_latest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/apod_latest_empty_image"
+        android:layout_width="@dimen/empty_view_image_side"
+        android:layout_height="@dimen/empty_view_image_side"
+        android:layout_marginTop="@dimen/empty_view_image_margin_top"
+        android:layout_gravity="center_horizontal"
+        android:visibility="gone"
+        android:contentDescription="@string/no_description_decorative_image"
+        android:src="@drawable/planet_empty"/>
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -13,6 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
-        android:paddingBottom="16dp"
+        android:paddingBottom="@dimen/recycler_view_padding_bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 </LinearLayout>
