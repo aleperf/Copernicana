@@ -33,6 +33,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Completable;
+import io.reactivex.CompletableObserver;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,12 +87,12 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
-    public Integer countApodEntries(){
+    public Integer countApodEntries() {
         return apodDao.countApodEntries();
     }
 
     @Override
-    public Apod getSingleApodWithDate(String date){
+    public Apod getSingleApodWithDate(String date) {
         return apodDao.getSingleApodWithDate(date);
     }
 
@@ -149,8 +151,6 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
 
-
-
     private void updateSharedPreferences(Apod apod) {
         Resources res = context.getResources();
         SharedPreferences sharedPref = context.getSharedPreferences(res.getString(R.string.preference_file_key),
@@ -194,18 +194,16 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
 
-
-
     public void updateRepository() {
         //temporary solution
         loadApod(null);
         loadAllAstronauts();
         loadEpicNatural();
         loadEpicEnhanced();
-        }
+    }
 
 
-        //-------------------------EPIC NATURAL SECTION -----------------------------------
+    //-------------------------EPIC NATURAL SECTION -----------------------------------
 
 
     @Override
@@ -244,16 +242,32 @@ public class AstroRepositoryImpl implements AstroRepository {
                 .subscribeOn(Schedulers.io()).subscribe();
     }
 
-    public void loadEpicNatural(){
+    public void loadEpicNatural() {
         Call<List<Epic>> epicCall = apisService.getEpicNatural(BuildConfig.MY_API_KEY);
         epicCall.enqueue(new Callback<List<Epic>>() {
             @Override
             public void onResponse(Call<List<Epic>> call, Response<List<Epic>> response) {
-                 List<Epic> naturalEpic = response.body();
-                 if(naturalEpic != null){
-                     Log.d("uffa", "natural epic size = " + naturalEpic.size());
-                    insertAllEpic(naturalEpic);
-                 }
+                List<Epic> naturalEpic = response.body();
+                if (naturalEpic != null) {
+                    Completable.fromAction(() -> epicDao.deleteAllNonFavoritesEpic())
+                            .subscribeOn(Schedulers.io()).subscribe(new CompletableObserver() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            insertAllEpic(naturalEpic);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
+
+                }
             }
 
             @Override
@@ -301,15 +315,32 @@ public class AstroRepositoryImpl implements AstroRepository {
                 .subscribeOn(Schedulers.io()).subscribe();
     }
 
-    public void loadEpicEnhanced(){
+    public void loadEpicEnhanced() {
         Call<List<EpicEnhanced>> epicEnhancedCall = apisService.getEpicEnhanced(BuildConfig.MY_API_KEY);
         epicEnhancedCall.enqueue(new Callback<List<EpicEnhanced>>() {
             @Override
             public void onResponse(Call<List<EpicEnhanced>> call, Response<List<EpicEnhanced>> response) {
                 List<EpicEnhanced> epics = response.body();
-                if(epics != null){
-                    Log.d("uffa", "enhanced epic size = " + epics.size());
-                    insertAllEpicEnhanced(epics);
+                if (epics != null) {
+                    Completable.fromAction(() -> epicEnhancedDao.deleteAllNonFavoritesEpicEnhanced())
+                            .subscribeOn(Schedulers.io()).subscribe(new CompletableObserver() {
+                        @Override
+                        public void onSubscribe(Disposable d) {
+
+                        }
+
+                        @Override
+                        public void onComplete() {
+                            insertAllEpicEnhanced(epics);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+                    });
+
+
                 }
             }
 
@@ -372,8 +403,9 @@ public class AstroRepositoryImpl implements AstroRepository {
         }
 
     }
+
     @Override
-    public void checkIssPositionNow(MutableLiveData<IssPosition> issPosition){
+    public void checkIssPositionNow(MutableLiveData<IssPosition> issPosition) {
         Call<IssPosition> issPositionCall = apisService.getLatestIssPosition();
         issPositionCall.enqueue(new Callback<IssPosition>() {
             @Override

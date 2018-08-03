@@ -49,7 +49,7 @@ public class EpicSummaryFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        titles = new String[]{getString(R.string.epic_natural_label), getString(R.string.epic_enhanced_images),
+        titles = new String[]{getString(R.string.epic_natural_label), getString(R.string.epic_enhanced_label),
                 getString(R.string.epic_search_label)};
         SummaryAdapter summaryAdapter = new SummaryAdapter(getActivity(), images, titles, sections);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
