@@ -91,6 +91,13 @@
     <string name="epic_enhanced_images">Enhanced Images</string>
     <string name="epic_search_label">Search</string>
 
+    <!-- EPIC GRID -->
+    <string name="epic_image_grid_cd">image from the epic camera</string>
+    <string name="epic_date_tools_text">Jun 26, 2018 10:05:00</string>
+
+    <!-- EPIC DETAIL -->
+    <string name="epic_detail_catpion_tool">This image was taken by NASA\'s EPIC camera onboard the NOAA DSCOVR spacecraft</string>
+
     <!-- MARS SUMMARY -->
     <string name="curiosity_label">Curiosity</string>
     <string name="opportunity_label">Opportunity</string>

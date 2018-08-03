@@ -79,7 +79,10 @@ public class AstroRepositoryImpl implements AstroRepository {
         return apodDao.getApodWithDate(date);
     }
 
-
+    @Override
+    public Apod getLatestApod() {
+        return apodDao.getLatestApod();
+    }
 
     @Override
     public Integer countApodEntries(){

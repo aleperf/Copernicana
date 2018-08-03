@@ -7,9 +7,9 @@ import android.arch.persistence.room.Entity;
 public class EpicEnhanced extends  Epic {
 
     public EpicEnhanced(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
-                Coord3D moonPosition, Coord3D sunPosition, AttitudeQuaternions attitudeQuaternions, String date, int isFavorite) {
+                Coord3D moonPosition, Coord3D sunPosition, String date, int isFavorite) {
 
-        super(identifier, caption, image, centroid, epicPosition, moonPosition, sunPosition, attitudeQuaternions, date, isFavorite);
+        super(identifier, caption, image, centroid, epicPosition, moonPosition, sunPosition, date, isFavorite);
 
     }
 }

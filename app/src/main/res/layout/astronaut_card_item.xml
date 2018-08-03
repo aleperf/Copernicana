@@ -18,7 +18,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/astronaut_image"
+        android:id="@+id/epic_image"
         android:layout_width="260dp"
         android:layout_height="260dp"
         android:layout_marginEnd="8dp"
@@ -31,7 +31,7 @@
         app:srcCompat="@drawable/astronaut_place_holder" />
 
     <TextView
-        android:id="@+id/astronaut_name"
+        android:id="@+id/epic_date_and_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/astronaut_image"
+        app:layout_constraintTop_toBottomOf="@+id/epic_image"
         tools:text="@string/astronauts_tool_name" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,16 +2,11 @@ package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.persistence.room.TypeConverter;
 
-import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.google.gson.Gson;
-
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import com.aleperf.pathfinder.copernicana.model.Epic.Coord2D;
 import com.aleperf.pathfinder.copernicana.model.Epic.Coord3D;
-import com.aleperf.pathfinder.copernicana.model.Epic.AttitudeQuaternions;
+
 import com.google.gson.reflect.TypeToken;
 
 public class EpicTypeConverter {
@@ -54,21 +49,4 @@ public class EpicTypeConverter {
         return gson.toJson(coord3D);
     }
 
-    @TypeConverter
-    public static AttitudeQuaternions convertJsonStringToAttitudeQuaternions(String jsonString) {
-        if (jsonString == null || jsonString.isEmpty()) {
-            return null;
-        }
-
-        Type attitudeQuaternionsType = new TypeToken<AttitudeQuaternions>() {
-        }.getType();
-
-        return gson.fromJson(jsonString, attitudeQuaternionsType);
-    }
-
-    @TypeConverter
-    public static String convertAttitudeQuaternionsToJson(AttitudeQuaternions attitudeQuaternions) {
-
-        return gson.toJson(attitudeQuaternions);
-    }
 }

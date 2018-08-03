@@ -10,6 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.aleperf.pathfinder.copernicana.R;
@@ -33,7 +34,6 @@ public class CopernicanaAppWidgetProvider extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
-
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.copernicana_app_widget);
         Resources res = context.getResources();
         String apodTitleKey = res.getString(R.string.preference_latest_apod_title_key);

@@ -19,6 +19,7 @@ import com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
 import com.aleperf.pathfinder.copernicana.database.UpdateService;
 
+
 import dagger.Component;
 
 @CopernicanaApplicationScope
@@ -39,6 +40,5 @@ public interface CopernicanaApplicationComponent {
     void inject(AstronautsFragment astronautsFragment);
     void inject(AstronautDetailFragment astronautDetailFragment);
     void inject (UpdateService updateService);
-
     Application application();
 }

@@ -39,9 +39,9 @@ public class UpdateService extends JobService {
 
 
     private void updateWidget(){
-        Intent intent = new Intent(this, CopernicanaAppWidgetProvider.class);
+        Intent intent = new Intent(this.getApplicationContext(), CopernicanaAppWidgetProvider.class);
         intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), CopernicanaAppWidgetProvider.class));
+        int[] ids = AppWidgetManager.getInstance(this.getApplicationContext()).getAppWidgetIds(new ComponentName(getApplication(), CopernicanaAppWidgetProvider.class));
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
         sendBroadcast(intent);
     }

@@ -111,4 +111,17 @@ public class Utils {
         return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
     }
 
+    public static String getEpicDateFormat(String inputString){
+        String dateString = inputString.substring(0,10);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date date = dateFormat.parse(dateString);
+            SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+            String result = finalFormat.format(date);
+            return result + inputString.substring(10);
+        } catch (ParseException e) {
+            return null;
+        }
+    }
+
 }

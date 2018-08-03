@@ -23,6 +23,7 @@ public interface AstroRepository {
     LiveData<Apod> getLastApod();
     LiveData<Apod> getApodWithDate(String date);
     Apod getSingleApodWithDate(String date);
+    Apod getLatestApod();
     LiveData<List<Apod>> getAllFavApodOrderDesc();
     Integer countApodEntries();
     void insertApod(Apod apod);

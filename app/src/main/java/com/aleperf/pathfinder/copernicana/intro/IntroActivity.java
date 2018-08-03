@@ -50,16 +50,15 @@ import butterknife.ButterKnife;
 
 public class IntroActivity extends AppCompatActivity implements SummaryFragment.SectionSelector {
 
-    private final static String WIDGET_UPDATED = "widget updated";
 
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
     @Inject
     ViewModelProvider.Factory factory;
     private final static String UPDATE_SERVICE_JOB_TAG = "com.aleperf.pathfinder.copernicana.UPDATE_SERVICE";
-    private final static int TWELVE_HOURS = 43200;
-    private final static int TWELVE_HOURS_AND_A_MINUTE = 43260;
-    private boolean widgetUpdated;
+    private final static int SIX_HOURS = 21600;
+    private final static int SIX_HOURS_AND_A_MINUTE = 21660;
+
 
 
 
@@ -74,14 +73,6 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         IntroViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
         viewModel.initializeRepository();
         scheduleUpdateJob();
-        if(savedInstanceState != null){
-            widgetUpdated = savedInstanceState.getBoolean(WIDGET_UPDATED, false);
-        }
-         if(!widgetUpdated){
-             widgetUpdated = true;
-             updateWidget();
-         }
-
         }
 
 
@@ -93,7 +84,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
                 .setTag(UPDATE_SERVICE_JOB_TAG)
                 .setRecurring(true)
                 .setLifetime(Lifetime.FOREVER)
-                .setTrigger(Trigger.executionWindow(TWELVE_HOURS, TWELVE_HOURS_AND_A_MINUTE))
+                .setTrigger(Trigger.executionWindow(SIX_HOURS, SIX_HOURS_AND_A_MINUTE))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
                 .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_UNMETERED_NETWORK)
@@ -101,13 +92,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         dispatcher.mustSchedule(updateJob);
     }
 
-    private void updateWidget(){
-        Intent intent = new Intent(this, CopernicanaAppWidgetProvider.class);
-        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), CopernicanaAppWidgetProvider.class));
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
-        sendBroadcast(intent);
-    }
+
 
     @Override
     public void selectSection(int position) {
@@ -163,9 +148,5 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         }
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putBoolean(WIDGET_UPDATED, widgetUpdated);
-    }
+
 }

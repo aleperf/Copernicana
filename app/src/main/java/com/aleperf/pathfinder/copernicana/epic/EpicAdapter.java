@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
@@ -60,6 +61,8 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
     public class EpicHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.epic_image)
         ImageView epicImage;
+        @BindView(R.id.epic_date_and_hour)
+        TextView epicDateAndHour;
 
         public EpicHolder(View view) {
             super(view);
@@ -69,8 +72,12 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
         public void bindNaturalEpic(int position) {
             Epic epic = naturalEpic.get(position);
+            String date = epic.getDate();
+            String formattedDate = Utils.getEpicDateFormat(date);
+            if(formattedDate != null){
+                epicDateAndHour.setText(formattedDate);
+            }
             String imageUrl = Utils.buildEpicNaturalImageUrl(epic.getDate(), epic.getImage());
-            Log.d("uffa", "imageUrl: " + imageUrl);
             GlideApp.with(context).load(imageUrl)
                     .error(R.drawable.blue_marble_card)
                     .placeholder(R.drawable.blue_marble_card)
