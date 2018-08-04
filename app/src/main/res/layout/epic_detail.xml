@@ -3,14 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/epic_detail_scrollview"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/epic_detail_cl"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingBottom="24dp">
 
     <ImageView
         android:id="@+id/epic_detail_image"
@@ -127,13 +130,13 @@
 
     <TextView
         android:id="@+id/epic_detail_centroid_lat_label"
+        style="@style/EpicDetailLabelText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        style="@style/EpicDetailLabelText"
+        android:text="@string/epic_detail_centroid_lat_label"
         app:layout_constraintStart_toStartOf="@+id/epic_sun_to_earth_label"
-        app:layout_constraintTop_toBottomOf="@+id/epic_sun_to_earth_label"
-        tools:text="@string/epic_detail_centroid_lat_label" />
+        app:layout_constraintTop_toBottomOf="@+id/epic_sun_to_earth_label" />
 
     <TextView
         android:id="@+id/epic_detail_centroid_lat_value"
@@ -167,23 +170,23 @@
 
     <ImageView
         android:id="@+id/epic_detail_fav_icon"
-        android:layout_width="@dimen/detail_icon_side"
+        android:layout_width="39dp"
         android:layout_height="@dimen/detail_icon_side"
-        android:layout_marginStart="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/epic_fav_ico_cd"
-        app:layout_constraintStart_toEndOf="@+id/epic_detail_centroid_lon_value"
+        app:layout_constraintEnd_toStartOf="@+id/epic_detail_share_icon"
         app:layout_constraintTop_toBottomOf="@+id/epic_detail_centroid_lon_value"
         app:srcCompat="@drawable/star_icon_default" />
 
     <ImageView
         android:id="@+id/epic_detail_share_icon"
-        android:layout_width="@dimen/detail_icon_side"
+        android:layout_width="33dp"
         android:layout_height="@dimen/detail_icon_side"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="24dp"
         android:contentDescription="@string/epic_share_ico_cd"
         app:layout_constraintBottom_toBottomOf="@+id/epic_detail_fav_icon"
-        app:layout_constraintStart_toEndOf="@+id/epic_detail_fav_icon"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/share_icon" />
 </android.support.constraint.ConstraintLayout>
 </android.support.v4.widget.NestedScrollView>

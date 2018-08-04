@@ -1,15 +1,19 @@
 package com.aleperf.pathfinder.copernicana.epic;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.model.Epic;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EpicEnhancedActivity extends AppCompatActivity {
+
+
     @BindView(R.id.toolbar_epic_enhanced)
     Toolbar toolbar;
     private boolean isDualPane;
@@ -24,4 +28,6 @@ public class EpicEnhancedActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.epic_enhanced_label));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
     }
+
+
 }

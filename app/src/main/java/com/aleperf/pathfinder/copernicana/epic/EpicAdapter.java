@@ -26,6 +26,12 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
     private List<Epic> naturalEpic;
 
 
+    public interface EpicNaturalSelector {
+
+        void selectEpic(Epic epic);
+    }
+
+
     public EpicAdapter(Context context){
         this.context = context;
     }
@@ -87,9 +93,9 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
         @Override
         public void onClick(View v) {
-            if (context instanceof EpicElementSelector) {
-                EpicElementSelector epicElementSelector = (EpicElementSelector) context;
-                epicElementSelector.selectEpic(naturalEpic.get(getAdapterPosition()).getIdentifier());
+            if (context instanceof EpicNaturalSelector) {
+                EpicNaturalSelector epicNaturalSelector = (EpicNaturalSelector) context;
+                epicNaturalSelector.selectEpic(naturalEpic.get(getAdapterPosition()));
             }
         }
     }

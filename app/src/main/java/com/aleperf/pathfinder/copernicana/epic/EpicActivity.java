@@ -27,7 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
-        EpicElementSelector {
+        EpicAdapter.EpicNaturalSelector, EpicEnhancedAdapter.EpicEnhancedSelector {
 
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
@@ -66,7 +66,13 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
 
     @Override
-    public void selectEpic(long identifier) {
-        Toast.makeText(this, "clicked identifier: " + identifier, Toast.LENGTH_SHORT).show();
+    public void selectEpic(Epic epic) {
+
+    }
+
+
+    @Override
+    public void selectEpicEnhanced(EpicEnhanced epicEnhanced) {
+
     }
 }

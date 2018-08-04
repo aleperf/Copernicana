@@ -112,7 +112,14 @@
     <string name="epic_fav_ico_cd">Click to add this Epic Image to your favorites</string>
     <string name="epic_share_ico_cd">Click to share this Epic Image</string>
     <string name="epic_image_cd">Earth image from the Epic Camera</string>
+    <string name="epic_distance_KM_formatter">%d km</string>
+    <string name="epic_detail_natural_toolbar_title">Epic Image Details</string>
 
+    <!-- EPIC SHARE -->
+    <string name="epic_share_message">I\'m watching this image of Earth seen from space on the Copernicana app: %s</string>
+    <string name="epic_share_title">Share an Epic Image</string>
+    <string name="epic_add_message">Image added to your favorites</string>
+    <string name="epic_remove_message">Image removed from your favorites</string>
 
     <!-- MARS SUMMARY -->
     <string name="curiosity_label">Curiosity</string>

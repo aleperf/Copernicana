@@ -26,6 +26,12 @@ public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapte
     List<EpicEnhanced> epicEnhanced;
 
 
+    public interface EpicEnhancedSelector {
+
+        void selectEpicEnhanced(EpicEnhanced epicEnhanced);
+    }
+
+
     public EpicEnhancedAdapter(Context context){
         this.context = context;
     }
@@ -85,9 +91,9 @@ public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapte
 
         @Override
         public void onClick(View v) {
-            if (context instanceof EpicElementSelector) {
-                EpicElementSelector epicElementSelector = (EpicElementSelector) context;
-                epicElementSelector.selectEpic(epicEnhanced.get(getAdapterPosition()).getIdentifier());
+            if (context instanceof EpicEnhancedSelector) {
+                EpicEnhancedSelector selector = (EpicEnhancedSelector) context;
+                selector.selectEpicEnhanced(epicEnhanced.get(getAdapterPosition()));
             }
         }
     }
