@@ -109,6 +109,9 @@
     <string name="epic_detail_tools_dist_to_earth">1,592,048 km</string>
     <string name="epic_detail_tools_dist_to_sun">150,281,304 km</string>
     <string name="epic_detail_tools_sun_to_earth">151,858,967 km</string>
+    <string name="epic_fav_ico_cd">Click to add this Epic Image to your favorites</string>
+    <string name="epic_share_ico_cd">Click to share this Epic Image</string>
+    <string name="epic_image_cd">Earth image from the Epic Camera</string>
 
 
     <!-- MARS SUMMARY -->

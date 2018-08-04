@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/epic_detail_image"
@@ -14,6 +20,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitXY"
+        android:contentDescription="@string/epic_image_cd"
         android:adjustViewBounds="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -164,6 +171,7 @@
         android:layout_height="@dimen/detail_icon_side"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:contentDescription="@string/epic_fav_ico_cd"
         app:layout_constraintStart_toEndOf="@+id/epic_detail_centroid_lon_value"
         app:layout_constraintTop_toBottomOf="@+id/epic_detail_centroid_lon_value"
         app:srcCompat="@drawable/star_icon_default" />
@@ -173,7 +181,9 @@
         android:layout_width="@dimen/detail_icon_side"
         android:layout_height="@dimen/detail_icon_side"
         android:layout_marginStart="16dp"
+        android:contentDescription="@string/epic_share_ico_cd"
         app:layout_constraintBottom_toBottomOf="@+id/epic_detail_fav_icon"
         app:layout_constraintStart_toEndOf="@+id/epic_detail_fav_icon"
         app:srcCompat="@drawable/share_icon" />
 </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>
