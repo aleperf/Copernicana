@@ -92,8 +92,9 @@ public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapte
         @Override
         public void onClick(View v) {
             if (context instanceof EpicEnhancedSelector) {
+                EpicEnhanced epic = epicEnhanced.get(getAdapterPosition());
                 EpicEnhancedSelector selector = (EpicEnhancedSelector) context;
-                selector.selectEpicEnhanced(epicEnhanced.get(getAdapterPosition()));
+                selector.selectEpicEnhanced(epic);
             }
         }
     }

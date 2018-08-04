@@ -89,6 +89,8 @@
     <!-- EPIC SUMMARY -->
     <string name="epic_natural_label">Natural Images</string>
     <string name="epic_enhanced_label">Enhanced Images</string>
+    <string name="epic_natural_favorites_label">Natural Favorites</string>
+    <string name="epic_enhanced_favorites_label">Enhanced Favorites</string>
     <string name="epic_search_label">Search</string>
 
     <!-- EPIC GRID -->

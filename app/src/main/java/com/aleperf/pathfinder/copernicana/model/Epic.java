@@ -28,7 +28,7 @@ public class Epic implements Parcelable {
     @SerializedName("sun_j2000_position")
     Coord3D sunPosition;
     String date;
-    private int isFavorite;
+    public int isFavorite;
     private static final Coord3D earthPosition = new Coord3D(0, 0, 0);
 
     public Epic(long identifier, String caption, String image, Coord2D centroid, Coord3D epicPosition,
@@ -87,7 +87,7 @@ public class Epic implements Parcelable {
         isFavorite = favorite;
     }
 
-    private Epic(Parcel in) {
+    public Epic(Parcel in) {
         identifier = in.readLong();
         caption = in.readString();
         image = in.readString();

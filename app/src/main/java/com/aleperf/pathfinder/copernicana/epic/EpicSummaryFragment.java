@@ -26,9 +26,9 @@ public class EpicSummaryFragment extends Fragment {
     RecyclerView recyclerView;
 
     private final int[] images = {R.drawable.blue_marble_card, R.drawable.earth_natural,
-            R.drawable.earth_enhanced, R.drawable.search_ico};
+            R.drawable.earth_enhanced, R.drawable.star_white, R.drawable.star_icon, R.drawable.search_ico};
     private String[] titles;
-    private final int sections = 4;
+    private final int sections = 6;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class EpicSummaryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_summary_epic, container, false);
-        unbinder =  ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -50,6 +50,7 @@ public class EpicSummaryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         titles = new String[]{getString(R.string.epic_natural_label), getString(R.string.epic_enhanced_label),
+                getString(R.string.epic_natural_favorites_label), getString(R.string.epic_enhanced_favorites_label),
                 getString(R.string.epic_search_label)};
         SummaryAdapter summaryAdapter = new SummaryAdapter(getActivity(), images, titles, sections);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

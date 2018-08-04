@@ -15,7 +15,8 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "astronaut")
 public class Astronaut {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
+    @Expose
     private int id;
     @Expose
     private String name;

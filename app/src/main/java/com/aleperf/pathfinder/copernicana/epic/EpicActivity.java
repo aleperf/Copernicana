@@ -55,6 +55,7 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
                     startActivity(naturalIntent);
                     break;
                 case 2:
+                    Log.d("uffa", "sono in epicActivity e sto facendo partire EpicEnhancedActivity");
                     Intent enhancedIntent = new Intent(this, EpicEnhancedActivity.class);
                     startActivity(enhancedIntent);
                     break;
