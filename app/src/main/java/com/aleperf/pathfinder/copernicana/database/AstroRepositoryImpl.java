@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -45,6 +46,8 @@ public class AstroRepositoryImpl implements AstroRepository {
     private final String TAG = AstroRepositoryImpl.class.getSimpleName();
     private final String FIREBASE_STORAGE = BuildConfig.APP_STORAGE;
     private final String ASTRONAUTS_IN_SPACE = "astronauts/inspace.json";
+    public final String NO_DATA = "NO DATA";
+    public final String FAILURE_ON_CONNECTION = "FAILURE ON CONNECTION";
 
 
     private ApodDao apodDao;
@@ -277,6 +280,38 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
+    @Override
+    public void searchEpicNaturalForDate(String date, MutableLiveData<List<Epic>> naturalEpic) {
+        Call<List<Epic>> epicCall = apisService.getEpicNaturalForDate(date, BuildConfig.MY_API_KEY);
+        epicCall.enqueue(new Callback<List<Epic>>() {
+            @Override
+            public void onResponse(Call<List<Epic>> call, Response<List<Epic>> response) {
+                if(response.body() != null ){
+                    if(response.body().size() > 0){
+                        naturalEpic.setValue(response.body());
+                    } else {
+                        Epic epic = new Epic(0, NO_DATA, null,
+                                null, null,null,
+                                null, null, 0);
+                        List<Epic> noDataList = new ArrayList<>();
+                        naturalEpic.setValue(noDataList);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Epic>> call, Throwable t) {
+                Epic epic = new Epic(0, FAILURE_ON_CONNECTION, null,
+                        null, null,null,
+                        null, null, 0);
+                List<Epic> noDataList = new ArrayList<>();
+                naturalEpic.setValue(noDataList);
+
+            }
+        });
+
+    }
+
     //------------------- EPIC ENHANCED SECTION -------------------------------------------
 
     @Override
@@ -349,6 +384,38 @@ public class AstroRepositoryImpl implements AstroRepository {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
             }
         });
+    }
+
+    @Override
+    public void searchEpicEnhancedForDate(String date, MutableLiveData<List<EpicEnhanced>> epicEnhanced) {
+        Call<List<EpicEnhanced>> epicEnhancedCall = apisService.getEpicEnhancedForDate(date, BuildConfig.MY_API_KEY);
+        epicEnhancedCall.enqueue(new Callback<List<EpicEnhanced>>() {
+            @Override
+            public void onResponse(Call<List<EpicEnhanced>> call, Response<List<EpicEnhanced>> response) {
+                if(response.body() != null ){
+                    if(response.body().size() > 0){
+                       epicEnhanced.setValue(response.body());
+                    } else {
+                        EpicEnhanced epic = new EpicEnhanced(0, NO_DATA, null,
+                                null, null,null,
+                                null, null, 0);
+                        List<EpicEnhanced> noDataList = new ArrayList<>();
+                        epicEnhanced.setValue(noDataList);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<EpicEnhanced>> call, Throwable t) {
+                EpicEnhanced epic = new EpicEnhanced(0, FAILURE_ON_CONNECTION, null,
+                        null, null,null,
+                        null, null, 0);
+                List<EpicEnhanced> noDataList = new ArrayList<>();
+                epicEnhanced.setValue(noDataList);
+            }
+        });
+
     }
 
     //--------------------- ASTRONAUTS SECTION -----------------------------------------------

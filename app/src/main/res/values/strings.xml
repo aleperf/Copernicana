@@ -126,6 +126,17 @@
     <string name="epic_add_message">Image added to your favorites</string>
     <string name="epic_remove_message">Image removed from your favorites</string>
 
+    <!-- EPIC SEARCH -->
+    <string name="epic_radio_button_natural">Natural</string>
+    <string name="epic_radio_button_enhanced">Enhanced</string>
+    <string name="epic_search_button_text">SELECT DATE</string>
+    <string name="epic_search_prompt">Type of Image</string>
+    <string name="epic_search_title">Search Epic Images</string>
+    <string name="epic_search_result_success">These are the results for the date selected </string>
+    <string name="epic_search_result_no_data">No result for the date selected</string>
+    <string name="epic_search_date_label">Date:</string>
+    <string name="epic_search_no_date">No date selected</string>
+
     <!-- MARS SUMMARY -->
     <string name="curiosity_label">Curiosity</string>
     <string name="opportunity_label">Opportunity</string>

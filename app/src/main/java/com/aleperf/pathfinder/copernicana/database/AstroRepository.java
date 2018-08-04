@@ -48,6 +48,10 @@ public interface AstroRepository {
     void deleteAllNonFavoritesEpicEnhanced();
     void updateEnhancedFavWithIdentifier(int isFavorite, long identifier);
 
+    //EpicSearch
+    void searchEpicNaturalForDate(String date, MutableLiveData<List<Epic>> naturalEpic);
+    void searchEpicEnhancedForDate(String date, MutableLiveData<List<EpicEnhanced>> epicEnhanced);
+
     //Astronaut
     LiveData<List<Astronaut>> getAllAstronauts();
     LiveData<Astronaut> getAstronautWithId(int id);
