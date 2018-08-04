@@ -18,7 +18,7 @@
     <color name="button_ico_color">#FFFFFF</color>
 
     <color name="default_colored_text">#303F9F</color>
-
+    <color name="default_black_text">#000000</color>
     <!-- apod and card colors -->
     <color name="apod_summary_background">#c4dbff</color>
     <color name="apod_title">#303F9F</color>

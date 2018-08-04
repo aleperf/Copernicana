@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName;
  * More info about the API at https://epic.gsfc.nasa.gov/about/api
  */
 @Entity(tableName = "epic")
-public class Epic implements Parcelable{
+public class Epic implements Parcelable {
 
     @PrimaryKey
     long identifier;
@@ -79,7 +79,6 @@ public class Epic implements Parcelable{
     }
 
 
-
     public int isFavorite() {
         return isFavorite;
     }
@@ -88,7 +87,7 @@ public class Epic implements Parcelable{
         isFavorite = favorite;
     }
 
-    private Epic(Parcel in){
+    private Epic(Parcel in) {
         identifier = in.readLong();
         caption = in.readString();
         image = in.readString();
@@ -134,7 +133,7 @@ public class Epic implements Parcelable{
     /**
      * Coord2D represents a Earth Coordinate as latitude and longitude
      */
-    public static class Coord2D  implements Parcelable{
+    public static class Coord2D implements Parcelable {
         double lat;
         double lon;
 
@@ -156,7 +155,7 @@ public class Epic implements Parcelable{
             return 0;
         }
 
-        private Coord2D(Parcel in){
+        private Coord2D(Parcel in) {
             lat = in.readDouble();
             lon = in.readDouble();
         }
@@ -185,7 +184,7 @@ public class Epic implements Parcelable{
      * Earth is at x = 0, y = 0, z = 0
      */
 
-    public static class Coord3D implements Parcelable{
+    public static class Coord3D implements Parcelable {
         Double x;
         Double y;
         Double z;
@@ -208,7 +207,7 @@ public class Epic implements Parcelable{
             return z;
         }
 
-        private Coord3D(Parcel in){
+        private Coord3D(Parcel in) {
             x = in.readDouble();
             y = in.readDouble();
             z = in.readDouble();
@@ -240,24 +239,23 @@ public class Epic implements Parcelable{
     }
 
 
-
     public double getDistance(Coord3D point1, Coord3D point2) {
 
         double xDiff = point1.getX() - point2.getX();
         double yDiff = point1.getY() - point2.getY();
         double zDiff = point1.getZ() - point2.getZ();
-         return Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
+        return Math.sqrt(xDiff * xDiff + yDiff * yDiff + zDiff * zDiff);
     }
 
-    public long getDistanceEpicToEarth(){
+    public long getDistanceEpicToEarth() {
         return Math.round(getDistance(epicPosition, earthPosition));
     }
 
-    public long getDistanceEpicToSun(){
+    public long getDistanceEpicToSun() {
         return Math.round(getDistance(epicPosition, sunPosition));
     }
 
-    public long getDistanceSunToEarth(){
+    public long getDistanceSunToEarth() {
         return Math.round(getDistance(sunPosition, earthPosition));
     }
 

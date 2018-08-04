@@ -97,6 +97,19 @@
 
     <!-- EPIC DETAIL -->
     <string name="epic_detail_catpion_tool">This image was taken by NASA\'s EPIC camera onboard the NOAA DSCOVR spacecraft</string>
+    <string name="epic_detail_date_and_time_label">Date and Time: </string>
+    <string name="epic_detail_centroid_lat_label">Centroid latitude:</string>
+    <string name="epic_detail_centroid_long_label">Centroid longitude:</string>
+    <string name="epic_detail_distance_to_earth_label">Distance to Earth:</string>
+    <string name="epic_detail_distance_to_sun_label">Distance to Sun:</string>
+    <string name="epic_detail_distance_sun_to_earth_label">Sun To Earth:</string>
+
+    <string name="epic_detail_tools_lat">12.639322</string>
+    <string name="epic_detail_tools_lon">157.602913</string>
+    <string name="epic_detail_tools_dist_to_earth">1,592,048 km</string>
+    <string name="epic_detail_tools_dist_to_sun">150,281,304 km</string>
+    <string name="epic_detail_tools_sun_to_earth">151,858,967 km</string>
+
 
     <!-- MARS SUMMARY -->
     <string name="curiosity_label">Curiosity</string>

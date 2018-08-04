@@ -51,11 +51,16 @@
     <dimen name="search_selected_date_label">16sp</dimen>
     <dimen name="search_selected_date_text">16sp</dimen>
 
-
     <!-- SUMMARY DIMENSIONS -->
     <dimen name="sumary_header_margin_top">24dp</dimen>
     <dimen name="summary_header_width">250dp</dimen>
     <dimen name="summary_header_height">293dp</dimen>
+
+    <!-- EPIC DIMENS -->
+    <dimen name="epic_label_text">16sp</dimen>
+    <dimen name="epic_value_text">16sp</dimen>
+    <dimen name="detail_icon_side">36dp</dimen>
+
 
     <!-- ISS POSITION DIMENSIONS -->
     <dimen name="iss_pos_image_width">300dp</dimen>

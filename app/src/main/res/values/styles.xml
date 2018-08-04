@@ -55,6 +55,19 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- EPIC DETAIL -->
+    <style name="EpicDetailLabelText">
+        <item name="android:textColor">@color/default_colored_text</item>
+        <item name="android:textSize">@dimen/epic_label_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="EpicDetailValueText">
+        <item name="android:textColor">@color/default_black_text</item>
+        <item name="android:textSize">@dimen/epic_value_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
     <style name="ButtonCheckIss" parent="ButtonSearchStyle">
         <item name="android:layout_marginEnd">@dimen/iss_pos_layout_marging_side</item>
         <item name="android:layout_marginStart">@dimen/iss_pos_layout_marging_side</item>

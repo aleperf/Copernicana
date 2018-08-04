@@ -28,9 +28,152 @@
         android:layout_marginStart="16dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
+        android:textSize="@dimen/epic_value_text"
+        android:textColor="@color/default_black_text"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/epic_detail_image"
         tools:text="@string/epic_detail_catpion_tool" />
+
+    <TextView
+        android:id="@+id/epic_detail_date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/epic_detail_date_and_time_label"
+        android:textColor="@color/default_colored_text"
+        style="@style/EpicDetailLabelText"
+        app:layout_constraintStart_toStartOf="@+id/epic_detail_caption"
+        app:layout_constraintTop_toBottomOf="@+id/epic_detail_caption" />
+
+    <TextView
+        android:id="@+id/epic_date_and_time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/EpicDetailValueText"
+        tools:text="@string/epic_date_tools_text"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_detail_date_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_detail_date_label" />
+
+    <TextView
+        android:id="@+id/epic_distance_to_earth_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/EpicDetailLabelText"
+        android:text="@string/epic_detail_distance_to_earth_label"
+        app:layout_constraintStart_toStartOf="@+id/epic_detail_date_label"
+        app:layout_constraintTop_toBottomOf="@+id/epic_detail_date_label" />
+
+    <TextView
+        android:id="@+id/epic_distance_to_earth_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/EpicDetailValueText"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_distance_to_earth_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_distance_to_earth_label"
+        tools:text="@string/epic_detail_tools_dist_to_earth" />
+
+    <TextView
+        android:id="@+id/epic_distance_to_sun_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/EpicDetailLabelText"
+        android:text="@string/epic_detail_distance_to_sun_label"
+        app:layout_constraintStart_toStartOf="@+id/epic_distance_to_earth_label"
+        app:layout_constraintTop_toBottomOf="@+id/epic_distance_to_earth_label" />
+
+    <TextView
+        android:id="@+id/epic_distance_to_sun_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/EpicDetailValueText"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_distance_to_sun_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_distance_to_sun_label"
+        tools:text="@string/epic_detail_tools_dist_to_sun" />
+
+    <TextView
+        android:id="@+id/epic_sun_to_earth_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/EpicDetailLabelText"
+        android:text="@string/epic_detail_distance_sun_to_earth_label"
+        app:layout_constraintStart_toStartOf="@+id/epic_distance_to_sun_label"
+        app:layout_constraintTop_toBottomOf="@+id/epic_distance_to_sun_label" />
+
+    <TextView
+        android:id="@+id/epic_sun_to_earth_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/EpicDetailValueText"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_sun_to_earth_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_sun_to_earth_label"
+        tools:text="@string/epic_detail_tools_sun_to_earth" />
+
+    <TextView
+        android:id="@+id/epic_detail_centroid_lat_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/EpicDetailLabelText"
+        app:layout_constraintStart_toStartOf="@+id/epic_sun_to_earth_label"
+        app:layout_constraintTop_toBottomOf="@+id/epic_sun_to_earth_label"
+        tools:text="@string/epic_detail_centroid_lat_label" />
+
+    <TextView
+        android:id="@+id/epic_detail_centroid_lat_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        style="@style/EpicDetailValueText"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_detail_centroid_lat_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_detail_centroid_lat_label"
+        tools:text="@string/epic_detail_tools_lat" />
+
+    <TextView
+        android:id="@+id/epic_detail_centroid_lon_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        style="@style/EpicDetailLabelText"
+        android:text="@string/epic_detail_centroid_long_label"
+        app:layout_constraintStart_toStartOf="@+id/epic_detail_centroid_lat_label"
+        app:layout_constraintTop_toBottomOf="@+id/epic_detail_centroid_lat_label" />
+
+    <TextView
+        android:id="@+id/epic_detail_centroid_lon_value"
+        style="@style/EpicDetailValueText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_detail_centroid_lon_label"
+        app:layout_constraintStart_toEndOf="@+id/epic_detail_centroid_lon_label"
+        tools:text="@string/epic_detail_tools_lon" />
+
+    <ImageView
+        android:id="@+id/epic_detail_fav_icon"
+        android:layout_width="@dimen/detail_icon_side"
+        android:layout_height="@dimen/detail_icon_side"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/epic_detail_centroid_lon_value"
+        app:layout_constraintTop_toBottomOf="@+id/epic_detail_centroid_lon_value"
+        app:srcCompat="@drawable/star_icon_default" />
+
+    <ImageView
+        android:id="@+id/epic_detail_share_icon"
+        android:layout_width="@dimen/detail_icon_side"
+        android:layout_height="@dimen/detail_icon_side"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/epic_detail_fav_icon"
+        app:layout_constraintStart_toEndOf="@+id/epic_detail_fav_icon"
+        app:srcCompat="@drawable/share_icon" />
 </android.support.constraint.ConstraintLayout>
