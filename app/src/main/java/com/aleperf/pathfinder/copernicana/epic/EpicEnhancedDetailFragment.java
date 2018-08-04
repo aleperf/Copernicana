@@ -93,7 +93,7 @@ public class EpicEnhancedDetailFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        Log.d("uffa", "sono in onCreateView di EpicEnhancedDetailFragment");
+
         View rootView = inflater.inflate(R.layout.epic_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
         viewModel = ViewModelProviders.of(this, factory).get(EpicEnhancedDetailViewModel.class);

@@ -117,6 +117,9 @@
     <string name="epic_distance_KM_formatter">%d km</string>
     <string name="epic_detail_natural_toolbar_title">Epic Image Details</string>
 
+    <!-- EPIC FAVORITES -->
+    <string name="epic_favorites_empty_view_message">No Favorites To Dispay Yet</string>
+
     <!-- EPIC SHARE -->
     <string name="epic_share_message">I\'m watching this image of Earth seen from space on the Copernicana app: %s</string>
     <string name="epic_share_title">Share an Epic Image</string>
