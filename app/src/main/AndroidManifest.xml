@@ -101,7 +101,11 @@
         <activity
             android:name=".epic.EpicEnhancedDetailActivity"
             android:parentActivityName=".epic.EpicEnhancedActivity" />
-        <activity android:name=".epic.EpicNaturalFavoritesActivity"></activity>
+        <activity
+            android:name=".epic.EpicNaturalFavoritesActivity"
+            android:parentActivityName=".epic.EpicActivity" />
+        <activity android:name=".epic.EpicEnhancedFavActivity"
+            android:parentActivityName=".epic.EpicActivity"/>
     </application>
 
 </manifest>

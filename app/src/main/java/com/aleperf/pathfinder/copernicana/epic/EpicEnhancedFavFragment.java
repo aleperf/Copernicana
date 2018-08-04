@@ -29,21 +29,21 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class EpicNaturalFavFragment extends Fragment {
+public class EpicEnhancedFavFragment extends Fragment {
 
     private Unbinder unbinder;
     @BindView(R.id.epic_fav_recycler_view)
     RecyclerView recyclerView;
     @BindView(R.id.epic_fav_empty_text_view)
     TextView emptyTextView;
-    private EpicAdapter epicAdapter;
-    private LiveData<List<Epic>> naturalFavorites;
+    private EpicEnhancedAdapter epicAdapter;
+    private LiveData<List<EpicEnhanced>> enhancedFavorites;
     @Inject
     ViewModelProvider.Factory factory;
 
 
 
-    public EpicNaturalFavFragment(){}
+    public EpicEnhancedFavFragment(){}
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,22 +65,22 @@ public class EpicNaturalFavFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        epicAdapter = new EpicAdapter(getActivity());
+        epicAdapter =  new EpicEnhancedAdapter(getActivity());
         int columnCount = getResources().getInteger(R.integer.column_count);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),columnCount);
         recyclerView.setAdapter(epicAdapter);
         recyclerView.setLayoutManager(gridLayoutManager);
-        EpicNaturalFavViewModel viewModel = ViewModelProviders.of(this, factory)
-                .get(EpicNaturalFavViewModel.class);
-        naturalFavorites = viewModel.getFavoriteNaturalEpic();
+        EpicEnhancedFavViewModel viewModel = ViewModelProviders.of(this, factory)
+                .get(EpicEnhancedFavViewModel.class);
+        enhancedFavorites = viewModel.getFavoriteEnhancedEpic();
         subscribe();
     }
     public void subscribe(){
-        Observer<List<Epic>> epicObserver = new Observer<List<Epic>>() {
+        Observer<List<EpicEnhanced>> epicObserver = new Observer<List<EpicEnhanced>>() {
             @Override
-            public void onChanged(@Nullable List<Epic> epics) {
+            public void onChanged(@Nullable List<EpicEnhanced> epics) {
                 if(epics != null && epics.size() > 0){
-                    epicAdapter.setEpic(epics);
+                    epicAdapter.setEpicEnhanced(epics);
                     recyclerView.setVisibility(View.VISIBLE);
                     emptyTextView.setVisibility(View.GONE);
                 } else {
@@ -89,7 +89,7 @@ public class EpicNaturalFavFragment extends Fragment {
                 }
             }
         };
-        naturalFavorites.observe(this, epicObserver);
+        enhancedFavorites.observe(this, epicObserver);
     }
 
 
@@ -98,6 +98,5 @@ public class EpicNaturalFavFragment extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
-
 
 }

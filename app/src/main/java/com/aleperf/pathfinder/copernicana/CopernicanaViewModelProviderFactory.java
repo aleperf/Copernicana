@@ -10,6 +10,7 @@ import com.aleperf.pathfinder.copernicana.apod.ApodSearchViewModel;
 import com.aleperf.pathfinder.copernicana.apod.ApodViewModel;
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailViewModel;
+import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFavViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalFavViewModel;
@@ -45,19 +46,21 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new ApodDisplayAllViewModel(astroRepository);
         } else if (modelClass.isAssignableFrom(IssPositionViewModel.class)) {
             return (T) new IssPositionViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(AstronautsViewModel.class)){
+        } else if (modelClass.isAssignableFrom(AstronautsViewModel.class)) {
             return (T) new AstronautsViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(EpicNaturalViewModel.class)){
+        } else if (modelClass.isAssignableFrom(EpicNaturalViewModel.class)) {
             return (T) new EpicNaturalViewModel(astroRepository);
-        } else if(modelClass.isAssignableFrom(EpicEnhancedViewModel.class)){
+        } else if (modelClass.isAssignableFrom(EpicEnhancedViewModel.class)) {
             return (T) new EpicEnhancedViewModel(astroRepository);
-        }else if(modelClass.isAssignableFrom(EpicEnhancedDetailViewModel.class)){
-            return (T) new EpicEnhancedDetailViewModel(astroRepository);}
-        else if(modelClass.isAssignableFrom(EpicNaturalDetailViewModel.class)){
-            return (T) new EpicNaturalDetailViewModel(astroRepository);}
-        else if(modelClass.isAssignableFrom(EpicNaturalFavViewModel.class)){
-            return (T) new EpicNaturalFavViewModel(astroRepository);}
-        else {
+        } else if (modelClass.isAssignableFrom(EpicEnhancedDetailViewModel.class)) {
+            return (T) new EpicEnhancedDetailViewModel(astroRepository);
+        } else if (modelClass.isAssignableFrom(EpicNaturalDetailViewModel.class)) {
+            return (T) new EpicNaturalDetailViewModel(astroRepository);
+        } else if (modelClass.isAssignableFrom(EpicNaturalFavViewModel.class)) {
+            return (T) new EpicNaturalFavViewModel(astroRepository);
+        } else if (modelClass.isAssignableFrom(EpicEnhancedFavViewModel.class)) {
+            return (T) new EpicEnhancedFavViewModel(astroRepository);
+        } else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }
     }

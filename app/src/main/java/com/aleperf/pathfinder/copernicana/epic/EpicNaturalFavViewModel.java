@@ -26,7 +26,5 @@ public class EpicNaturalFavViewModel extends ViewModel {
         return favoriteNaturalEpic;
     }
 
-    public void updateNaturalEpic(int isFavorite, long identifier){
-        astroRepository.updateEpicFavWithIdentifier(isFavorite, identifier);
-    }
+
 }
