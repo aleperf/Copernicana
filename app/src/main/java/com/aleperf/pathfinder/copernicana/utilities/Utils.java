@@ -139,4 +139,11 @@ public class Utils {
         return null;
     }
 
+    public static int[] getDurationInMinutesAndSecond(int seconds){
+        int[] result = new int[2];
+        result[0] = seconds / 60;
+        result[1] = seconds % 60;
+        return result;
+    }
+
 }

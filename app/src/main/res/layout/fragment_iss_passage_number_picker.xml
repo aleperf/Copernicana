@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/iss_passage_calc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+<android.support.constraint.ConstraintLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/iss_passages_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/iss_passage_title"
+        android:textColor="@color/default_colored_text"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/latitude_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="76dp"
+        android:text="@string/iss_passage_enter_lat"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/latitude_integer_part"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="50"
+        android:textAlignment="center"
+        android:textColor="@color/default_black_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/latitude_label"
+        app:layout_constraintStart_toEndOf="@+id/latitude_label" />
+
+    <ImageView
+        android:id="@+id/latitude_integer_arrow_up"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/latitude_integer_part"
+        app:layout_constraintEnd_toStartOf="@+id/latitude_integer_part"
+        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
+        app:srcCompat="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/latitude_integer_arrow_down"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/latitude_integer_part"
+        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
+        app:layout_constraintTop_toBottomOf="@+id/latitude_integer_part"
+        app:srcCompat="@drawable/arrow_down" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="-16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/latitude_integer_arrow_down"
+        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
+        app:srcCompat="@drawable/round_point" />
+
+    <TextView
+        android:id="@+id/latitude_decimal_part"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/default_black_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginStart="44dp"
+        android:text="45"
+        app:layout_constraintBottom_toTopOf="@+id/latitude_integer_arrow_down"
+        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part" />
+
+    <ImageView
+        android:id="@+id/latitude_arrow_up_decimal"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/latitude_decimal_part"
+        app:layout_constraintEnd_toStartOf="@+id/latitude_decimal_part"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toEndOf="@+id/latitude_decimal_part"
+        app:srcCompat="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/latitude_decimal_part_arrow_down"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/latitude_decimal_part"
+        app:layout_constraintStart_toEndOf="@+id/latitude_decimal_part"
+        app:layout_constraintTop_toBottomOf="@+id/latitude_decimal_part"
+        app:srcCompat="@drawable/arrow_down" />
+
+    <TextView
+        android:id="@+id/longitude_integer_part"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="50"
+        android:textAlignment="center"
+        android:textColor="@color/default_black_text"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/latitude_integer_part"
+        app:layout_constraintTop_toBottomOf="@+id/latitude_integer_arrow_down" />
+
+    <TextView
+        android:id="@+id/longitude_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/iss_passage_enter_lon"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_integer"
+        app:layout_constraintStart_toStartOf="@+id/latitude_label" />
+
+    <ImageView
+        android:id="@+id/longitude_arrow_up_integer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_integer_part"
+        app:layout_constraintEnd_toStartOf="@+id/longitude_integer_part"
+        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
+        app:srcCompat="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/longitude_arrow_down_integer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/longitude_integer_part"
+        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
+        app:layout_constraintTop_toBottomOf="@+id/longitude_integer_part"
+        app:srcCompat="@drawable/arrow_down" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="-16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_integer"
+        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
+        app:srcCompat="@drawable/round_point" />
+
+    <TextView
+        android:id="@+id/longitude_decimal_part"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:text="100"
+        android:textAlignment="center"
+        android:textColor="@color/default_black_text"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_integer"
+        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part" />
+
+    <ImageView
+        android:id="@+id/longitude_arrow_up_decimal"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_decimal_part"
+        app:layout_constraintEnd_toStartOf="@+id/longitude_decimal_part"
+        app:layout_constraintStart_toEndOf="@+id/longitude_decimal_part"
+        app:srcCompat="@drawable/arrow_up" />
+
+    <ImageView
+        android:id="@+id/longitude_arrow_down_decimal_part"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/longitude_decimal_part"
+        app:layout_constraintStart_toEndOf="@+id/longitude_decimal_part"
+        app:layout_constraintTop_toBottomOf="@+id/longitude_decimal_part"
+        app:srcCompat="@drawable/arrow_down" />
+
+    <Button
+        android:id="@+id/calc_button"
+        style="@style/ButtonCheckIss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/iss_passage_search_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/longitude_arrow_down_integer" />
+
+    <TextView
+        android:id="@+id/result_text_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/default_black_text"
+        tools:text="@string/iss_passage_result_success"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calc_button" />
+
+    <TextView
+        android:id="@+id/latitude_range_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/iss_passage_latitude_range"
+        app:layout_constraintBottom_toTopOf="@+id/latitude_decimal_part_arrow_down"
+        app:layout_constraintStart_toEndOf="@+id/latitude_decimal_part" />
+
+    <TextView
+        android:id="@+id/longitude_range_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/iss_passage_longitude_range"
+        app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_decimal_part"
+        app:layout_constraintStart_toEndOf="@+id/longitude_decimal_part" />
+
+</android.support.constraint.ConstraintLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/iss_passage_recycler_view"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -527,14 +527,20 @@ public class AstroRepositoryImpl implements AstroRepository {
                         }
                     }
                 } else {
-                    Log.d("uffa", "response è null");
+                    IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_NO_DATA, 0);
+                    List<IssPassage> passes = new ArrayList<>();
+                    passes.add(pass);
+                    issPassages.setValue(passes);
                 }
 
             }
 
             @Override
             public void onFailure(Call<IssPassageQuery> call, Throwable t) {
-                   Log.d("uffa", "fallimento nella connessione " + t.getMessage());
+                IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_FAILED_CONNECTION, 0);
+                List<IssPassage> passes = new ArrayList<>();
+                passes.add(pass);
+                issPassages.setValue(passes);
             }
         });
     }
