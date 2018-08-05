@@ -16,10 +16,10 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface EpicDao {
 
-    @Query("SELECT * FROM epic")
+    @Query("SELECT * FROM epic ORDER BY date DESC")
     LiveData<List<Epic>> getAllNaturalEpic();
 
-    @Query("SELECT * FROM epic WHERE isFavorite = 1")
+    @Query("SELECT * FROM epic WHERE isFavorite = 1 ORDER BY date DESC")
     LiveData<List<Epic>> getAllEpicFavorites();
 
     @Query("SELECT * FROM epic WHERE identifier = :identifier LIMIT 1")
@@ -27,8 +27,10 @@ public interface EpicDao {
 
     @Insert(onConflict = IGNORE)
     void insertAllEpic(List<Epic>epic);
+
     @Insert(onConflict = REPLACE)
-    void insertEpic(Epic epic);
+    void insertEpicFromSearch(Epic epic);
+
 
     @Query("DELETE FROM epic WHERE isFavorite = 0")
     void deleteAllNonFavoritesEpic();

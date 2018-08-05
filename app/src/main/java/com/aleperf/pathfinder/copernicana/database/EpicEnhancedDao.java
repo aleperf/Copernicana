@@ -11,6 +11,8 @@ import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import java.util.List;
 
 import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
+import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+
 @Dao
 public interface EpicEnhancedDao {
     @Query("SELECT * FROM epic_enhanced")
@@ -24,6 +26,9 @@ public interface EpicEnhancedDao {
 
     @Insert(onConflict = IGNORE)
     void insertAllEpicEnhanced(List<EpicEnhanced> epicEnhanced);
+
+    @Insert(onConflict = REPLACE)
+    void insertEpicFromSearch(EpicEnhanced epic);
 
     @Query("DELETE FROM epic_enhanced WHERE isFavorite = 0")
     void deleteAllNonFavoritesEpicEnhanced();

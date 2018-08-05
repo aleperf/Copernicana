@@ -244,6 +244,13 @@ public class AstroRepositoryImpl implements AstroRepository {
                 .subscribeOn(Schedulers.io()).subscribe();
     }
 
+    @Override
+    public void insertEpicEnhancedFromSearch(Epic epic)
+    {
+        Completable.fromAction(() -> epicDao.insertEpicFromSearch(epic))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
     public void loadEpicNatural() {
         Call<List<Epic>> epicCall = apisService.getEpicNatural(BuildConfig.MY_API_KEY);
         epicCall.enqueue(new Callback<List<Epic>>() {
@@ -348,6 +355,12 @@ public class AstroRepositoryImpl implements AstroRepository {
     @Override
     public void updateEnhancedFavWithIdentifier(int isFavorite, long identifier) {
         Completable.fromAction(() -> epicEnhancedDao.updateEnhancedFavWithIdentifier(isFavorite, identifier))
+                .subscribeOn(Schedulers.io()).subscribe();
+    }
+
+    @Override
+    public void insertEpicEnhancedFromSearch(EpicEnhanced epic) {
+        Completable.fromAction(() -> epicEnhancedDao.insertEpicFromSearch(epic))
                 .subscribeOn(Schedulers.io()).subscribe();
     }
 

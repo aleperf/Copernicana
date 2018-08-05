@@ -41,6 +41,7 @@ public interface AstroRepository {
     void insertAllEpic(List<Epic>epic);
     void deleteAllNonFavoritesEpic();
     void updateEpicFavWithIdentifier(int isFavorite, long identifier);
+    void insertEpicEnhancedFromSearch(Epic epic);
 
     //EpicEnhanced
     LiveData<List<EpicEnhanced>> getAllEnhancedEpic();
@@ -49,6 +50,7 @@ public interface AstroRepository {
     void insertAllEpicEnhanced(List<EpicEnhanced> epicEnhanced);
     void deleteAllNonFavoritesEpicEnhanced();
     void updateEnhancedFavWithIdentifier(int isFavorite, long identifier);
+    void insertEpicEnhancedFromSearch(EpicEnhanced epic);
 
     //EpicSearch
     void searchEpicNaturalForDate(String date, MutableLiveData<List<Epic>> naturalEpic);

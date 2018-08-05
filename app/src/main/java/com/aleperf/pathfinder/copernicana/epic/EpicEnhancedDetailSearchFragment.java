@@ -1,5 +1,6 @@
 package com.aleperf.pathfinder.copernicana.epic;
 
+
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -9,17 +10,14 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 
@@ -29,12 +27,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class EpicEnhancedDetailFragment extends Fragment {
-    private final static String CURRENT_EPIC = "current natural epic";
+public class EpicEnhancedDetailSearchFragment extends Fragment {
+
+    private final static String EPIC_ENHANCED_FROM_SEARCH = "Epice enhancd from search";
     private final static int IS_FAVORITE = 1;
     private final static int NOT_FAVORITE = 0;
 
-    private Epic epic;
+    private EpicEnhanced epic;
     private Unbinder unbinder;
     @BindView(R.id.epic_detail_image)
     ImageView epicImage;
@@ -58,32 +57,29 @@ public class EpicEnhancedDetailFragment extends Fragment {
     ImageView favoriteIcon;
     @BindView(R.id.epic_detail_share_icon)
     ImageView shareIcon;
-    EpicEnhancedDetailViewModel viewModel;
+    EpicEnhancedSearchDetailViewModel viewModel;
 
     @Inject
     ViewModelProvider.Factory factory;
 
-    public EpicEnhancedDetailFragment() {
-    }
-
-
-    public static EpicEnhancedDetailFragment getInstance(EpicEnhanced epicEnhanced) {
+    public static EpicEnhancedDetailSearchFragment getInstance(EpicEnhanced epicEnhanced){
         Bundle bundle = new Bundle();
-        bundle.putParcelable(CURRENT_EPIC, epicEnhanced);
-        EpicEnhancedDetailFragment fragment = new EpicEnhancedDetailFragment();
+        bundle.putParcelable(EPIC_ENHANCED_FROM_SEARCH, epicEnhanced);
+        EpicEnhancedDetailSearchFragment fragment = new EpicEnhancedDetailSearchFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
 
+    public EpicEnhancedDetailSearchFragment(){}
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ((CopernicanaApplication) this.getActivity().getApplication())
                 .getCopernicanaApplicationComponent().inject(this);
         if (savedInstanceState == null) {
-            epic = getArguments().getParcelable(CURRENT_EPIC);
+            epic = getArguments().getParcelable(EPIC_ENHANCED_FROM_SEARCH);
         } else {
-            epic = savedInstanceState.getParcelable(CURRENT_EPIC);
+            epic = savedInstanceState.getParcelable(EPIC_ENHANCED_FROM_SEARCH);
         }
 
     }
@@ -95,7 +91,7 @@ public class EpicEnhancedDetailFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.epic_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        viewModel = ViewModelProviders.of(this, factory).get(EpicEnhancedDetailViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(EpicEnhancedSearchDetailViewModel.class);
         favoriteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,12 +99,12 @@ public class EpicEnhancedDetailFragment extends Fragment {
                     String message;
                     if(epic.isFavorite() == NOT_FAVORITE){
                         epic.setFavorite(IS_FAVORITE);
-                        viewModel.updateEpicEnhanced(IS_FAVORITE, epic.getIdentifier());
+                        viewModel.insertEpicEnhancedFromSearch(epic);
                         favoriteIcon.setImageResource(R.drawable.star_icon);
                         message = getString(R.string.epic_add_message);
                     } else {
                         epic.setFavorite(NOT_FAVORITE);
-                        viewModel.updateEpicEnhanced(NOT_FAVORITE, epic.getIdentifier());
+                        viewModel.insertEpicEnhancedFromSearch(epic);
                         favoriteIcon.setImageResource(R.drawable.star_icon_default);
                         message = getString(R.string.epic_remove_message);
                     }
@@ -174,10 +170,8 @@ public class EpicEnhancedDetailFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(CURRENT_EPIC, epic);
+        outState.putParcelable(EPIC_ENHANCED_FROM_SEARCH, epic);
     }
-
-
 
 
 
