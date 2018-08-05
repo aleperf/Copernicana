@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
+import com.aleperf.pathfinder.copernicana.model.IssPassage;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 
 import java.util.List;
@@ -56,6 +57,9 @@ public interface ApisService {
     //ISS
     @GET("http://api.open-notify.org/iss-now.json")
     Call<IssPosition>getLatestIssPosition();
+
+    @GET("http://api.open-notify.org/iss-pass.json")
+    Call<IssPassageQuery> getIssPassages(@Query("lat") double latitude, @Query("lon") double longitude);
 
 
 }

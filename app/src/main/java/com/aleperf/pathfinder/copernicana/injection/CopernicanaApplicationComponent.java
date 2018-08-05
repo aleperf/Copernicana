@@ -21,6 +21,8 @@ import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsFragment;
+import com.aleperf.pathfinder.copernicana.iss.IssPassageActivity;
+import com.aleperf.pathfinder.copernicana.iss.IssPassageFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
@@ -53,6 +55,7 @@ public interface CopernicanaApplicationComponent {
     void inject(IssPositionFragment issPositionFragment);
     void inject(AstronautsFragment astronautsFragment);
     void inject(AstronautDetailFragment astronautDetailFragment);
+    void inject(IssPassageFragment issPassageFragment);
     void inject (UpdateService updateService);
     Application application();
 }

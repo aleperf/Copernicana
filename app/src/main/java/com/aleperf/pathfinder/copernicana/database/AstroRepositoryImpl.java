@@ -14,8 +14,10 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
+import com.aleperf.pathfinder.copernicana.model.IssPassage;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
+import com.aleperf.pathfinder.copernicana.network.IssPassageQuery;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
@@ -507,4 +509,33 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
+    @Override
+    public void calculateIssPassage(double latitude, double longitude, MutableLiveData<List<IssPassage>> issPassages) {
+        Call<IssPassageQuery> issPassageQueryCall = apisService.getIssPassages(latitude, longitude);
+        issPassageQueryCall.enqueue(new Callback<IssPassageQuery>() {
+            @Override
+            public void onResponse(Call<IssPassageQuery> call, Response<IssPassageQuery> response) {
+                if(response != null){
+                    IssPassageQuery query = response.body();
+                    if(query != null){
+                        List<IssPassage> passages = query.getPassages();
+                        Log.d("uffa", "passages ha size " + passages.size());
+                        IssPassage firstPassage = passages.get(0);
+                        Log.d("uffa", "passage timestamp " + firstPassage.getRisetime() + "duration " + firstPassage.getDuration());
+                        if(passages != null){
+                            issPassages.setValue(passages);
+                        }
+                    }
+                } else {
+                    Log.d("uffa", "response è null");
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<IssPassageQuery> call, Throwable t) {
+                   Log.d("uffa", "fallimento nella connessione " + t.getMessage());
+            }
+        });
+    }
 }

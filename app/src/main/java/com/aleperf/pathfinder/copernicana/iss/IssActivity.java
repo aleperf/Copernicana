@@ -37,13 +37,14 @@ public class IssActivity extends AppCompatActivity implements SummaryAdapter.Sec
                     Intent issPositionIntent = new Intent(this, IssPositionActivity.class);
                     startActivity(issPositionIntent);
                     break;
-                case 3:
+                case 2:
+                    Intent issPassageIntent = new Intent(this, IssPassageActivity.class);
+                    startActivity(issPassageIntent);
+                    break;
+                default:
                     Intent astronautsIntent = new Intent(this, AstronautsActivity.class);
                     startActivity(astronautsIntent);
-                    break;
 
-                default:
-                    Toast.makeText(this, "clicked section: " + position, Toast.LENGTH_SHORT).show();
             }
         }
     }

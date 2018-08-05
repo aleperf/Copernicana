@@ -172,6 +172,19 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
 
+    <!-- ISS PASSAGE -->
+    <string name="iss_passage_title">Calculate Next Iss Passages</string>
+    <string name="iss_passage_enter_lat">Enter Latitude:</string>
+    <string name="iss_passage_enter_lon">Enter Longitude</string>
+    <string name="iss_passage_latitude_range">range: -80...+80</string>
+    <string name="iss_passage_longitude_range">range: -180...+180</string>
+    <string name="iss_passage_search_button">Calculate Passsages</string>
+    <string name="iss_passage_result_success">Iss passages at latitude %d and longitude %d</string>
+    <string name="iss_passage_result_no_data">No result for the selected values</string>
+    <string name="iss_pass_item_date_and_time">Date and Time:</string>
+    <string name="iss_pass_item_duration_label">Duration: </string>
+    <string name="iss_pass_item_duration_format">%d m %d s</string>
+
     <!--WIDGET -->
     <string name="widget_content_description">astronomy picture of the day</string>
 
