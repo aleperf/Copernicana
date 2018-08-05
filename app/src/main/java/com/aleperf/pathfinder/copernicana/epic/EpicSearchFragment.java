@@ -38,7 +38,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener{
+public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnDateSetListener {
 
     private final static int SEARCH_TYPE_NATURAL = 0;
     private final static int SEARCH_TYPE_ENHANCED = 1;
@@ -98,57 +98,54 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radio_enhanced) {
-                    Log.d("uffa", "sto settando search type enhanced");
                     searchType = SEARCH_TYPE_ENHANCED;
                 } else {
-                    Log.d("uffa", "sto settando type natural");
                     searchType = SEARCH_TYPE_NATURAL;
                 }
             }
         });
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             searchType = savedInstanceState.getInt(CURRENT_SEARCH_TYPE);
         }
-        if(searchType == SEARCH_TYPE_NATURAL){
+        if (searchType == SEARCH_TYPE_NATURAL) {
             naturalRadioButton.setChecked(true);
             enhancedRadioButton.setChecked(false);
-        } else{
+        } else {
             naturalRadioButton.setChecked(false);
             enhancedRadioButton.setChecked(true);
         }
-         setButtonSearchOnClickListener();
-         String noDate = getString(R.string.epic_search_no_date);
-         String defaultMessage = getString(R.string.epic_search_default_message);
-         if(savedInstanceState != null){
-             date = savedInstanceState.getString(CURRENT_DATE_SELECTED, noDate);
-             message = savedInstanceState.getString(CURRENT_MESSAGE,defaultMessage);
+        setButtonSearchOnClickListener();
+        String noDate = getString(R.string.epic_search_no_date);
+        String defaultMessage = getString(R.string.epic_search_default_message);
+        if (savedInstanceState != null) {
+            date = savedInstanceState.getString(CURRENT_DATE_SELECTED, noDate);
+            message = savedInstanceState.getString(CURRENT_MESSAGE, defaultMessage);
 
-         } else {
-             date = noDate;
-             message = defaultMessage;
-         }
-         dateSelectedTextView.setText(date);
-         searchResultMessageTextView.setText(message);
+        } else {
+            date = noDate;
+            message = defaultMessage;
+        }
+        dateSelectedTextView.setText(date);
+        searchResultMessageTextView.setText(message);
 
 
         return rootView;
     }
 
-    private void setButtonSearchOnClickListener(){
-        searchButton.setOnClickListener(new View.OnClickListener(){
+    private void setButtonSearchOnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("uffa", "ho cliccato button search");
-                if(searchType == SEARCH_TYPE_NATURAL){
-                   if(naturalAdapter == null){
-                       naturalAdapter = new EpicAdapter(getActivity(), EpicAdapter.FLAG_FROM_SEARCH);
+                if (searchType == SEARCH_TYPE_NATURAL) {
+                    if (naturalAdapter == null) {
+                        naturalAdapter = new EpicAdapter(getActivity(), EpicAdapter.FLAG_FROM_SEARCH);
 
-                   }
-                   resultsRecyclerView.setAdapter(naturalAdapter);
-                   unsubscribeEnhanced();
-                   observeNatural();
+                    }
+                    resultsRecyclerView.setAdapter(naturalAdapter);
+                    unsubscribeEnhanced();
+                    observeNatural();
                 } else {
-                    if(enhancedAdapter == null){
+                    if (enhancedAdapter == null) {
                         enhancedAdapter = new EpicEnhancedAdapter(getActivity(), EpicEnhancedAdapter.FLAG_FROM_SEARCH);
                     }
                     resultsRecyclerView.setAdapter(enhancedAdapter);
@@ -167,7 +164,7 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
         epicNaturalLiveData = viewModel.getNaturalEpic();
         epicEnhancedMutableLiveData = viewModel.getEnhancedEpic();
 
-        if(searchType == SEARCH_TYPE_NATURAL){
+        if (searchType == SEARCH_TYPE_NATURAL) {
             naturalAdapter = new EpicAdapter(getActivity(), EpicAdapter.FLAG_FROM_SEARCH);
             enhancedAdapter = null;
             resultsRecyclerView.setAdapter(naturalAdapter);
@@ -221,20 +218,18 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
     }
 
     private void observeEnhanced() {
-      enhancedObserver = new Observer<List<EpicEnhanced>>() {
+        enhancedObserver = new Observer<List<EpicEnhanced>>() {
             @Override
             public void onChanged(@Nullable List<EpicEnhanced> epicEnhanceds) {
                 if (searchType == SEARCH_TYPE_ENHANCED) {
                     if (epicEnhanceds != null && epicEnhanceds.size() > 0) {
                         EpicEnhanced firstEpicEnhanced = epicEnhanceds.get(0);
                         String messageResult = firstEpicEnhanced.getCaption();
-                        Log.d("uffa", "message result = " + messageResult);
                         if (messageResult.equals(AstroRepository.EPIC_NO_DATA)) {
                             resultsRecyclerView.setVisibility(View.GONE);
                             message = getString(R.string.epic_search_result_no_data);
                             searchResultMessageTextView.setText(message);
                         } else if (messageResult.equals(AstroRepository.EPIC_FAILURE_ON_CONNECTION)) {
-                            Log.d("uffa", "result is failed connection");
                             resultsRecyclerView.setVisibility(View.GONE);
                             message = getString(R.string.epic_search_result_no_connection);
                             searchResultMessageTextView.setText(message);
@@ -255,19 +250,19 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
         epicEnhancedMutableLiveData.observe(this, enhancedObserver);
     }
 
-    private void unsubscribeNatural(){
-        if(naturalObserver != null){
+    private void unsubscribeNatural() {
+        if (naturalObserver != null) {
             epicNaturalLiveData.removeObserver(naturalObserver);
         }
     }
 
-    private void unsubscribeEnhanced(){
-        if(enhancedObserver != null){
+    private void unsubscribeEnhanced() {
+        if (enhancedObserver != null) {
             epicEnhancedMutableLiveData.removeObserver(enhancedObserver);
         }
     }
 
-    private void launchDatePicker(){
+    private void launchDatePicker() {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -296,10 +291,9 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
         String searchDate = Utils.getDateSearchString(year, month, dayOfMonth);
-        Log.d("uffa", "la data settata è: " + searchDate);
         date = Utils.getFormattedDate(searchDate, getActivity());
         dateSelectedTextView.setText(date);
-        if(searchType == SEARCH_TYPE_NATURAL){
+        if (searchType == SEARCH_TYPE_NATURAL) {
             viewModel.searchNaturalEpic(searchDate);
         } else {
             viewModel.searchEnhancedEpic(searchDate);

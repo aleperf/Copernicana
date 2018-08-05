@@ -287,7 +287,6 @@ public class AstroRepositoryImpl implements AstroRepository {
             public void onResponse(Call<List<Epic>> call, Response<List<Epic>> response) {
                 if(response.body() != null ){
                     if(response.body().size() > 0){
-                        Log.d("uffa", "sono in astrorepository e response è diverso da null");
                         naturalEpic.setValue(response.body());
                     } else {
                         Epic epic = new Epic(0, EPIC_NO_DATA, null,
@@ -296,8 +295,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                         List<Epic> noDataList = new ArrayList<>();
                         noDataList.add(epic);
                         naturalEpic.setValue(noDataList);
-                        Log.d("uffa", "sono in astrorepository e response è null");
-                    }
+                        }
                 }
             }
 
@@ -309,9 +307,8 @@ public class AstroRepositoryImpl implements AstroRepository {
                 List<Epic> noDataList = new ArrayList<>();
                 noDataList.add(epic);
                 naturalEpic.setValue(noDataList);
-                Log.d("uffa", "sono in astrorepository e la connessione è fallita");
 
-            }
+                }
         });
 
     }
