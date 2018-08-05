@@ -58,7 +58,7 @@ public class EpicNaturalFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        epicAdapter = new EpicAdapter(getActivity());
+        epicAdapter = new EpicAdapter(getActivity(), EpicAdapter.NOT_FROM_SEARCH);
         int columnCount = getResources().getInteger(R.integer.column_count);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),columnCount);
         naturalEpicRecyclerView.setAdapter(epicAdapter);

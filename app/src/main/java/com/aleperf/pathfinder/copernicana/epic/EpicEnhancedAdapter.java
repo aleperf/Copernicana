@@ -21,9 +21,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapter.EpicEnhancedHolder> {
-
+    public static String FLAG_FROM_SEARCH = "adapter created from search";
+    public static String NOT_FROM_SEARCH = "not from search";
     Context context;
     List<EpicEnhanced> epicEnhanced;
+
 
 
     public interface EpicEnhancedSelector {

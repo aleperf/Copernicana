@@ -46,8 +46,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     private final String TAG = AstroRepositoryImpl.class.getSimpleName();
     private final String FIREBASE_STORAGE = BuildConfig.APP_STORAGE;
     private final String ASTRONAUTS_IN_SPACE = "astronauts/inspace.json";
-    public final String NO_DATA = "NO DATA";
-    public final String FAILURE_ON_CONNECTION = "FAILURE ON CONNECTION";
+
 
 
     private ApodDao apodDao;
@@ -288,13 +287,16 @@ public class AstroRepositoryImpl implements AstroRepository {
             public void onResponse(Call<List<Epic>> call, Response<List<Epic>> response) {
                 if(response.body() != null ){
                     if(response.body().size() > 0){
+                        Log.d("uffa", "sono in astrorepository e response è diverso da null");
                         naturalEpic.setValue(response.body());
                     } else {
                         Epic epic = new Epic(0, NO_DATA, null,
                                 null, null,null,
                                 null, null, 0);
                         List<Epic> noDataList = new ArrayList<>();
+                        noDataList.add(epic);
                         naturalEpic.setValue(noDataList);
+                        Log.d("uffa", "sono in astrorepository e response è null");
                     }
                 }
             }
@@ -305,7 +307,9 @@ public class AstroRepositoryImpl implements AstroRepository {
                         null, null,null,
                         null, null, 0);
                 List<Epic> noDataList = new ArrayList<>();
+                noDataList.add(epic);
                 naturalEpic.setValue(noDataList);
+                Log.d("uffa", "sono in astrorepository e la connessione è fallita");
 
             }
         });

@@ -11,6 +11,7 @@ import com.aleperf.pathfinder.copernicana.model.Epic;
 import java.util.List;
 
 import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
+import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface EpicDao {
@@ -26,6 +27,8 @@ public interface EpicDao {
 
     @Insert(onConflict = IGNORE)
     void insertAllEpic(List<Epic>epic);
+    @Insert(onConflict = REPLACE)
+    void insertEpic(Epic epic);
 
     @Query("DELETE FROM epic WHERE isFavorite = 0")
     void deleteAllNonFavoritesEpic();

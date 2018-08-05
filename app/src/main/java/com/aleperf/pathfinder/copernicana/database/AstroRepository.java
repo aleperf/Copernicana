@@ -15,6 +15,8 @@ import java.util.List;
 public interface AstroRepository {
 
     final String FAILED_CONNECTION = "failed connection in AstroRepository 123";
+    public final String NO_DATA = "No data for epic 1343";
+    public final String FAILURE_ON_CONNECTION = "failure on connection for epic 34343";
 
     void updateRepository();
 

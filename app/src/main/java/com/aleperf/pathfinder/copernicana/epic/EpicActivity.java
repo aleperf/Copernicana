@@ -66,8 +66,11 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
                     Intent enhancedFavoritesIntent = new Intent(this, EpicEnhancedFavActivity.class);
                     startActivity(enhancedFavoritesIntent);
                     break;
+
                 default:
-                    Toast.makeText(this, "clicked element " + position, Toast.LENGTH_SHORT).show();
+                    Intent searchIntent = new Intent(this, EpicSearchActivity.class);
+                    startActivity(searchIntent);
+                    break;
             }
         }
     }

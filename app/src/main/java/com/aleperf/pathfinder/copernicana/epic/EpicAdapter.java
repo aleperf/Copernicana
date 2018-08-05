@@ -24,6 +24,9 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
     private Context context;
     private List<Epic> naturalEpic;
+    private String flag;
+    public static String FLAG_FROM_SEARCH = "adapter created from search";
+    public static String NOT_FROM_SEARCH = "not from search";
 
 
     public interface EpicNaturalSelector {
@@ -31,9 +34,14 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
         void selectEpic(Epic epic);
     }
 
+    public interface EpicNaturalSearchSelector {
+        void selectEpicFromSearch(Epic epic);
+    }
 
-    public EpicAdapter(Context context){
+
+    public EpicAdapter(Context context, String flag) {
         this.context = context;
+        this.flag = flag;
     }
 
 
@@ -80,7 +88,7 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
             Epic epic = naturalEpic.get(position);
             String date = epic.getDate();
             String formattedDate = Utils.getEpicDateFormat(date);
-            if(formattedDate != null){
+            if (formattedDate != null) {
                 epicDateAndHour.setText(formattedDate);
             }
             String imageUrl = Utils.buildEpicNaturalImageUrl(epic.getDate(), epic.getImage());
@@ -93,9 +101,17 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
 
         @Override
         public void onClick(View v) {
-            if (context instanceof EpicNaturalSelector) {
-                EpicNaturalSelector epicNaturalSelector = (EpicNaturalSelector) context;
-                epicNaturalSelector.selectEpic(naturalEpic.get(getAdapterPosition()));
+            if (!flag.equals(FLAG_FROM_SEARCH)) {
+                if (context instanceof EpicNaturalSelector) {
+                    EpicNaturalSelector epicNaturalSelector = (EpicNaturalSelector) context;
+                    epicNaturalSelector.selectEpic(naturalEpic.get(getAdapterPosition()));
+                }
+            } else {
+                Log.d("uffa", "clicking from search");
+                if(context instanceof EpicNaturalSearchSelector){
+                    EpicNaturalSearchSelector searchSelector = (EpicNaturalSearchSelector) context;
+                    searchSelector.selectEpicFromSearch(naturalEpic.get(getAdapterPosition()));
+                }
             }
         }
     }

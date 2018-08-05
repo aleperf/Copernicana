@@ -14,6 +14,7 @@ import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalFavFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalFragment;
+import com.aleperf.pathfinder.copernicana.epic.EpicSearchFragment;
 import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment;
@@ -43,6 +44,7 @@ public interface CopernicanaApplicationComponent {
     void inject(EpicEnhancedDetailFragment epicEnhancedDetailFragment);
     void inject(EpicNaturalFavFragment epicNaturalFavFragment);
     void inject(EpicEnhancedFavFragment epicEnhancedFavFragment);
+    void inject(EpicSearchFragment epicSearchFragment);
     void inject(MarsActivity marsActivity);
     void inject(IssPositionFragment issPositionFragment);
     void inject(AstronautsFragment astronautsFragment);

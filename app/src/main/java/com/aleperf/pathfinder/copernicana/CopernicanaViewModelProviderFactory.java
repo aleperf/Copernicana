@@ -15,6 +15,7 @@ import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalFavViewModel;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalViewModel;
+import com.aleperf.pathfinder.copernicana.epic.EpicSearchViewModel;
 import com.aleperf.pathfinder.copernicana.intro.IntroViewModel;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsViewModel;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionViewModel;
@@ -60,7 +61,9 @@ public class CopernicanaViewModelProviderFactory implements ViewModelProvider.Fa
             return (T) new EpicNaturalFavViewModel(astroRepository);
         } else if (modelClass.isAssignableFrom(EpicEnhancedFavViewModel.class)) {
             return (T) new EpicEnhancedFavViewModel(astroRepository);
-        } else {
+        } else if (modelClass.isAssignableFrom(EpicSearchViewModel.class)) {
+            return (T) new EpicSearchViewModel(astroRepository);
+        }else {
             throw new IllegalArgumentException("ViewModel Not Found");
         }
     }
