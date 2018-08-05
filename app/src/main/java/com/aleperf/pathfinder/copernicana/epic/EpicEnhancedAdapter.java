@@ -21,10 +21,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapter.EpicEnhancedHolder> {
+
     public static String FLAG_FROM_SEARCH = "adapter created from search";
     public static String NOT_FROM_SEARCH = "not from search";
-    Context context;
-    List<EpicEnhanced> epicEnhanced;
+    private Context context;
+    private List<EpicEnhanced> epicEnhanced;
+    private String flag;
 
 
 
@@ -33,9 +35,14 @@ public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapte
         void selectEpicEnhanced(EpicEnhanced epicEnhanced);
     }
 
+    public interface EpicEnhancedSearchSelector{
+        void selectEnhancedEpicFromSearch(EpicEnhanced epicEnhanced);
+    }
 
-    public EpicEnhancedAdapter(Context context){
+
+    public EpicEnhancedAdapter(Context context, String flag){
         this.context = context;
+        this.flag = flag;
     }
 
     @NonNull
@@ -93,10 +100,18 @@ public class EpicEnhancedAdapter extends RecyclerView.Adapter<EpicEnhancedAdapte
 
         @Override
         public void onClick(View v) {
+            EpicEnhanced epic = epicEnhanced.get(getAdapterPosition());
+            if(flag.equals(NOT_FROM_SEARCH)){
             if (context instanceof EpicEnhancedSelector) {
-                EpicEnhanced epic = epicEnhanced.get(getAdapterPosition());
+
                 EpicEnhancedSelector selector = (EpicEnhancedSelector) context;
                 selector.selectEpicEnhanced(epic);
+            }
+        } else {
+                if(context instanceof EpicEnhancedSearchSelector){
+                    EpicEnhancedSearchSelector searchSelector = (EpicEnhancedSearchSelector)context;
+                    searchSelector.selectEnhancedEpicFromSearch(epic);
+                }
             }
         }
     }

@@ -181,7 +181,7 @@ public class AstroRepositoryImpl implements AstroRepository {
             public void onFailure(Call<Apod> call, Throwable t) {
                 Log.d(TAG, "Failure on in loading data " + t.getMessage());
                 Apod apod = new Apod(null, date,
-                        t.getMessage(), null, null, FAILED_CONNECTION,
+                        t.getMessage(), null, null, ASTRONAUT_FAILED_CONNECTION,
                         null);
                 searchedApod.setValue(apod);
             }
@@ -290,7 +290,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                         Log.d("uffa", "sono in astrorepository e response è diverso da null");
                         naturalEpic.setValue(response.body());
                     } else {
-                        Epic epic = new Epic(0, NO_DATA, null,
+                        Epic epic = new Epic(0, EPIC_NO_DATA, null,
                                 null, null,null,
                                 null, null, 0);
                         List<Epic> noDataList = new ArrayList<>();
@@ -303,7 +303,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<List<Epic>> call, Throwable t) {
-                Epic epic = new Epic(0, FAILURE_ON_CONNECTION, null,
+                Epic epic = new Epic(0, EPIC_FAILURE_ON_CONNECTION, null,
                         null, null,null,
                         null, null, 0);
                 List<Epic> noDataList = new ArrayList<>();
@@ -400,10 +400,11 @@ public class AstroRepositoryImpl implements AstroRepository {
                     if(response.body().size() > 0){
                        epicEnhanced.setValue(response.body());
                     } else {
-                        EpicEnhanced epic = new EpicEnhanced(0, NO_DATA, null,
+                        EpicEnhanced epic = new EpicEnhanced(0, EPIC_NO_DATA, null,
                                 null, null,null,
                                 null, null, 0);
                         List<EpicEnhanced> noDataList = new ArrayList<>();
+                        noDataList.add(epic);
                         epicEnhanced.setValue(noDataList);
                     }
                 }
@@ -412,10 +413,11 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<List<EpicEnhanced>> call, Throwable t) {
-                EpicEnhanced epic = new EpicEnhanced(0, FAILURE_ON_CONNECTION, null,
+                EpicEnhanced epic = new EpicEnhanced(0, EPIC_FAILURE_ON_CONNECTION, null,
                         null, null,null,
                         null, null, 0);
                 List<EpicEnhanced> noDataList = new ArrayList<>();
+                noDataList.add(epic);
                 epicEnhanced.setValue(noDataList);
             }
         });

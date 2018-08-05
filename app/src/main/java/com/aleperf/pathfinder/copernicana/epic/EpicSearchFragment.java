@@ -149,7 +149,7 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
                    observeNatural();
                 } else {
                     if(enhancedAdapter == null){
-                        enhancedAdapter = new EpicEnhancedAdapter(getActivity());
+                        enhancedAdapter = new EpicEnhancedAdapter(getActivity(), EpicEnhancedAdapter.FLAG_FROM_SEARCH);
                     }
                     resultsRecyclerView.setAdapter(enhancedAdapter);
                     unsubscribeNatural();
@@ -175,7 +175,7 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
             observeNatural();
 
         } else {
-            enhancedAdapter = new EpicEnhancedAdapter(getActivity());
+            enhancedAdapter = new EpicEnhancedAdapter(getActivity(), EpicEnhancedAdapter.FLAG_FROM_SEARCH);
             naturalAdapter = null;
             unsubscribeNatural();
             observeEnhanced();
@@ -192,15 +192,15 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
                     if (epics != null && epics.size() > 0) {
                         Epic firstEpic = epics.get(0);
                         String messageResult = firstEpic.getCaption();
-                        if (messageResult.equals(AstroRepository.NO_DATA)) {
+                        if (messageResult.equals(AstroRepository.EPIC_NO_DATA)) {
                             resultsRecyclerView.setVisibility(View.GONE);
                             searchResultMessageTextView.setVisibility(View.VISIBLE);
                             message = getString(R.string.epic_search_result_no_data);
                             searchResultMessageTextView.setText(message);
-                        } else if (messageResult.equals(AstroRepository.FAILED_CONNECTION)) {
+                        } else if (messageResult.equals(AstroRepository.EPIC_FAILURE_ON_CONNECTION)) {
                             resultsRecyclerView.setVisibility(View.GONE);
                             searchResultMessageTextView.setVisibility(View.VISIBLE);
-                            message = getString(R.string.epic_search_result_no_data);
+                            message = getString(R.string.epic_search_result_no_connection);
                             searchResultMessageTextView.setText(message);
                         } else {
                             resultsRecyclerView.setVisibility(View.VISIBLE);
@@ -228,13 +228,15 @@ public class EpicSearchFragment extends Fragment implements DatePickerDialog.OnD
                     if (epicEnhanceds != null && epicEnhanceds.size() > 0) {
                         EpicEnhanced firstEpicEnhanced = epicEnhanceds.get(0);
                         String messageResult = firstEpicEnhanced.getCaption();
-                        if (messageResult.equals(AstroRepository.NO_DATA)) {
+                        Log.d("uffa", "message result = " + messageResult);
+                        if (messageResult.equals(AstroRepository.EPIC_NO_DATA)) {
                             resultsRecyclerView.setVisibility(View.GONE);
                             message = getString(R.string.epic_search_result_no_data);
                             searchResultMessageTextView.setText(message);
-                        } else if (messageResult.equals(AstroRepository.FAILED_CONNECTION)) {
+                        } else if (messageResult.equals(AstroRepository.EPIC_FAILURE_ON_CONNECTION)) {
+                            Log.d("uffa", "result is failed connection");
                             resultsRecyclerView.setVisibility(View.GONE);
-                            message = getString(R.string.epic_search_result_no_data);
+                            message = getString(R.string.epic_search_result_no_connection);
                             searchResultMessageTextView.setText(message);
                         } else {
                             resultsRecyclerView.setVisibility(View.VISIBLE);

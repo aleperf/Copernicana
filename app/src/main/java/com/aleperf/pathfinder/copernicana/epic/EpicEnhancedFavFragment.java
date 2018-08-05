@@ -65,7 +65,7 @@ public class EpicEnhancedFavFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        epicAdapter =  new EpicEnhancedAdapter(getActivity());
+        epicAdapter =  new EpicEnhancedAdapter(getActivity(), EpicEnhancedAdapter.NOT_FROM_SEARCH);
         int columnCount = getResources().getInteger(R.integer.column_count);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),columnCount);
         recyclerView.setAdapter(epicAdapter);

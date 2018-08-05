@@ -29,7 +29,6 @@ import java.util.regex.Pattern;
 public class Utils {
 
 
-
     public static List<Astronaut> getAstronautsFromJson(JsonObject jsonObject) {
         JsonArray jsonArray = jsonObject.getAsJsonArray("people");
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -74,27 +73,27 @@ public class Utils {
         }
     }
 
-    public static String getDateSearchString(int year, int month, int day){
+    public static String getDateSearchString(int year, int month, int day) {
         String dateformat = ("%d-%s-%s");
         int correctMonth = month + 1;
         String monthString = getNormalizedDateField(correctMonth);
         String dayString = getNormalizedDateField(day);
         return String.format(dateformat, year, monthString, dayString);
-        }
+    }
 
-    private static String getNormalizedDateField(int dateField){
+    private static String getNormalizedDateField(int dateField) {
         String normalizedField;
-        String formatString ="0%d";
-        if(dateField < 10){
+        String formatString = "0%d";
+        if (dateField < 10) {
             normalizedField = String.format(formatString, dateField);
         } else {
             normalizedField = String.valueOf(dateField);
         }
         return normalizedField;
-        }
+    }
 
 
-    public static String getLocalTimeFromUnixTimestamp(long timestamp){
+    public static String getLocalTimeFromUnixTimestamp(long timestamp) {
         Calendar calendar = Calendar.getInstance();
         TimeZone timeZone = calendar.getTimeZone();
         SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy  HH:mm:ss", Locale.ENGLISH);
@@ -104,31 +103,40 @@ public class Utils {
 
     }
 
-    public static String buildEpicNaturalImageUrl(String date, String image){
-        String formaString = "https://epic.gsfc.nasa.gov/archive/natural/%s/%s/%s/jpg/%s.jpg";
-        String startDate = date.substring(0, 10);
-        String[] dateElements = startDate.split("-");
-        return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
-    }
-
-    public static String buildEpicEnhancedImageUrl(String date, String image){
-        String formaString = "https://epic.gsfc.nasa.gov/archive/enhanced/%s/%s/%s/jpg/%s.jpg";
-        String startDate = date.substring(0, 10);
-        String[] dateElements = startDate.split("-");
-        return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
-    }
-
-    public static String getEpicDateFormat(String inputString){
-        String dateString = inputString.substring(0,10);
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = dateFormat.parse(dateString);
-            SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
-            String result = finalFormat.format(date);
-            return result + inputString.substring(10);
-        } catch (ParseException e) {
-            return null;
+    public static String buildEpicNaturalImageUrl(String date, String image) {
+        if (date != null && image != null) {
+            String formaString = "https://epic.gsfc.nasa.gov/archive/natural/%s/%s/%s/jpg/%s.jpg";
+            String startDate = date.substring(0, 10);
+            String[] dateElements = startDate.split("-");
+            return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
         }
+        return null;
+    }
+
+    public static String buildEpicEnhancedImageUrl(String date, String image) {
+        if (date != null && image != null) {
+            String formaString = "https://epic.gsfc.nasa.gov/archive/enhanced/%s/%s/%s/jpg/%s.jpg";
+            String startDate = date.substring(0, 10);
+            String[] dateElements = startDate.split("-");
+            return String.format(formaString, dateElements[0], dateElements[1], dateElements[2], image);
+        }
+        return null;
+    }
+
+    public static String getEpicDateFormat(String inputString) {
+        if (inputString != null) {
+            String dateString = inputString.substring(0, 10);
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = dateFormat.parse(dateString);
+                SimpleDateFormat finalFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+                String result = finalFormat.format(date);
+                return result + inputString.substring(10);
+            } catch (ParseException e) {
+                return null;
+            }
+        }
+        return null;
     }
 
 }

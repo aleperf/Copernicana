@@ -134,7 +134,7 @@
     <string name="epic_search_title">Search Epic Images</string>
     <string name="epic_search_result_success">These are the results for the date selected </string>
     <string name="epic_search_result_no_data">No result for the date selected</string>
-    <string name ="epic_search_result_no_connection">Failed connection. Check for a better connection and search again.</string>
+    <string name="epic_search_result_no_connection">Failed connection. Check for a better connection and search again.</string>
     <string name="epic_search_default_message">Select a date to start a search</string>
     <string name="epic_search_date_label">Date:</string>
     <string name="epic_search_no_date">No date selected</string>

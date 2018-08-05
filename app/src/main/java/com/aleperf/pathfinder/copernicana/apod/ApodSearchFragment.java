@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -23,7 +22,6 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.BuildConfig;
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
@@ -243,7 +241,7 @@ public class ApodSearchFragment extends Fragment implements DatePickerDialog.OnD
     private boolean setCorrectResultTextView(Apod apod) {
         searchResultTextView.setVisibility(View.VISIBLE);
         //failed data retrieval
-        if (apod.getTitle().equals(AstroRepository.FAILED_CONNECTION)) {
+        if (apod.getTitle().equals(AstroRepository.ASTRONAUT_FAILED_CONNECTION)) {
             searchResultTextView.setText(getString(R.string.search_failed_connection));
             return false;
         }
