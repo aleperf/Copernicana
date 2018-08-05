@@ -45,16 +45,16 @@
 
     <TextView
         android:id="@+id/latitude_integer_part"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:text="50"
         android:textAlignment="center"
         android:textColor="@color/default_black_text"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/latitude_label"
-        app:layout_constraintStart_toEndOf="@+id/latitude_label" />
+        app:layout_constraintStart_toEndOf="@+id/latitude_label"
+        tools:text="@string/iss_passage_tool_coord_2" />
 
     <ImageView
         android:id="@+id/latitude_integer_arrow_up"
@@ -62,6 +62,7 @@
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:contentDescription="@string/iss_pass_arrow_up_lat_integer_cd"
         app:layout_constraintBottom_toTopOf="@+id/latitude_integer_part"
         app:layout_constraintEnd_toStartOf="@+id/latitude_integer_part"
         app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
@@ -71,6 +72,7 @@
         android:id="@+id/latitude_integer_arrow_down"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:contentDescription="@string/iss_pass_arrow_down_lat_integer_cd"
         app:layout_constraintEnd_toStartOf="@+id/latitude_integer_part"
         app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
         app:layout_constraintTop_toBottomOf="@+id/latitude_integer_part"
@@ -81,7 +83,8 @@
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginBottom="-16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/iss_pass_decimal_point"
         app:layout_constraintBottom_toTopOf="@+id/latitude_integer_arrow_down"
         app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
         app:srcCompat="@drawable/round_point" />
@@ -90,20 +93,21 @@
         android:id="@+id/latitude_decimal_part"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:textAlignment="center"
         android:textColor="@color/default_black_text"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginStart="44dp"
-        android:text="45"
         app:layout_constraintBottom_toTopOf="@+id/latitude_integer_arrow_down"
-        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part" />
+        app:layout_constraintStart_toEndOf="@+id/latitude_integer_part"
+        tools:text="@string/iss_passage_tool_coord_3" />
 
     <ImageView
         android:id="@+id/latitude_arrow_up_decimal"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/iss_pass_arrow_up_lat_decimal_cd"
         app:layout_constraintBottom_toTopOf="@+id/latitude_decimal_part"
         app:layout_constraintEnd_toStartOf="@+id/latitude_decimal_part"
         app:layout_constraintHorizontal_bias="0.465"
@@ -114,6 +118,7 @@
         android:id="@+id/latitude_decimal_part_arrow_down"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:contentDescription="@string/iss_pass_arrow_down_decimal_cd"
         app:layout_constraintEnd_toStartOf="@+id/latitude_decimal_part"
         app:layout_constraintStart_toEndOf="@+id/latitude_decimal_part"
         app:layout_constraintTop_toBottomOf="@+id/latitude_decimal_part"
@@ -121,16 +126,16 @@
 
     <TextView
         android:id="@+id/longitude_integer_part"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="50"
         android:textAlignment="center"
         android:textColor="@color/default_black_text"
-        android:textStyle="bold"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/latitude_integer_part"
-        app:layout_constraintTop_toBottomOf="@+id/latitude_integer_arrow_down" />
+        app:layout_constraintTop_toBottomOf="@+id/latitude_integer_arrow_down"
+        tools:text="@string/iss_passage_tool_coord_1" />
 
     <TextView
         android:id="@+id/longitude_label"
@@ -146,6 +151,7 @@
         android:id="@+id/longitude_arrow_up_integer"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:contentDescription="@string/iss_pass_arrow_up_long_integer"
         app:layout_constraintBottom_toTopOf="@+id/longitude_integer_part"
         app:layout_constraintEnd_toStartOf="@+id/longitude_integer_part"
         app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
@@ -155,17 +161,19 @@
         android:id="@+id/longitude_arrow_down_integer"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:contentDescription="@string/iss_pass_arrow_down_long_integer"
         app:layout_constraintEnd_toStartOf="@+id/longitude_integer_part"
         app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
         app:layout_constraintTop_toBottomOf="@+id/longitude_integer_part"
         app:srcCompat="@drawable/arrow_down" />
 
     <ImageView
-        android:id="@+id/imageView12"
+        android:id="@+id/decimal_point_longitude"
         android:layout_width="10dp"
         android:layout_height="10dp"
         android:layout_marginBottom="-16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/iss_pass_decimal_point"
         app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_integer"
         app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
         app:srcCompat="@drawable/round_point" />
@@ -174,14 +182,14 @@
         android:id="@+id/longitude_decimal_part"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:text="100"
+        android:layout_marginStart="32dp"
         android:textAlignment="center"
         android:textColor="@color/default_black_text"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/longitude_arrow_down_integer"
-        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part" />
+        app:layout_constraintStart_toEndOf="@+id/longitude_integer_part"
+        tools:text="@string/iss_passage_tool_coord_3" />
 
     <ImageView
         android:id="@+id/longitude_arrow_up_decimal"
@@ -189,6 +197,7 @@
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/iss_pass_arrow_up_long_decimal"
         app:layout_constraintBottom_toTopOf="@+id/longitude_decimal_part"
         app:layout_constraintEnd_toStartOf="@+id/longitude_decimal_part"
         app:layout_constraintStart_toEndOf="@+id/longitude_decimal_part"
@@ -198,6 +207,7 @@
         android:id="@+id/longitude_arrow_down_decimal_part"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:contentDescription="@string/iss_pass_arrow_down_long_decimal"
         app:layout_constraintEnd_toStartOf="@+id/longitude_decimal_part"
         app:layout_constraintStart_toEndOf="@+id/longitude_decimal_part"
         app:layout_constraintTop_toBottomOf="@+id/longitude_decimal_part"

@@ -175,7 +175,7 @@
     <!-- ISS PASSAGE -->
     <string name="iss_passage_title">Calculate Next Iss Passages</string>
     <string name="iss_passage_enter_lat">Latitude:</string>
-    <string name="iss_passage_enter_lon">Longitude</string>
+    <string name="iss_passage_enter_lon">Longitude:</string>
     <string name="iss_passage_latitude_range">range: -80...+80</string>
     <string name="iss_passage_longitude_range">range: -180...+180</string>
     <string name="iss_passage_search_button">Calculate Passsages</string>
@@ -185,6 +185,18 @@
     <string name="iss_pass_item_date_and_time">Date and Time:</string>
     <string name="iss_pass_item_duration_label">Duration: </string>
     <string name="iss_pass_item_duration_format">%d m %d s</string>
+    <string name="iss_passage_tool_coord_1">50</string>
+    <string name="iss_passage_tool_coord_2">-156</string>
+    <string name="iss_passage_tool_coord_3">45</string>
+    <string name="iss_pass_arrow_up_lat_integer_cd">Click to increment latitude of one unit</string>
+    <string name="iss_pass_arrow_down_lat_integer_cd">Click to decrement latitude of one unit</string>
+    <string name="iss_pass_arrow_up_lat_decimal_cd">Click to increment latitude of zero point one unit</string>
+    <string name="iss_pass_arrow_down_decimal_cd">Click to decrement latitude of zero point one unit</string>
+    <string name="iss_pass_arrow_up_long_integer">Click to increment longitude of one unit</string>
+    <string name="iss_pass_arrow_down_long_integer">Click to decrement longitude of one unit</string>
+    <string name="iss_pass_arrow_up_long_decimal">Click to increment longitude of zero point one unit</string>
+    <string name="iss_pass_arrow_down_long_decimal">Click to decrement longitude of zero point one unit</string>
+    <string name="iss_pass_decimal_point">decimal point separator</string>
 
     <!--WIDGET -->
     <string name="widget_content_description">astronomy picture of the day</string>
