@@ -509,41 +509,5 @@ public class AstroRepositoryImpl implements AstroRepository {
         });
     }
 
-    @Override
-    public void calculateIssPassage(String latitude, String longitude, MutableLiveData<List<IssPassage>> issPassages) {
-        Call<IssPassageQuery> issPassageQueryCall = apisService.getIssPassages(latitude, longitude);
-        issPassageQueryCall.enqueue(new Callback<IssPassageQuery>() {
-            @Override
-            public void onResponse(Call<IssPassageQuery> call, Response<IssPassageQuery> response) {
-                if(response != null){
-                    IssPassageQuery query = response.body();
-                    if(query != null){
-                        List<IssPassage> passages = query.getPassages();
-                        Log.d("uffa", "passages ha size " + passages.size());
-                        IssPassage firstPassage = passages.get(0);
-                        Log.d("uffa", "passage timestamp " + firstPassage.getRisetime() + "duration " + firstPassage.getDuration());
-                        if(passages != null){
-                            issPassages.setValue(passages);
-                        }
-                    }
-                } else {
-                    Log.d("uffa", "failure response è null");
-                    IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_NO_DATA, 0);
-                    List<IssPassage> passes = new ArrayList<>();
-                    passes.add(pass);
-                    issPassages.setValue(passes);
-                }
 
-            }
-
-            @Override
-            public void onFailure(Call<IssPassageQuery> call, Throwable t) {
-                Log.d("uffa", "failure " + t.getMessage());
-                IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_FAILED_CONNECTION, 0);
-                List<IssPassage> passes = new ArrayList<>();
-                passes.add(pass);
-                issPassages.setValue(passes);
-            }
-        });
-    }
 }
