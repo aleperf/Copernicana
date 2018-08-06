@@ -2,6 +2,7 @@ package com.aleperf.pathfinder.copernicana.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
@@ -13,7 +14,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 @Entity(tableName = "astronaut")
-public class Astronaut {
+public class Astronaut implements Parcelable {
 
     @PrimaryKey
     @Expose
@@ -35,14 +36,14 @@ public class Astronaut {
     @SerializedName("eva_minutes")
     private int evaMinutes;
     @Expose
-    private String twitter;
+    private String wikipedia;
     @Expose
     private String notes;
 
 
     public Astronaut(int id, String name, String craft, String country,
                      String agency, String photo, int evaHours, int evaMinutes,
-                     String twitter, String notes ){
+                     String wikipedia, String notes ){
         this.id = id;
         this.name = name;
         this.craft = craft;
@@ -51,7 +52,7 @@ public class Astronaut {
         this.photo = photo;
         this.evaHours = evaHours;
         this.evaMinutes = evaMinutes;
-        this.twitter = twitter;
+        this.wikipedia = wikipedia;
         this.notes = notes;
     }
 
@@ -87,11 +88,56 @@ public class Astronaut {
         return evaMinutes;
     }
 
-    public String getTwitter() {
-        return twitter;
+    public String getWikipedia() {
+        return wikipedia;
     }
 
     public String getNotes() {
         return notes;
+    }
+
+    private Astronaut(Parcel in){
+        id = in.readInt();
+        name = in.readString();
+        craft = in.readString();
+        country = in.readString();
+        agency = in.readString();
+        photo = in.readString();
+        evaHours = in.readInt();
+        evaMinutes = in.readInt();
+        wikipedia = in.readString();
+        notes = in.readString();
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator CREATOR
+            = new Parcelable.Creator() {
+        public Astronaut createFromParcel(Parcel in) {
+            return new Astronaut(in);
+        }
+
+        public Astronaut[] newArray(int size) {
+            return new Astronaut[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(craft);
+        dest.writeString(country);
+        dest.writeString(agency);
+        dest.writeString(photo);
+        dest.writeInt(evaHours);
+        dest.writeInt(evaMinutes);
+        dest.writeString(wikipedia);
+        dest.writeString(notes);
+
     }
 }

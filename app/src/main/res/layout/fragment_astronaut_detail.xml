@@ -1,26 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"  >
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
+    <TextView
+        android:id="@+id/astronaut_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/default_colored_text"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/astronauts_tool_name" />
+
+    <ImageView
+        android:id="@+id/astronaut_image"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/astronauts_pic_cd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/astronaut_name"
         app:srcCompat="@drawable/astronaut_place_holder" />
+
+    <TextView
+        android:id="@+id/mini_bio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/default_black_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/astronaut_image"
+        tools:text="@string/astronauts_tool_mini_bio" />
 
     <TextView
         android:id="@+id/craft_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/astronauts_craft_label"
-        tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="91dp" />
+        android:textColor="@color/default_colored_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mini_bio" />
+
+    <TextView
+        android:id="@+id/craft_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/default_black_text"
+        app:layout_constraintBottom_toBottomOf="@+id/craft_label"
+        app:layout_constraintStart_toEndOf="@+id/craft_label"
+        tools:text="@string/astronauts_tool_craft" />
+
+    <TextView
+        android:id="@+id/agency_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/default_colored_text"
+        android:textStyle="bold"
+        android:text="@string/astronauts_agency_label"
+        app:layout_constraintStart_toStartOf="@+id/craft_label"
+        app:layout_constraintTop_toBottomOf="@+id/craft_label" />
+
+    <TextView
+        android:id="@+id/agency_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/default_black_text"
+        app:layout_constraintBottom_toBottomOf="@+id/agency_label"
+        app:layout_constraintStart_toEndOf="@+id/agency_label"
+        tools:text="@string/astronauts_agency_tool" />
+
+    <TextView
+        android:id="@+id/country_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/default_colored_text"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="@string/astronauts_country_label"
+        app:layout_constraintStart_toStartOf="@+id/agency_label"
+        app:layout_constraintTop_toBottomOf="@+id/agency_label" />
+
+    <TextView
+        android:id="@+id/country_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/default_black_text"
+        app:layout_constraintBottom_toBottomOf="@+id/country_label"
+        app:layout_constraintStart_toEndOf="@+id/country_label"
+        tools:text="@string/astronauts_country_tool" />
+
+    <TextView
+        android:id="@+id/eva_hours_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/default_colored_text"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="@string/astronauts_eva_hours_label"
+        app:layout_constraintStart_toStartOf="@+id/country_label"
+        app:layout_constraintTop_toBottomOf="@+id/country_label" />
+
+    <TextView
+        android:id="@+id/eva_hours_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/default_black_text"
+        app:layout_constraintBottom_toBottomOf="@+id/eva_hours_label"
+        app:layout_constraintStart_toEndOf="@+id/eva_hours_label"
+        tools:text="@string/astronauts_eva_hours_tool" />
+
+    <TextView
+        android:id="@+id/eva_minutes_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/default_colored_text"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:text="@string/astronauts_eva_minutes_label"
+        app:layout_constraintBottom_toBottomOf="@+id/eva_hours_value"
+        app:layout_constraintStart_toEndOf="@+id/eva_hours_value" />
+
+    <TextView
+        android:id="@+id/eva_minutes_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/default_black_text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/eva_minutes_label"
+        app:layout_constraintStart_toEndOf="@+id/eva_minutes_label"
+        tools:text="@string/astronauts_eva_minutes_tool" />
+
+    <ImageView
+        android:id="@+id/wikipedia_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/astronauts_wikipedia_icon_cd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eva_minutes_label"
+        app:srcCompat="@drawable/wikiepdia_icon" />
+
 </android.support.constraint.ConstraintLayout>
+</android.support.v4.widget.NestedScrollView>

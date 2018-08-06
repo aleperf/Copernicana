@@ -163,7 +163,18 @@
     <string name="astronauts_name_label">Name:</string>
     <string name="astronauts_craft_label">Craft:</string>
     <string name="astronauts_tool_name">Serena Auñón-Chancellor</string>
+    <string name="astronauts_tool_mini_bio">Physician, Electrical Engineer and member of the Expedition 56 to the International Space Station</string>
     <string name="astronauts_tool_craft">ISS</string>
+    <string name="astronauts_agency_label">Agency:</string>
+    <string name="astronauts_agency_tool">Nasa</string>
+    <string name="astronauts_eva_hours_label">Eva Hours:</string>
+    <string name="astronauts_eva_hours_tool">68</string>
+    <string name="astronauts_eva_minutes_tool">15</string>
+    <string name="astronauts_eva_minutes_label">Eva Minutes:</string>
+    <string name="astronauts_country_label">Country</string>
+    <string name="astronauts_pic_cd">picture of selected astronaut</string>
+    <string name="astronauts_wikipedia_icon_cd">Click to open Wikipedia page about this astronaut</string>
+    <string name="astronauts_country_tool">United States</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
 
