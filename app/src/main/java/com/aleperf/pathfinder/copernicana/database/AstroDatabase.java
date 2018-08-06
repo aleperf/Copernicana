@@ -8,7 +8,7 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
-import com.aleperf.pathfinder.copernicana.model.MarsPhoto;
+
 
 @Database(entities = {Apod.class, Astronaut.class, Epic.class, EpicEnhanced.class}, version = 1)
 @TypeConverters(EpicTypeConverter.class)

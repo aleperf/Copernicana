@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
-import com.aleperf.pathfinder.copernicana.model.IssPassage;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
-import retrofit2.http.Url;
+
 
 public interface ApisService {
 

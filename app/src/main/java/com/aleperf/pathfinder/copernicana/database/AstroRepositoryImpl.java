@@ -14,10 +14,8 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
-import com.aleperf.pathfinder.copernicana.model.IssPassage;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
-import com.aleperf.pathfinder.copernicana.network.IssPassageQuery;
 import com.aleperf.pathfinder.copernicana.utilities.Utils;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FileDownloadTask;
@@ -25,7 +23,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

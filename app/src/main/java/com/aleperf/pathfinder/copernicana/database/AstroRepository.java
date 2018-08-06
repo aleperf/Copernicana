@@ -8,7 +8,6 @@ import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
-import com.aleperf.pathfinder.copernicana.model.IssPassage;
 import com.aleperf.pathfinder.copernicana.model.IssPosition;
 
 import java.util.List;
