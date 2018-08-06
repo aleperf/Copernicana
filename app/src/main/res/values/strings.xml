@@ -24,8 +24,6 @@
     <!--epic -->
     <string name="epic_title">The Blue Marble</string>
     <string name="epic_subtitle">Earth Images by the EPIC Camera</string>
-    <string name="mars_title">Mars Explorer</string>
-    <string name="mars_subtitle">Images by the Rovers on Mars</string>
     <string name="iss_title">Where is the ISS?</string>
     <string name="iss_subtitle">ISS position and astronauts in space now</string>
 
@@ -140,10 +138,7 @@
     <string name="epic_search_no_date">No date selected</string>
     <string name="epic_search_toolbar_title">Search Epic</string>
 
-    <!-- MARS SUMMARY -->
-    <string name="curiosity_label">Curiosity</string>
-    <string name="opportunity_label">Opportunity</string>
-    <string name="mars_search_label">Search</string>
+
 
     <!-- ISS SUMMARY  -->
     <string name="iss_position_label">ISS Position</string>

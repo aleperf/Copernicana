@@ -16,12 +16,13 @@ import com.aleperf.pathfinder.copernicana.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment.SectionSelector;
+
 public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.IntroCardViewHolder> {
 
 
-    private final int NUMBER_OF_CARDS = 4;
-
+    private final int NUMBER_OF_CARDS = 3;
 
 
     private Context context;
@@ -29,7 +30,7 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.In
 
     public IntroCardsAdapter(Context context) {
         this.context = context;
-        }
+    }
 
 
     @NonNull
@@ -54,17 +55,13 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.In
     }
 
 
-
-
-
     public class IntroCardViewHolder extends ViewHolder implements View.OnClickListener {
 
-        private final int[] CARD_BACKGROUNDS = {R.drawable.nasa_43566_unsplash,R.drawable.blue_marble_card,
-                R.drawable.mars_revived_crop, R.drawable.iss_over_earth};
+        private final int[] CARD_BACKGROUNDS = {R.drawable.nasa_43566_unsplash, R.drawable.blue_marble_card,
+                R.drawable.iss_over_earth};
         private final int APOD_INDEX = 0;
         private final int BLUE_MARBLE_INDEX = 1;
-        private final int MARS_INDEX = 2;
-        private final int ISS_INDEX = 3;
+        private final int ISS_INDEX = 2;
 
 
         @BindView(R.id.generic_intro_card_title)
@@ -95,11 +92,6 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.In
                     introCardSubtitle.setText(context.getString(R.string.epic_subtitle));
                     genericIntroImage.setImageResource(CARD_BACKGROUNDS[BLUE_MARBLE_INDEX]);
                     break;
-                case MARS_INDEX:
-                    introCardTitle.setText(context.getString(R.string.mars_title));
-                    introCardSubtitle.setText(context.getString(R.string.mars_subtitle));
-                    genericIntroImage.setImageResource(CARD_BACKGROUNDS[MARS_INDEX]);
-                    break;
                 default:
                     introCardTitle.setText(context.getString(R.string.iss_title));
                     introCardSubtitle.setText(context.getString(R.string.iss_subtitle));
@@ -110,7 +102,7 @@ public class IntroCardsAdapter extends RecyclerView.Adapter<IntroCardsAdapter.In
 
         @Override
         public void onClick(View v) {
-            if(context instanceof SectionSelector){
+            if (context instanceof SectionSelector) {
                 SectionSelector sectionSelector = (SectionSelector) context;
                 sectionSelector.selectSection(getAdapterPosition());
             }

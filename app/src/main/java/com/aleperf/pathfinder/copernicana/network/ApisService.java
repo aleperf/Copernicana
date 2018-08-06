@@ -44,22 +44,8 @@ public interface ApisService {
     @GET("EPIC/api/enhanced/date/{date}")
     Call<List<EpicEnhanced>> getEpicEnhancedForDate(@Path("date") String date, @Query("api_key") String apiKey);
 
-    //MARS
-    @GET("mars-photos/api/v1/rovers/curiosity/latest_photos")
-    Call<MarsQuery> getCuriosityLatestPhotos(@Query("page") int page, @Query("api_key") String apiKey);
-
-    @GET("mars-photos/api/v1/rovers/opportunity/latest_photos")
-    Call<MarsQuery> getOpportunityLatestPhotos(@Query("page") int page, @Query("api_key") String apiKey);
-
-    @GET("mars-photos/api/v1/rovers/spirit/latest_photos")
-    Call<MarsQuery> getSpiritLatestPhotos(@Query("page") int page, @Query("api_key") String apiKey);
-
     //ISS
     @GET("http://api.open-notify.org/iss-now.json")
     Call<IssPosition>getLatestIssPosition();
-
-    @GET("http://api.open-notify.org/iss-pass.json")
-    Call<IssPassageQuery> getIssPassages(@Query("lat") String latitude, @Query("lon") String longitude);
-
 
 }
