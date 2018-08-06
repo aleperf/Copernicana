@@ -22,6 +22,24 @@
         <item name="android:textSize">@dimen/intro_card_subtitle_text</item>
         <item name="android:textStyle">bold|italic</item>
     </style>
+    <style name="IntroInfoTitleSection" parent="AppTheme">
+        <item name="android:textSize">@dimen/intro_info_section_title_text</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/default_colored_text</item>
+        <item name= "android:layout_marginTop">@dimen/intro_info_title_layout_margin</item>
+        <item name="android:layout_marginStart">@dimen/intro_info_title_layout_margin</item>
+        <item name="android:layout_marginEnd">@dimen/intro_info_title_layout_margin</item>
+
+    </style>
+
+    <style name="IntroInfoContentSection" parent="AppTheme">
+        <item name="android:textSize">@dimen/intro_info_section_content_text</item>
+        <item name="android:textColor">@color/default_black_text</item>
+        <item name="android:paddingStart">@dimen/intro_info_text_padding_side</item>
+        <item name="android:paddingEnd">@dimen/intro_info_text_padding_side</item>
+        <item name="android:layout_marginTop">@dimen/intro_info_layout_marging_top</item>
+    </style>
+
 
 
     <!-- APOD DETAIL STYLES -->

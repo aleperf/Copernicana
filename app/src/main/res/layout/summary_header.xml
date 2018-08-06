@@ -13,8 +13,8 @@
 
     <ImageView
         android:id="@+id/summary_header_image"
-        android:layout_width="300dp"
-        android:layout_height="244dp"
+        android:layout_width="280dp"
+        android:layout_height="228dp"
         android:layout_marginTop="@dimen/sumary_header_margin_top"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"

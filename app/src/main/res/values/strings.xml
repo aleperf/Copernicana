@@ -5,6 +5,25 @@
     <string name="sign_in_prompt">You need to be signed up to start the app</string>
 
 
+
+    <!--INTRO INFO -->
+    <string name="info_section_title">Explore Earth and Space with Copernicana</string>
+    <string name="menu_info">About</string>
+    <string name="toolbar_info">About Copernicana</string>
+    <string name="astropix_section_title">Astronomy Picture of the Day</string>
+    <string name="astropix_section_description">Every day Nasa chooses a significative astronomic picture commented by a professional astronomer.
+The Astronomy Picture of the Day section shows the image of the day with the same description provided
+by NASA. You can also search for Astronomy Picture of the Day of the past in the great Nasa archive, starting from June 1995.
+Save your favorite picture in favorites and watch them again whenever you want.</string>
+    <string name="blue_marble_section_title">The Blue Marble</string>
+    <string name="blue_marble_section_description">The Blue Marble sections shows images of Earth seen from space taken by the EPIC camera on board of the DISCVR.
+Epic images are available in natural and enhanced colors. You can search for Epic images of the past, starting
+from June 2015 and save the pictures you prefer in favorites.</string>
+    <string name="iss_section_title">Where is the ISS?</string>
+    <string name="iss_section_description">The ISS section shows the position of the International Space Station at the moment. The ISS moves really fast, at nearly 28,000 km/h.
+In this section you can also find the list of astronauts in space now and some brief information about them.</string>
+
+
     <!--SHARED PREFERENCES -->
     <string name="preference_file_key">com.aleperf.pathfinder.copernicana.PREFERENCE_FILE_KEY</string>
     <string name="preference_latest_apod_date_key">latest apod date</string>
@@ -137,7 +156,6 @@
     <string name="epic_search_date_label">Date:</string>
     <string name="epic_search_no_date">No date selected</string>
     <string name="epic_search_toolbar_title">Search Epic</string>
-
 
 
     <!-- ISS SUMMARY  -->

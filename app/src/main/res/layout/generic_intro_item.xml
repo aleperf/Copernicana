@@ -5,6 +5,7 @@
     android:layout_width="@dimen/intro_card_width"
     android:layout_height="@dimen/intro_card_height"
     android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
     android:layout_marginBottom="@dimen/generic_card_margin_bottom"
     android:layout_marginTop="@dimen/generic_card_margin_top"
     app:cardCornerRadius="@dimen/intro_card_corner_radius">

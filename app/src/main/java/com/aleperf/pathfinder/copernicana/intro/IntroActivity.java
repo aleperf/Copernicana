@@ -40,6 +40,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
 
     @BindView(R.id.toolbar_intro)
     Toolbar toolbar;
+    boolean isDualPane;
     @Inject
     ViewModelProvider.Factory factory;
     private final static String UPDATE_SERVICE_JOB_TAG = "com.aleperf.pathfinder.copernicana.UPDATE_SERVICE";
@@ -53,6 +54,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
         setContentView(R.layout.activity_intro);
         ButterKnife.bind(this);
         setSupportActionBar(toolbar);
+        isDualPane =  getResources().getBoolean(R.bool.is_dual_pane);
         ((CopernicanaApplication) this.getApplication()).getCopernicanaApplicationComponent().inject(this);
         IntroViewModel viewModel = ViewModelProviders.of(this, factory).get(IntroViewModel.class);
         viewModel.initializeRepository();
@@ -121,6 +123,12 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
                             }
                         });
 
+                return true;
+            case R.id.info_activity:
+                if(!isDualPane){
+                    Intent intent = new Intent(this, IntroInfoActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

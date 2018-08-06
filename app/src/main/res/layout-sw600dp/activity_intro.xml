@@ -3,16 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/apod_summary_background"
     android:layout_gravity="center_horizontal">
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/issAppBar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_iss"
+            android:id="@+id/toolbar_intro"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_standard_size"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -21,12 +20,30 @@
             />
     </android.support.design.widget.AppBarLayout>
 
-    <fragment
-        android:id="@+id/iss_summary_fragment"
-        android:name="com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <fragment
+        android:id="@+id/summary_fragment"
+        android:name="com.aleperf.pathfinder.copernicana.intro.SummaryFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.3"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_gravity="center_horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <fragment
+            android:id="@+id/intro_info_fragment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:name="com.aleperf.pathfinder.copernicana.intro.IntroInfoFragment"
+           />
+    </LinearLayout>
 
 </android.support.design.widget.CoordinatorLayout>

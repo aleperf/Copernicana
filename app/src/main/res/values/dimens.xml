@@ -4,6 +4,13 @@
     <dimen name="toolbar_standard_size">120dp</dimen>
     <dimen name="recycler_view_padding_bottom">16dp</dimen>
 
+    <!-- intro info dimensions -->
+    <dimen name="intro_info_section_title_text">18sp</dimen>
+    <dimen name="intro_info_section_content_text">16sp</dimen>
+    <dimen name="intro_info_text_padding_side">16dp</dimen>
+    <dimen name="intro_info_layout_marging_top">16dp</dimen>
+    <dimen name="intro_info_title_layout_margin">16dp</dimen>
+
     <!-- apod intro card dimensions -->
     <dimen name="apod_card_width">300dp</dimen>
     <dimen name="apod_card_height">300dp</dimen>
@@ -19,9 +26,9 @@
     <dimen name="apod_card_date_margin_start">8dp</dimen>
 
     <!-- generic intro card dimensions -->
-    <dimen name="intro_card_width">300dp</dimen>
+    <dimen name="intro_card_width">280dp</dimen>
     <dimen name="intro_card_height">250dp</dimen>
-    <dimen name="intro_card_title_text">21sp</dimen>
+    <dimen name="intro_card_title_text">18sp</dimen>
     <dimen name="intro_card_subtitle_text">14sp</dimen>
     <dimen name="generic_card_margin_top">4dp</dimen>
     <dimen name="generic_card_margin_bottom">4dp</dimen>

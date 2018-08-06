@@ -38,10 +38,7 @@
             android:name=".epic.EpicActivity"
             android:launchMode="singleTop"
             android:parentActivityName=".apod.ApodActivity" />
-        <activity
-            android:name=".mars.MarsActivity"
-            android:launchMode="singleTop"
-            android:parentActivityName=".intro.IntroActivity" />
+
         <activity
             android:name=".apod.ApodSearchActivity"
             android:parentActivityName=".apod.ApodActivity" />
@@ -69,7 +66,8 @@
         <activity
             android:name=".iss.AstronautsActivity"
             android:parentActivityName=".iss.IssActivity" />
-        <activity android:name=".iss.AstronautDetailActivity" />
+        <activity android:name=".iss.AstronautDetailActivity"
+            android:parentActivityName=".iss.AstronautsActivity"/>
 
         <service
             android:name=".database.UpdateService"
@@ -114,7 +112,8 @@
         <activity
             android:name=".epic.EpicEnhancedDetailSearchActivity"
             android:parentActivityName=".epic.EpicSearchActivity" />
-
+        <activity android:name=".intro.IntroInfoActivity"
+            android:parentActivityName=".intro.IntroActivity" />
     </application>
 
 </manifest>
