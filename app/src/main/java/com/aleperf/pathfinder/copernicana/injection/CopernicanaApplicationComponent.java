@@ -33,7 +33,6 @@ import dagger.Component;
 public interface CopernicanaApplicationComponent {
 
     void inject(SummaryFragment summaryFragment);
-
     void inject(ApodSummaryFragment apodSummaryFragment);
     void inject(ApodDetailFragment apodDetailFragment);
     void inject(ApodSearchFragment apodSearchFragment);

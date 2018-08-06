@@ -44,6 +44,10 @@ public class ApodSummaryFragment extends Fragment {
         //default empty constructor
     }
 
+    public interface ApodSetter {
+        void setApod(Apod apod);
+    }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,9 +83,12 @@ public class ApodSummaryFragment extends Fragment {
             @Override
             public void onChanged(@Nullable Apod apod) {
                 if(apod != null){
-                    Log.d("uffa", "apod in apod summary + diverso da null");
                     adapter.setApod(apod);
                     adapter.notifyDataSetChanged();
+                    if(getActivity() instanceof ApodSetter){
+                        ApodSetter apodSetter = (ApodSetter) getActivity();
+                        apodSetter.setApod(apod);
+                    }
                 }
 
             }
