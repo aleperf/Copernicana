@@ -114,7 +114,7 @@
         <activity
             android:name=".epic.EpicEnhancedDetailSearchActivity"
             android:parentActivityName=".epic.EpicSearchActivity" />
-        <activity android:name=".iss.IssPassageActivity"></activity>
+
     </application>
 
 </manifest>

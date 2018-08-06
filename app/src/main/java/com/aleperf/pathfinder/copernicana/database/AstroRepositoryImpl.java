@@ -510,7 +510,7 @@ public class AstroRepositoryImpl implements AstroRepository {
     }
 
     @Override
-    public void calculateIssPassage(double latitude, double longitude, MutableLiveData<List<IssPassage>> issPassages) {
+    public void calculateIssPassage(String latitude, String longitude, MutableLiveData<List<IssPassage>> issPassages) {
         Call<IssPassageQuery> issPassageQueryCall = apisService.getIssPassages(latitude, longitude);
         issPassageQueryCall.enqueue(new Callback<IssPassageQuery>() {
             @Override
@@ -527,6 +527,7 @@ public class AstroRepositoryImpl implements AstroRepository {
                         }
                     }
                 } else {
+                    Log.d("uffa", "failure response è null");
                     IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_NO_DATA, 0);
                     List<IssPassage> passes = new ArrayList<>();
                     passes.add(pass);
@@ -537,6 +538,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<IssPassageQuery> call, Throwable t) {
+                Log.d("uffa", "failure " + t.getMessage());
                 IssPassage pass = new IssPassage(IssPassage.ISS_DURATION_FAILED_CONNECTION, 0);
                 List<IssPassage> passes = new ArrayList<>();
                 passes.add(pass);

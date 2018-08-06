@@ -63,7 +63,7 @@ public interface AstroRepository {
     void insertAllAstronauts(List<Astronaut> astronauts);
     void deleteAllAstronauts();
     void checkIssPositionNow(MutableLiveData<IssPosition> issPosition);
-    void calculateIssPassage(double latitude, double longitude, MutableLiveData<List<IssPassage>> issPassages);
+    void calculateIssPassage(String latitude, String longitude, MutableLiveData<List<IssPassage>> issPassages);
 
 
 }

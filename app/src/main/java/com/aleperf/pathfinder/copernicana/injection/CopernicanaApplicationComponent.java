@@ -7,7 +7,6 @@ import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSearchFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment;
-import com.aleperf.pathfinder.copernicana.epic.EpicActivity;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailSearchFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFavFragment;
@@ -21,10 +20,7 @@ import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.intro.SummaryFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsFragment;
-import com.aleperf.pathfinder.copernicana.iss.IssPassageActivity;
-import com.aleperf.pathfinder.copernicana.iss.IssPassageFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionFragment;
-import com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment;
 import com.aleperf.pathfinder.copernicana.mars.MarsActivity;
 import com.aleperf.pathfinder.copernicana.database.UpdateService;
 
@@ -55,7 +51,6 @@ public interface CopernicanaApplicationComponent {
     void inject(IssPositionFragment issPositionFragment);
     void inject(AstronautsFragment astronautsFragment);
     void inject(AstronautDetailFragment astronautDetailFragment);
-    void inject(IssPassageFragment issPassageFragment);
     void inject (UpdateService updateService);
     Application application();
 }

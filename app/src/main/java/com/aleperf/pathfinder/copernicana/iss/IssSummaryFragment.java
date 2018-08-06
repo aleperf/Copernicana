@@ -24,13 +24,12 @@ public class IssSummaryFragment extends Fragment {
     @BindView(R.id.iss_summary_rv)
     RecyclerView recyclerView;
 
-    private final int[] images = {R.drawable.iss_over_earth, R.drawable.iss_icon,
-            R.drawable.iss_passage, R.drawable.astronauts_in_space};
+    private final int[] images = {R.drawable.iss_over_earth, R.drawable.iss_icon, R.drawable.astronauts_in_space};
     private String[] titles;
-    private final int sections = 4;
+    private final int sections = 3;
 
     //default empty constructor
-    public IssSummaryFragment(){
+    public IssSummaryFragment() {
     }
 
     @Override
@@ -45,14 +44,14 @@ public class IssSummaryFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_summary_iss, container, false);
-        unbinder =  ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        titles = new String[]{getString(R.string.iss_position_label), getString(R.string.iss_passage_label),
+        titles = new String[]{getString(R.string.iss_position_label),
                 getString(R.string.iss_astronauts_label)};
         SummaryAdapter summaryAdapter = new SummaryAdapter(getActivity(), images, titles, sections);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

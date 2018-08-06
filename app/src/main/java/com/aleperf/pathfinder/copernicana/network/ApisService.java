@@ -59,7 +59,7 @@ public interface ApisService {
     Call<IssPosition>getLatestIssPosition();
 
     @GET("http://api.open-notify.org/iss-pass.json")
-    Call<IssPassageQuery> getIssPassages(@Query("lat") double latitude, @Query("lon") double longitude);
+    Call<IssPassageQuery> getIssPassages(@Query("lat") String latitude, @Query("lon") String longitude);
 
 
 }
