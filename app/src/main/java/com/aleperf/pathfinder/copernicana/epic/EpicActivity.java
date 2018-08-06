@@ -1,30 +1,18 @@
 package com.aleperf.pathfinder.copernicana.epic;
 
+
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.aleperf.pathfinder.copernicana.BuildConfig;
-import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Apod;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
-import com.aleperf.pathfinder.copernicana.network.ApisService;
 import com.aleperf.pathfinder.copernicana.utilities.SummaryAdapter;
-
-import java.util.List;
-
-import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+
 
 public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
         EpicAdapter.EpicNaturalSelector, EpicEnhancedAdapter.EpicEnhancedSelector {
@@ -32,6 +20,8 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
     private boolean isDualPane;
+    private int sectionSelectedEpic = 1;
+    private final static String SECTION_SELECTED_EPIC = "section selected epic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +32,16 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.epic_title));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
+        if(savedInstanceState != null){
+            sectionSelectedEpic = savedInstanceState.getInt(SECTION_SELECTED_EPIC);
+            if(isDualPane){
+                selectSection(sectionSelectedEpic);
+            }
+        } else {
+            if(isDualPane){
+                selectSection(1);
+            }
+        }
 
     }
 
@@ -72,6 +72,52 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
                     startActivity(searchIntent);
                     break;
             }
+        } else {
+            sectionSelectedEpic = position;
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            String tag = SECTION_SELECTED_EPIC + sectionSelectedEpic;
+            switch(position){
+                case 1:
+                    EpicNaturalFragment epicNaturalFragment =(EpicNaturalFragment) fragmentManager.findFragmentByTag(tag);
+                    if(epicNaturalFragment == null){
+                        epicNaturalFragment = new EpicNaturalFragment();
+                    }
+                    fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
+                            epicNaturalFragment, tag).commit();
+                    break;
+                case 2:
+                    EpicEnhancedFragment epicEnhancedFragment = (EpicEnhancedFragment)fragmentManager.findFragmentByTag(tag);
+                    if(epicEnhancedFragment == null){
+                        epicEnhancedFragment = new EpicEnhancedFragment();
+                    }
+                    fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
+                            epicEnhancedFragment, tag).commit();
+                    break;
+                case 3:
+                    EpicNaturalFavFragment epicNaturalFavFragment = (EpicNaturalFavFragment)fragmentManager.findFragmentByTag(tag);
+                    if(epicNaturalFavFragment == null){
+                        epicNaturalFavFragment = new EpicNaturalFavFragment();
+                    }
+                    fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
+                            epicNaturalFavFragment, tag).commit();
+                    break;
+                case 4:
+                    EpicEnhancedFavFragment epicEnhancedFavFragment = (EpicEnhancedFavFragment)fragmentManager.findFragmentByTag(tag);
+                    if(epicEnhancedFavFragment == null){
+                        epicEnhancedFavFragment = new EpicEnhancedFavFragment();
+                    }
+                    fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
+                            epicEnhancedFavFragment, tag).commit();
+                    break;
+                default:
+                  EpicSearchFragment epicSearchFragment = (EpicSearchFragment)fragmentManager.findFragmentByTag(tag);
+                  if(epicSearchFragment == null){
+                      epicSearchFragment = new EpicSearchFragment();
+                  }
+                    fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
+                           epicSearchFragment, tag).commit();
+
+            }
         }
     }
 
@@ -85,5 +131,11 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
     @Override
     public void selectEpicEnhanced(EpicEnhanced epicEnhanced) {
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SECTION_SELECTED_EPIC, sectionSelectedEpic);
     }
 }

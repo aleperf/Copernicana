@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,13 +99,8 @@ public class AstronautsFragment extends Fragment {
         Observer<List<Astronaut>> observer = new Observer<List<Astronaut>>() {
             @Override
             public void onChanged(@Nullable List<Astronaut> astronautsInSpace) {
-                if(astronauts != null){
-                    emptyMessage.setVisibility(View.GONE);
-                    emptyButton.setVisibility(View.GONE);
+                if(astronautsInSpace != null){
                     adapter.setAstronauts(astronautsInSpace);
-                } else {
-                    emptyMessage.setVisibility(View.VISIBLE);
-                    emptyButton.setVisibility(View.VISIBLE);
                 }
             }
         };

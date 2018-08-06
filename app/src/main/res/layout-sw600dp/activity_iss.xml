@@ -4,49 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal">
-
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/apodAppBar"
+        android:id="@+id/issAppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_apod"
+            android:id="@+id/toolbar_iss"
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_standard_size"
-            app:layout_scrollFlags="scroll|enterAlways"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"  />
-
-        <android.support.design.widget.TabLayout
-            android:id="@+id/apod_tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
     </android.support.design.widget.AppBarLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <fragment
-            android:id="@+id/apod_summary_fragment"
-            android:name="com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.3"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-        <FrameLayout
-            android:id="@+id/apod_section_detail_container"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <fragment
+        android:id="@+id/iss_summary_fragment"
+        android:name="com.aleperf.pathfinder.copernicana.iss.IssSummaryFragment"
+        android:layout_width="0dp"
+        android:layout_weight="1.3"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <FrameLayout
+        android:id="@+id/iss_section_detail_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     </LinearLayout>
-
 
 </android.support.design.widget.CoordinatorLayout>

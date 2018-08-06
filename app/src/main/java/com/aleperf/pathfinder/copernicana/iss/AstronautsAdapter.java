@@ -66,6 +66,7 @@ public class AstronautsAdapter extends RecyclerView.Adapter<AstronautsAdapter.As
 
     public void setAstronauts(List<Astronaut> astronautsInsSpace){
         astronauts = astronautsInsSpace;
+        notifyDataSetChanged();
     }
 
     public class AstronautHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
