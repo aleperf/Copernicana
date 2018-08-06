@@ -36,6 +36,7 @@ public class Astronaut implements Parcelable {
     @SerializedName("eva_minutes")
     private int evaMinutes;
     @Expose
+    @SerializedName("wikipedia_url")
     private String wikipedia;
     @Expose
     private String notes;

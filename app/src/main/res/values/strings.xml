@@ -175,12 +175,12 @@
     <string name="astronauts_pic_cd">picture of selected astronaut</string>
     <string name="astronauts_wikipedia_icon_cd">Click to open Wikipedia page about this astronaut</string>
     <string name="astronauts_country_tool">United States</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="astronauts_detail_toolbar">Astronaut Details</string>
 
 
     <!--WIDGET -->
     <string name="widget_content_description">astronomy picture of the day</string>
+    <string name="add_widget">Add widget</string>
 
     <!-- menu -->
     <string name="sign_out">sign out</string>

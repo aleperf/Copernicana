@@ -20,11 +20,10 @@
             />
     </android.support.design.widget.AppBarLayout>
 
-    <fragment
-        android:id="@+id/astronaut_detail_fragment"
+    <FrameLayout
+        android:id="@+id/astronaut_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 </android.support.design.widget.CoordinatorLayout>

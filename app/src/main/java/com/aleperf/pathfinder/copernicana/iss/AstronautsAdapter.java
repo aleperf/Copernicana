@@ -30,7 +30,7 @@ public class AstronautsAdapter extends RecyclerView.Adapter<AstronautsAdapter.As
 
 
     public interface AstronautSelector{
-        void selectAstronaut(int id);
+        void selectAstronaut(Astronaut astronaut);
     }
 
 
@@ -94,7 +94,7 @@ public class AstronautsAdapter extends RecyclerView.Adapter<AstronautsAdapter.As
         public void onClick(View v) {
              if(context instanceof  AstronautSelector){
                  AstronautSelector selector = (AstronautSelector) context;
-                 selector.selectAstronaut(astronauts.get(getAdapterPosition()).getId());
+                 selector.selectAstronaut(astronauts.get(getAdapterPosition()));
              }
         }
     }
