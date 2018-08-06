@@ -2,11 +2,13 @@ package com.aleperf.pathfinder.copernicana.injection;
 
 import android.app.Application;
 
+import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSearchFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment;
+
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailSearchFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFavFragment;
@@ -31,6 +33,7 @@ import dagger.Component;
 public interface CopernicanaApplicationComponent {
 
     void inject(SummaryFragment summaryFragment);
+
     void inject(ApodSummaryFragment apodSummaryFragment);
     void inject(ApodDetailFragment apodDetailFragment);
     void inject(ApodSearchFragment apodSearchFragment);
