@@ -20,10 +20,10 @@ import butterknife.ButterKnife;
 public class ApodSummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private Context context;
-    private final int[] sectionImages = {R.drawable.nasa_43566_unsplash,
-            R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico};
+    private final int[] sectionImages = {R.drawable.apod_placeholder,
+            R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico, R.drawable.apod_error};
     private final int placeholderIndex = 0;
-    private final int errorIndex = 0;
+    private final int errorIndex = 4;
     private final int searchIndex = 1;
     private final int favoriteIndex = 2;
     private final int photoIndex = 3;

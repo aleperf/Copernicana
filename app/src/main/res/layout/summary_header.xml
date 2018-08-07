@@ -13,11 +13,12 @@
 
     <ImageView
         android:id="@+id/summary_header_image"
-        android:layout_width="280dp"
-        android:layout_height="228dp"
+        android:layout_width="@dimen/summary_header_width"
+        android:layout_height="@dimen/summary_header_height"
         android:layout_marginTop="@dimen/sumary_header_margin_top"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:contentDescription="@string/intro_card_cd"
         android:layout_gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

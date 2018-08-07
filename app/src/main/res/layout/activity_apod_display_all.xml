@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal">
+
     <android.support.design.widget.AppBarLayout
         android:id="@+id/apod_display_all_app_bar"
         android:layout_width="match_parent"
@@ -15,9 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_standard_size"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_scrollFlags="scroll|enterAlways"
-            />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     </android.support.design.widget.AppBarLayout>
 
     <fragment
@@ -25,6 +25,6 @@
         android:name="com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

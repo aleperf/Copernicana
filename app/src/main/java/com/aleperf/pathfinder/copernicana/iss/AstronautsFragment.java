@@ -36,8 +36,6 @@ public class AstronautsFragment extends Fragment {
     private Unbinder unbinder;
     @BindView(R.id.astronaut_empty_text_view)
     TextView emptyMessage;
-    @BindView(R.id.astronaut_empty_button)
-    Button emptyButton;
     @Inject
     ViewModelProvider.Factory factory;
     private AstronautsViewModel astronautsViewModel;
@@ -69,14 +67,6 @@ public class AstronautsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_astronauts, container, false);
         unbinder =  ButterKnife.bind(this, rootView);
-        emptyButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(astronautsViewModel != null){
-                    astronautsViewModel.reloadAstronauts();
-                }
-            }
-        });
 
         return rootView;
     }
@@ -101,6 +91,9 @@ public class AstronautsFragment extends Fragment {
             public void onChanged(@Nullable List<Astronaut> astronautsInSpace) {
                 if(astronautsInSpace != null){
                     adapter.setAstronauts(astronautsInSpace);
+                    emptyMessage.setVisibility(View.GONE);
+                } else {
+                    emptyMessage.setVisibility(View.VISIBLE);
                 }
             }
         };

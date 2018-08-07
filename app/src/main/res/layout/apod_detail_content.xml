@@ -12,6 +12,7 @@
         android:id="@+id/apod_detail_image"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/apod_card_image_cd"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -20,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/nasa_43566_unsplash" />
+        tools:srcCompat="@drawable/nasa_43566_unsplash" />
 
 
     <TextView
@@ -45,6 +46,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="16dp"
         android:paddingEnd="8dp"
+        android:paddingStart="8dp"
         android:text="@string/apod_copyright_label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/apod_detail_date"
@@ -66,13 +68,14 @@
 
     <ImageView
         android:id="@+id/apod_detail_video_player_ico"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/apod_detail_video_ico_side"
+        android:layout_height="@dimen/apod_detail_video_ico_side"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:visibility="invisible"
+        android:contentDescription="@string/apod_video_player_cd"
         app:layout_constraintBottom_toBottomOf="@+id/apod_detail_image"
         app:layout_constraintEnd_toEndOf="@+id/apod_detail_image"
         app:layout_constraintStart_toStartOf="@+id/apod_detail_image"
@@ -89,7 +92,7 @@
         android:textColor="@color/apod_date_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apod_detail_explanation"
-        tools:text="Astronomy Picture of June 3, 2018" />
+        tools:text="@string/apod_date_tools_text" />
 
     <ImageView
         android:id="@+id/apod_detail_share_icon"
@@ -99,6 +102,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/apod_detail_copyright"
+        android:contentDescription="@string/apod_detail_share_message"
         app:srcCompat="@drawable/share_icon" />
 
     <ImageView
@@ -106,6 +110,7 @@
         android:layout_width="@dimen/apod_detail_icon"
         android:layout_height="@dimen/apod_detail_icon"
         android:layout_marginEnd="@dimen/apod_detail_margin_end"
+        android:contentDescription="@string/apod_detail_fav_message"
         app:layout_constraintBottom_toBottomOf="@+id/apod_detail_share_icon"
         app:layout_constraintEnd_toStartOf="@+id/apod_detail_share_icon"
         app:srcCompat="@drawable/star_icon_default" />
@@ -127,6 +132,7 @@
         android:layout_height="@dimen/apod_detail_icon"
         android:visibility="gone"
         android:layout_marginEnd="@dimen/apod_detail_margin_end"
+        android:contentDescription="@string/apod_detail_add_remove_cd"
         app:layout_constraintBottom_toBottomOf="@+id/apod_detail_fav_icon"
         app:layout_constraintEnd_toStartOf="@+id/apod_detail_fav_icon"
         app:srcCompat="@drawable/add_photo" />

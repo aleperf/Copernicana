@@ -170,7 +170,7 @@
 
     <ImageView
         android:id="@+id/epic_detail_fav_icon"
-        android:layout_width="39dp"
+        android:layout_width="@dimen/detail_icon_side"
         android:layout_height="@dimen/detail_icon_side"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="16dp"
@@ -181,7 +181,7 @@
 
     <ImageView
         android:id="@+id/epic_detail_share_icon"
-        android:layout_width="33dp"
+        android:layout_width="@dimen/detail_icon_side"
         android:layout_height="@dimen/detail_icon_side"
         android:layout_marginEnd="24dp"
         android:contentDescription="@string/epic_share_ico_cd"

@@ -30,16 +30,17 @@ public class ApodSearchViewModel extends ViewModel {
     }
 
     public void searchApodForDate(String date) {
-       new DatabaseSearcherAsyncTask().execute(date);
+        new DatabaseSearcherAsyncTask().execute(date);
     }
 
-    public void updateApodInDatabase(int isFavorite, String date){
+    public void updateApodInDatabase(int isFavorite, String date) {
         astroRepository.updateApodIsFavorite(isFavorite, date);
     }
 
     /**
      * Add an apod to the database, if there is a conflict (the Apod is alredady in the
      * database) the row is replaced.
+     *
      * @param apod, the Apod to insert.
      */
 
@@ -51,7 +52,7 @@ public class ApodSearchViewModel extends ViewModel {
         astroRepository.deleteApodWithDate(date);
     }
 
-    private class DatabaseSearcherAsyncTask extends AsyncTask<String, Void, Apod>{
+    private class DatabaseSearcherAsyncTask extends AsyncTask<String, Void, Apod> {
 
         private String date;
 
@@ -60,15 +61,16 @@ public class ApodSearchViewModel extends ViewModel {
             date = strings[0];
             return astroRepository.getSingleApodWithDate(date);
         }
+
         @Override
         protected void onPostExecute(Apod apod) {
-           if(apod != null){
-               isInDatabase = true;
-               apodSearched.setValue(apod);
-           } else {
-               isInDatabase = false;
-               astroRepository.searchApodForDate(date, apodSearched);
-           }
+            if (apod != null) {
+                isInDatabase = true;
+                apodSearched.setValue(apod);
+            } else {
+                isInDatabase = false;
+                astroRepository.searchApodForDate(date, apodSearched);
+            }
         }
     }
 

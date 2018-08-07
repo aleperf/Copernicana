@@ -121,7 +121,7 @@ public class ApodDetailFragment extends Fragment {
     }
 
     private void setCorrectMediaTypeImage(Apod apod) {
-        String imageUrl = null;
+        String imageUrl;
         String mediaType = apod.getMediaType();
         if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
             imageUrl = apod.getUrl();
@@ -136,19 +136,18 @@ public class ApodDetailFragment extends Fragment {
                 setVideoPlayerOnClickListener(videoId);
                 imageUrl = Utils.buildVideoThumbnailFromId(videoId);
                 loadImageWithGlide(imageUrl);
-            }else {
+            } else {
                 videoPlayerSymbol.setVisibility(View.INVISIBLE);
-                //TODO create an image for not playable video
                 apodImage.setImageResource(R.drawable.nasa_43566_unsplash);
             }
         }
     }
 
-    private void loadImageWithGlide(String imageUrl){
+    private void loadImageWithGlide(String imageUrl) {
         GlideApp.with(getActivity())
                 .load(imageUrl)
-                .placeholder(R.drawable.nasa_43566_unsplash)
-                .error(R.drawable.nasa_43566_unsplash)
+                .placeholder(R.drawable.apod_placeholder)
+                .error(R.drawable.apod_error)
                 .into(apodImage);
     }
 

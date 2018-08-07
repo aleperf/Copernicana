@@ -145,7 +145,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<Apod> call, Throwable t) {
-                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Log.d(TAG,  t.getMessage());
 
             }
         });
@@ -178,7 +178,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<Apod> call, Throwable t) {
-                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Log.d(TAG,  t.getMessage());
                 Apod apod = new Apod(null, date,
                         t.getMessage(), null, null, ASTRONAUT_FAILED_CONNECTION,
                         null);
@@ -196,7 +196,6 @@ public class AstroRepositoryImpl implements AstroRepository {
 
 
     public void updateRepository() {
-        //temporary solution
         loadApod(null);
         loadAllAstronauts();
         loadEpicNatural();
@@ -280,7 +279,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<List<Epic>> call, Throwable t) {
-                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Log.d(TAG, t.getMessage());
             }
         });
     }
@@ -394,7 +393,7 @@ public class AstroRepositoryImpl implements AstroRepository {
 
             @Override
             public void onFailure(Call<List<EpicEnhanced>> call, Throwable t) {
-                Log.d(TAG, "Failure on in loading data " + t.getMessage());
+                Log.d(TAG,  t.getMessage());
             }
         });
     }

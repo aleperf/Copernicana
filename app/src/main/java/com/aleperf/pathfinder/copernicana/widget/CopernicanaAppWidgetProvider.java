@@ -102,8 +102,8 @@ public class CopernicanaAppWidgetProvider extends AppWidgetProvider {
 
         RequestOptions options = new RequestOptions().
                 override(300, 300)
-                .placeholder(R.drawable.nasa_43566_unsplash).
-                        error(R.drawable.nasa_43566_unsplash);
+                .placeholder(R.drawable.apod_placeholder).
+                        error(R.drawable.apod_error);
 
 
         Glide.with(context.getApplicationContext())

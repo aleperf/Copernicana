@@ -3,7 +3,10 @@
 
     <!-- LOGIN STRINGS -->
     <string name="sign_in_prompt">You need to be signed up to start the app</string>
-
+    <string name="sign_up_button">SIGN UP</string>
+    <string name="sign_in_tap">TAP TO START</string>
+    <string name="sign_in_welcome">Welcome To</string>
+    <string name="sign_in_logo_cd">Copernicana Logo</string>
 
 
     <!--INTRO INFO -->
@@ -40,6 +43,8 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="apod_subtitle">Fascinating pictures of our universe</string>
     <string name="media_type_content_desc_image">Media type: image</string>
     <string name="media_type_content_desc_video">Media type: video</string>
+    <string name="intro_card_cd">@null</string>
+    <string name="summary_ico_cd">click to select this section</string>
     <!--epic -->
     <string name="epic_title">The Blue Marble</string>
     <string name="epic_subtitle">Earth Images by the EPIC Camera</string>
@@ -49,6 +54,13 @@ In this section you can also find the list of astronauts in space now and some b
 
     <!-- Content Description No description -->
     <string name="no_description_decorative_image">@null</string>
+    <!-- APOD CARD -->
+    <string name="apod_card_image_cd">Astronomy Picture of the Day</string>
+    <string name="apod_card_media_type_img">media type icon</string>
+    <string name="apod_video_player_cd">Click to start a video</string>
+    <string name="apod_detail_share_message">Click to Share this picture</string>
+    <string name="apod_detail_fav_message">Click to mark this picture as favorite</string>
+    <string name="apod_detail_add_remove_cd">Click to add or remove this picture</string>
 
     <!--APOD DETAIL STRINGS -->
     <string name="apod_title_tools_text">Dusty With a Chance of Dust</string>
@@ -115,6 +127,7 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="epic_date_tools_text">Jun 26, 2018 10:05:00</string>
 
     <!-- EPIC DETAIL -->
+    <string name="epic_card_image_cd">image from the Epic camera</string>
     <string name="epic_detail_catpion_tool">This image was taken by NASA\'s EPIC camera onboard the NOAA DSCOVR spacecraft</string>
     <string name="epic_detail_date_and_time_label">Date and Time: </string>
     <string name="epic_detail_centroid_lat_label">Centroid latitude:</string>
@@ -177,6 +190,7 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="iss_pos_long_tools_text">-88.2772</string>
     <string name="iss_pos_lat_tools_text">13.2669</string>
 
+
     <!-- ASTRONAUTS IN SPACE -->
     <string name="astronauts_name_label">Name:</string>
     <string name="astronauts_craft_label">Craft:</string>
@@ -194,6 +208,7 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="astronauts_wikipedia_icon_cd">Click to open Wikipedia page about this astronaut</string>
     <string name="astronauts_country_tool">United States</string>
     <string name="astronauts_detail_toolbar">Astronaut Details</string>
+    <string name="astronaut_image_cd">image of astronaut in space at the moment</string>
 
 
     <!--WIDGET -->
@@ -207,6 +222,6 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="empty_view_message">No favorites to display yet.</string>
     <string name="empty_view_button_text">Reload Data</string>
     <string name="empty_view_latest">No data available. Check for a better connection to display data</string>
-    <string name="reload_empty_message">No data to display. Check for a better connection and press the button to reload data</string>
+    <string name="reload_empty_message">No data to display yet. Check for a better connection to display data</string>
 
 </resources>

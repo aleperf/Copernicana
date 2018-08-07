@@ -25,9 +25,9 @@ import butterknife.ButterKnife;
 public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder> {
 
 
-    Context context;
-    List<Apod> apods;
-    String caller;
+    private Context context;
+    private List<Apod> apods;
+
 
     public interface ApodDetailLauncher{
         void showApodDetail(Apod apod);
@@ -68,22 +68,13 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
         notifyDataSetChanged();
     }
 
-    public void addApods(List<Apod> apodList){
-        if(apods != null){
-            this.apods.addAll(apodList);
-            notifyDataSetChanged();
-        }
-    }
 
     public class ApodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        private final int[] sectionImages = {R.drawable.nasa_43566_unsplash,
-                R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico};
+        private final int[] sectionImages = {R.drawable.apod_placeholder,
+                R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico, R.drawable.apod_error};
         private final int placeholderIndex = 0;
-        private final int errorIndex = 0;
-        private final int searchIndex = 1;
-        private final int favoriteIndex = 2;
-        private final int photoIndex = 3;
+        private final int errorIndex = 4;
 
 
         @BindView(R.id.apod_detail_card_image)

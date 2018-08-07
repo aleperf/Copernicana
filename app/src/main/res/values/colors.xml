@@ -10,6 +10,11 @@
     <color name="intro_rv_font_color">#FFFFFF</color>
     <color name="apod_intro_text_shadow_color">#000000</color>
     <color name="epic_text_bg_transp">#800D47A1</color>
+    <color name="widget_background">#FFFFFF</color>
+
+    <!-- sign in -->
+    <color name="sign_in_button_color">#2962FF</color>
+    <color name="sign_in_text_color">#FFFFFF</color>
 
 
     <!--icons colors -->

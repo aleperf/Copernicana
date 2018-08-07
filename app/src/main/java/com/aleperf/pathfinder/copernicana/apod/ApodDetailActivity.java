@@ -17,8 +17,6 @@ public class ApodDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar_apod_detail)
     Toolbar toolbar;
-    private static final String APOD_EXTRA_DATE = "apod extra date";
-    private static final String APOD_EXTRA_TITLE = "apod extra title";
     private static final String APOD_EXTRA = "apod extra";
     private Apod apod;
 

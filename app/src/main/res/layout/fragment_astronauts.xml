@@ -11,20 +11,12 @@
         android:visibility="gone"
         style="@style/EmptyViewTextStyle"
         android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:layout_gravity="center_horizontal"
         android:text="@string/reload_empty_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <Button
-        android:id="@+id/astronaut_empty_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/empty_view_button_text"
-        android:padding="@dimen/empty_button_padding"
-        android:background="@color/button_color"
-        android:textColor="@color/button_text_color"
-        android:layout_marginTop="@dimen/empty_button_margin_top"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/astronauts_recycler_view"
         android:layout_width="wrap_content"

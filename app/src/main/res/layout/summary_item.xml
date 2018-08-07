@@ -7,15 +7,16 @@
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="8dp"
     android:layout_marginBottom="8dp"
-    android:layout_width="280dp"
-    android:layout_height="80dp">
+    android:layout_width="@dimen/summary_item_width"
+    android:layout_height="@dimen/summary_item_height">
 
 
     <ImageView
         android:id="@+id/section_image"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="@dimen/summary_item_icon_side"
+        android:layout_height="@dimen/summary_item_icon_side"
         android:layout_marginEnd="24dp"
+        android:contentDescription="@string/summary_ico_cd"
         app:layout_constraintBottom_toBottomOf="@+id/section_title"
         app:layout_constraintEnd_toStartOf="@+id/section_title"
         app:srcCompat="@drawable/picture_card_ico" />
@@ -28,8 +29,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textColor="@color/intro_rv_font_color"
+        android:textSize="@dimen/summary_item_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

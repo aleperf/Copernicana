@@ -149,8 +149,8 @@ public class ApodDetailDialogFragment extends DialogFragment {
     private void loadImageWithGlide(String imageUrl){
         GlideApp.with(getActivity())
                 .load(imageUrl)
-                .placeholder(R.drawable.nasa_43566_unsplash)
-                .error(R.drawable.nasa_43566_unsplash)
+                .placeholder(R.drawable.apod_placeholder)
+                .error(R.drawable.apod_error)
                 .into(apodImage);
     }
 

@@ -1,48 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/astronaut_card_width"
+    android:layout_height="@dimen/astronaut_card_height"
     android:layout_gravity="center_horizontal"
-    android:layout_width="280dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginStart="4dp"
-    android:layout_height="320dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp">
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_margin="@dimen/astronaut_card_margin">
 
-    <ImageView
-        android:id="@+id/epic_image"
-        android:layout_width="260dp"
-        android:layout_height="260dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/astronaut_place_holder" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/epic_date_and_hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:paddingEnd="8dp"
-        android:textColor="@color/iss_title_color"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/epic_image"
-        tools:text="@string/astronauts_tool_name" />
+        <ImageView
+            android:id="@+id/astronaut_image"
+            android:layout_width="@dimen/astronaut_image_side"
+            android:layout_height="@dimen/astronaut_image_side"
+            android:layout_marginEnd="@dimen/astronaut_margin_side"
+            android:layout_marginStart="@dimen/astronaut_margin_side"
+            android:layout_marginTop="@dimen/astronaut_image_margin_top"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/astronaut_image_cd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/astronaut_place_holder" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/astronaut_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/astronaut_margin_side"
+            android:layout_marginTop="@dimen/astronaut_margin_top"
+            android:textColor="@color/iss_title_color"
+            android:textSize="@dimen/astronaut_card_text_size"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/astronaut_image"
+            tools:text="@string/astronauts_tool_name" />
+
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

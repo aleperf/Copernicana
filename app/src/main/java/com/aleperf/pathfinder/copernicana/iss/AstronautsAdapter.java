@@ -70,9 +70,9 @@ public class AstronautsAdapter extends RecyclerView.Adapter<AstronautsAdapter.As
     }
 
     public class AstronautHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
-        @BindView(R.id.epic_image)
+        @BindView(R.id.astronaut_image)
         ImageView astronautImage;
-        @BindView(R.id.epic_date_and_hour)
+        @BindView(R.id.astronaut_name)
         TextView astronautName;
 
         public AstronautHolder(View view){

@@ -3,6 +3,10 @@
     <!--intro dimensions -->
     <dimen name="toolbar_standard_size">120dp</dimen>
     <dimen name="recycler_view_padding_bottom">16dp</dimen>
+    <dimen name="copernicana_logo_side">150dp</dimen>
+    <dimen name="sign_in_welcome_text_size">20sp</dimen>
+    <dimen name="sign_in_app_name_text_size">36sp</dimen>
+    <dimen name="sign_in_login_message_text_size">18sp</dimen>
 
     <!-- intro info dimensions -->
     <dimen name="intro_info_section_title_text">18sp</dimen>
@@ -12,8 +16,11 @@
     <dimen name="intro_info_title_layout_margin">16dp</dimen>
 
     <!-- apod intro card dimensions -->
-    <dimen name="apod_card_width">300dp</dimen>
-    <dimen name="apod_card_height">300dp</dimen>
+    <dimen name="apod_card_width">280dp</dimen>
+    <dimen name="apod_card_height">310dp</dimen>
+    <dimen name="apod_card_image_height">200dp</dimen>
+    <dimen name="apod_card_title_text_size">16sp</dimen>
+    <dimen name="apod_card_media_type_ico_side">30dp</dimen>
     <dimen name="media_type_icon_side">25dp</dimen>
     <dimen name="media_type_icon_margin_end">24dp</dimen>
     <dimen name="apod_card_sub_padding_side">8dp</dimen>
@@ -24,6 +31,8 @@
     <dimen name="apod_card_date_margin_top">8dp</dimen>
     <dimen name="apod_card_date_margin_bottom">8dp</dimen>
     <dimen name="apod_card_date_margin_start">8dp</dimen>
+
+    <dimen name="apod_detail_video_ico_side">100dp</dimen>
 
     <!-- generic intro card dimensions -->
     <dimen name="intro_card_width">280dp</dimen>
@@ -60,13 +69,25 @@
 
     <!-- SUMMARY DIMENSIONS -->
     <dimen name="sumary_header_margin_top">24dp</dimen>
-    <dimen name="summary_header_width">250dp</dimen>
-    <dimen name="summary_header_height">293dp</dimen>
+    <dimen name="summary_header_width">280dp</dimen>
+    <dimen name="summary_header_height">228dp</dimen>
+    <dimen name="summary_item_width">280dp</dimen>
+    <dimen name="summary_item_height">80dp</dimen>
+    <dimen name="summary_item_text_size">16sp</dimen>
+    <dimen name="summary_item_icon_side">25dp</dimen>
 
     <!-- EPIC DIMENS -->
     <dimen name="epic_label_text">16sp</dimen>
     <dimen name="epic_value_text">16sp</dimen>
     <dimen name="detail_icon_side">36dp</dimen>
+    <dimen name="epic_card_width">280dp</dimen>
+    <dimen name="epic_card_heigth">320dp</dimen>
+    <dimen name="epic_card_image_side">260dp</dimen>
+    <dimen name="epic_card_text_size">16sp</dimen>
+    <dimen name="epic_card_margin">4dp</dimen>
+    <dimen name="epic_margin_side">8dp</dimen>
+    <dimen name="epic_card_date_margin_start">16dp</dimen>
+    <dimen name="epic_card_date_margin_top">8dp</dimen>
 
 
     <!-- ISS POSITION DIMENSIONS -->
@@ -96,5 +117,24 @@
     <dimen name="dialog_fragment_height">600dp</dimen>
     <dimen name="dialog_fragment_width_epic">580dp</dimen>
     <dimen name="dialog_fragment_height_epic">700dp</dimen>
+    <dimen name="widget_text_size">14sp</dimen>
+    <dimen name="widget_image_height">150dp</dimen>
+
+    <!-- ASTRONAUTS CARD -->
+    <dimen name="astronaut_card_width">280dp</dimen>
+    <dimen name="astronaut_card_height">320dp</dimen>
+    <dimen name="astronaut_card_margin">4dp</dimen>
+    <dimen name="astronaut_image_side">260dp</dimen>
+    <dimen name="astronaut_margin_side">8dp</dimen>
+    <dimen name="astronaut_image_margin_top">16dp</dimen>
+    <dimen name="astronaut_card_text_size">16sp</dimen>
+    <dimen name="astronaut_margin_top">8dp</dimen>
+    <dimen name="astronaut_detail_title_text_size">21sp</dimen>
+
+    <!-- ASTRONAUT DETAIL -->
+    <dimen name="astronaut_detail_image_side">280dp</dimen>
+    <dimen name="astronaut_detail_text_padding_side">16dp</dimen>
+    <dimen name="astronaut_detail_text_size">16sp</dimen>
+    <dimen name="astronaut_wiki_ico_side">50dp</dimen>
 
 </resources>

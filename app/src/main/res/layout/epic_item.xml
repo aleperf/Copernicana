@@ -2,29 +2,27 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="280dp"
-
-    android:layout_height="320dp"
+    android:layout_width="@dimen/epic_card_width"
+    android:layout_height="@dimen/epic_card_heigth"
     android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="4dp"
-    android:layout_marginEnd="4dp"
-    android:layout_marginStart="4dp"
-    android:layout_marginTop="4dp">
+    android:layout_marginBottom="@dimen/epic_card_margin"
+    android:layout_marginEnd="@dimen/epic_card_margin"
+    android:layout_marginStart="@dimen/epic_card_margin"
+    android:layout_marginTop="@dimen/epic_card_margin">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        >
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/epic_image"
-            android:layout_width="260dp"
-            android:layout_height="260dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="@dimen/epic_card_image_side"
+            android:layout_height="@dimen/epic_card_image_side"
+            android:layout_marginEnd="@dimen/epic_margin_side"
+            android:layout_marginStart="@dimen/epic_margin_side"
+            android:layout_marginTop="@dimen/epic_margin_side"
             android:scaleType="centerCrop"
+            android:contentDescription="@string/epic_card_image_cd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,12 +32,11 @@
             android:id="@+id/epic_date_and_hour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:paddingEnd="8dp"
+            android:layout_marginEnd="@dimen/epic_margin_side"
+            android:layout_marginStart="@dimen/epic_card_date_margin_start"
+            android:layout_marginTop="@dimen/epic_card_date_margin_top"
             android:textColor="@color/default_colored_text"
-            android:textSize="16sp"
+            android:textSize="@dimen/epic_card_text_size"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
