@@ -15,10 +15,10 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface EpicEnhancedDao {
-    @Query("SELECT * FROM epic_enhanced")
+    @Query("SELECT * FROM epic_enhanced ORDER BY date DESC")
     LiveData<List<EpicEnhanced>> getAllEnhancedEpic();
 
-    @Query("SELECT * FROM epic_enhanced WHERE isFavorite = 1")
+    @Query("SELECT * FROM epic_enhanced WHERE isFavorite = 1 ORDER BY DATE DESC")
     LiveData<List<EpicEnhanced>> getAllEnhancedFavorites();
 
     @Query("SELECT * FROM epic_enhanced WHERE identifier = :identifier LIMIT 1")

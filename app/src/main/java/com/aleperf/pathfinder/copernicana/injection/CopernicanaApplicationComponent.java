@@ -15,6 +15,7 @@ import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailSearchFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFavFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFragment;
+import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedSearchDetailDialogFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailDialogFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailSearchFragment;
@@ -28,6 +29,7 @@ import com.aleperf.pathfinder.copernicana.iss.AstronautDetailFragment;
 import com.aleperf.pathfinder.copernicana.iss.AstronautsFragment;
 import com.aleperf.pathfinder.copernicana.iss.IssPositionFragment;
 import com.aleperf.pathfinder.copernicana.database.UpdateService;
+import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 
 
 import dagger.Component;
@@ -47,6 +49,7 @@ public interface CopernicanaApplicationComponent {
     void inject(EpicNaturalDetailDialogFragment detailDialogFragment);
     void inject(EpicEnhancedDetailDialogFragment detailDialogFragment);
     void inject(EpicNaturalSearchDetailDialogFragment dialogFragment);
+    void inject(EpicEnhancedSearchDetailDialogFragment detailDialogFragment);
     void inject(EpicNaturalFragment epicNaturalFragment);
     void inject(EpicEnhancedFragment epicEnhancedFragment);
     void inject(EpicNaturalDetailFragment epicNaturalDetailFragment);

@@ -10,12 +10,14 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.R;
+import com.aleperf.pathfinder.copernicana.model.Astronaut;
 import com.aleperf.pathfinder.copernicana.utilities.SummaryAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class IssActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector {
+public class IssActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
+AstronautsAdapter.AstronautSelector{
 
     @BindView(R.id.toolbar_iss)
     Toolbar toolbar;
@@ -83,5 +85,14 @@ public class IssActivity extends AppCompatActivity implements SummaryAdapter.Sec
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(SECTION_SELECTED_ISS, sectionSelectedIssSection);
+    }
+
+    @Override
+    public void selectAstronaut(Astronaut astronaut) {
+        if(isDualPane){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            AstronautDetailDialogFragment dialogFragment = AstronautDetailDialogFragment.getInstance(astronaut);
+            dialogFragment.show(fragmentManager, AstronautDetailDialogFragment.class.getSimpleName());
+        }
     }
 }

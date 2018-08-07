@@ -164,6 +164,10 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
     @Override
     public void selectEnhancedEpicFromSearch(EpicEnhanced epicEnhanced) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        EpicEnhancedSearchDetailDialogFragment dialogFragment =
+                EpicEnhancedSearchDetailDialogFragment.getInstance(epicEnhanced);
+        dialogFragment.show(fragmentManager, EpicEnhancedSearchDetailDialogFragment.class.getSimpleName());
 
     }
 }
