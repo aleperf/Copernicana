@@ -3,6 +3,7 @@ package com.aleperf.pathfinder.copernicana.injection;
 import android.app.Application;
 
 import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
+import com.aleperf.pathfinder.copernicana.apod.ApodDetailDialogFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodFavoritesFragment;
@@ -39,6 +40,7 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodFavoritesFragment apodFavoritesFragment);
     void inject(ApodDisplayAllFragment apodDisplayAllFragment);
     void inject(IntroActivity mainActivity);
+    void inject(ApodDetailDialogFragment apodDetailDialogFragment);
     void inject(EpicNaturalFragment epicNaturalFragment);
     void inject(EpicEnhancedFragment epicEnhancedFragment);
     void inject(EpicNaturalDetailFragment epicNaturalDetailFragment);

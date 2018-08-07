@@ -92,4 +92,7 @@
     <dimen name="empty_button_padding">8dp</dimen>
     <dimen name="empty_button_margin_top">16dp</dimen>
 
+    <dimen name="dialog_fragment_width">580dp</dimen>
+    <dimen name="dialog_fragment_height">600dp</dimen>
+
 </resources>

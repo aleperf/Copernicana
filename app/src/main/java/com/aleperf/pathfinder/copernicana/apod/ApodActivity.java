@@ -30,7 +30,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapter.ApodSectionSelector, ApodSummaryFragment.ApodSetter {
+public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapter.ApodSectionSelector,
+        ApodSummaryFragment.ApodSetter, ApodAdapter.ApodDetailLauncher {
 
     @BindView(R.id.toolbar_apod)
     Toolbar toolbar;
@@ -171,6 +172,18 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
         latestApod = apod;
         if (sectionSelected == 0 && isDualPane) {
             selectApodSection(latestApod);
+        }
+    }
+
+    @Override
+    public void showApodDetail(Apod apod) {
+        if(isDualPane){
+            Log.d("uffa", "sono in showApodDetail");
+            //launch dialog fragment
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            ApodDetailDialogFragment apodDetailDialogFragment = ApodDetailDialogFragment.newInstance(apod);
+            apodDetailDialogFragment.show(fragmentManager, ApodDetailDialogFragment.class.getSimpleName());
+
         }
     }
 }

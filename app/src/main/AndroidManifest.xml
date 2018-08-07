@@ -105,7 +105,8 @@
         <activity
             android:name=".epic.EpicEnhancedFavActivity"
             android:parentActivityName=".epic.EpicActivity" />
-        <activity android:name=".epic.EpicSearchActivity" />
+        <activity android:name=".epic.EpicSearchActivity"
+            android:parentActivityName=".epic.EpicActivity" />
         <activity
             android:name=".epic.EpicNaturalSearchDetailActivity"
             android:parentActivityName="epic.EpicSearchActivity" />
