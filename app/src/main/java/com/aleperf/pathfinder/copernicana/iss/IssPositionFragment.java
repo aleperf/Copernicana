@@ -77,6 +77,8 @@ public class IssPositionFragment extends Fragment {
                         date));
             } else {
                 issDateCheckedTextView.setText(getString(R.string.iss_position_error));
+                latitudeTextView.setText(getString(R.string.iss_pos_no_value));
+                longitudeTextView.setText(getString(R.string.iss_pos_no_value));
             }
             shouldCheck = savedInstanceState.getBoolean(SHOULD_CHECK);
         }
@@ -123,6 +125,8 @@ public class IssPositionFragment extends Fragment {
                     } else {
                         latitude = getString(R.string.iss_pos_no_value);
                         longitude = getString(R.string.iss_pos_no_value);
+                        latitudeTextView.setText(latitude);
+                        longitudeTextView.setText(longitude);
                         date = getString(R.string.iss_position_error);
                         issDateCheckedTextView.setText(date);
                     }
