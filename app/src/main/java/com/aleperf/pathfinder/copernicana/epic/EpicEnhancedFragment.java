@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.aleperf.pathfinder.copernicana.CopernicanaApplication;
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 
 import java.util.List;
@@ -60,21 +59,21 @@ public class EpicEnhancedFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         epicAdapter = new EpicEnhancedAdapter(getActivity(), EpicEnhancedAdapter.NOT_FROM_SEARCH);
         int columnCount = getResources().getInteger(R.integer.column_count);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),columnCount);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), columnCount);
         epicEnhancedRecyclerview.setAdapter(epicAdapter);
         epicEnhancedRecyclerview.setLayoutManager(gridLayoutManager);
         EpicEnhancedViewModel viewModel = ViewModelProviders.of(this, factory)
                 .get(EpicEnhancedViewModel.class);
-        epicEnhanced= viewModel.getEnhancedEpic();
+        epicEnhanced = viewModel.getEnhancedEpic();
         subscribe();
 
     }
 
-    public void subscribe(){
+    public void subscribe() {
         Observer<List<EpicEnhanced>> epicObserver = new Observer<List<EpicEnhanced>>() {
             @Override
             public void onChanged(@Nullable List<EpicEnhanced> epics) {
-                if(epics != null && epics.size() > 0){
+                if (epics != null && epics.size() > 0) {
                     epicAdapter.setEpicEnhanced(epics);
                 }
             }

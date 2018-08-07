@@ -8,11 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +37,7 @@ public class ApodSummaryFragment extends Fragment {
     private ApodSummaryAdapter adapter;
 
 
-    public ApodSummaryFragment(){
+    public ApodSummaryFragment() {
         //default empty constructor
     }
 
@@ -59,14 +56,14 @@ public class ApodSummaryFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       View rootView = inflater.inflate(R.layout.fragment_summary_apod, container, false);
-       unbinder =  ButterKnife.bind(this, rootView);
+        View rootView = inflater.inflate(R.layout.fragment_summary_apod, container, false);
+        unbinder = ButterKnife.bind(this, rootView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         apodSummaryRecyclerView.setLayoutManager(layoutManager);
         adapter = new ApodSummaryAdapter(getActivity());
         apodSummaryRecyclerView.setAdapter(adapter);
 
-       return rootView;
+        return rootView;
     }
 
     @Override
@@ -78,14 +75,14 @@ public class ApodSummaryFragment extends Fragment {
 
     }
 
-    private void subscribeApod(){
+    private void subscribeApod() {
         Observer<Apod> apodObserver = new Observer<Apod>() {
             @Override
             public void onChanged(@Nullable Apod apod) {
-                if(apod != null){
+                if (apod != null) {
                     adapter.setApod(apod);
                     adapter.notifyDataSetChanged();
-                    if(getActivity() instanceof ApodSetter){
+                    if (getActivity() instanceof ApodSetter) {
                         ApodSetter apodSetter = (ApodSetter) getActivity();
                         apodSetter.setApod(apod);
                     }

@@ -54,7 +54,7 @@
         android:layout_marginTop="8dp"
         android:text="@string/app_name"
         android:textColor="@color/intro_rv_font_color"
-        android:textSize="@dimen/sign_in_welcome_text_size"
+        android:textSize="@dimen/sign_in_app_name_text_size"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

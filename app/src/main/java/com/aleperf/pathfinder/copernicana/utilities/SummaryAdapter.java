@@ -21,7 +21,7 @@ public class SummaryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private Context context;
     private int[] images;
     private String[] titles;
-    int sections;
+    private int sections;
     private final static int HEADER_VIEW_TYPE = 0;
     private final static  int SECTION_VIEW_TYPE = 1;
 

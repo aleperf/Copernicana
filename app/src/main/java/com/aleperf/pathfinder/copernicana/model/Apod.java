@@ -2,7 +2,6 @@ package com.aleperf.pathfinder.copernicana.model;
 
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.graphics.Movie;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;

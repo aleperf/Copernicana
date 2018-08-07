@@ -3,6 +3,8 @@
 
     <!-- LOGIN STRINGS -->
     <string name="sign_in_prompt">You need to be signed up to start the app</string>
+    <string name="sign_in_no_connection">No connection available</string>
+    <string name="sign_in_unknown_error">Unknown Sign-in error</string>
     <string name="sign_up_button">SIGN UP</string>
     <string name="sign_in_tap">TAP TO START</string>
     <string name="sign_in_welcome">Welcome To</string>

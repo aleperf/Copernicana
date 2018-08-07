@@ -13,8 +13,6 @@ import com.aleperf.pathfinder.copernicana.database.AstroRepositoryImpl;
 import com.aleperf.pathfinder.copernicana.database.AstronautDao;
 import com.aleperf.pathfinder.copernicana.database.EpicDao;
 import com.aleperf.pathfinder.copernicana.database.EpicEnhancedDao;
-import com.aleperf.pathfinder.copernicana.model.Apod;
-import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.network.ApisService;
 
 import javax.inject.Inject;

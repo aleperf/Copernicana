@@ -71,7 +71,7 @@ public class IntroActivity extends AppCompatActivity implements SummaryFragment.
                 .setLifetime(Lifetime.FOREVER)
                 .setTrigger(Trigger.executionWindow(SIX_HOURS, SIX_HOURS_AND_A_MINUTE))
                 .setRetryStrategy(RetryStrategy.DEFAULT_EXPONENTIAL)
-                .setReplaceCurrent(true)
+                .setReplaceCurrent(false)
                 .setConstraints(Constraint.ON_UNMETERED_NETWORK)
                 .build();
         dispatcher.mustSchedule(updateJob);

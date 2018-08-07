@@ -1,13 +1,10 @@
 package com.aleperf.pathfinder.copernicana.iss;
 
-
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Astronaut;
@@ -17,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class IssActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
-AstronautsAdapter.AstronautSelector{
+        AstronautsAdapter.AstronautSelector {
 
     @BindView(R.id.toolbar_iss)
     Toolbar toolbar;
@@ -38,7 +35,7 @@ AstronautsAdapter.AstronautSelector{
             sectionSelectedIssSection = savedInstanceState.getInt(SECTION_SELECTED_ISS);
             selectSection(sectionSelectedIssSection);
         } else {
-            if(isDualPane){
+            if (isDualPane) {
                 selectSection(1);
             }
         }
@@ -89,7 +86,7 @@ AstronautsAdapter.AstronautSelector{
 
     @Override
     public void selectAstronaut(Astronaut astronaut) {
-        if(isDualPane){
+        if (isDualPane) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             AstronautDetailDialogFragment dialogFragment = AstronautDetailDialogFragment.getInstance(astronaut);
             dialogFragment.show(fragmentManager, AstronautDetailDialogFragment.class.getSimpleName());

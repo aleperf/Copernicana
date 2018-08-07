@@ -1,7 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
@@ -15,7 +14,6 @@ public class ApodViewModel extends ViewModel {
     private LiveData<Apod> lastApod;
     private LiveData<Apod> apodWithDate;
     private String date;
-
 
 
     @Inject
@@ -40,7 +38,7 @@ public class ApodViewModel extends ViewModel {
         this.date = date;
         apodWithDate = astroRepository.getApodWithDate(date);
         return apodWithDate;
-        }
+    }
 
     public void updateApod(int isFavorite, String date) {
         astroRepository.updateApodIsFavorite(isFavorite, date);

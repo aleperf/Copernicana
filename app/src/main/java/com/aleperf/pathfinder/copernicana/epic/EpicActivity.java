@@ -6,17 +6,19 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 import com.aleperf.pathfinder.copernicana.utilities.SummaryAdapter;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
 public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
         EpicAdapter.EpicNaturalSelector, EpicEnhancedAdapter.EpicEnhancedSelector,
-        EpicAdapter.EpicNaturalSearchSelector, EpicEnhancedAdapter.EpicEnhancedSearchSelector{
+        EpicAdapter.EpicNaturalSearchSelector, EpicEnhancedAdapter.EpicEnhancedSearchSelector {
 
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
@@ -33,13 +35,13 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.epic_title));
         isDualPane = getResources().getBoolean(R.bool.is_dual_pane);
-        if(savedInstanceState != null){
+        if (savedInstanceState != null) {
             sectionSelectedEpic = savedInstanceState.getInt(SECTION_SELECTED_EPIC);
-            if(isDualPane){
+            if (isDualPane) {
                 selectSection(sectionSelectedEpic);
             }
         } else {
-            if(isDualPane){
+            if (isDualPane) {
                 selectSection(1);
             }
         }
@@ -77,46 +79,46 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
             sectionSelectedEpic = position;
             FragmentManager fragmentManager = getSupportFragmentManager();
             String tag = SECTION_SELECTED_EPIC + sectionSelectedEpic;
-            switch(position){
+            switch (position) {
                 case 1:
-                    EpicNaturalFragment epicNaturalFragment =(EpicNaturalFragment) fragmentManager.findFragmentByTag(tag);
-                    if(epicNaturalFragment == null){
+                    EpicNaturalFragment epicNaturalFragment = (EpicNaturalFragment) fragmentManager.findFragmentByTag(tag);
+                    if (epicNaturalFragment == null) {
                         epicNaturalFragment = new EpicNaturalFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
                             epicNaturalFragment, tag).commit();
                     break;
                 case 2:
-                    EpicEnhancedFragment epicEnhancedFragment = (EpicEnhancedFragment)fragmentManager.findFragmentByTag(tag);
-                    if(epicEnhancedFragment == null){
+                    EpicEnhancedFragment epicEnhancedFragment = (EpicEnhancedFragment) fragmentManager.findFragmentByTag(tag);
+                    if (epicEnhancedFragment == null) {
                         epicEnhancedFragment = new EpicEnhancedFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
                             epicEnhancedFragment, tag).commit();
                     break;
                 case 3:
-                    EpicNaturalFavFragment epicNaturalFavFragment = (EpicNaturalFavFragment)fragmentManager.findFragmentByTag(tag);
-                    if(epicNaturalFavFragment == null){
+                    EpicNaturalFavFragment epicNaturalFavFragment = (EpicNaturalFavFragment) fragmentManager.findFragmentByTag(tag);
+                    if (epicNaturalFavFragment == null) {
                         epicNaturalFavFragment = new EpicNaturalFavFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
                             epicNaturalFavFragment, tag).commit();
                     break;
                 case 4:
-                    EpicEnhancedFavFragment epicEnhancedFavFragment = (EpicEnhancedFavFragment)fragmentManager.findFragmentByTag(tag);
-                    if(epicEnhancedFavFragment == null){
+                    EpicEnhancedFavFragment epicEnhancedFavFragment = (EpicEnhancedFavFragment) fragmentManager.findFragmentByTag(tag);
+                    if (epicEnhancedFavFragment == null) {
                         epicEnhancedFavFragment = new EpicEnhancedFavFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
                             epicEnhancedFavFragment, tag).commit();
                     break;
                 default:
-                  EpicSearchFragment epicSearchFragment = (EpicSearchFragment)fragmentManager.findFragmentByTag(tag);
-                  if(epicSearchFragment == null){
-                      epicSearchFragment = new EpicSearchFragment();
-                  }
+                    EpicSearchFragment epicSearchFragment = (EpicSearchFragment) fragmentManager.findFragmentByTag(tag);
+                    if (epicSearchFragment == null) {
+                        epicSearchFragment = new EpicSearchFragment();
+                    }
                     fragmentManager.beginTransaction().replace(R.id.epic_section_detail_container,
-                           epicSearchFragment, tag).commit();
+                            epicSearchFragment, tag).commit();
 
             }
         }
@@ -125,7 +127,7 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
     @Override
     public void selectEpic(Epic epic) {
-        if(isDualPane){
+        if (isDualPane) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             EpicNaturalDetailDialogFragment detailDialogFragment = EpicNaturalDetailDialogFragment
                     .getInstance(epic);
@@ -137,7 +139,7 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
     @Override
     public void selectEpicEnhanced(EpicEnhanced epicEnhanced) {
-        if(isDualPane){
+        if (isDualPane) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             EpicEnhancedDetailDialogFragment detailDialogFragment = EpicEnhancedDetailDialogFragment
                     .getInstance(epicEnhanced);

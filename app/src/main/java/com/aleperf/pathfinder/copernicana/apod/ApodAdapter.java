@@ -1,8 +1,6 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.aleperf.pathfinder.copernicana.GlideApp;
 import com.aleperf.pathfinder.copernicana.R;
@@ -29,14 +26,14 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
     private List<Apod> apods;
 
 
-    public interface ApodDetailLauncher{
+    public interface ApodDetailLauncher {
         void showApodDetail(Apod apod);
     }
 
-    public ApodAdapter(Context context){
+    public ApodAdapter(Context context) {
         this.context = context;
 
-        }
+    }
 
 
     @NonNull
@@ -49,7 +46,7 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ApodViewHolder holder, int position) {
-        if(apods != null){
+        if (apods != null) {
             holder.bindApod(apods.get(position));
         }
 
@@ -57,22 +54,22 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
 
     @Override
     public int getItemCount() {
-        if(apods != null){
+        if (apods != null) {
             return apods.size();
         }
         return 0;
     }
 
-    public void setApod(List<Apod> apodList){
+    public void setApod(List<Apod> apodList) {
         this.apods = apodList;
         notifyDataSetChanged();
     }
 
 
-    public class ApodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ApodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private final int[] sectionImages = {R.drawable.apod_placeholder,
-                R.drawable.search_ico, R.drawable.star_white,R.drawable.camera_ico, R.drawable.apod_error};
+                R.drawable.search_ico, R.drawable.star_white, R.drawable.camera_ico, R.drawable.apod_error};
         private final int placeholderIndex = 0;
         private final int errorIndex = 4;
 
@@ -86,7 +83,7 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
         @BindView(R.id.media_type_icon)
         ImageView mediaTypeIcon;
 
-        public ApodViewHolder(View view){
+        public ApodViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
             view.setOnClickListener(this);
@@ -106,7 +103,7 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
                 } else {
                     mediaTypeIcon.setImageResource(R.drawable.youtube_blue);
                     //if this is a valid youtube video show a thumbnail
-                    if(apod.getUrl().contains("youtube")){
+                    if (apod.getUrl().contains("youtube")) {
                         photoUrl = Utils.buildVideoThumbnailFromUrl(apod.getUrl());
                         GlideApp.with(context)
                                 .load(photoUrl)
@@ -127,8 +124,8 @@ public class ApodAdapter extends RecyclerView.Adapter<ApodAdapter.ApodViewHolder
 
         @Override
         public void onClick(View v) {
-            if(context instanceof ApodDetailLauncher) {
-                ApodDetailLauncher launcher =  (ApodDetailLauncher) context;
+            if (context instanceof ApodDetailLauncher) {
+                ApodDetailLauncher launcher = (ApodDetailLauncher) context;
                 Apod apod = apods.get(getAdapterPosition());
                 launcher.showApodDetail(apod);
             }

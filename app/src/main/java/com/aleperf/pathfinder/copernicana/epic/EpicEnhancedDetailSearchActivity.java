@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 
 import butterknife.BindView;
@@ -31,7 +30,7 @@ public class EpicEnhancedDetailSearchActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         String fragmentTag = String.valueOf(epicEnhanced.getIdentifier()) + EPIC_ENHANCED_FROM_SEARCH;
         EpicEnhancedDetailSearchFragment fragment = (EpicEnhancedDetailSearchFragment) fragmentManager.findFragmentByTag(fragmentTag);
-        if(fragment == null){
+        if (fragment == null) {
             fragment = EpicEnhancedDetailSearchFragment.getInstance(epicEnhanced);
         }
         fragmentManager.beginTransaction().replace(R.id.epic_enhanced_search_detail_container,

@@ -2,7 +2,6 @@ package com.aleperf.pathfinder.copernicana.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -26,7 +25,7 @@ public interface EpicDao {
     LiveData<Epic> getEpicWithIdentifier(long identifier);
 
     @Insert(onConflict = IGNORE)
-    void insertAllEpic(List<Epic>epic);
+    void insertAllEpic(List<Epic> epic);
 
     @Insert(onConflict = REPLACE)
     void insertEpicFromSearch(Epic epic);

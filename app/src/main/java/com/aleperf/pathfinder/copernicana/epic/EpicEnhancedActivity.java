@@ -4,16 +4,14 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 
 import com.aleperf.pathfinder.copernicana.R;
-import com.aleperf.pathfinder.copernicana.model.Epic;
 import com.aleperf.pathfinder.copernicana.model.EpicEnhanced;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class EpicEnhancedActivity extends AppCompatActivity implements EpicEnhancedAdapter.EpicEnhancedSelector{
+public class EpicEnhancedActivity extends AppCompatActivity implements EpicEnhancedAdapter.EpicEnhancedSelector {
 
     private final static String EXTRA_EPIC_ENHANCED = "extra epic enhanced";
 

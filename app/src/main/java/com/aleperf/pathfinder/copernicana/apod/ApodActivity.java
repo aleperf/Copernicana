@@ -1,31 +1,18 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
+
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.NavUtils;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.Toast;
-
 
 import com.aleperf.pathfinder.copernicana.R;
 import com.aleperf.pathfinder.copernicana.intro.IntroActivity;
 import com.aleperf.pathfinder.copernicana.model.Apod;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,15 +82,15 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
                     break;
                 case 2:
                     ApodFavoritesFragment favoritesFragment = (ApodFavoritesFragment) fragmentManager.findFragmentByTag(tag);
-                    if(favoritesFragment == null){
+                    if (favoritesFragment == null) {
                         favoritesFragment = new ApodFavoritesFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.apod_section_detail_container,
                             favoritesFragment, tag).commit();
                     break;
                 default:
-                    ApodDisplayAllFragment displayAllFragment = (ApodDisplayAllFragment)fragmentManager.findFragmentByTag(tag);
-                    if(displayAllFragment == null){
+                    ApodDisplayAllFragment displayAllFragment = (ApodDisplayAllFragment) fragmentManager.findFragmentByTag(tag);
+                    if (displayAllFragment == null) {
                         displayAllFragment = new ApodDisplayAllFragment();
                     }
                     fragmentManager.beginTransaction().replace(R.id.apod_section_detail_container,
@@ -177,7 +164,7 @@ public class ApodActivity extends AppCompatActivity implements ApodSummaryAdapte
 
     @Override
     public void showApodDetail(Apod apod) {
-        if(isDualPane){
+        if (isDualPane) {
             Log.d("uffa", "sono in showApodDetail");
             //launch dialog fragment
             FragmentManager fragmentManager = getSupportFragmentManager();

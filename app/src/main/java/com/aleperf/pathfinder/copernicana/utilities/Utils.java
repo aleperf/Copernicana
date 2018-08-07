@@ -9,14 +9,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -139,11 +134,5 @@ public class Utils {
         return null;
     }
 
-    public static int[] getDurationInMinutesAndSecond(int seconds){
-        int[] result = new int[2];
-        result[0] = seconds / 60;
-        result[1] = seconds % 60;
-        return result;
-    }
 
 }

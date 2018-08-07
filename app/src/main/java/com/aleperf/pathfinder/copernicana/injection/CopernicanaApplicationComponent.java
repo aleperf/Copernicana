@@ -2,7 +2,6 @@ package com.aleperf.pathfinder.copernicana.injection;
 
 import android.app.Application;
 
-import com.aleperf.pathfinder.copernicana.apod.ApodActivity;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailDialogFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodDetailFragment;
 import com.aleperf.pathfinder.copernicana.apod.ApodDisplayAllFragment;

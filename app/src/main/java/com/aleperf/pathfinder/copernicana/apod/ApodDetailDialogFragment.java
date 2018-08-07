@@ -123,7 +123,7 @@ public class ApodDetailDialogFragment extends DialogFragment {
     }
 
     private void setCorrectMediaTypeImage(Apod apod) {
-        String imageUrl = null;
+        String imageUrl;
         String mediaType = apod.getMediaType();
         if (mediaType.equals(Apod.MEDIA_TYPE_IMAGE)) {
             imageUrl = apod.getUrl();

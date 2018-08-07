@@ -1,14 +1,11 @@
 package com.aleperf.pathfinder.copernicana.apod;
 
 import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.os.AsyncTask;
 
 import com.aleperf.pathfinder.copernicana.database.AstroRepository;
 import com.aleperf.pathfinder.copernicana.model.Apod;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
