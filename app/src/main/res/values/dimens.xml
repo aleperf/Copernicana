@@ -94,5 +94,7 @@
 
     <dimen name="dialog_fragment_width">580dp</dimen>
     <dimen name="dialog_fragment_height">600dp</dimen>
+    <dimen name="dialog_fragment_width_epic">580dp</dimen>
+    <dimen name="dialog_fragment_height_epic">700dp</dimen>
 
 </resources>

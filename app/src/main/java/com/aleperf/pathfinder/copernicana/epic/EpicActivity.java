@@ -124,6 +124,12 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
     @Override
     public void selectEpic(Epic epic) {
+        if(isDualPane){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            EpicNaturalDetailDialogFragment detailDialogFragment = EpicNaturalDetailDialogFragment
+                    .getInstance(epic);
+            detailDialogFragment.show(fragmentManager, EpicNaturalDetailDialogFragment.class.getSimpleName());
+        }
 
     }
 

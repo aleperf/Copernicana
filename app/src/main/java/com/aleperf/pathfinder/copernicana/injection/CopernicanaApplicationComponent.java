@@ -14,6 +14,7 @@ import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedDetailSearchFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFavFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicEnhancedFragment;
+import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailDialogFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalDetailSearchFragment;
 import com.aleperf.pathfinder.copernicana.epic.EpicNaturalFavFragment;
@@ -41,6 +42,7 @@ public interface CopernicanaApplicationComponent {
     void inject(ApodDisplayAllFragment apodDisplayAllFragment);
     void inject(IntroActivity mainActivity);
     void inject(ApodDetailDialogFragment apodDetailDialogFragment);
+    void inject(EpicNaturalDetailDialogFragment detailDialogFragment);
     void inject(EpicNaturalFragment epicNaturalFragment);
     void inject(EpicEnhancedFragment epicEnhancedFragment);
     void inject(EpicNaturalDetailFragment epicNaturalDetailFragment);

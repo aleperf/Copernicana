@@ -107,7 +107,7 @@ public class EpicAdapter extends RecyclerView.Adapter<EpicAdapter.EpicHolder> {
                     epicNaturalSelector.selectEpic(naturalEpic.get(getAdapterPosition()));
                 }
             } else {
-                Log.d("uffa", "clicking from search");
+
                 if(context instanceof EpicNaturalSearchSelector){
                     EpicNaturalSearchSelector searchSelector = (EpicNaturalSearchSelector) context;
                     searchSelector.selectEpicFromSearch(naturalEpic.get(getAdapterPosition()));
