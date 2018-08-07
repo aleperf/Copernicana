@@ -30,8 +30,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class EpicNaturalDetailDialogFragment extends DialogFragment {
-    private final static String CURRENT_EPIC = "current natural epic";
+public class EpicNaturalSearchDetailDialogFragment extends DialogFragment {
+
+    private final static String EPIC_NATURAL_FROM_SEARCH = "Epic natural from search";
     private final static int IS_FAVORITE = 1;
     private final static int NOT_FAVORITE = 0;
 
@@ -59,19 +60,19 @@ public class EpicNaturalDetailDialogFragment extends DialogFragment {
     ImageView favoriteIcon;
     @BindView(R.id.epic_detail_share_icon)
     ImageView shareIcon;
-    EpicNaturalDetailViewModel viewModel;
+    EpicNaturalSearchDetailViewModel viewModel;
 
     @Inject
     ViewModelProvider.Factory factory;
 
-    public  EpicNaturalDetailDialogFragment() {
+    public EpicNaturalSearchDetailDialogFragment () {
     }
 
 
-    public static EpicNaturalDetailDialogFragment getInstance(Epic epic) {
+    public static  EpicNaturalSearchDetailDialogFragment getInstance(Epic epic) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(CURRENT_EPIC, epic);
-        EpicNaturalDetailDialogFragment fragment = new EpicNaturalDetailDialogFragment();
+        bundle.putParcelable(EPIC_NATURAL_FROM_SEARCH, epic);
+        EpicNaturalSearchDetailDialogFragment fragment = new  EpicNaturalSearchDetailDialogFragment();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -82,9 +83,9 @@ public class EpicNaturalDetailDialogFragment extends DialogFragment {
         ((CopernicanaApplication) this.getActivity().getApplication())
                 .getCopernicanaApplicationComponent().inject(this);
         if (savedInstanceState == null) {
-            epic = getArguments().getParcelable(CURRENT_EPIC);
+            epic = getArguments().getParcelable(EPIC_NATURAL_FROM_SEARCH);
         } else {
-            epic = savedInstanceState.getParcelable(CURRENT_EPIC);
+            epic = savedInstanceState.getParcelable(EPIC_NATURAL_FROM_SEARCH);
         }
 
     }
@@ -95,7 +96,7 @@ public class EpicNaturalDetailDialogFragment extends DialogFragment {
                              @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_dialog_epic_detail, container, false);
         unbinder = ButterKnife.bind(this, rootView);
-        viewModel = ViewModelProviders.of(this, factory).get(EpicNaturalDetailViewModel.class);
+        viewModel = ViewModelProviders.of(this, factory).get(EpicNaturalSearchDetailViewModel.class);
         favoriteIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,12 +104,12 @@ public class EpicNaturalDetailDialogFragment extends DialogFragment {
                     String message;
                     if(epic.isFavorite() == NOT_FAVORITE){
                         epic.setFavorite(IS_FAVORITE);
-                        viewModel.updateEpicNatural(IS_FAVORITE, epic.getIdentifier());
+                        viewModel.insertEpicNaturalFromSearch(epic);
                         favoriteIcon.setImageResource(R.drawable.star_icon);
                         message = getString(R.string.epic_add_message);
                     } else {
                         epic.setFavorite(NOT_FAVORITE);
-                        viewModel.updateEpicNatural(NOT_FAVORITE, epic.getIdentifier());
+                        viewModel.insertEpicNaturalFromSearch(epic);
                         favoriteIcon.setImageResource(R.drawable.star_icon_default);
                         message = getString(R.string.epic_remove_message);
                     }
@@ -193,6 +194,6 @@ public class EpicNaturalDetailDialogFragment extends DialogFragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(CURRENT_EPIC, epic);
+        outState.putParcelable(EPIC_NATURAL_FROM_SEARCH, epic);
     }
 }

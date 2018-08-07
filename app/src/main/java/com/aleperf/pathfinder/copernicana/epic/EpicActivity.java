@@ -15,7 +15,8 @@ import butterknife.ButterKnife;
 
 
 public class EpicActivity extends AppCompatActivity implements SummaryAdapter.SectionSelector,
-        EpicAdapter.EpicNaturalSelector, EpicEnhancedAdapter.EpicEnhancedSelector {
+        EpicAdapter.EpicNaturalSelector, EpicEnhancedAdapter.EpicEnhancedSelector,
+        EpicAdapter.EpicNaturalSearchSelector, EpicEnhancedAdapter.EpicEnhancedSearchSelector{
 
     @BindView(R.id.toolbar_epic)
     Toolbar toolbar;
@@ -136,6 +137,13 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
 
     @Override
     public void selectEpicEnhanced(EpicEnhanced epicEnhanced) {
+        if(isDualPane){
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            EpicEnhancedDetailDialogFragment detailDialogFragment = EpicEnhancedDetailDialogFragment
+                    .getInstance(epicEnhanced);
+            detailDialogFragment.show(fragmentManager, EpicNaturalDetailDialogFragment.class.getSimpleName());
+        }
+
 
     }
 
@@ -143,5 +151,19 @@ public class EpicActivity extends AppCompatActivity implements SummaryAdapter.Se
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(SECTION_SELECTED_EPIC, sectionSelectedEpic);
+    }
+
+    @Override
+    public void selectEpicFromSearch(Epic epic) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        EpicNaturalSearchDetailDialogFragment dialogFragment =
+                EpicNaturalSearchDetailDialogFragment.getInstance(epic);
+        dialogFragment.show(fragmentManager, EpicNaturalSearchDetailDialogFragment.class.getSimpleName());
+    }
+
+
+    @Override
+    public void selectEnhancedEpicFromSearch(EpicEnhanced epicEnhanced) {
+
     }
 }
