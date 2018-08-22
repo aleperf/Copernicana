@@ -4,7 +4,7 @@
 Copernicana is an app for exploring Earth and Space through the beautiful imagery provided by
 the Nasa API and with the latest informations about astronauts in space and about the
 International Space Station.<br>
-Copernicana is my Capstone Project for the Android Developer Nanodegree by Udacity <br>
+Copernicana is my Capstone Project for the Android Developer Nanodegree by Udacity. <br>
 The app is divided in three main sections: <br>
 #### APOD SECTION <br>
  This section is dedicated to the Astronomy Picture of the Day (a.k.a APOD).<br>
