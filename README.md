@@ -37,3 +37,41 @@ API docs:​ http://open-notify.org/ </br>
 <p align="center">
 <img src="https://github.com/aleperf/Copernicana/blob/master/example_images/astronauts_land.png" width="400"/></p>
 <br>
+
+#### --- COMING SOON: MARS SECTION --> images from the Rovers on Mars --- <br>
+#### TECHNICAL DETAILS
+Copernicana needs 2 main API keys and to set up Firebase in order to work. <br>
+1) You need a NASA API key that can be requested here: https://api.nasa.gov/index.html#apply-for-an-api-key in order to query the NASA Apis more the a few times per hour<br>
+2) You also need an ANDROID API KEY: the app uses a standalone Youtube player (so even those rare devices without a youtube app can play the youtube
+videos Nasa chooses sometimes instead of an image as  Astronomy Picture of the day), so you need also to download the Youtube API client, more info about here: https://developers.google.com/youtube/android/player/ </br>
+3) Copernicana uses Firebase Storage as backend service for the app and Firebase Storage can be accessed only by authenticated users, so you also need to setup a firebase account and to include a google-services.json file with your credential in the app, more info about it here: https://firebase.google.com/docs/android/setup <br>
+Once you have all the API keys and you know the name of your storage, create a file gradle.properties and store there 3 constants: <br>
+NASA_API_KEY="REPLACE_THIS_WITH_YOUR_API_KEY" <br>
+COPERNICANA_STORAGE="THE_URL_OF_YOUR_FIREBASE_STORAGE_HERE"
+ANDROID_API_KEY="YOUR_ANDROID_API_KEY_HERE" <br>
+The gradle.properties file is not included in this repository you need to create it yourself. <br>
+Once you have a storage, create there a json file with some data about the astronauts and create a folder with the picture of the astronatus , I have included the json file in this repository for guidance: the Astronaut class in the model package is based on this file.
+Once you have done everything the app should compile and once authenticated you can access your firebase storage to download the data you have created: give yourself a pack on the shoulder, well done!
+<br>
+If everything works fine, give yourself a pat on the shoulder: well done! <br>
+
+#### Libraries
+Copernicana uses the following libraries: <br>
+Dagger <br>
+Room <br>
+RxJava and RxAndroid <br>
+Retrofit <br>
+Firebase Authentication <br>
+Firebase Storage <br>
+Firebase UI <br>
+Firebase Jobdispatcher <br>
+Youtube library <br>
+Glide <br>
+
+#### Design Patterns and extras
+The app uses a repository design pattern: AstroRepository is the only hub for downloading from network and for querying the database.<br>
+The app also implements a widget for viewing the Astronomy Picture of the day
+<br>
+<br>
+#### Credits
+All images from Unsplash, all icons from Flaticon (see the files in the drawable folder for the specific credit to the artist).
