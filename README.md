@@ -3,7 +3,8 @@
 
 Copernicana is an app for exploring Earth and Space through the beautiful imagery provided by
 the Nasa API and with the latest informations about astronauts in space and about the
-International Space Station.
+International Space Station.<br>
+Copernicana is my Capstone Project for the Android Developer Nanodegree by Udacity <br>
 The app is divided in three main sections: <br>
 #### APOD SECTION <br>
  This section is dedicated to the Astronomy Picture of the Day (a.k.a APOD).<br>
@@ -50,7 +51,7 @@ NASA_API_KEY="REPLACE_THIS_WITH_YOUR_API_KEY" <br>
 COPERNICANA_STORAGE="THE_URL_OF_YOUR_FIREBASE_STORAGE_HERE"
 ANDROID_API_KEY="YOUR_ANDROID_API_KEY_HERE" <br>
 The gradle.properties file is not included in this repository you need to create it yourself. <br>
-Once you have a storage, create there a json file with some data about the astronauts and create a folder with the picture of the astronatus , I have included the json file in this repository for guidance: the Astronaut class in the model package is based on this file.
+Once you have a storage, create there a json file with some data about the astronauts and create a folder with the picture of the astronatus , I have included the json file in this repository in the folder example_json for guidance: the Astronaut class in the model package is based on this file.
 Once you have done everything the app should compile and once authenticated you can access your firebase storage to download the data you have created: give yourself a pack on the shoulder, well done!
 <br>
 If everything works fine, give yourself a pat on the shoulder: well done! <br>
