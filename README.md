@@ -13,6 +13,10 @@ The app shows the image of the day with the same description provided by Nasa an
 the user to save the image in a list of favorites. The user can search for a previous APOD for a
 specific day in time and save it in favorites as well. The user can see all the previous APOD
 saved previously in the database. API docs at: ​https://api.nasa.gov/api.html#apod <br>
+<p align="center">
+<img src="https://github.com/aleperf/Copernicana/blob/master/example_images/apod_detail.png" width="400"/></p>
+<br>
+
 #### EPIC SECTION <br>
  ( or The Blue Marble section), dedicated to images by the EPIC camera (Earth
 Polychromatic Imaging Camera) on board of the DSCOVR. The images show the Earth seen from space, as in the following picture: <br>
@@ -29,4 +33,7 @@ A section dedicated to the International Space Station and to astronauts in spac
 shows the latest position of the ISS.
 The app lists the astronauts in space now and shows some information about them (pictures,
 brief bios, social media contacts).
-API docs:​ http://open-notify.org/
+API docs:​ http://open-notify.org/ </br>
+<p align="center">
+<img src="https://github.com/aleperf/Copernicana/blob/master/example_images/astronauts_land.png" width="400"/></p>
+<br>
