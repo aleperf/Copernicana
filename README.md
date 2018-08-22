@@ -17,7 +17,7 @@ saved previously in the database. API docs at: ​https://api.nasa.gov/api.html#
  ( or The Blue Marble section), dedicated to images by the EPIC camera (Earth
 Polychromatic Imaging Camera) on board of the DSCOVR. The images show the Earth seen from space, as in the following picture: <br>
 <p align="center">
-<img src="https://github.com/aleperf/Copernicana/blob/master/app/src/main/res/drawable-xxxhdpi/blue_marble_card.jpg" width="200"/></p>
+<img src="https://github.com/aleperf/Copernicana/blob/master/example_images/the_blue_marble_detail.png" width="400"/></p>
 <br>
 The app shows the latest images in natural and enhanced colors from the Epic camera. A
 search section allows the user to search for Epic images for a specific day. Both images of the
