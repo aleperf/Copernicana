@@ -111,7 +111,7 @@ In this section you can also find the list of astronauts in space now and some b
     <string name="search_snack_bar_remove">The image has been removed from the database</string>
 
     <!--APOD FAVORITES STRINGS -->
-    <string name="apod_favorites_toolbar_title">Favorites Astronomic Pictures</string>
+    <string name="apod_favorites_toolbar_title">Favorites Astronomy Pictures</string>
 
     <!-- APOD DISPLAY ALL STRINGS -->
     <string name="apod_display_all_title">Latest Pictures</string>
