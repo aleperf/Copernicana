@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/apod_summary_background"
     android:layout_gravity="center_horizontal">
 
     <android.support.design.widget.AppBarLayout
@@ -22,10 +23,11 @@
 
     <fragment
         android:id="@+id/apod_summary_fragment"
+        android:background="@color/apod_summary_background"
         android:name="com.aleperf.pathfinder.copernicana.apod.ApodSummaryFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="start|center_horizontal"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 </android.support.design.widget.CoordinatorLayout>

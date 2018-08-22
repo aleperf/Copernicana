@@ -2,6 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:paddingTop="8dp"
     android:orientation="vertical"
     android:background="@color/apod_summary_background"
     android:layout_gravity="center_horizontal"
@@ -12,9 +14,10 @@
 <android.support.v7.widget.RecyclerView
 android:id="@+id/apod_summary_rv"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal|fill_vertical"
     android:gravity="center_horizontal"
     android:paddingBottom="@dimen/recycler_view_padding_bottom"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    />
+
 </LinearLayout>
