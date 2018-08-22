@@ -1,0 +1,75 @@
+{  
+   "people":[  
+      {  
+	     "id": 1,
+         "craft":"ISS",
+         "name":"Oleg Artemyev",
+         "country":"Russia",
+         "agency":"Russian Federal Space Agency",
+         "photo":"astronauts/astropics/oleg_artemyev.jpg",
+         "eva_hours":12,
+         "eva_minutes":34,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Oleg_Artemyev",
+         "notes":"Flight engineer of Expedition 56 to the International Space Station"
+      },
+      {  
+	     "id": 2,
+         "craft":"ISS",
+         "name":"Andrew J. Feustel",
+         "country":"United States",
+         "agency":"Nasa",
+         "photo":"astronauts/astropics/andrew_feustel.jpg",
+         "eva_hours":61,
+         "eva_minutes":48,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Andrew_J._Feustel",
+         "notes":"Geophysicist and commander of Expedition 56 to the International Space Station"
+      },
+      {  
+	     "id": 3,
+         "craft":"ISS",
+         "name":"Richard R. Arnold",
+         "country":"United States",
+         "agency":"Nasa",
+         "photo":"astronauts/astropics/richard_arnold.jpg",
+         "eva_hours":32,
+         "eva_minutes":4,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Richard_R._Arnold",
+         "notes":"High School teacher in biology and member of Expedition 56 to the International Space Station"
+      },
+      {  "id": 4,
+         "craft":"ISS",
+         "name":"Sergey Prokopyev",
+         "agency":"Russian Federal Space Agency",
+         "country":"Russia",
+         "photo":"astronauts/astropics/sergey_prokopyev.jpg",
+         "eva_hours":0,
+         "eva_minutes":0,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Sergey_Prokopyev_(cosmonaut)",
+         "notes":"Flight engineer of Expedition 56 to the International Space Station"
+      },
+      {  
+	     "id": 5,
+         "craft":"ISS",
+         "name":"Alexander Gerst",
+         "country":"Germany",
+         "agency":"European Space Agency",
+         "photo":"astronauts/astropics/alexander_gerst.jpg",
+         "eva_hours":6,
+         "eva_minutes":13,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Alexander_Gerst",
+         "notes":"Geophysicist and member of Expedition 56 to the International Space Station"
+      },
+      {  
+	     "id": 6,
+         "craft":"ISS",
+         "name":"Serena Auñón-Chancellor",
+         "country":"United States",
+         "agency":"Nasa",
+         "photo":"astronauts/astropics/serena_aunon_chancellor.jpg",
+         "eva_hours":0,
+         "eva_minutes":0,
+         "wikipedia_url":"https://en.wikipedia.org/wiki/Serena_Auñón-Chancellor",
+         "notes":"Physician, Electrical Engineer and member of the Expedition 56 to the International Space Station"
+      }
+   ]
+}
