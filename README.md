@@ -75,4 +75,5 @@ The app also implements a widget for viewing the Astronomy Picture of the day
 <br>
 <br>
 #### Credits
-All images from Unsplash, all icons from Flaticon (see the files in the drawable folder for the specific credit to the artist).
+Images shown in app from the Nasa Apis are by Nasa or by their relative author where speicified.
+All other images are by Unsplash, all icons by Flaticon (see the files in the drawable folder for the specific credit to the artist).
