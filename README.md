@@ -33,7 +33,7 @@ API docs at: ​https://api.nasa.gov/api.html#EPIC​ and ​https://epic.gsfc.n
 A section dedicated to the International Space Station and to astronauts in space. The app
 shows the latest position of the ISS.
 The app lists the astronauts in space now and shows some information about them (pictures,
-brief bios, social media contacts).
+brief bios, wikipedia page).
 API docs:​ http://open-notify.org/ </br>
 <p align="center">
 <img src="https://github.com/aleperf/Copernicana/blob/master/example_images/astronauts_land.png" width="400"/></p>
